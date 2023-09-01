@@ -1,0 +1,58 @@
+@import url('./animation.css');
+
+:root {
+    --welcomeTyping: 1s;
+    --welcomeLetters: 8;
+    --clickBubbleTyping: 4s;
+    --clickBubbleStart: calc(var(--start) + var(--welcomeTyping) + 1s);
+    --clickBubbleLetters: 34;
+}
+
+.welcome, .click-the-bubble {
+    position: relative;
+    width: max-content;
+}
+
+.welcome::before {
+    background: white;
+    animation: typewriter var(--welcomeTyping) steps(var(--welcomeLetters)) var(--start) forwards, 
+    to-white .1s ease 1s forwards;
+    /* blinking var(--blinkSpeed) steps(20) 1s infinite; */
+}
+
+.welcome::after {
+    width: .125em;
+    background: black;
+    animation: typewriter var(--welcomeTyping) steps(var(--welcomeLetters)) var(--start) forwards,  
+    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
+    to-white .5s ease calc(var(--welcomeTyping) + .7s) forwards;
+  }
+
+.welcome::before,
+.welcome::after,
+.click-the-bubble::before,
+.click-the-bubble::after
+  {
+    content: '';
+    position: absolute; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+.click-the-bubble::before {
+    background: white;
+    animation: typewriter var(--clickBubbleTyping) steps(var(--clickBubbleLetters)) var(--clickBubbleStart) forwards, 
+    to-white .1s ease 1s forwards;
+}
+
+.click-the-bubble::after {
+    width: .125em;
+    background: white;
+    animation: typewriter var(--clickBubbleTyping) steps(var(--clickBubbleLetters)) var(--clickBubbleStart) forwards,  
+    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
+    to-black .5s ease calc(var(--clickBubbleTyping) - 2s) forwards;
+
+
+  }

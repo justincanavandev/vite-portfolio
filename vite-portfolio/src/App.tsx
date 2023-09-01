@@ -6,6 +6,7 @@ import AboutMe from "./pages/AboutMe"
 import Contact from "./pages/Contact"
 import Portfolio from "./pages/Portfolio"
 import Resume from "./pages/Resume"
+import HomePage from "./pages/HomePage"
 import { PortfolioContext } from "./context/PortfolioContext"
 // import type {PortfolioContextType} from "./types/types"
 
@@ -42,6 +43,7 @@ function App() {
         <BrowserRouter>
           <Nav navBarRef={navBarRef} />
           <Routes>
+          <Route path="/" element={<HomePage />} />
             <Route path="/about-me" element={<AboutMe />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />

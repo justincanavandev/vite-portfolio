@@ -34,7 +34,6 @@
   
   .hi {
     position: relative;
-    font-family: 'Play' !important;
     width: max-content;
   }
   
@@ -42,7 +41,7 @@
     background: var(--medBlue);
     animation: typewriter var(--hiType) steps(4) var(--start) forwards, 
     to-white .1s ease 1s forwards,
-    blinking var(--blinkSpeed) steps(20) 1s  infinite;
+    blinking var(--blinkSpeed) steps(20) 1s infinite;
   
   }
   
@@ -109,7 +108,6 @@
   }
   
   .wrapper .dynamic-text { 
-    height: 7vh;
     overflow: hidden;
   }
   .word1 {
@@ -118,7 +116,6 @@
   
   .static-text {
     position: relative;
-    height: 7vh;
   }
   
   .static-text::before {
@@ -134,7 +131,6 @@
     to-white .3s ease var(--staticText) forwards,
     to-blue .2s ease calc(var(--staticText) + 1.8s) forwards,
     blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite;
-  
   }
   
   .static-text::before,
@@ -164,14 +160,6 @@
     overflow: hidden;
   }
 
-  /* .dynamic-text.word1 {
-    list-style: none;
-    position: relative;
-    top: 0;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-   */
   li.word1 {
     animation: slide 8.25s steps(3) calc(var(--dynamicText) + 1s) forwards;
 
@@ -301,6 +289,13 @@
       }
     }
   
+    @keyframes to-black {
+      to {
+        background: black
+      }
+    }
+  
+
     @keyframes to-white {
       to {
         background: white;

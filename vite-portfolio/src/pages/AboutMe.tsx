@@ -2,7 +2,6 @@ import "../animation.css"
 import { useContext, useRef, useEffect, RefObject, useState } from "react"
 import headshot from "../assets/jc-headshot.png"
 import { PortfolioContext } from "../context/PortfolioContext"
-import "../animation-new-keyframes.css"
 
 export default function AboutMe() {
   const { componentHeight } = useContext(PortfolioContext)
