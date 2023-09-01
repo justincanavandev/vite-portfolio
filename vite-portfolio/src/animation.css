@@ -99,16 +99,13 @@
     display: flex;
     font-family: 'Play';
     text-align: left !important;
-    font-size: 5vh;
+    font-size: 16px;
     justify-content: space-around;
   }
   
-  .about-font {
-    color: white !important;
-  }
-  
+
   .wrapper .static-text {
-    font-size: 5vh;
+    /* font-size: 5vh; */
   }
   
   .wrapper .dynamic-text { 
@@ -125,13 +122,13 @@
   }
   
   .static-text::before {
-    background: var(--darkBlue);
+    background: var(--medBlue);
     animation: typewriter 1s steps(6) calc(var(--staticText) + .5s) forwards;
   }
   
   span.static-text::after {
     width: .125em;
-    background: var(--darkBlue);
+    background: var(--medBlue);
     animation: 
     typewriter 1s steps(6) calc(var(--staticText) + .5s) forwards, 
     to-white .3s ease var(--staticText) forwards,
@@ -143,7 +140,8 @@
   .static-text::before,
   .static-text::after,
   .dynamic-text li span::before,
-  .dynamic-text li span::after 
+  .dynamic-text li span::after
+
    {
     content: '';
     position: absolute;
@@ -152,39 +150,33 @@
     width: 100%;
   }
   
-  /* .dynamic-text.word-1::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--darkBlue);
-    animation: blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite;
-  } */
-  
   .dynamic-text li::before {
-    background: var(--darkBlue);
+    background: var(--medBlue);
     animation: typewriter var(--typeWriterSpeed) .5s steps(var(--typeWriterChars)) calc(var(--dynamicText) + 1s) forwards;
   }
   
   .dynamic-text li {
     list-style: none;
     position: relative;
-    /* font-size: 7vh; */
-    /* font-size: 3.5vw; */
-    color: var(--red);
     top: 0;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
   }
-  
+
+  /* .dynamic-text.word1 {
+    list-style: none;
+    position: relative;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+   */
   li.word1 {
     animation: slide 8.25s steps(3) calc(var(--dynamicText) + 1s) forwards;
-  
+
   }
-  
+
   li.word2 {
     animation: slide 8s steps(3) calc(var(--dynamicText) + 1.25s) forwards;
     
@@ -198,7 +190,6 @@
     animation: slide 8.25s steps(3) calc(var(--dynamicText) + .5s) forwards;
   }
   
-  
   .word-1,
   .word-2,
   .word-3,
@@ -207,40 +198,38 @@
     width: max-content;
   }
   
-  .dynamic-text li span.word-1::before {
-    background: var(--darkBlue);
+  .dynamic-text.word-1::before {
+    background: var(--medBlue);
     animation: typing 2s steps(20) calc(var(--dynamicText) + 1s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-1::after {
     width: .125em;
-    background: var(--darkBlue);
-    animation: typing 2s steps(20) calc(var(--dynamicText) + 1s) forwards,
-    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
-    to-white 1s ease var(--dynamicText) forwards;
-    /* to-blue .3s ease calc(var(--dynamicText) + 6.2s) forwards; */
-    animation-iteration-count: 1;
+    background: var(--medBlue);
+    animation: typewriter 2s steps(20) calc(var(--dynamicText) + 1s) 1 forwards,
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
+    to-white 1s ease var(--dynamicText) forwards,
+    to-blue .3s ease calc(var(--dynamicText) + 6.2s) forwards;
   }
   
   .dynamic-text li span.word-2::before {
-    background: var(--darkBlue);
-    /* background: white; */
+    background: var(--medBlue);
     animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-2::after {
     width: .125em;
-    background: var(--darkBlue);
-    animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) forwards,
-    blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite,
-    to-white 1s ease var(--dynamicText) forwards;
-    animation-iteration-count: 1;
+    background: var(--medBlue);
+    animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) 1 forwards,
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
+    to-white 1s ease calc(var(--dynamicText) + 3.8s) forwards;
+
   }
   
   .dynamic-text li span.word-3::before {
-    background: var(--darkBlue);
+    background: var(--medBlue);
     animation: typing 1s steps(8) 
     calc(var(--dynamicText) + 7s) forwards;
     animation-iteration-count: 1;
@@ -248,16 +237,15 @@
   
   .dynamic-text.word-3::after {
     width: .125em;
-    background: var(--darkBlue);
-    animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) forwards,
-    blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite,
-    to-white 1s ease var(--dynamicText) forwards,
+    background: var(--medBlue);
+    animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) 1 forwards,
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
+    to-white 1s ease calc(var(--dynamicText) + 6.5s) forwards,
     to-blue .3s ease calc(var(--dynamicText) + 8.5s) forwards;
-    animation-iteration-count: 1;
   }
   
   .dynamic-text li span.word-4::before {
-    background: var(--darkBlue);
+    background: var(--medBlue);
     animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) forwards;
     animation-iteration-count: 1;
     
@@ -265,11 +253,10 @@
   
   .dynamic-text.word-4::after {
     width: .125em;
-    background: var(--darkBlue);
-    animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) forwards,
-    to-white 1s ease var(--dynamicText) forwards,
-    blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite, to-blue .5s ease calc(var(--dynamicText) + 11.2s) forwards;
-    animation-iteration-count: 1;
+    background: var(--medBlue);
+    animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) 1 forwards,
+    to-white 1s ease calc(var(--dynamicText) + 8.5s) forwards,
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite, to-blue .5s ease calc(var(--dynamicText) + 11.2s) forwards;
   }
   
     
@@ -280,8 +267,31 @@
     }
     
     @keyframes blinking {
-      to {
+      /* to {
         background: transparent;
+      } */
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+  
+
+    @keyframes blinking-dynamic {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
       }
     }
   
@@ -305,9 +315,8 @@
     }
     @keyframes slide {
     100% {
-      /* top: -270px; */
-      /* top: -22.3vh; */
-      top: -22.4vh;
+      /* top: -22.4vh; */
+      top: -72.96px;
     }
   }
   

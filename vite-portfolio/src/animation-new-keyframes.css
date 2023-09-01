@@ -1,0 +1,56 @@
+:root {
+  --darkBlue: #1d2d44;
+  --medBlue: #3e5c76;
+  --typewriterSpeed: 3s;  
+  --javaScriptDev: 19;
+  --blinkSteps: 50;
+}
+
+
+span.js-dev {
+  position: relative;
+  width: max-content;
+}
+
+span.js-dev::before,
+span.js-dev::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+span.js-dev::before {
+  background: var(--medBlue);
+  animation: typewriter var(--typewriterSpeed)
+  steps(var(--javaScriptDev)) 1s forwards;
+}
+
+span.js-dev::after {
+  width: .125em;
+  background: white;
+  animation: typewriter var(--typewriterSpeed)
+  steps(var(--javaScriptDev)) 1s forwards,
+blink 750ms steps(var(--blinkSteps)) infinite;
+}
+
+@keyframes typewriter {
+    to {
+      left: 100%;
+    }
+  }
+  
+  @keyframes blink {
+    to {
+      background: transparent;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
