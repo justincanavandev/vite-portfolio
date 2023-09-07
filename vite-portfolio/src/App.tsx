@@ -8,14 +8,13 @@ import Portfolio from "./pages/Portfolio"
 import Resume from "./pages/Resume"
 import HomePage from "./pages/HomePage"
 import { PortfolioContext } from "./context/PortfolioContext"
-// import type {PortfolioContextType} from "./types/types"
-
 
 function App() {
 
   const [navBarHeight, setNavBarHeight] = useState<string>("")
   const [componentHeight, setComponentHeight] = useState<string>("") 
   const navBarRef: RefObject<HTMLDivElement> = useRef(null);
+  const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth)
 
   useEffect(() => {
     const setNavHeights = () => {
@@ -28,16 +27,25 @@ function App() {
 
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth)
+    }
+    window.addEventListener("resize", handleResize)
+  }, [])
+
 
   return (
     <>
-     <div className=''>
+     {/* <div className=''> */}
       <PortfolioContext.Provider
       value={{
         navBarHeight,
         setNavBarHeight,
         componentHeight,
-        setComponentHeight
+        setComponentHeight,
+        screenWidth,
+        setScreenWidth
       }}
       >
         <BrowserRouter>
@@ -51,7 +59,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         </PortfolioContext.Provider>
-        </div>
+        {/* </div> */}
     </>
   )
 }

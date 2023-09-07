@@ -4,21 +4,28 @@
   --welcomeTyping: 1s;
   --welcomeLetters: 8;
   --clickBubbleTyping: 2s;
+  --pickABubbleTyping: 2s;
   --clickBubbleStart: calc(var(--start) + var(--welcomeTyping) + 1s);
-  --clickBubbleLetters: 19;
+  /* --clickBubbleLetters: 19; */
   --clickBubbleToWhite: calc(
     var(--clickBubbleTyping) + var(--welcomeTyping) + 2s
   );
-  --fadeBubbleIn: 6s;
+  --pickABubbleStart: 18.8s;
+  --pickABubbleToWhite: calc(var(--pickABubbleStart) + 3s);
+  --pickABubbleLetters: 30;
+  --fadeBubbleIn: 23s;
+
+
 }
 
 .welcome,
-.click-the-bubble {
+.click-the-bubble,
+.pick-a-bubble {
   position: relative;
   width: max-content;
 }
 
-.welcome::before {
+/* .welcome::before {
   background: white;
   animation: typewriter var(--welcomeTyping) steps(var(--welcomeLetters))
       var(--start) forwards,
@@ -32,12 +39,15 @@
       var(--start) forwards,
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
     to-white 0.5s ease calc(var(--welcomeTyping) + 0.7s) forwards;
-}
+} */
 
 .welcome::before,
 .welcome::after,
 .click-the-bubble::before,
-.click-the-bubble::after {
+.click-the-bubble::after,
+.pick-a-bubble::before,
+.pick-a-bubble::after
+ {
   content: "";
   position: absolute;
   top: 0;
@@ -46,7 +56,24 @@
   left: 0;
 }
 
-.click-the-bubble::before {
+.pick-a-bubble::before {
+  background: white;
+  animation: typewriter var(--clickBubbleTyping)
+      steps(var(--pickABubbleLetters)) calc(var(--pickABubbleStart) + .5s) forwards,
+    to-white 0.1s ease 1s forwards;
+}
+
+.pick-a-bubble::after {
+  width: 0.125em;
+  background: white;
+  animation: typewriter var(--clickBubbleTyping)
+      steps(var(--pickABubbleLetters)) calc(var(--pickABubbleStart) + .5s) forwards,
+    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
+    to-black 0.5s ease var(--pickABubbleStart) forwards,
+    to-white 0.5s ease var(--pickABubbleToWhite) forwards;
+}
+
+/* .click-the-bubble::before {
   background: white;
   animation: typewriter var(--clickBubbleTyping)
       steps(var(--clickBubbleLetters)) var(--clickBubbleStart) forwards,
@@ -61,7 +88,7 @@
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
     to-black 0.5s ease var(--clickBubbleTyping) forwards,
     to-white 0.5s ease var(--clickBubbleToWhite) forwards;
-}
+} */
 
 .bubble {
   border-radius: 50% / 10%;
@@ -69,7 +96,7 @@
 
 }
 .bubble::before {
-  content: "Click Me";
+  content: "";
   position: absolute;
   top: 10%;
   bottom: 10%;
@@ -86,11 +113,91 @@
   animation: right-to-left 1.5s ease var(--fadeBubbleIn) forwards;
 }
 
+.bubble-div-xs {
+  animation: right-to-left-xs 1.5s ease var(--fadeBubbleIn) forwards;
+}
+
+.bubble-div-sm {
+  animation: right-to-left-sm 1.5s ease var(--fadeBubbleIn) forwards;
+}
+
+.bubble-div-md {
+  animation: right-to-left-md 1.5s ease var(--fadeBubbleIn) forwards;
+}
+
+.bubble-div-lg {
+  animation: right-to-left-lg 1.5s ease var(--fadeBubbleIn)forwards;
+}
+
+.bubble-div-xl {
+  animation: right-to-left-xl 1.5s ease var(--fadeBubbleIn) forwards;
+}
+
+.bubble-div-2xl {
+  animation: right-to-left-2xl 1.5s ease var(--fadeBubbleIn) forwards;
+}
+
 @keyframes right-to-left {
   from {
-    transform: translateX(500px);
+    transform: translateX(100px);
   }
   to {
     transform: translateX(0);
   }
 }
+
+@keyframes right-to-left-xs {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+  
+}
+
+@keyframes right-to-left-sm {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes right-to-left-md {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes right-to-left-lg {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes right-to-left-xl {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes right-to-left-2xl {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+

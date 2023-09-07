@@ -3,26 +3,19 @@
     --medBlue: #3e5c76;
     --lightBlue: #748cab;
     --cream: #f0ebd8;
-    --color5: #0d1321;
     --white: #ffffff
     --red: rgb(213, 60, 60);
     --photoFade: calc(var(--hiType) + var(--imJC) + var(--typeWriterSpeed));
   --typeWriterSpeed: 1.5s;
   --typeWriterChars: 23;
-  --staticText: calc(var(--header) + var(--typeWriterSpeed) + .7s);
-  --dynamicText: calc(var(--header) + var(--typeWriterSpeed) + 3s);
+  --staticText: calc(var(--header) + var(--typeWriterSpeed) - 1.2s);
+  --dynamicText: calc(var(--header) + var(--typeWriterSpeed) + 1s);
   --imJC: 2s;
   --hiType: .5s;
   --blinkSpeed: 1s;
   --blinkSteps: 20;
   --start: .3s;
   --header: calc(var(--start) + var(--typeWriterSpeed) + var(--hiType) + var(--imJC));
-  
-  
-  --fs-xl: 5rem;
-  --fs-600: 1.5rem;
-  --fs-500: 1.25rem;
-  --fs-400: 2rem;
   
   }
   
@@ -38,7 +31,7 @@
   }
   
   .hi::before {
-    background: var(--medBlue);
+    background: white;
     animation: typewriter var(--hiType) steps(4) var(--start) forwards, 
     to-white .1s ease 1s forwards,
     blinking var(--blinkSpeed) steps(20) 1s infinite;
@@ -47,10 +40,10 @@
   
   .hi::after {
     width: .125em;
-    background: white;
+    background: black;
     animation: typewriter var(--hiType) steps(4) var(--start) forwards,  
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
-    to-blue .5s ease calc(var(--hiType) + .7s) forwards;
+    to-white .5s ease calc(var(--hiType) + .7s) forwards;
   }
 
   h2 span.hi::before,
@@ -67,25 +60,24 @@
   
   h2 span.im-justin-canavan {
     position: relative;
-    font-family: 'Play' !important;
     width: max-content;
     text-align: center !important;
   }
   
   h2 span.im-justin-canavan::before {
   
-    background: var(--medBlue);
+    background: white;
     animation: typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards;
   }
   
   .im-justin-canavan::after {
     width: .125em;
-    background: var(--medBlue);
+    background: white;
     animation: 
     typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards, 
-    to-white .4s ease calc(var(--hiType) + var(--start))forwards, 
+    to-black .4s ease calc(var(--hiType) + var(--start))forwards, 
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
-    to-blue .3s ease calc(var(--staticText) - .1s) forwards;
+    to-white .3s ease calc(var(--staticText) - .1s) forwards;
   }
   
   img.photo-anim {
@@ -96,15 +88,8 @@
   
   .wrapper {
     display: flex;
-    font-family: 'Play';
     text-align: left !important;
-    font-size: 16px;
     justify-content: space-around;
-  }
-  
-
-  .wrapper .static-text {
-    /* font-size: 5vh; */
   }
   
   .wrapper .dynamic-text { 
@@ -119,17 +104,17 @@
   }
   
   .static-text::before {
-    background: var(--medBlue);
+    background: white;
     animation: typewriter 1s steps(6) calc(var(--staticText) + .5s) forwards;
   }
   
   span.static-text::after {
     width: .125em;
-    background: var(--medBlue);
+    background: white;
     animation: 
     typewriter 1s steps(6) calc(var(--staticText) + .5s) forwards, 
-    to-white .3s ease var(--staticText) forwards,
-    to-blue .2s ease calc(var(--staticText) + 1.8s) forwards,
+    to-black .3s ease var(--staticText) forwards,
+    to-white .2s ease calc(var(--staticText) + 1.8s) forwards,
     blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite;
   }
   
@@ -187,66 +172,64 @@
   }
   
   .dynamic-text.word-1::before {
-    background: var(--medBlue);
+    background: white; 
     animation: typing 2s steps(20) calc(var(--dynamicText) + 1s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-1::after {
     width: .125em;
-    background: var(--medBlue);
+    background: white; 
     animation: typewriter 2s steps(20) calc(var(--dynamicText) + 1s) 1 forwards,
     blinking-dynamic var(--blinkSpeed) steps(10) infinite,
-    to-white 1s ease var(--dynamicText) forwards,
-    to-blue .3s ease calc(var(--dynamicText) + 6.2s) forwards;
+    to-black 1s ease var(--dynamicText) forwards, 
+    to-white .3s ease calc(var(--dynamicText) + 6.2s) forwards; 
   }
   
   .dynamic-text li span.word-2::before {
-    background: var(--medBlue);
+    background: white; 
     animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-2::after {
     width: .125em;
-    background: var(--medBlue);
+    background: white; 
     animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) 1 forwards,
     blinking-dynamic var(--blinkSpeed) steps(10) infinite,
-    to-white 1s ease calc(var(--dynamicText) + 3.8s) forwards;
-
+    to-black 1s ease calc(var(--dynamicText) + 4s) forwards, 
+    to-white 1s ease calc(var(--dynamicText) + 6.1s) forwards; 
   }
   
   .dynamic-text li span.word-3::before {
-    background: var(--medBlue);
-    animation: typing 1s steps(8) 
-    calc(var(--dynamicText) + 7s) forwards;
+    background: white; 
+    animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-3::after {
     width: .125em;
-    background: var(--medBlue);
+    background: white; 
     animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) 1 forwards,
     blinking-dynamic var(--blinkSpeed) steps(10) infinite,
-    to-white 1s ease calc(var(--dynamicText) + 6.5s) forwards,
-    to-blue .3s ease calc(var(--dynamicText) + 8.5s) forwards;
+    to-black 1s ease calc(var(--dynamicText) + 6.5s) forwards, 
+    to-white .3s ease calc(var(--dynamicText) + 8.5s) forwards; 
   }
   
   .dynamic-text li span.word-4::before {
-    background: var(--medBlue);
+    background: white; 
     animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) forwards;
     animation-iteration-count: 1;
-    
   }
   
   .dynamic-text.word-4::after {
     width: .125em;
-    background: var(--medBlue);
+    background: white; 
     animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) 1 forwards,
-    to-white 1s ease calc(var(--dynamicText) + 8.5s) forwards,
-    blinking-dynamic var(--blinkSpeed) steps(10) infinite, to-blue .5s ease calc(var(--dynamicText) + 11.2s) forwards;
+    to-black 1s ease calc(var(--dynamicText) + 8.5s) forwards, 
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
+    to-white .5s ease calc(var(--dynamicText) + 11.4s) forwards; 
   }
-  
     
     @keyframes typewriter { 
       to {
@@ -255,9 +238,7 @@
     }
     
     @keyframes blinking {
-      /* to {
-        background: transparent;
-      } */
+
       0% {
         opacity: 1;
       }
@@ -311,7 +292,7 @@
     @keyframes slide {
     100% {
       /* top: -22.4vh; */
-      top: -72.96px;
+      top: -94.85px;
     }
   }
 

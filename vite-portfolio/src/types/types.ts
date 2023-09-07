@@ -7,4 +7,6 @@ export type PortfolioContextType = {
     setNavBarHeight: React.Dispatch<React.SetStateAction<string>>
     componentHeight: string
     setComponentHeight: React.Dispatch<React.SetStateAction<string>>
+    screenWidth: number
+    setScreenWidth: React.Dispatch<React.SetStateAction<number>>
 }
