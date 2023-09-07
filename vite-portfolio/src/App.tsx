@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Nav from "./components/Nav"
 import AboutMe from "./pages/AboutMe"
 import Contact from "./pages/Contact"
-import Portfolio from "./pages/Portfolio"
+import Portfolio from "./pages/Portfolio/Portfolio"
 import Resume from "./pages/Resume"
 import HomePage from "./pages/HomePage"
 import { PortfolioContext } from "./context/PortfolioContext"
@@ -37,7 +37,6 @@ function App() {
 
   return (
     <>
-     {/* <div className=''> */}
       <PortfolioContext.Provider
       value={{
         navBarHeight,
@@ -59,7 +58,6 @@ function App() {
           </Routes>
         </BrowserRouter>
         </PortfolioContext.Provider>
-        {/* </div> */}
     </>
   )
 }

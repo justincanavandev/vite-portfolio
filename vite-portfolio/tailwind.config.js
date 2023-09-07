@@ -11,23 +11,27 @@ export default {
         medBlue: '#3e5c76',
         lightBlue: '#748cab',
         cream: '#f0ebd8',
-        white: '#ffffff',
-        // red: '#d53c3c'
       },
       fontFamily: {
         'oswald': ['Oswald', 'sans'],
         'kanit': ['Kanit', 'sans']
       },
       animation: {
-
+        'project-expand': 'project-expand .3s linear',
+        'project-close': 'project-close .3s linear'
 
       },
-      // keyframes: {
-      //   "rightToLeft": {
-      //     "0%": { transform: "translateX(500px)"},
-      //     "100%": {transform: "translateX(0)"}
-      //   }
-      // }
+      keyframes: {
+        'project-expand': {
+          "0%": {transform: 'translateX(-100%)'},
+          "100%": {transform: 'translateX(0)'}
+        },
+        'project-close': {
+          "0%": {transform: 'translateX(0)'},
+          "100%": {transform: 'translateX(-102%)'}
+        }
+  
+      }
     },
   },
   screens: {
