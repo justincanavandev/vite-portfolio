@@ -12,8 +12,22 @@ export default {
         lightBlue: '#748cab',
         cream: '#f0ebd8',
         white: '#ffffff',
-        red: '#d53c3c'
+        // red: '#d53c3c'
       },
+      fontFamily: {
+        'oswald': ['Oswald', 'sans'],
+        'kanit': ['Kanit', 'sans']
+      },
+      animation: {
+
+
+      },
+      // keyframes: {
+      //   "rightToLeft": {
+      //     "0%": { transform: "translateX(500px)"},
+      //     "100%": {transform: "translateX(0)"}
+      //   }
+      // }
     },
   },
   screens: {

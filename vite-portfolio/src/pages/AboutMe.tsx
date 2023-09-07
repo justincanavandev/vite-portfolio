@@ -1,15 +1,15 @@
 import "../animation.css"
+import { useContext } from "react"
+
+import { PortfolioContext } from "../context/PortfolioContext"
 
 export default function AboutMe() {
+  const { componentHeight } = useContext(PortfolioContext)
+
   return (
     <>
-      <div className="container bg-medBlue">
-        <div className="flex justify-center ">
-          <h2 className="text-center text-white">
-            <span className="hi">Hi! </span>
-            <span className="im-justin-canavan pl-[.02rem]">I'm Justin Canavan.</span>
-          </h2>
-        </div>
+      <div className="w-full" style={{ height: componentHeight }}>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores facilis minus officia dolor sint exercitationem repudiandae? Vero, culpa tenetur! Officia iusto beatae quia facere explicabo voluptatibus possimus sint! Delectus, natus?</p>
       </div>
     </>
   )

@@ -3,26 +3,19 @@
     --medBlue: #3e5c76;
     --lightBlue: #748cab;
     --cream: #f0ebd8;
-    --color5: #0d1321;
     --white: #ffffff
     --red: rgb(213, 60, 60);
     --photoFade: calc(var(--hiType) + var(--imJC) + var(--typeWriterSpeed));
   --typeWriterSpeed: 1.5s;
   --typeWriterChars: 23;
-  --staticText: calc(var(--header) + var(--typeWriterSpeed) + .7s);
-  --dynamicText: calc(var(--header) + var(--typeWriterSpeed) + 3s);
+  --staticText: calc(var(--header) + var(--typeWriterSpeed) - 1.2s);
+  --dynamicText: calc(var(--header) + var(--typeWriterSpeed) + 1s);
   --imJC: 2s;
   --hiType: .5s;
   --blinkSpeed: 1s;
   --blinkSteps: 20;
   --start: .3s;
   --header: calc(var(--start) + var(--typeWriterSpeed) + var(--hiType) + var(--imJC));
-  
-  
-  --fs-xl: 5rem;
-  --fs-600: 1.5rem;
-  --fs-500: 1.25rem;
-  --fs-400: 2rem;
   
   }
   
@@ -34,24 +27,23 @@
   
   .hi {
     position: relative;
-    font-family: 'Play' !important;
     width: max-content;
   }
   
   .hi::before {
-    background: var(--medBlue);
+    background: white;
     animation: typewriter var(--hiType) steps(4) var(--start) forwards, 
     to-white .1s ease 1s forwards,
-    blinking var(--blinkSpeed) steps(20) 1s  infinite;
+    blinking var(--blinkSpeed) steps(20) 1s infinite;
   
   }
   
   .hi::after {
     width: .125em;
-    background: white;
+    background: black;
     animation: typewriter var(--hiType) steps(4) var(--start) forwards,  
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
-    to-blue .5s ease calc(var(--hiType) + .7s) forwards;
+    to-white .5s ease calc(var(--hiType) + .7s) forwards;
   }
 
   h2 span.hi::before,
@@ -68,25 +60,24 @@
   
   h2 span.im-justin-canavan {
     position: relative;
-    font-family: 'Play' !important;
     width: max-content;
     text-align: center !important;
   }
   
   h2 span.im-justin-canavan::before {
   
-    background: var(--medBlue);
+    background: white;
     animation: typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards;
   }
   
   .im-justin-canavan::after {
     width: .125em;
-    background: var(--medBlue);
+    background: white;
     animation: 
     typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards, 
-    to-white .4s ease calc(var(--hiType) + var(--start))forwards, 
+    to-black .4s ease calc(var(--hiType) + var(--start))forwards, 
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
-    to-blue .3s ease calc(var(--staticText) - .1s) forwards;
+    to-white .3s ease calc(var(--staticText) - .1s) forwards;
   }
   
   img.photo-anim {
@@ -97,22 +88,11 @@
   
   .wrapper {
     display: flex;
-    font-family: 'Play';
     text-align: left !important;
-    font-size: 5vh;
     justify-content: space-around;
   }
   
-  .about-font {
-    color: white !important;
-  }
-  
-  .wrapper .static-text {
-    font-size: 5vh;
-  }
-  
   .wrapper .dynamic-text { 
-    height: 7vh;
     overflow: hidden;
   }
   .word1 {
@@ -121,29 +101,28 @@
   
   .static-text {
     position: relative;
-    height: 7vh;
   }
   
   .static-text::before {
-    background: var(--darkBlue);
+    background: white;
     animation: typewriter 1s steps(6) calc(var(--staticText) + .5s) forwards;
   }
   
   span.static-text::after {
     width: .125em;
-    background: var(--darkBlue);
+    background: white;
     animation: 
     typewriter 1s steps(6) calc(var(--staticText) + .5s) forwards, 
-    to-white .3s ease var(--staticText) forwards,
-    to-blue .2s ease calc(var(--staticText) + 1.8s) forwards,
+    to-black .3s ease var(--staticText) forwards,
+    to-white .2s ease calc(var(--staticText) + 1.8s) forwards,
     blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite;
-  
   }
   
   .static-text::before,
   .static-text::after,
   .dynamic-text li span::before,
-  .dynamic-text li span::after 
+  .dynamic-text li span::after
+
    {
     content: '';
     position: absolute;
@@ -152,39 +131,25 @@
     width: 100%;
   }
   
-  /* .dynamic-text.word-1::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--darkBlue);
-    animation: blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite;
-  } */
-  
   .dynamic-text li::before {
-    background: var(--darkBlue);
+    background: var(--medBlue);
     animation: typewriter var(--typeWriterSpeed) .5s steps(var(--typeWriterChars)) calc(var(--dynamicText) + 1s) forwards;
   }
   
   .dynamic-text li {
     list-style: none;
     position: relative;
-    /* font-size: 7vh; */
-    /* font-size: 3.5vw; */
-    color: var(--red);
     top: 0;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
   }
-  
+
   li.word1 {
     animation: slide 8.25s steps(3) calc(var(--dynamicText) + 1s) forwards;
-  
+
   }
-  
+
   li.word2 {
     animation: slide 8s steps(3) calc(var(--dynamicText) + 1.25s) forwards;
     
@@ -198,7 +163,6 @@
     animation: slide 8.25s steps(3) calc(var(--dynamicText) + .5s) forwards;
   }
   
-  
   .word-1,
   .word-2,
   .word-3,
@@ -207,71 +171,65 @@
     width: max-content;
   }
   
-  .dynamic-text li span.word-1::before {
-    background: var(--darkBlue);
+  .dynamic-text.word-1::before {
+    background: white; 
     animation: typing 2s steps(20) calc(var(--dynamicText) + 1s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-1::after {
     width: .125em;
-    background: var(--darkBlue);
-    animation: typing 2s steps(20) calc(var(--dynamicText) + 1s) forwards,
-    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
-    to-white 1s ease var(--dynamicText) forwards;
-    /* to-blue .3s ease calc(var(--dynamicText) + 6.2s) forwards; */
-    animation-iteration-count: 1;
+    background: white; 
+    animation: typewriter 2s steps(20) calc(var(--dynamicText) + 1s) 1 forwards,
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
+    to-black 1s ease var(--dynamicText) forwards, 
+    to-white .3s ease calc(var(--dynamicText) + 6.2s) forwards; 
   }
   
   .dynamic-text li span.word-2::before {
-    background: var(--darkBlue);
-    /* background: white; */
+    background: white; 
     animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-2::after {
     width: .125em;
-    background: var(--darkBlue);
-    animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) forwards,
-    blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite,
-    to-white 1s ease var(--dynamicText) forwards;
-    animation-iteration-count: 1;
+    background: white; 
+    animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) 1 forwards,
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
+    to-black 1s ease calc(var(--dynamicText) + 4s) forwards, 
+    to-white 1s ease calc(var(--dynamicText) + 6.1s) forwards; 
   }
   
   .dynamic-text li span.word-3::before {
-    background: var(--darkBlue);
-    animation: typing 1s steps(8) 
-    calc(var(--dynamicText) + 7s) forwards;
+    background: white; 
+    animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-3::after {
     width: .125em;
-    background: var(--darkBlue);
-    animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) forwards,
-    blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite,
-    to-white 1s ease var(--dynamicText) forwards,
-    to-blue .3s ease calc(var(--dynamicText) + 8.5s) forwards;
-    animation-iteration-count: 1;
+    background: white; 
+    animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) 1 forwards,
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
+    to-black 1s ease calc(var(--dynamicText) + 6.5s) forwards, 
+    to-white .3s ease calc(var(--dynamicText) + 8.5s) forwards; 
   }
   
   .dynamic-text li span.word-4::before {
-    background: var(--darkBlue);
+    background: white; 
     animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) forwards;
     animation-iteration-count: 1;
-    
   }
   
   .dynamic-text.word-4::after {
     width: .125em;
-    background: var(--darkBlue);
-    animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) forwards,
-    to-white 1s ease var(--dynamicText) forwards,
-    blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite, to-blue .5s ease calc(var(--dynamicText) + 11.2s) forwards;
-    animation-iteration-count: 1;
+    background: white; 
+    animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) 1 forwards,
+    to-black 1s ease calc(var(--dynamicText) + 8.5s) forwards, 
+    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
+    to-white .5s ease calc(var(--dynamicText) + 11.4s) forwards; 
   }
-  
     
     @keyframes typewriter { 
       to {
@@ -280,8 +238,29 @@
     }
     
     @keyframes blinking {
-      to {
-        background: transparent;
+
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+  
+
+    @keyframes blinking-dynamic {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
       }
     }
   
@@ -291,6 +270,13 @@
       }
     }
   
+    @keyframes to-black {
+      to {
+        background: black
+      }
+    }
+  
+
     @keyframes to-white {
       to {
         background: white;
@@ -305,11 +291,11 @@
     }
     @keyframes slide {
     100% {
-      /* top: -270px; */
-      /* top: -22.3vh; */
-      top: -22.4vh;
+      /* top: -22.4vh; */
+      top: -94.85px;
     }
   }
+
   
   @keyframes typing {
     100% {
