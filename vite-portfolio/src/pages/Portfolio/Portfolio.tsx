@@ -34,24 +34,42 @@ export default function Portfolio() {
   ]
 
   const [showProjectDetails, setShowProjectDetails] = useState<boolean>(true)
+  const [hasPageRendered, setHasPageRendered] = useState<boolean>(false)
 
   const [featuredProject, setFeaturedProject] = useState<Project>(projects[0])
   const [showAnimation, setShowAnimation] = useState<boolean>(false)
   const [closeAnimation, setCloseAnimation] = useState<boolean>(false)
-  const [opacityClass, setOpacityClass] = useState<string>("opacity-50")
+  const [imgOpacityClass, setImgOpacityClass] = useState<string>("opacity-50")
+  const [detailsOpacityClass, setDetailsOpacityClass] =
+    useState<string>("opacity-100")
+  const [bannerOpacity, setBannerOpacity] = useState<string>("opacity-100")
 
   useEffect(() => {
     console.log("featuredProject", featuredProject)
     console.log("showProjectDetails", showProjectDetails)
-  }, [featuredProject, showProjectDetails])
+    console.log("closeAnimation", closeAnimation)
+    console.log("imgOpacityClass", imgOpacityClass)
+  }, [featuredProject, showProjectDetails, closeAnimation, imgOpacityClass])
 
   function setAnimationState() {
     if (closeAnimation) {
+      console.log("hi")
       null
     } else {
+      console.log("hello")
       setShowAnimation(true)
     }
   }
+
+  useEffect(() => {
+    if (hasPageRendered === false) {
+      setTimeout(() => {
+        setImgOpacityClass("opacity-100")
+        setBannerOpacity("opacity-0")
+      }, 300)
+      setHasPageRendered(true)
+    }
+  }, [])
 
   function displayCard(index: number) {
     if (showProjectDetails && featuredProject.name !== projects[index].name) {
@@ -73,9 +91,12 @@ export default function Portfolio() {
       })
 
       setTimeout(() => {
+        setImgOpacityClass("opacity-50")
+        setDetailsOpacityClass("opacity-0")
+        setBannerOpacity("opacity-0")
         setShowProjectDetails(!showProjectDetails)
         setFeaturedProject({} as Project)
-      }, 295)
+      }, 300)
     }
 
     if (showProjectDetails === false && !featuredProject.name) {
@@ -89,17 +110,24 @@ export default function Portfolio() {
       })
 
       setShowProjectDetails(true)
+
+      setTimeout(() => {
+        setImgOpacityClass("opacity-100")
+        setDetailsOpacityClass("opacity-100")
+      }, 300)
     }
   }
 
-  function opacityAnimation() {
-    if (closeAnimation) {
-      setOpacityClass("opacity-50")
-    } else {
-      setOpacityClass("opacity-100")
-    }
-  }
-console.log('closeAnimation', closeAnimation)
+  // function imgOpacityAnimation() {
+  //   if (closeAnimation) {
+  //     setImgOpacityClass("opacity-50")
+  //     setDetailsOpacityClass("opacity-0")
+  //   } else {
+  //     setImgOpacityClass("opacity-100")
+  //     setDetailsOpacityClass("opacity-100")
+  //   }
+  // }
+
   return (
     <>
       <div
@@ -107,18 +135,29 @@ console.log('closeAnimation', closeAnimation)
         style={{ height: componentHeight }}
       >
         {projects.map((project: Project, index: number) => (
-          <div className="flex">
+          <div key={index} className="flex">
             <div
-              key={index}
               className="h-36 w-28 z-50 relative rounded-md box-border text-[.8rem]"
               onClick={() => displayCard(index)}
             >
               <img
                 src={project.thumbnail}
                 alt="project-image"
-                onAnimationEnd={opacityAnimation}
+                // onAnimationEnd={imgOpacityAnimation}
                 className={`h-36 w-28 
-                ${ closeAnimation ? "animate-img-opacity-close" : "animate-img-opacity-expand"} 
+                ${
+                  closeAnimation
+                    ? `${
+                        featuredProject.name === project.name
+                          ? "animate-img-opacity-close"
+                          : ""
+                      }`
+                    : `${
+                        featuredProject.name === project.name
+                          ? "animate-img-opacity-expand"
+                          : ""
+                      }`
+                }
                 object-cover overflow-hidden border-2 border-red-500 rounded-md box-border ${
                   featuredProject.name === project.name
                     ? "border-r-0 rounded-r-none"
@@ -127,20 +166,41 @@ console.log('closeAnimation', closeAnimation)
               ${
                 showProjectDetails === true &&
                 project.name === featuredProject.name
-                  ? opacityClass
+                  ? imgOpacityClass
                   : "opacity-50"
               }
               
                `}
               />
-              {((showProjectDetails === true &&
-                project.name !== featuredProject.name) ||
-                showProjectDetails === false) && (
-                <div className="absolute top-0 bg-red-400 text-white rounded-l-md">
-                  <p className="px-1">{project.name}</p>
-                </div>
-              )}
+          
+              <div
+                className={`absolute top-0 bg-red-400 text-white rounded-l-md 
+                ${
+                  showProjectDetails && project.name === featuredProject.name
+                    ? bannerOpacity
+                    : "opacity-100"
+                }
+                ${
+                  closeAnimation
+                    ? `${
+                        featuredProject.name === project.name
+                          ? "animate-banner-opacity-expand"
+                          : ""
+                      }`
+                    : `${
+                        featuredProject.name === project.name
+                          ? "animate-banner-opacity-close"
+                          : ""
+                      }`
+                }
+                `}
+              >
+                <p className="px-1">{project.name}</p>
+              </div>
             </div>
+
+            {/* projectDetailsOpen */}
+
             {featuredProject.name === project.name && showProjectDetails && (
               <div
                 onAnimationEnd={setAnimationState}
@@ -151,8 +211,8 @@ console.log('closeAnimation', closeAnimation)
                 }      ${
                   showProjectDetails === true &&
                   project.name === featuredProject.name
-                    ? opacityClass
-                    : "opacity-50"
+                    ? detailsOpacityClass
+                    : "opacity-0"
                 } border-2 z-0 border-red-500 rounded-md border-l-0 rounded-l-none flex flex-col justify-between`}
               >
                 <p className="text-[.8rem] mx-auto">{project.name}</p>
