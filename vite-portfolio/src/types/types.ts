@@ -10,3 +10,10 @@ export type PortfolioContextType = {
     screenWidth: number
     setScreenWidth: React.Dispatch<React.SetStateAction<number>>
 }
+
+export type Project = {
+    name: string
+    githubRepo: string
+    liveLink: string
+    thumbnail: string
+  }

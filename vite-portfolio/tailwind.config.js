@@ -18,8 +18,10 @@ export default {
       },
       animation: {
         'project-expand': 'project-expand .3s linear',
-        'project-close': 'project-close .3s linear'
-
+        'project-close': 'project-close .3s linear',
+        'img-opacity-expand': 'img-opacity-expand .3s linear',
+        'img-opacity-close': 'img-opacity-close .3s linear',
+        'opacity-expand-full': 'opacity-expand-full .3s linear'
       },
       keyframes: {
         'project-expand': {
@@ -28,7 +30,20 @@ export default {
         },
         'project-close': {
           "0%": {transform: 'translateX(0)'},
-          "100%": {transform: 'translateX(-102%)'}
+          "100%": {transform: 'translateX(-100%)'}
+        },
+        'img-opacity-expand': {
+          "0%": {opacity: .5},
+          "100%": {opacity: 1},
+        },
+        'opacity-expand-full': {
+          "0%": {opacity: 0},
+          "90%": {opacity: 0},
+          "100%": {opacity: 1},
+        },
+        'img-opacity-close': {
+          "0%": {opacity: 1},
+          "100%": {opacity: .5},
         }
   
       }

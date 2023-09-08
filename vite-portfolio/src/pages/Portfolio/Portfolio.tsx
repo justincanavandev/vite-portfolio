@@ -6,6 +6,7 @@ import { PortfolioContext } from "../../context/PortfolioContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faDesktop } from "@fortawesome/free-solid-svg-icons"
+import type { Project } from "../../types/types"
 
 export default function Portfolio() {
   const { componentHeight, screenWidth } = useContext(PortfolioContext)
@@ -32,19 +33,12 @@ export default function Portfolio() {
     },
   ]
 
-  type Project = {
-    name: string
-    githubRepo: string
-    liveLink: string
-    thumbnail: string
-  }
-
   const [showProjectDetails, setShowProjectDetails] = useState<boolean>(true)
 
   const [featuredProject, setFeaturedProject] = useState<Project>(projects[0])
   const [showAnimation, setShowAnimation] = useState<boolean>(false)
-  // const [animationOpen, setAnimationOpen] = useState<boolean>(true)
   const [closeAnimation, setCloseAnimation] = useState<boolean>(false)
+  const [opacityClass, setOpacityClass] = useState<string>("opacity-50")
 
   useEffect(() => {
     console.log("featuredProject", featuredProject)
@@ -70,18 +64,18 @@ export default function Portfolio() {
 
       setCloseAnimation(true)
 
-      if(showAnimation===false) {
+      if (showAnimation === false) {
         setShowAnimation(true)
       }
 
       setShowAnimation((prevState) => {
         return !prevState
       })
-      
+
       setTimeout(() => {
         setShowProjectDetails(!showProjectDetails)
         setFeaturedProject({} as Project)
-      }, 300)
+      }, 295)
     }
 
     if (showProjectDetails === false && !featuredProject.name) {
@@ -89,7 +83,7 @@ export default function Portfolio() {
       setFeaturedProject(projects[index])
       setCloseAnimation(false)
       setShowAnimation(false)
-  
+
       setShowAnimation((prevState) => {
         return !prevState
       })
@@ -98,9 +92,14 @@ export default function Portfolio() {
     }
   }
 
-  // console.log("animationOpen", animationOpen)
-  console.log("closeAnimation", closeAnimation)
-
+  function opacityAnimation() {
+    if (closeAnimation) {
+      setOpacityClass("opacity-50")
+    } else {
+      setOpacityClass("opacity-100")
+    }
+  }
+console.log('closeAnimation', closeAnimation)
   return (
     <>
       <div
@@ -111,25 +110,36 @@ export default function Portfolio() {
           <div className="flex">
             <div
               key={index}
-              className="h-36 w-28 z-10 rounded-md box-border"
+              className="h-36 w-28 z-50 relative rounded-md box-border text-[.8rem]"
               onClick={() => displayCard(index)}
             >
               <img
                 src={project.thumbnail}
                 alt="project-image"
-                className={`h-36 w-28 object-cover overflow-hidden border-2 border-red-500 rounded-md box-border ${
+                onAnimationEnd={opacityAnimation}
+                className={`h-36 w-28 
+                ${ closeAnimation ? "animate-img-opacity-close" : "animate-img-opacity-expand"} 
+                object-cover overflow-hidden border-2 border-red-500 rounded-md box-border ${
                   featuredProject.name === project.name
                     ? "border-r-0 rounded-r-none"
                     : ""
-                } ${
-                  showProjectDetails === true &&
-                  project.name === featuredProject.name
-                    ? "opacity-100"
-                    : "opacity-50"
-                }
+                } 
+              ${
+                showProjectDetails === true &&
+                project.name === featuredProject.name
+                  ? opacityClass
+                  : "opacity-50"
+              }
               
                `}
               />
+              {((showProjectDetails === true &&
+                project.name !== featuredProject.name) ||
+                showProjectDetails === false) && (
+                <div className="absolute top-0 bg-red-400 text-white rounded-l-md">
+                  <p className="px-1">{project.name}</p>
+                </div>
+              )}
             </div>
             {featuredProject.name === project.name && showProjectDetails && (
               <div
@@ -138,6 +148,11 @@ export default function Portfolio() {
                   closeAnimation
                     ? "animate-project-close"
                     : "animate-project-expand"
+                }      ${
+                  showProjectDetails === true &&
+                  project.name === featuredProject.name
+                    ? opacityClass
+                    : "opacity-50"
                 } border-2 z-0 border-red-500 rounded-md border-l-0 rounded-l-none flex flex-col justify-between`}
               >
                 <p className="text-[.8rem] mx-auto">{project.name}</p>
@@ -150,7 +165,7 @@ export default function Portfolio() {
                   />
                 </div>
               </div>
-             )} 
+            )}
           </div>
         ))}
       </div>
