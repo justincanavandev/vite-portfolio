@@ -1,10 +1,10 @@
 import "../animation.css"
 import { useContext } from "react"
 
-import { PortfolioContext } from "../context/PortfolioContext"
+import { GlobalContext } from "../context/GlobalContext"
 
 export default function AboutMe() {
-  const { componentHeight } = useContext(PortfolioContext)
+  const { componentHeight } = useContext(GlobalContext)
 
   return (
     <>

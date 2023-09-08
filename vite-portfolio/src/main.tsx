@@ -1,22 +1,39 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-// import {
-//   createBrowserRouter,
-//   RouterProvider,
-// } from "react-router-dom"
+import React, { useState, useEffect } from "react"
+import ReactDOM from "react-dom"
+import App from "./App.tsx"
+import "./index.css"
+import { GlobalContext } from "./context/GlobalContext.tsx"
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <div>Hello world!</div>,
-//   },
-// ]);
+function Root() {
+  const [componentHeight, setComponentHeight] = useState<string>("")
+  const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth)
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-      {/* <RouterProvider router={router} /> */}
-    <App />
-  </React.StrictMode>,
-)
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return (
+    <React.StrictMode>
+      <GlobalContext.Provider
+        value={{
+          componentHeight,
+          setComponentHeight,
+          screenWidth,
+          setScreenWidth,
+        }}
+      >
+        <App />
+      </GlobalContext.Provider>
+    </React.StrictMode>
+  )
+}
+
+ReactDOM.render(<Root />, document.getElementById("root"))
