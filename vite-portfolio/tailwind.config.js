@@ -16,8 +16,8 @@ export default {
       animation: {
         "project-expand": "project-expand .3s linear",
         "project-close": "project-close .3s linear",
-        "img-opacity-expand": "img-opacity-expand .3s linear",
-        "img-opacity-close": "img-opacity-close .3s linear",
+        // "img-opacity-expand": "img-opacity-expand .3s linear",
+        // "img-opacity-close": "img-opacity-close .3s linear",
         "banner-opacity-expand": "banner-opacity-expand .3s linear",
         "banner-opacity-close": "banner-opacity-close .3s linear",
         
@@ -49,15 +49,15 @@ export default {
             opacity: 0,
           },
         },
-        "img-opacity-expand": {
-          "0%": { opacity: 0.5 },
-          "100%": { opacity: 1 },
-        },
-        "img-opacity-close": {
-          "0%": { opacity: 1 },
+        // "img-opacity-expand": {
+        //   "0%": { opacity: 0.5 },
+        //   "100%": { opacity: 1 },
+        // },
+        // "img-opacity-close": {
+        //   "0%": { opacity: 1 },
           
-          "100%": { opacity: 0.5 },
-        },
+        //   "100%": { opacity: 0.5 },
+        // },
         "banner-opacity-expand": {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },

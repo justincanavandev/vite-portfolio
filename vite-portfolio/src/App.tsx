@@ -4,10 +4,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Nav from "./components/Nav"
 import AboutMe from "./pages/AboutMe"
 import Contact from "./pages/Contact"
-// import Portfolio from "./pages/Portfolio/Portfolio"
-import PortfolioPage from "./pages/Projects/ProjectsPage"
+
+import ProjectsPage from "./pages/Projects/ProjectsPage"
 import Resume from "./pages/Resume"
-import HomePage from "./pages/HomePage"
+import HomePagePage from "./pages/HomePage/HomePagePage"
 import { GlobalContext } from "./context/GlobalContext"
 
 function App() {
@@ -32,9 +32,9 @@ function App() {
       <BrowserRouter>
         <Nav navBarRef={navBarRef} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePagePage />} />
           <Route path="/about-me" element={<AboutMe />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />
         </Routes>

@@ -6,6 +6,7 @@ import { faDesktop } from "@fortawesome/free-solid-svg-icons"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
+import { Link } from "react-router-dom"
 
 export default function Projects() {
   const { componentHeight } = useContext(GlobalContext)
@@ -90,8 +91,7 @@ export default function Projects() {
               <img
                 src={project.thumbnail}
                 alt="project-image"
-                // onAnimationEnd={imgOpacityAnimation}
-                className={`h-36 w-28
+                className={`h-36 w-28 object-cover
                 ${
                   closeAnimation
                     ? `${
@@ -105,7 +105,7 @@ export default function Projects() {
                           : ""
                       }`
                 }
-                object-cover overflow-hidden border-2 border-red-500 rounded-md 
+                 overflow-hidden border-2 border-red-500 rounded-md 
              ${
                   featuredProject.name === project.name
                     ? "rounded-r-none"
@@ -165,12 +165,16 @@ export default function Projects() {
               >
                 <p className="text-[.8rem] mx-auto">{project.name}</p>
                 <div className="flex justify-between relative mx-[.3rem] mb-1">
+                  <Link to={project.githubRepo} target="_blank">
                   <FontAwesomeIcon icon={faGithub} size="xl" />
+                  </Link>
+                  <Link to={project.liveLink} target="_blank">
                   <FontAwesomeIcon
                     className="absolute right-0 bottom-[.075rem]"
                     icon={faDesktop}
                     size="lg"
                   />
+                  </Link>
                 </div>
               </div>
             )}

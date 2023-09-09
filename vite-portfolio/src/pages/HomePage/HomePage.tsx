@@ -1,15 +1,18 @@
 import { NavLink } from "react-router-dom"
 import { useContext, useState, useEffect, useRef, RefObject } from "react"
-import "../homepage.css"
-import "../animation.css"
-import "../index.css"
-import { GlobalContext } from "../context/GlobalContext"
-// import headshot from "../assets/jc-headshot.png"
+import "../../homepage.css"
+import "../../animation.css"
+import "../../index.css"
+import { GlobalContext } from "../../context/GlobalContext"
+import { HomePageContext } from "../../context/HomePageContext"
 
 function HomePage() {
   const { componentHeight, screenWidth } = useContext(GlobalContext)
+  const { bubbles } = useContext(HomePageContext)
   const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
   const [dynamicTextHeight, setDynamicTextHeight] = useState<string>("")
+
+  console.log('bubbles', bubbles)
 
   useEffect(() => {
     const setDivHeight = () => {
@@ -19,10 +22,6 @@ function HomePage() {
     }
     setDivHeight()
   }, [])
-
-  useEffect(() => {
-    console.log("dynamicTextHeight", dynamicTextHeight)
-  }, [dynamicTextHeight])
 
   const [bubbleAnimationClass, setBubbleAnimationClass] = useState<string>(
     () => {
@@ -80,9 +79,6 @@ function HomePage() {
     }
   }, [screenWidth])
 
-  console.log("screenWidth", screenWidth)
-  console.log("bubbleAnimationClass", bubbleAnimationClass)
-
   return (
     <>
       <div
@@ -97,13 +93,6 @@ function HomePage() {
             </span>
           </h2>
         </div>
-        {/* <div className="">
-          <img
-            src={headshot}
-            alt="Justin Canavan headshot"
-            className="photo-anim h-48 rounded-full overflow-hidden photo-margin headshot object-cover mx-auto"
-          ></img>
-        </div> */}
 
         <div className="">
           <div className="wrapper">
@@ -136,24 +125,24 @@ function HomePage() {
         </div>
 
         <div className="flex justify-evenly flex-wrap">
-          <NavLink className="" to="/about-me">
-            <div className={bubbleAnimationClass}>
-              <div className="bubble w-28 h-24 mt-5 text-center relative text-white"></div>
-              <p className="absolute top-7 left-3  text-white">About Me</p>
-            </div>
-          </NavLink>
-          <NavLink className="" to="/portfolio">
-            <div className={bubbleAnimationClass}>
-              <div className="bubble w-28 h-24 mt-5 text-center relative text-white"></div>
-              <p className="text-white absolute top-7 left-5">Projects</p>
-            </div>
-          </NavLink>
-          <NavLink className="" to="/contact">
-            <div className={bubbleAnimationClass}>
-              <div className="bubble w-28 h-24 mt-5 text-center relative text-white"></div>
-              <p className="text-white absolute top-7 left-5">Contact</p>
-            </div>
-          </NavLink>
+          {bubbles?.map((bubble, index) => (
+            <NavLink
+              key={index}
+              className=""
+              to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
+            >
+              <div className={`${bubbleAnimationClass} mx-6`}>
+                <div className="bubble w-28 h-24 mt-5 text-center relative text-white"></div>
+                <p
+                  className={`absolute top-7 text-white
+                ${bubble.leftClass} 
+                  `}
+                >
+                  {bubble.title}
+                </p>
+              </div>
+            </NavLink>
+          ))}
         </div>
       </div>
     </>

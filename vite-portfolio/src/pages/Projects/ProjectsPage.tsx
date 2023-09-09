@@ -6,7 +6,10 @@ import dog from "../../assets/dog.jpg"
 import walrus from "../../assets/walrus.jpg"
 import shoes from "../../assets/shoes.png"
 
-export default function PortfolioPage() {
+export default function ProjectsPage() {
+
+  // projects
+
   const projects = [
     {
       name: "Gamer's Circuit",
@@ -29,6 +32,8 @@ export default function PortfolioPage() {
     },
   ]
 
+    // states
+
   const [showProjectDetails, setShowProjectDetails] = useState<boolean>(true)
   const [hasPageRendered, setHasPageRendered] = useState<boolean>(false)
   const [featuredProject, setFeaturedProject] = useState<Project>(projects[0])
@@ -42,13 +47,13 @@ export default function PortfolioPage() {
 
   function setAnimationState() {
     if (closeAnimation) {
-      console.log("hi")
       null
     } else {
-      console.log("hello")
       setShowAnimation(true)
     }
   }
+
+// displayCard
 
   function displayCard(index: number) {
     if (showProjectDetails && featuredProject.name !== projects[index].name) {

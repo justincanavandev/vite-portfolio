@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 import App from "./App.tsx"
 import "./index.css"
 import { GlobalContext } from "./context/GlobalContext.tsx"
@@ -35,5 +35,6 @@ function Root() {
     </React.StrictMode>
   )
 }
-
-ReactDOM.render(<Root />, document.getElementById("root"))
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(<Root />);

@@ -7,7 +7,7 @@ export default function NavLinks() {
             
         <NavLink to="/about-me">About Me</NavLink>
         <NavLink to="/contact">Contact</NavLink>
-        <NavLink to="/portfolio">Portfolio</NavLink>
+        <NavLink to="/projects">Projects</NavLink>
         <NavLink to="/resume">Resume</NavLink>
         </div>
     
