@@ -24,5 +24,9 @@ export type ProjectsContextType = {
   setDetailsOpacityClass: React.Dispatch<React.SetStateAction<string>>
   bannerOpacity: string
   setBannerOpacity: React.Dispatch<React.SetStateAction<string>>
+  borderRight: string
+  setBorderRight: React.Dispatch<React.SetStateAction<string>>
   projects: Project[]
+  displayCard: (index: number) => void
+  setAnimationState: () => void
 }

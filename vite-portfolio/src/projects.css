@@ -1,0 +1,43 @@
+.image-border-close {
+  animation: image-border-close 0.3s linear;
+}
+
+.image-border-expand {
+  animation: image-border-expand 0.3s linear;
+}
+
+@keyframes image-border-close {
+  0% {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-color: rgba(0, 0, 0, 0);
+    border-right-width: 0;
+    opacity: 1;
+  }
+  100% {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    border-right-color: rgba(255, 59, 48, 0.5);
+    border-right-width: 2px;
+    opacity: 0.5;
+  }
+}
+
+@keyframes image-border-expand {
+  0% {
+
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    border-right-color: rgba(255, 59, 48, 0.5);
+    border-right-width: 2px;
+    opacity: .5;
+  }
+  100% {
+
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-color: rgba(0, 0, 0, 0);
+    border-right-width: 0;
+    opacity: 1;
+  }
+}
