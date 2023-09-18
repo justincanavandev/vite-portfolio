@@ -53,39 +53,21 @@ export default function Projects() {
     console.log("imgOpacityClass", imgOpacityClass)
   }, [featuredProject, showProjectDetails, closeAnimation, imgOpacityClass])
 
-  // function setAnimationState() {
-  //   if (closeAnimation) {
-  //     console.log("hi")
-  //     null
-  //   } else {
-  //     console.log("hello")
-  //     setShowAnimation(true)
-  //   }
-  // }
-
-  // function imgOpacityAnimation() {
-  //   if (closeAnimation) {
-  //     setImgOpacityClass("opacity-50")
-  //     setDetailsOpacityClass("opacity-0")
-  //   } else {
-  //     setImgOpacityClass("opacity-100")
-  //     setDetailsOpacityClass("opacity-100")
-  //   }
-  // }
 
   return (
     <>
       <div
-        className="flex flex-col justify-evenly ml-8"
+        className="flex bg-black font-kanit text-white flex-col justify-evenly"
         style={{ height: componentHeight }}
       >
 
     {/* Projects */}
 
         {projects.map((project: Project, index: number) => (
-          <div key={index} className="flex">
+          <div key={index} className="flex w-[77%] mx-auto" >
+            
             <div
-              className="h-36 w-28 z-50 relative rounded-md text-[.8rem]"
+              className="h-36 w-28 z-50 relative rounded-md text-[.8rem] xs:"
               onClick={() => displayCard(index)}
             >
               <img
@@ -122,7 +104,7 @@ export default function Projects() {
               />
 
               <div
-                className={`absolute top-0 bg-red-400 text-white rounded-l-md 
+                className={`absolute top-[2px] left-[2px] bg-teal text-white rounded-l-md 
                 ${
                   showProjectDetails && project.name === featuredProject.name
                     ? bannerOpacity
