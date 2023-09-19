@@ -68,6 +68,7 @@ export default {
             transform: "translateX(0)",
             opacity: 1,
           },
+          
           "50%": {
             opacity: 0.4,
           },

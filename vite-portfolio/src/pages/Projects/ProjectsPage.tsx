@@ -9,25 +9,31 @@ import shoes from "../../assets/shoes.png"
 export default function ProjectsPage() {
   // projects
 
-  const projects = [
+  const projects: Project[] = [
     {
       name: "Gamer's Circuit",
       githubRepo:
         "https://github.com/justincanavanmusic/electronics-e-commerce",
       liveLink: "https://shielded-basin-55972.herokuapp.com/",
       thumbnail: dog,
+      description: "An immersive MERN-stack e-commerce application with a focus on PC and gaming equipment."
+  
     },
     {
       name: "CodeCove",
       githubRepo: "https://github.com/justincanavanmusic/tech-blog",
       liveLink: "https://floating-fortress-15177.herokuapp.com/",
       thumbnail: walrus,
+      description: "A Full-Stack blog application that enables users to create posts, leave comments, and more."
+
     },
     {
       name: "Chicago Hotspot",
       githubRepo: "https://github.com/allisonnault/Chicago-Attractions",
       liveLink: "https://ancient-wildwood-93900.herokuapp.com/",
       thumbnail: shoes,
+      description: "A Full-Stack application showcasing Michelin Star restaurants based in Chicago, IL."
+
     },
   ]
 
@@ -87,6 +93,8 @@ export default function ProjectsPage() {
         setBannerOpacity("opacity-0")
         setShowProjectDetails(!showProjectDetails)
         setFeaturedProject({} as Project)
+        // setBeforeRoundedTR("rounded-tr-[.3rem]")
+        // setBeforeRoundedBR("rounded-br-[.3rem]")
       }, 300)
     }
 
@@ -107,8 +115,8 @@ export default function ProjectsPage() {
         setDetailsOpacityClass("opacity-100")
         // setBorderRight("border-r-0")
         // setBeforeBorderRight("border-r-0")
-        // setBeforeRoundedTR("rounded-tr-0")
-        // setBeforeRoundedBR("rounded-br-0")
+        setBeforeRoundedTR("rounded-tr-0")
+        setBeforeRoundedBR("rounded-br-0")
       }, 300)
     }
   }

@@ -16,9 +16,9 @@ function Root() {
       setColor(newColor.rgb)
     }
 
-    useEffect(() => {
-      console.log("color", color)
-    }, [color])
+    // useEffect(() => {
+    //   console.log("color", color)
+    // }, [color])
 
     return (
       <div>

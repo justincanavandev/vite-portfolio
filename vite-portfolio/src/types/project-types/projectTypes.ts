@@ -5,6 +5,8 @@ export type Project = {
   githubRepo: string
   liveLink: string
   thumbnail: string
+  // absoluteLeft: string
+  description: string
 }
 
 export type ProjectsContextType = {
