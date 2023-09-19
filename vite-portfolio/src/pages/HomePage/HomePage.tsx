@@ -5,7 +5,6 @@ import "../../animation.css"
 import "../../index.css"
 import { GlobalContext } from "../../context/GlobalContext"
 import { HomePageContext } from "../../context/HomePageContext"
-import { ChromePicker, ColorResult } from "react-color"
 
 
 function HomePage() {
@@ -122,7 +121,7 @@ function HomePage() {
               to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
             >
               <div className={`${bubbleAnimationClass} mx-6`}>
-                <div className="bubble w-28 h-24 mt-12 text-center relative bg-transparent text-white"></div>
+                <div className="bubble w-28 h-24 mt-12 text-center relative text-white"></div>
                 <p
                   className={`absolute top-[1.85rem] bubble-text text-black
                 ${bubble.leftClass} 
@@ -134,17 +133,6 @@ function HomePage() {
             </NavLink>
           ))}
         </div>
-        {/* <div>
-          <ChromePicker
-            color={color}
-            onChange={handleColorChange}
-            disableAlpha={false}
-          />
-          <div className='text-white'>
-            Selected RGBA Color: rgba({color.rgb}
-            )
-          </div>
-        </div> */}
         <ColorPicker />
       </div>
     </>

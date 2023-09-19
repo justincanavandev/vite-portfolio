@@ -16,7 +16,9 @@ export default {
         medBlue: "#3e5c76",
         lightBlue: "#748cab",
         cream: "#f0ebd8",
-        teal: "#2dd4bf"
+        teal: "#2dd4bf", 
+        projectTeal: "rgba(45, 212, 191, 1)"
+      
       },
       fontFamily: {
         oswald: ["Oswald", "sans"],
@@ -36,6 +38,9 @@ export default {
         extrabold: '800',
         'extra-bold': '800',
         black: '900',
+      },
+      backgroundImage: {
+        'teal-gradient': 'linear-gradient(#2adfc3, #1f8e7d, #163e3f)',
       },
       animation: {
         "project-expand": "project-expand .3s linear",

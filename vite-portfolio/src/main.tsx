@@ -53,10 +53,6 @@ function Root() {
     }
   }, [])
 
-  // const handleColorChange = (newColor: ColorResult) => {
-  //   setColor(newColor.rgb)
-  // }
-
   return (
     <React.StrictMode>
       <GlobalContext.Provider
@@ -65,9 +61,6 @@ function Root() {
           setComponentHeight,
           screenWidth,
           setScreenWidth,
-          // color,
-          // setColor,
-          // handleColorChange,
           ColorPicker,
         }}
       >

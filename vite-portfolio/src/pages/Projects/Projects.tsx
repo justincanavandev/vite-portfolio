@@ -9,30 +9,34 @@ import "../../projects.css"
 import { Link } from "react-router-dom"
 
 export default function Projects() {
-  const { componentHeight } = useContext(GlobalContext)
+  const { componentHeight, ColorPicker } = useContext(GlobalContext)
 
   const {
     showProjectDetails,
-    // setShowProjectDetails,
     hasPageRendered,
     setHasPageRendered,
     featuredProject,
-    // setFeaturedProject,
-    // showAnimation,
-    // setShowAnimation,
     closeAnimation,
-    // setCloseAnimation,
     imgOpacityClass,
     setImgOpacityClass,
     detailsOpacityClass,
-    // setDetailsOpacityClass,
     bannerOpacity,
     setBannerOpacity,
-    borderRight,
+    // borderRight,
     setBorderRight,
     projects,
     displayCard,
     setAnimationState,
+    beforeBorderRight,
+    setBeforeBorderRight,
+    beforeRoundedTR,
+    setBeforeRoundedTR,
+    beforeRoundedBR,
+    setBeforeRoundedBR,
+    beforeRounded,
+    setBeforeRounded,
+    imgBorderExpand,
+    setImgBorderExpand,
   } = useContext(ProjectsContext)
 
   useEffect(() => {
@@ -40,11 +44,28 @@ export default function Projects() {
       setTimeout(() => {
         setImgOpacityClass("opacity-100")
         setBannerOpacity("opacity-0")
-        setBorderRight("border-r-0")
+        // setBorderRight("border-r-0")
+        // setBeforeBorderRight("border-r-0")
+        // setBeforeRoundedTR("rounded-tr-0")
+        // setBeforeRoundedBR("rounded-br-0")
+        setBeforeRounded("")
+        // setImgBorderExpand("image-border-expand")
       }, 300)
       setHasPageRendered(true)
     }
   }, [])
+
+  useEffect(() => {
+    if (closeAnimation) {
+      setTimeout(() => {
+        setImgBorderExpand("image-border-expand")
+      }, 300)
+    }
+  })
+
+  useEffect(() => {
+    console.log("beforeBorderRight", beforeBorderRight)
+  }, [beforeBorderRight])
 
   useEffect(() => {
     console.log("featuredProject", featuredProject)
@@ -53,46 +74,55 @@ export default function Projects() {
     console.log("imgOpacityClass", imgOpacityClass)
   }, [featuredProject, showProjectDetails, closeAnimation, imgOpacityClass])
 
-
   return (
     <>
       <div
         className="flex bg-black font-kanit text-white flex-col justify-evenly"
-        style={{ height: componentHeight }}
+        // style={{ height: componentHeight }}
       >
-
-    {/* Projects */}
+        {/* Projects */}
 
         {projects.map((project: Project, index: number) => (
-          <div key={index} className="flex w-[77%] mx-auto" >
-            
+          <div key={index} className="flex w-[77%] mx-auto">
             <div
-              className="h-36 w-28 z-50 relative rounded-md text-[.8rem] xs:"
+              className={`before:rounded-l-md before:z-50 h-36 w-28 z-40 relative img-border text-[.8rem] before:${beforeRounded}  ${
+                closeAnimation
+                  ? `${
+                      featuredProject.name === project.name
+                        ? `image-border-close before:${beforeBorderRight} before:border-l-[3px] before:border-t-[3px] before:border-b-[3px] before:${beforeRoundedTR} before:${beforeRoundedBR}
+                        
+                        `
+                        : "before:border-[3px] before:rounded-tr-[.375rem] before:rounded-br-[.375rem]"
+                    }`
+                  : `${
+                      featuredProject.name === project.name
+                        ? `${imgBorderExpand} before:${beforeBorderRight} before:border-l-[3px] before:border-t-[3px] before:border-b-[3px] before:${beforeRoundedTR} before:${beforeRoundedBR}
+                        
+                        `
+                        : "before:border-[3px] before:rounded-tr-[.375rem] before:rounded-br-[.375rem]"
+                    }`
+              }`}
               onClick={() => displayCard(index)}
             >
               <img
                 src={project.thumbnail}
                 alt="project-image"
-                className={`h-36 w-28 object-cover
+                className={`h-36 w-28 object-cover 
                 ${
                   closeAnimation
                     ? `${
                         featuredProject.name === project.name
-                          ? `image-border-close ${borderRight}`
+                          ? `image-opacity-close `
                           : ""
                       }`
                     : `${
                         featuredProject.name === project.name
-                          ? `image-border-expand ${borderRight}`
+                          ? `image-opacity-expand `
                           : ""
                       }`
                 }
-                 overflow-hidden border-2 border-red-500 rounded-md 
-             ${
-                  featuredProject.name === project.name
-                    ? "rounded-r-none"
-                    : ""
-                } 
+                 overflow-hidden rounded-[.375rem] 
+             ${featuredProject.name === project.name ? "rounded-r-none" : ""} 
               ${
                 showProjectDetails === true &&
                 project.name === featuredProject.name
@@ -104,7 +134,7 @@ export default function Projects() {
               />
 
               <div
-                className={`absolute top-[2px] left-[2px] bg-teal text-white rounded-l-md 
+                className={`absolute top-[2.8px] left-[2.9px] bg-teal-gradient text-white rounded-l-[4.2px] 
                 ${
                   showProjectDetails && project.name === featuredProject.name
                     ? bannerOpacity
@@ -143,25 +173,26 @@ export default function Projects() {
                   project.name === featuredProject.name
                     ? detailsOpacityClass
                     : "opacity-0"
-                } border-2 z-0 border-red-500 rounded-md border-l-0 rounded-l-none flex flex-col justify-between`}
+                } border-[3px] z-0 border-white rounded-r-[.375rem] border-l-0 rounded-l-none flex flex-col justify-between`}
               >
                 <p className="text-[.8rem] mx-auto">{project.name}</p>
                 <div className="flex justify-between relative mx-[.3rem] mb-1">
                   <Link to={project.githubRepo} target="_blank">
-                  <FontAwesomeIcon icon={faGithub} size="xl" />
+                    <FontAwesomeIcon icon={faGithub} size="xl" />
                   </Link>
                   <Link to={project.liveLink} target="_blank">
-                  <FontAwesomeIcon
-                    className="absolute right-0 bottom-[.075rem]"
-                    icon={faDesktop}
-                    size="lg"
-                  />
+                    <FontAwesomeIcon
+                      className="absolute right-0 bottom-[.075rem]"
+                      icon={faDesktop}
+                      size="lg"
+                    />
                   </Link>
                 </div>
               </div>
             )}
           </div>
         ))}
+        {/* <ColorPicker /> */}
       </div>
     </>
   )

@@ -29,4 +29,14 @@ export type ProjectsContextType = {
   projects: Project[]
   displayCard: (index: number) => void
   setAnimationState: () => void
+  beforeBorderRight: string
+  setBeforeBorderRight: React.Dispatch<React.SetStateAction<string>>
+  beforeRoundedTR: string
+  setBeforeRoundedTR: React.Dispatch<React.SetStateAction<string>>
+  beforeRoundedBR: string
+  setBeforeRoundedBR: React.Dispatch<React.SetStateAction<string>>
+  beforeRounded: string
+  setBeforeRounded: React.Dispatch<React.SetStateAction<string>>
+  imgBorderExpand: string
+  setImgBorderExpand: React.Dispatch<React.SetStateAction<string>>
 }
