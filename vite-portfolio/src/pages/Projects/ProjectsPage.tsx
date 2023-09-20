@@ -7,32 +7,37 @@ import walrus from "../../assets/walrus.jpg"
 import shoes from "../../assets/shoes.png"
 
 export default function ProjectsPage() {
-
   // projects
 
-  const projects = [
+  const projects: Project[] = [
     {
       name: "Gamer's Circuit",
       githubRepo:
         "https://github.com/justincanavanmusic/electronics-e-commerce",
       liveLink: "https://shielded-basin-55972.herokuapp.com/",
       thumbnail: dog,
+      description: "An immersive MERN-stack e-commerce application with a focus on PC and gaming equipment."
+  
     },
     {
       name: "CodeCove",
       githubRepo: "https://github.com/justincanavanmusic/tech-blog",
       liveLink: "https://floating-fortress-15177.herokuapp.com/",
       thumbnail: walrus,
+      description: "A Full-Stack blog application that enables users to create posts, leave comments, and more."
+
     },
     {
       name: "Chicago Hotspot",
       githubRepo: "https://github.com/allisonnault/Chicago-Attractions",
       liveLink: "https://ancient-wildwood-93900.herokuapp.com/",
       thumbnail: shoes,
+      description: "A Full-Stack application showcasing Michelin Star restaurants based in Chicago, IL."
+
     },
   ]
 
-    // states
+  // states
 
   const [showProjectDetails, setShowProjectDetails] = useState<boolean>(true)
   const [hasPageRendered, setHasPageRendered] = useState<boolean>(false)
@@ -44,6 +49,14 @@ export default function ProjectsPage() {
     useState<string>("opacity-100")
   const [bannerOpacity, setBannerOpacity] = useState<string>("opacity-100")
   const [borderRight, setBorderRight] = useState<string>("border-r-2")
+  const [beforeBorderRight, setBeforeBorderRight] =
+    useState<string>("border-r-0")
+  const [beforeRoundedTR, setBeforeRoundedTR] = useState<string>("rounded-tr-0")
+  const [beforeRoundedBR, setBeforeRoundedBR] = useState<string>("rounded-br-0")
+  const [beforeRounded, setBeforeRounded] = useState<string>("rounded-r-0")
+  const [imgBorderExpand, setImgBorderExpand] = useState<string>("")
+
+
 
   function setAnimationState() {
     if (closeAnimation) {
@@ -53,7 +66,7 @@ export default function ProjectsPage() {
     }
   }
 
-// displayCard
+  // displayCard
 
   function displayCard(index: number) {
     if (showProjectDetails && featuredProject.name !== projects[index].name) {
@@ -80,6 +93,8 @@ export default function ProjectsPage() {
         setBannerOpacity("opacity-0")
         setShowProjectDetails(!showProjectDetails)
         setFeaturedProject({} as Project)
+        // setBeforeRoundedTR("rounded-tr-[.3rem]")
+        // setBeforeRoundedBR("rounded-br-[.3rem]")
       }, 300)
     }
 
@@ -98,7 +113,10 @@ export default function ProjectsPage() {
       setTimeout(() => {
         setImgOpacityClass("opacity-100")
         setDetailsOpacityClass("opacity-100")
-        setBorderRight("border-r-0")
+        // setBorderRight("border-r-0")
+        // setBeforeBorderRight("border-r-0")
+        setBeforeRoundedTR("rounded-tr-0")
+        setBeforeRoundedBR("rounded-br-0")
       }, 300)
     }
   }
@@ -126,8 +144,17 @@ export default function ProjectsPage() {
         setBorderRight,
         projects,
         displayCard,
-        setAnimationState
-
+        setAnimationState,
+        beforeBorderRight,
+        setBeforeBorderRight,
+        beforeRoundedTR,
+        setBeforeRoundedTR,
+        beforeRoundedBR,
+        setBeforeRoundedBR,
+        beforeRounded,
+        setBeforeRounded,
+        imgBorderExpand,
+        setImgBorderExpand
       }}
     >
       <Projects />

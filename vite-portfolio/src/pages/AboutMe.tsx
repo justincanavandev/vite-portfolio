@@ -9,7 +9,7 @@ export default function AboutMe() {
   return (
     <>
       <div className="w-full" style={{ height: componentHeight }}>
-        <p>
+        <p className="text-[1.2rem] xs:text-[2rem] ">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores
           facilis minus officia dolor sint exercitationem repudiandae? Vero,
           culpa tenetur! Officia iusto beatae quia facere explicabo voluptatibus

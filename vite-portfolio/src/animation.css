@@ -1,204 +1,168 @@
 :root {
-    --darkBlue: #1d2d44;
-    --medBlue: #3e5c76;
-    --lightBlue: #748cab;
-    --cream: #f0ebd8;
-    --white: #ffffff
-    --red: rgb(213, 60, 60);
-    --photoFade: calc(var(--hiType) + var(--imJC) + var(--typeWriterSpeed));
+  --darkBlue: #1d2d44;
+  --medBlue: #3e5c76;
+  --lightBlue: #748cab;
+  --cream: #f0ebd8;
+  --white: #ffffff;
+  --teal: #2dd4bf;
+  --red: rgb(213, 60, 60);
+  --photoFade: calc(var(--hiType) + var(--imJC) + var(--typeWriterSpeed));
   --typeWriterSpeed: 1.5s;
   --typeWriterChars: 23;
-  --staticText: calc(var(--header) + var(--typeWriterSpeed) - 1.2s);
-  --dynamicText: calc(var(--header) + var(--typeWriterSpeed) + 1s);
+  --iAmA: .5s;
+  --dynamicText: 2s;
+  --frontEndDeveloperStart: calc(var(--iAmA) + var(--start) + var(--anim1Length) + .2s);
+  --frontEndDeveloper: calc(var(--iAmA) + var(--start) + var(--anim1Length));
+  --frontEndDeveloperLetters: 19;
+  --frontEndDevSpeed: 2s;
+  --anim1Length: 4.25s;
   --imJC: 2s;
   --hiType: .5s;
-  --blinkSpeed: 1s;
+  --blinkSpeed: .75s;
+  --toColor: .375s;
   --blinkSteps: 20;
   --start: .3s;
   --header: calc(var(--start) + var(--typeWriterSpeed) + var(--hiType) + var(--imJC));
-  
-  }
-  
-  ul {
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  
-  .hi {
-    position: relative;
-    width: max-content;
-  }
-  
-  .hi::before {
-    background: white;
-    animation: typewriter var(--hiType) steps(4) var(--start) forwards, 
-    to-white .1s ease 1s forwards,
-    blinking var(--blinkSpeed) steps(20) 1s infinite;
-  
-  }
-  
-  .hi::after {
-    width: .125em;
-    background: black;
-    animation: typewriter var(--hiType) steps(4) var(--start) forwards,  
-    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
-    to-white .5s ease calc(var(--hiType) + .7s) forwards;
-  }
+}
 
-  h2 span.hi::before,
-  h2 span.hi::after,
-  h2 span.im-justin-canavan::before,
-  h2 span.im-justin-canavan::after {
-    content: '';
-    position: absolute; 
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-  
-  h2 span.im-justin-canavan {
-    position: relative;
-    width: max-content;
-    text-align: center !important;
-  }
-  
-  h2 span.im-justin-canavan::before {
-  
-    background: white;
-    animation: typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards;
-  }
-  
-  .im-justin-canavan::after {
-    width: .125em;
-    background: white;
-    animation: 
+ul {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.hi {
+  position: relative;
+  width: max-content;
+}
+
+.hi::before {
+  background: black; /* Changed from white to black */
+  animation: typewriter var(--hiType) steps(4) var(--start) forwards, 
+             to-black .1s ease 1s forwards; /* Changed to-black from to-white */
+}
+
+.hi::after {
+  width: .125em;
+  background: white; /* Changed from black to white */
+  animation: typewriter var(--hiType) steps(4) var(--start) forwards,  
+             blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
+             to-black var(--toColor) ease calc(var(--hiType) + .7s) forwards; /* Changed to-black from to-white */
+}
+
+h2 span.hi::before,
+h2 span.hi::after,
+h2 span.im-justin-canavan::before,
+h2 span.im-justin-canavan::after {
+  content: '';
+  position: absolute; 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+h2 span.im-justin-canavan {
+  position: relative;
+  width: max-content;
+  text-align: center !important;
+}
+
+h2 span.im-justin-canavan::before {
+  background: black; /* Changed from white to black */
+  animation: typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards;
+}
+
+.im-justin-canavan::after {
+  width: .125em;
+  background: black; /* Changed from black to white */
+  animation: 
     typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards, 
-    to-black .4s ease calc(var(--hiType) + var(--start))forwards, 
+    to-white var(--toColor) ease calc(var(--hiType) + var(--start)) forwards, 
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
-    to-white .3s ease calc(var(--staticText) - .1s) forwards;
-  }
-  
-  img.photo-anim {
-    opacity: 0;
-    transform: rotateX(3rem); 
-    animation: fadeIn 3s ease calc(var(--photoFade) + 1s)forwards
-  }
-  
-  .wrapper {
-    display: flex;
-    text-align: left !important;
-    justify-content: space-around;
-  }
-  
-  .wrapper .dynamic-text { 
-    overflow: hidden;
-  }
-  .word1 {
-    padding-right: 1vw;
-  }
-  
-  .static-text {
-    position: relative;
-  }
-  
-  .static-text::before {
-    background: white;
-    animation: typewriter 1s steps(6) calc(var(--staticText) + .5s) forwards;
-  }
-  
-  span.static-text::after {
-    width: .125em;
-    background: white;
-    animation: 
-    typewriter 1s steps(6) calc(var(--staticText) + .5s) forwards, 
-    to-black .3s ease var(--staticText) forwards,
-    to-white .2s ease calc(var(--staticText) + 1.8s) forwards,
+    to-black .3s ease calc(4s - .1s) forwards;
+}
+
+.wrapper .dynamic-text { 
+  overflow: hidden;
+}
+
+.i-am-a::before {
+  background: black; /* Changed from white to black */
+  animation: typewriter var(--iAmA) steps(7) calc(var(--anim1Length) + .5s) forwards;
+}
+
+span.i-am-a::after {
+  width: .125em !important;
+  background: black; /* Changed from black to white */
+  animation: 
+    typewriter var(--iAmA) steps(7) calc(var(--anim1Length) + .5s) forwards, 
+    to-white var(--toColor) ease var(--anim1Length) forwards,
+    to-black var(--toColor) ease calc(var(--anim1Length) + 1s + var(--toColor)) forwards,
     blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite;
-  }
-  
-  .static-text::before,
-  .static-text::after,
-  .dynamic-text li span::before,
-  .dynamic-text li span::after
+}
 
-   {
-    content: '';
-    position: absolute;
-    left: 0;
-    height: 120%;
-    width: 100%;
-  }
-  
-  .dynamic-text li::before {
-    background: var(--medBlue);
-    animation: typewriter var(--typeWriterSpeed) .5s steps(var(--typeWriterChars)) calc(var(--dynamicText) + 1s) forwards;
-  }
-  
-  .dynamic-text li {
-    list-style: none;
-    position: relative;
-    top: 0;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-  }
+.i-am-a::before,
+.dynamic-text li span::before,
+.dynamic-text li span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 120%;
+  width: 100%;
+}
 
-  li.word1 {
-    animation: slide 8.25s steps(3) calc(var(--dynamicText) + 1s) forwards;
+.i-am-a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 120%;
+}
 
-  }
+.dynamic-text li {
+  /* list-style: none;
+  position: relative;
+  top: 0; */
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+}
 
-  li.word2 {
-    animation: slide 8s steps(3) calc(var(--dynamicText) + 1.25s) forwards;
-    
-  }
-  
-  li.word3 {
-    animation: slide 8.5s steps(3) calc(var(--dynamicText) + 1s) forwards;
-  }
-  
-  li.word4 {
-    animation: slide 8.25s steps(3) calc(var(--dynamicText) + .5s) forwards;
-  }
-  
-  .word-1,
-  .word-2,
-  .word-3,
-  .word-4 {
-    position: relative;
-    width: max-content;
-  }
-  
-  .dynamic-text.word-1::before {
-    background: white; 
-    animation: typing 2s steps(20) calc(var(--dynamicText) + 1s) forwards;
-    animation-iteration-count: 1;
-  }
-  
-  .dynamic-text.word-1::after {
-    width: .125em;
-    background: white; 
-    animation: typewriter 2s steps(20) calc(var(--dynamicText) + 1s) 1 forwards,
-    blinking-dynamic var(--blinkSpeed) steps(10) infinite,
-    to-black 1s ease var(--dynamicText) forwards, 
-    to-white .3s ease calc(var(--dynamicText) + 6.2s) forwards; 
-  }
+.word-1,
+.word-2,
+.word-3,
+.word-4 {
+  position: relative;
+  width: max-content;
+}
+
+.dynamic-text.word-1::before {
+  background: black; /* Changed from white to black */
+  animation: typing var(--frontEndDevSpeed) steps(var(--frontEndDeveloperLetters)) calc(var(--frontEndDeveloperStart) + 1s) forwards;
+  animation-iteration-count: 1;
+}
+
+.dynamic-text.word-1::after {
+  width: .125em;
+  background: black; /* Changed from black to white */
+  animation: typewriter var(--frontEndDevSpeed) steps(var(--frontEndDeveloperLetters)) calc(var(--frontEndDeveloperStart) + 1s) 1 forwards,
+             blinking-dynamic var(--blinkSpeed) steps(var(--typeWriterChars)) infinite,
+             to-white var(--toColor) ease calc(var(--frontEndDeveloperStart)) forwards,
+             to-black var(--toColor) ease calc(var(--frontEndDeveloperStart) + var(--frontEndDevSpeed) + var(--toColor) + 1.4s) forwards; 
+}
   
   .dynamic-text li span.word-2::before {
-    background: white; 
-    animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) forwards;
+    background: black; 
+    animation: typing 2s steps(21) calc(var(--dynamicText) + 8s) forwards;
     animation-iteration-count: 1;
   }
   
   .dynamic-text.word-2::after {
     width: .125em;
-    background: white; 
-    animation: typing 2s steps(15) calc(var(--dynamicText) + 4s) 1 forwards,
+    background: black; 
+    animation: typing 2s steps(21) calc(var(--dynamicText) + 8s) 1 forwards,
     blinking-dynamic var(--blinkSpeed) steps(10) infinite,
-    to-black 1s ease calc(var(--dynamicText) + 4s) forwards, 
-    to-white 1s ease calc(var(--dynamicText) + 6.1s) forwards; 
+    to-white var(--toColor) ease calc(var(--dynamicText) + 7s) forwards, 
+    to-black var(--toColor) ease calc(var(--dynamicText) + 11s) forwards; 
   }
   
   .dynamic-text li span.word-3::before {
@@ -232,6 +196,14 @@
   }
     
     @keyframes typewriter { 
+      
+      to {
+        left: 100%;
+      }
+    }
+
+    @keyframes select-bubble-width {
+ 
       to {
         left: 100%;
       }
@@ -264,18 +236,39 @@
       }
     }
   
-    @keyframes to-blue {
+    @keyframes planet-ring-gradient {
       to {
-        background: var(--medBlue)
+        background: linear-gradient(#2adfc3, #1f8e7d, #163e3f);
+        opacity: .8;
+      }
+    }
+
+    @keyframes planet-gradient {
+      to {
+        /* background: linear-gradient(#2bf1d3, #249e8c, #072521); */
+        background: linear-gradient(#7df9e7, #177d6e, #0a332d);
+        box-shadow: 0px 5px 10px rgba(100, 255, 255, 0.45), 0px -5px 5px rgba(100, 255, 255, 0.5);
+        opacity: .8;
+      }
+    }
+
+    @keyframes text-white {
+      to {
+        color: white;
       }
     }
   
     @keyframes to-black {
       to {
-        background: black
+        background: black;
       }
     }
   
+    @keyframes to-transparent {
+      to {
+        background: transparent;
+      }
+    }
 
     @keyframes to-white {
       to {

@@ -1,23 +1,50 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["'*.{html,js,ts,tsx}'", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        xs: "475px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+      },
       colors: {
         darkBlue: "#1d2d44",
         medBlue: "#3e5c76",
         lightBlue: "#748cab",
         cream: "#f0ebd8",
+        teal: "#2dd4bf", 
+        projectTeal: "rgba(45, 212, 191, 1)"
+      
       },
       fontFamily: {
         oswald: ["Oswald", "sans"],
         kanit: ["Kanit", "sans"],
+        anton: ["Anton", "sans"],
+        montserrat: ["Montserrat", "sans"]
+      },
+      fontWeight: {
+        thin: '100',
+        hairline: '100',
+        extralight: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
+        'extra-bold': '800',
+        black: '900',
+      },
+      backgroundImage: {
+        'teal-gradient': 'linear-gradient(#2adfc3, #1f8e7d, #163e3f)',
       },
       animation: {
         "project-expand": "project-expand .3s linear",
         "project-close": "project-close .3s linear",
-        // "img-opacity-expand": "img-opacity-expand .3s linear",
-        // "img-opacity-close": "img-opacity-close .3s linear",
         "banner-opacity-expand": "banner-opacity-expand .3s linear",
         "banner-opacity-close": "banner-opacity-close .3s linear",
         
@@ -41,6 +68,7 @@ export default {
             transform: "translateX(0)",
             opacity: 1,
           },
+          
           "50%": {
             opacity: 0.4,
           },
@@ -49,15 +77,6 @@ export default {
             opacity: 0,
           },
         },
-        // "img-opacity-expand": {
-        //   "0%": { opacity: 0.5 },
-        //   "100%": { opacity: 1 },
-        // },
-        // "img-opacity-close": {
-        //   "0%": { opacity: 1 },
-          
-        //   "100%": { opacity: 0.5 },
-        // },
         "banner-opacity-expand": {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
@@ -70,13 +89,6 @@ export default {
       },
     },
   },
-  screens: {
-    xs: "475px",
-    sm: "640px",
-    md: "768px",
-    lg: "1024px",
-    xl: "1280px",
-    "2xl": "1536px",
-  },
+
   plugins: [],
 }

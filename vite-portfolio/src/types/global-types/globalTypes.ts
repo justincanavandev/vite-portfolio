@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react"
+
+
 
 export type GlobalContextType = {
-    componentHeight: string
-    setComponentHeight: React.Dispatch<React.SetStateAction<string>>
-    screenWidth: number
-    setScreenWidth: React.Dispatch<React.SetStateAction<number>>
+  componentHeight: string
+  setComponentHeight: React.Dispatch<React.SetStateAction<string>>
+  screenWidth: number
+  setScreenWidth: React.Dispatch<React.SetStateAction<number>>
+  ColorPicker: () => JSX.Element
+  // urlName: string
+  // setUrlName: React.Dispatch<React.SetStateAction<string>>
 }
-
