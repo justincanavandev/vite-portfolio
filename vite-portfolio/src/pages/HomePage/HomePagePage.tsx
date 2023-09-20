@@ -8,9 +8,9 @@ export default function HomePagePage() {
   const { screenWidth } = useContext(GlobalContext)
 
   const bubbles: Bubble[] = [
-    { title: "About Me", leftClass: "left-[.8rem]" },
-    { title: "Projects", leftClass: "left-[1.45rem]" },
-    { title: "Contact", leftClass: "left-[1.35rem]" },
+    { title: "About Me", leftClass: "left-[.8rem]", mtClass:"mt-10" },
+    { title: "Projects", leftClass: "left-[1.45rem]", mtClass:"mt-10" },
+    { title: "Contact", leftClass: "left-[1.35rem]", mtClass:"mt-3" },
   ]
 
   const [boxShadowClass, setBoxShadowClass] = useState("")

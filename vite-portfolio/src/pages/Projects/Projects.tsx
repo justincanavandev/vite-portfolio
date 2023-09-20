@@ -7,10 +7,10 @@ import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+
 
 export default function Projects() {
-  const { componentHeight, ColorPicker } = useContext(GlobalContext)
+  // const { componentHeight, ColorPicker } = useContext(GlobalContext)
 
   const {
     showProjectDetails,
@@ -24,20 +24,19 @@ export default function Projects() {
     bannerOpacity,
     setBannerOpacity,
     // borderRight,
-    setBorderRight,
+    // setBorderRight,
     projects,
     displayCard,
     setAnimationState,
     beforeBorderRight,
-    setBeforeBorderRight,
+    // setBeforeBorderRight,
     beforeRoundedTR,
-    setBeforeRoundedTR,
+    // setBeforeRoundedTR,
     beforeRoundedBR,
-    setBeforeRoundedBR,
+    // setBeforeRoundedBR,
     beforeRounded,
     setBeforeRounded,
-    imgBorderExpand,
-    setImgBorderExpand,
+  
   } = useContext(ProjectsContext)
 
   useEffect(() => {
@@ -56,20 +55,16 @@ export default function Projects() {
     }
   }, [])
 
-  useEffect(() => {
-    console.log("imgBorderExpand", imgBorderExpand)
-  }, [imgBorderExpand])
 
-  useEffect(() => {
-    // if(hello === false) {
-    if (closeAnimation) {
-      setTimeout(() => {
-        setImgBorderExpand("image-border-expand")
-      }, 300)
-    }
-    //   setHello(true)
-    // }
-  }, [])
+  // useEffect(() => {
+
+  //   if (closeAnimation) {
+  //     setTimeout(() => {
+  //       setImgBorderExpand("image-border-expand")
+  //     }, 300)
+  //   }
+
+  // }, [])
 
   useEffect(() => {
     console.log("beforeBorderRight", beforeBorderRight)
@@ -87,7 +82,6 @@ export default function Projects() {
       <div className="flex flex-col bg-black min-h-screen">
         <div className="flex font-kanit text-white flex-col sm:flex-row sm:flex-wrap sm:justify-start sm:pl-4">
           {/* Projects */}
-          {/* <div className="flex flex-wrap flex-grow"> */}
 
           {projects.map((project: Project, index: number) => (
             <div

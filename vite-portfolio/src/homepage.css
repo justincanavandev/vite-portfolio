@@ -10,13 +10,13 @@
   );
   --pickABubbleTyping: 1.5s;
 
-  --pickABubbleStart: 13s;
+  --pickABubbleStart: 13s; 
   /* --pickABubbleStart: 0s; */
 
   --pickABubbleToWhite: calc(var(--pickABubbleStart) + 3s);
   --pickABubbleLetters: 16;
-  /* --fadeBubbleIn: calc(var(--pickABubbleStart) + var(--pickABubbleTyping)); */
-  --fadeBubbleIn: 1s;
+  --fadeBubbleIn: calc(var(--pickABubbleStart) + var(--pickABubbleTyping));
+
 }
 
 .multicolor-text {
@@ -40,7 +40,8 @@
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0.375rem;
+  left: 0;
+  
 }
 
 .pick-a-bubble::before {
@@ -60,7 +61,7 @@
       forwards,
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
     to-white var(--toColor) ease var(--pickABubbleStart) forwards,
-    to-transparent var(--toColor) ease calc(var(--pickABubbleToWhite) - 0.6s)
+    to-transparent var(--toColor) ease calc(var(--pickABubbleToWhite) - 0.2s)
       forwards;
 }
 
