@@ -79,6 +79,10 @@
   animation: text-white 0.3s ease var(--fadeBubbleIn) forwards;
 }
 
+.icon-text {
+  animation: text-white 0.3s ease var(--fadeBubbleIn) forwards;
+}
+
 .bubble::before {
   content: "";
   position: absolute;
@@ -92,6 +96,7 @@
 
 .bubble-div {
   animation: right-to-left 1.5s ease var(--fadeBubbleIn) forwards;
+  
 }
 
 .bubble-div-xs {

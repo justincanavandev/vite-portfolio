@@ -10,7 +10,7 @@ import { GlobalContext } from "../../context/GlobalContext"
 import { HomePageContext } from "../../context/HomePageContext"
 
 function HomePage() {
-  const { componentHeight, screenWidth, ColorPicker, setUrlName } =
+  const { componentHeight, screenWidth, ColorPicker } =
     useContext(GlobalContext)
 
   const icons = [faLinkedin, faGithub, faEnvelope]
@@ -21,7 +21,7 @@ function HomePage() {
     setBoxShadowClass,
     bubbleAnimationClass,
     setBubbleAnimationClass,
-    getBubbleAnimationClass,
+    // getBubbleAnimationClass,
   } = useContext(HomePageContext)
   const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
   const [dynamicTextHeight, setDynamicTextHeight] = useState<string>("")
@@ -75,11 +75,11 @@ function HomePage() {
 
   return (
     <>
-      <div className="flex flex-col bg-black min-h-screen">
-        <div
+      <div className="flex flex-col justify-around py-2 font-kanit text-[1.5rem] text-white bg-black min-h-screen">
+        {/* <div
           className="w-full font-kanit text-[1.5rem] text-white pt-3 sm:flex-wrap"
           // style={{ height: componentHeight }}
-        >
+        > */}
           <div className="flex flex-col justify-around h-[15%]">
             <div className="flex justify-center">
               <h2 className="">
@@ -110,7 +110,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="relative flex justify-center mt-8">
+          <div className="relative flex justify-center">
             <span
               className="font-montserrat rounded-md select-bubble px-2 font-bold mx-auto text-white uppercase"
               style={{ boxShadow: boxShadowClass }}
@@ -129,9 +129,8 @@ function HomePage() {
                 <div className={`${bubbleAnimationClass} mx-[1.4rem]`}>
                   
                   <div
-                  // onClick={setUrlName(bubble.title)}
                     className={` ${
-                      screenWidth >= 475 ? "mt-12" : bubble.mtClass
+                      screenWidth >= 475 ? "" : ""
                     } bubble w-28 h-24 sm:mt-12 text-center relative text-white`}
                   ></div>
                   <p
@@ -145,15 +144,15 @@ function HomePage() {
               </Link>
             ))}
           </div>
-          <div className="flex mt-10 sticky-bottom justify-center">
+          <div className="flex sticky-bottom justify-center">
             {icons.map((icon, index) => (
-              <div key={index} className="mx-3">
-                <FontAwesomeIcon className="" color="" size="lg" icon={icon} />
+              <div key={index} className="mx-3 text-black bubble-text">
+                <FontAwesomeIcon className={`${bubbleAnimationClass} `} size="lg" icon={icon} />
               </div>
             ))}
           </div>
           {/* <ColorPicker /> */}
-        </div>
+        {/* </div> */}
       </div>
     </>
   )

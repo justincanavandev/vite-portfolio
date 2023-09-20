@@ -8,6 +8,5 @@ export type GlobalContextType = {
   screenWidth: number
   setScreenWidth: React.Dispatch<React.SetStateAction<number>>
   ColorPicker: () => JSX.Element
-  // urlName: string
-  // setUrlName: React.Dispatch<React.SetStateAction<string>>
+
 }
