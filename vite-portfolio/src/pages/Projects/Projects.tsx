@@ -8,7 +8,6 @@ import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
 import { Link } from "react-router-dom"
 
-
 export default function Projects() {
   // const { componentHeight, ColorPicker } = useContext(GlobalContext)
 
@@ -23,20 +22,14 @@ export default function Projects() {
     detailsOpacityClass,
     bannerOpacity,
     setBannerOpacity,
-    // borderRight,
-    // setBorderRight,
     projects,
     displayCard,
     setAnimationState,
     beforeBorderRight,
-    // setBeforeBorderRight,
     beforeRoundedTR,
-    // setBeforeRoundedTR,
     beforeRoundedBR,
-    // setBeforeRoundedBR,
     beforeRounded,
     setBeforeRounded,
-  
   } = useContext(ProjectsContext)
 
   useEffect(() => {
@@ -44,27 +37,11 @@ export default function Projects() {
       setTimeout(() => {
         setImgOpacityClass("opacity-100")
         setBannerOpacity("opacity-0")
-        // setBorderRight("border-r-0")
-        // setBeforeBorderRight("border-r-0")
-        // setBeforeRoundedTR("rounded-tr-0")
-        // setBeforeRoundedBR("rounded-br-0")
         setBeforeRounded("")
-        // setImgBorderExpand("image-border-expand")
       }, 300)
       setHasPageRendered(true)
     }
   }, [])
-
-
-  // useEffect(() => {
-
-  //   if (closeAnimation) {
-  //     setTimeout(() => {
-  //       setImgBorderExpand("image-border-expand")
-  //     }, 300)
-  //   }
-
-  // }, [])
 
   useEffect(() => {
     console.log("beforeBorderRight", beforeBorderRight)
@@ -86,10 +63,10 @@ export default function Projects() {
           {projects.map((project: Project, index: number) => (
             <div
               key={index}
-              className="flex w-[85%] h-[30%] xs:w-[64%] sm:w-[48%] sm:ml-0 sm:mr-0 mx-auto pt-6 pl-3"
+              className="flex w-[85%] h-[30%] xs:w-[64%] sm:w-[48%] sm:ml-0 sm:mr-0 mx-auto pt-6 pl-3 z-40"
             >
               <div
-                className={`before:rounded-l-md before:z-50 h-40 w-32 xs:h-44 xs:w-36 z-40 relative img-border text-[.8rem] before:${beforeRounded}  ${
+                className={`before:rounded-l-md before:z-50 h-40 w-32 z-40 relative img-border text-[.8rem] xs:h-44 xs:w-36 md:h-52 md:w-40 lg:h-64 lg:w-48  before:${beforeRounded}  ${
                   closeAnimation
                     ? `${
                         featuredProject.name === project.name
@@ -111,7 +88,7 @@ export default function Projects() {
                 <img
                   src={project.thumbnail}
                   alt="project-image"
-                  className={`h-40 w-32 xs:h-44 xs:w-36 object-cover 
+                  className={`h-40 w-32 xs:h-44 xs:w-36 md:h-52 md:w-40 lg:h-64 lg:w-48 object-cover
                 ${
                   closeAnimation
                     ? `${
@@ -159,7 +136,7 @@ export default function Projects() {
                 }
                 `}
                 >
-                  <p className="px-1 sm:text-[.95rem]">{project.name}</p>
+                  <p className="px-1 xs:text-[.95rem] md:text-[1.1rem] lg:text-[1.4rem]">{project.name}</p>
                 </div>
               </div>
 
@@ -168,7 +145,7 @@ export default function Projects() {
               {featuredProject.name === project.name && showProjectDetails && (
                 <div
                   onAnimationEnd={setAnimationState}
-                  className={`h-40 w-32 relative xs:h-44 xs:w-36 ${
+                  className={`h-40 w-32 z-0 relative xs:h-44 xs:w-36 md:h-52 md:w-40 lg:h-64 lg:w-48  ${
                     closeAnimation
                       ? "animate-project-close"
                       : "animate-project-expand"
@@ -177,23 +154,32 @@ export default function Projects() {
                     project.name === featuredProject.name
                       ? detailsOpacityClass
                       : "opacity-0"
-                  } border-[3px] z-0 border-white rounded-r-[.375rem] border-l-0 rounded-l-none flex flex-col justify-between`}
+                  } border-[3px] border-white rounded-r-[.375rem] border-l-0 rounded-l-none flex flex-col justify-between`}
                 >
-                  <div className={`absolute top-[0px] left-0 rounded-r-[.375rem] px-1.5 bg-teal-gradient`}>
-                    <p className="text-[.8rem] sm:text-[.95rem] mx-auto">{project.name}</p>
-                   
+                  <div
+                    className={`absolute top-[0px] left-0 rounded-r-[.375rem] px-1.5 bg-teal-gradient`}
+                  >
+                    <p className="text-[.8rem] mx-auto xs:text-[.95rem] md:text-[1.1rem] lg:text-[1.4rem] ">
+                      {project.name}
+                    </p>
                   </div>
-                  <p className="text-[.65rem] px-2.5 absolute top-7">{project.description}</p>
+                  <p className="text-[.65rem] mt-1 px-2.5 absolute top-7 xs:text-[.72rem] md:text-[.8rem] md:mt-2 lg:mt-4 lg:text-[1rem] ">
+                    {project.description}
+                  </p>
 
                   <div className="flex justify-between relative mx-[.3rem] mb-1">
                     <Link to={project.githubRepo} target="_blank">
-                      <FontAwesomeIcon icon={faGithub} className="absolute left-[.3rem] bottom-[-9.1rem] sm:bottom-[-10.08rem]" size="xl" />
+                      <FontAwesomeIcon
+                        icon={faGithub}
+                        className="absolute left-[.3rem] bottom-[-9.1rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[-10.08rem] md:text-[2.15rem] md:bottom-[-12.08rem] lg:bottom-[-15.08rem] lg:text-[2.6rem]"
+                        size="2xl"
+                      />
                     </Link>
                     <Link to={project.liveLink} target="_blank">
                       <FontAwesomeIcon
-                        className="absolute right-[0.3rem] bottom-[-9rem] sm:bottom-[-10rem]"
+                        className="absolute right-[0.3rem] bottom-[-9.1rem] text-[1.4rem] xs:text-[1.5rem] xs:bottom-[-10.05rem] md:bottom-[-12.1rem] md:text-[1.85rem] lg:bottom-[-14.95rem] lg:text-[2.3rem]"
                         icon={faDesktop}
-                        size="lg"
+                        size="xl"
                       />
                     </Link>
                   </div>
