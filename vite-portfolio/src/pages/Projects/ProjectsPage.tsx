@@ -93,8 +93,6 @@ export default function ProjectsPage() {
         setBannerOpacity("opacity-0")
         setShowProjectDetails(!showProjectDetails)
         setFeaturedProject({} as Project)
-        // setBeforeRoundedTR("rounded-tr-[.3rem]")
-        // setBeforeRoundedBR("rounded-br-[.3rem]")
       }, 300)
     }
 
@@ -113,8 +111,6 @@ export default function ProjectsPage() {
       setTimeout(() => {
         setImgOpacityClass("opacity-100")
         setDetailsOpacityClass("opacity-100")
-        // setBorderRight("border-r-0")
-        // setBeforeBorderRight("border-r-0")
         setBeforeRoundedTR("rounded-tr-0")
         setBeforeRoundedBR("rounded-br-0")
       }, 300)

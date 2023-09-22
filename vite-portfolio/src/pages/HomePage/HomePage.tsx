@@ -10,7 +10,7 @@ import { GlobalContext } from "../../context/GlobalContext"
 import { HomePageContext } from "../../context/HomePageContext"
 
 function HomePage() {
-  const { componentHeight, screenWidth, ColorPicker, setUrlName } =
+  const { componentHeight, screenWidth, ColorPicker } =
     useContext(GlobalContext)
 
   const icons = [faLinkedin, faGithub, faEnvelope]
@@ -19,9 +19,7 @@ function HomePage() {
     bubbles,
     boxShadowClass,
     setBoxShadowClass,
-    bubbleAnimationClass,
     setBubbleAnimationClass,
-    getBubbleAnimationClass,
   } = useContext(HomePageContext)
   const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
   const [dynamicTextHeight, setDynamicTextHeight] = useState<string>("")
@@ -49,6 +47,58 @@ function HomePage() {
     setDivHeight()
   }, [])
 
+  function iconSelectAnimation(index: number) {
+    if (index === 0) {
+      return "icon-text-1"
+    }
+
+    if (index === 1) {
+      return "icon-text-2"
+    }
+    if (index === 2) {
+      return "icon-text-3"
+    }
+  }
+
+  function selectBubbleAnimation(index: number) {
+    if (index === 0) {
+      return "bubble-div"
+    }
+
+    if (index === 1) {
+      return "bubble-div-2"
+    }
+    if (index === 2) {
+      return "bubble-div-3"
+    }
+  }
+
+  function bubbleAnimation(index: number) {
+    if (index === 0) {
+      return "bubble"
+    }
+
+    if (index === 1) {
+      return "bubble-2"
+    }
+    if (index === 2) {
+      return "bubble-3"
+    }
+  }
+
+  function bubbleTextAnimation(index: number) {
+    if (index === 0) {
+      return "bubble-text"
+    }
+
+    if (index === 1) {
+      return "bubble-text-2"
+    }
+    if (index === 2) {
+      return "bubble-text-3"
+    }
+  }
+
   useEffect(() => {
     if (screenWidth < 475) {
       setBubbleAnimationClass("bubble-div")
@@ -75,85 +125,91 @@ function HomePage() {
 
   return (
     <>
-      <div className="flex flex-col bg-black min-h-screen">
-        <div
-          className="w-full font-kanit text-[1.5rem] text-white pt-3 sm:flex-wrap"
-          // style={{ height: componentHeight }}
-        >
-          <div className="flex flex-col justify-around h-[15%]">
-            <div className="flex justify-center">
-              <h2 className="">
-                <span className="hi">Hi!&nbsp;</span>
-                <span className="im-justin-canavan pl-[.02rem]">
-                  I'm Justin Canavan.
+      <div className="flex flex-col justify-between py-3 font-kanit text-[1.5rem] xs:text-[1.8rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.2rem] text-white bg-black min-h-screen">
+        <div className="flex flex-col justify-around h-[15%]">
+          <div className="flex justify-center">
+            <h2 className="">
+              <span className="hi">Hi!&nbsp;</span>
+              <span className="im-justin-canavan pl-[.02rem]">
+                I'm Justin Canavan.
+              </span>
+            </h2>
+          </div>
+
+          <div className="flex justify-center">
+            <ul className="overflow-hidden dynamic-text">
+              <li className="mx-2" ref={dynamicTextRef}>
+                <span className="text-white i-am-a relative">I am a&nbsp;</span>
+                <span className="dynamic-text text-teal word-1">
+                  Front-End Developer
                 </span>
-              </h2>
-            </div>
-
-            <div className="flex justify-center">
-              <ul className="overflow-hidden dynamic-text">
-                <li className="mx-2" ref={dynamicTextRef}>
-                  <span className="text-white i-am-a relative">
-                    I am a&nbsp;
-                  </span>
-                  <span className="dynamic-text text-teal word-1">
-                    Front-End Developer
-                  </span>
-                </li>
-                <li className="flex">
-                  <span className="text-white dynamic-text word-2 mx-auto">
-                    I create{" "}
-                    <span className="multicolor-text">experiences!</span>
-                  </span>
-                </li>
-              </ul>
-            </div>
+              </li>
+              <li className="flex">
+                <span className="text-white dynamic-text word-2 mx-auto">
+                  I create <span className="multicolor-text">experiences!</span>
+                </span>
+              </li>
+            </ul>
           </div>
-
-          <div className="relative flex justify-center mt-8">
-            <span
-              className="font-montserrat rounded-md select-bubble px-2 font-bold mx-auto text-white uppercase"
-              style={{ boxShadow: boxShadowClass }}
-            >
-              <span className="pick-a-bubble">Select a planet</span>
-            </span>
-          </div>
-
-          <div className="flex justify-evenly text-[1.25rem] flex-wrap">
-            {bubbles?.map((bubble, index) => (
-              <Link
-                key={index}
-                className=""
-                to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
-              >
-                <div className={`${bubbleAnimationClass} mx-[1.4rem]`}>
-                  
-                  <div
-                  // onClick={setUrlName(bubble.title)}
-                    className={` ${
-                      screenWidth >= 475 ? "mt-12" : bubble.mtClass
-                    } bubble w-28 h-24 sm:mt-12 text-center relative text-white`}
-                  ></div>
-                  <p
-                    className={`absolute top-[1.85rem] bubble-text text-black
-                ${bubble.leftClass} 
-                  `}
-                  >
-                    {bubble.title}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="flex mt-10 sticky-bottom justify-center">
-            {icons.map((icon, index) => (
-              <div key={index} className="mx-3">
-                <FontAwesomeIcon className="" color="" size="lg" icon={icon} />
-              </div>
-            ))}
-          </div>
-          {/* <ColorPicker /> */}
         </div>
+
+        {/* select a planet */}
+
+        <div className="relative flex justify-center">
+          <span
+            className="font-montserrat rounded-md select-bubble px-2 font-bold mx-auto text-transparent uppercase"
+            // style={{ boxShadow: boxShadowClass }}
+          >
+            <span className="pick-a-bubble">Select a planet</span>
+          </span>
+        </div>
+
+        {/* bubbles */}
+
+        <div className="flex justify-evenly text-[1.25rem] sm:text-[1.6rem] lg:text-[1.75rem] flex-wrap">
+          {bubbles?.map((bubble, index) => (
+            <Link
+              key={index}
+              className=""
+              to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
+            >
+              <div className={`${selectBubbleAnimation(index)} mx-[1.4rem]`}>
+                <div
+                  className={` ${
+                    screenWidth >= 475 ? "" : ""
+                  }  ${bubbleAnimation(
+                    index
+                  )} w-28 h-24 sm:w-36 sm:h-32 lg:w-44 lg:h-40 text-center relative text-white`}
+                ></div>
+                <p
+                  className={`absolute top-[1.85rem] sm:top-[2.6rem] lg:top-[3.5rem] ${bubbleTextAnimation(
+                    index
+                  )} text-transparent
+                ${bubble.leftClass} ${bubble.leftSm} ${bubble.leftLg}
+                  `}
+                >
+                  {bubble.title}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* icons */}
+
+        <div className="flex sticky-bottom justify-center">
+          {icons.map((icon, index) => (
+            <div
+              key={index}
+              className={`mx-3 text-transparent z-10 md:mx-5 ${iconSelectAnimation(
+                index
+              )}`}
+            >
+              <FontAwesomeIcon className="z-10" size="lg" icon={icon} />
+            </div>
+          ))}
+        </div>
+        {/* <ColorPicker /> */}
       </div>
     </>
   )

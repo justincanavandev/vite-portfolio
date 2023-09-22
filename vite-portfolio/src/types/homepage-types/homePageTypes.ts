@@ -2,6 +2,8 @@ export type Bubble = {
     title: string
     leftClass: string
     mtClass: string
+    leftSm: string
+    leftLg: string
 }
 
 export type HomePageContextType = {

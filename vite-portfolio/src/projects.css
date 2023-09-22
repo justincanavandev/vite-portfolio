@@ -3,7 +3,6 @@
 
 }
 
-
 .image-border-close {
   animation: image-border-close 0.3s linear;
 }
@@ -56,12 +55,6 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right-width: 0;
-  }
-
-  20% {
-    /* border-top-right-radius: 0.45rem;
-    border-bottom-right-radius: 0.45rem;
-    border-right-width: 3px; */
   }
 
   100% {

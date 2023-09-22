@@ -44,6 +44,7 @@
   
 }
 
+
 .pick-a-bubble::before {
   background: black;
   animation: select-bubble-width var(--clickBubbleTyping)
@@ -70,13 +71,44 @@
   animation: planet-gradient 0.3s ease var(--fadeBubbleIn) forwards;
 }
 
+.bubble-2 {
+  border-radius: 50%;
+  animation: planet-gradient 0.3s ease calc(var(--fadeBubbleIn) + .5s) forwards;
+}
+
+.bubble-3 {
+  border-radius: 50%;
+  animation: planet-gradient 0.3s ease calc(var(--fadeBubbleIn) + 1s) forwards;
+}
+
 .select-bubble {
   animation: bubble-box-shadow var(--clickBubbleTyping) ease
-    calc(var(--pickABubbleStart) + 0.5s);
+    calc(var(--pickABubbleStart) + 0.5s) forwards, text-white var(--clickBubbleTyping) ease
+    calc(var(--pickABubbleStart)) forwards;
 }
 
 .bubble-text {
   animation: text-white 0.3s ease var(--fadeBubbleIn) forwards;
+}
+
+.bubble-text-2 {
+  animation: text-white 0.3s ease calc(var(--fadeBubbleIn) + .5s) forwards;
+}
+
+.bubble-text-3 {
+  animation: text-white 0.3s ease calc(var(--fadeBubbleIn) + 1s) forwards;
+}
+
+.icon-text-1 {
+  animation: text-white 0.4s ease calc(var(--fadeBubbleIn) + 2s) forwards;
+}
+
+.icon-text-2 {
+  animation: text-white 0.9s ease calc(var(--fadeBubbleIn) + 2.5s) forwards;
+}
+
+.icon-text-3 {
+  animation: text-white 1.4s ease calc(var(--fadeBubbleIn) + 3s) forwards;
 }
 
 .bubble::before {
@@ -90,11 +122,41 @@
   animation: planet-ring-gradient 0.3s ease var(--fadeBubbleIn) forwards;
 }
 
-.bubble-div {
-  animation: right-to-left 1.5s ease var(--fadeBubbleIn) forwards;
+.bubble-2::before {
+  content: "";
+  position: absolute;
+  top: 35%;
+  bottom: 35%;
+  right: -12%;
+  left: -12%;
+  border-radius: 5% / 50%;
+  animation: planet-ring-gradient 0.3s ease calc(var(--fadeBubbleIn) + .5s) forwards;
 }
 
-.bubble-div-xs {
+.bubble-3::before {
+  content: "";
+  position: absolute;
+  top: 35%;
+  bottom: 35%;
+  right: -12%;
+  left: -12%;
+  border-radius: 5% / 50%;
+  animation: planet-ring-gradient 0.3s ease calc(var(--fadeBubbleIn) + 1s) forwards;
+}
+
+.bubble-div {
+  animation: left-to-right 1.5s ease var(--fadeBubbleIn) forwards;
+}
+
+.bubble-div-2 {
+  animation: right-to-left 1.5s ease calc(var(--fadeBubbleIn) + .5s) forwards;
+}
+
+.bubble-div-3 {
+  animation: bottom-to-top 1.5s ease calc(var(--fadeBubbleIn) + 1s) forwards;
+}
+
+/* .bubble-div-xs {
   animation: right-to-left-xs 1.5s ease var(--fadeBubbleIn) forwards;
 }
 
@@ -116,7 +178,7 @@
 
 .bubble-div-2xl {
   animation: right-to-left-2xl 1.5s ease var(--fadeBubbleIn) forwards;
-}
+} */
 
 @keyframes bubble-box-shadow {
   0% {
@@ -130,14 +192,32 @@
 
 @keyframes right-to-left {
   from {
-    transform: translateX(100px);
+    transform: translateX(200px);
   }
   to {
     transform: translateX(0);
   }
 }
 
-@keyframes right-to-left-xs {
+@keyframes left-to-right {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bottom-to-top {
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* @keyframes right-to-left-xs {
   from {
     transform: translateX(100px);
   }
@@ -189,4 +269,4 @@
   to {
     transform: translateX(0);
   }
-}
+} */
