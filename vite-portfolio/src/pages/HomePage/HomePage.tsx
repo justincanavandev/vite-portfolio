@@ -125,48 +125,53 @@ function HomePage() {
 
   return (
     <>
-      <div className="flex flex-col justify-between py-3 font-kanit text-[1.5rem] xs:text-[1.8rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.2rem] text-white bg-black min-h-screen">
-        <div className="flex flex-col justify-around h-[15%]">
-          <div className="flex justify-center">
+      <div className="flex flex-col justify-between py-3 font-kanit text-[1.2rem] xs:text-[1.8rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.2rem] text-white bg-black min-h-screen">
+     
+        <div className="flex flex-col">
+          <div className="flex flex-col pl-2 justify-center">
             <h2 className="">
               <span className="hi">Hi!&nbsp;</span>
-              <span className="im-justin-canavan pl-[.02rem]">
-                I'm Justin Canavan.
-              </span>
+              <span className="my-name-is pl-[.02rem]">My name is</span>
             </h2>
+            <span className="justin-canavan font-shadows text-[2.6rem]">Justin Canavan</span>
           </div>
 
-          <div className="flex justify-center">
-            <ul className="overflow-hidden dynamic-text">
-              <li className="mx-2" ref={dynamicTextRef}>
+          
+        </div>
+        <div className="flex overflow-x-hidden overflow-y-hidden px-2 py-6 justify-center text-[1.4rem]">
+            <ul className="dynamic-text">
+              <li className="mx-2 flex" ref={dynamicTextRef}>
                 <span className="text-white i-am-a relative">I am a&nbsp;</span>
-                <span className="dynamic-text text-teal word-1">
-                  Front-End Developer
+                {/* <div className=""> */}
+                <span className="front-end-dev rounded-md">
+                  <span className="dynamic-text word-1">
+                    Front-End Developer
+                  </span>
                 </span>
+                {/* </div> */}
               </li>
-              <li className="flex">
+              {/* <li className="flex">
                 <span className="text-white dynamic-text word-2 mx-auto">
                   I create <span className="multicolor-text">experiences!</span>
                 </span>
-              </li>
+              </li> */}
             </ul>
           </div>
-        </div>
 
         {/* select a planet */}
 
-        <div className="relative flex justify-center">
+        {/* <div className="relative flex justify-center">
           <span
             className="font-montserrat rounded-md select-bubble px-2 font-bold mx-auto text-transparent uppercase"
             // style={{ boxShadow: boxShadowClass }}
           >
             <span className="pick-a-bubble">Select a planet</span>
           </span>
-        </div>
+        </div> */}
 
         {/* bubbles */}
 
-        <div className="flex justify-evenly text-[1.25rem] sm:text-[1.6rem] lg:text-[1.75rem] flex-wrap">
+        <div className="flex justify-evenly text-[1.1rem] sm:text-[1.6rem] lg:text-[1.75rem] flex-wrap">
           {bubbles?.map((bubble, index) => (
             <Link
               key={index}
@@ -179,10 +184,10 @@ function HomePage() {
                     screenWidth >= 475 ? "" : ""
                   }  ${bubbleAnimation(
                     index
-                  )} w-28 h-24 sm:w-36 sm:h-32 lg:w-44 lg:h-40 text-center relative text-white`}
+                  )} w-24 h-20 sm:w-36 sm:h-32 lg:w-44 lg:h-40 text-center relative text-white`}
                 ></div>
                 <p
-                  className={`absolute top-[1.85rem] sm:top-[2.6rem] lg:top-[3.5rem] ${bubbleTextAnimation(
+                  className={`absolute top-[1.55rem] sm:top-[2.6rem] lg:top-[3.5rem] ${bubbleTextAnimation(
                     index
                   )} text-transparent
                 ${bubble.leftClass} ${bubble.leftSm} ${bubble.leftLg}

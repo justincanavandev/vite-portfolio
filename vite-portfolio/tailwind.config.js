@@ -24,7 +24,8 @@ export default {
         oswald: ["Oswald", "sans"],
         kanit: ["Kanit", "sans"],
         anton: ["Anton", "sans"],
-        montserrat: ["Montserrat", "sans"]
+        montserrat: ["Montserrat", "sans"],
+        shadows: ["Shadows Into Light", "sans"]
       },
       fontWeight: {
         thin: '100',

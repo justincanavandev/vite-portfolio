@@ -9,20 +9,43 @@
   --photoFade: calc(var(--hiType) + var(--imJC) + var(--typeWriterSpeed));
   --typeWriterSpeed: 1.5s;
   --typeWriterChars: 23;
-  --iAmA: .5s;
+
+  --myNameIsChars: 10;
+  --myNameIsType: 0.75s;
+  --myNameIsLength: calc(
+    var(--start) + var(--hiType) + var(--myNameIsType) + 2.2s
+  );
+  --justinCanavanType: 1.5s;
+  --justinCanavanChars: 14;
+  --justinCanavanLength: calc(
+    var(--myNameIsLength) + var(--justinCanavanType) + 0.8s
+  );
+/* 
+  --justinCanavanLength: 0s; */
+
+  --iAmA: 0.5s;
+  --frontEndDeveloperStart: calc(
+    var(--iAmA) + var(--justinCanavanLength) + 0.25s
+  );
+  /* --frontEndDeveloperStart: 1s; */
   --dynamicText: 2s;
-  --frontEndDeveloperStart: calc(var(--iAmA) + var(--start) + var(--anim1Length) + .2s);
+  --frontEndDeveloperLength: calc(
+    var(--frontEndDeveloperStart) + var(--frontEndDevSpeed)
+  );
+
   --frontEndDeveloper: calc(var(--iAmA) + var(--start) + var(--anim1Length));
   --frontEndDeveloperLetters: 19;
   --frontEndDevSpeed: 2s;
   --anim1Length: 4.25s;
-  --imJC: 2s;
-  --hiType: .5s;
-  --blinkSpeed: .75s;
-  --toColor: .375s;
+  --imJC: 1.5s;
+  --hiType: 0.5s;
+  --blinkSpeed: 0.75s;
+  --toColor: 0.375s;
   --blinkSteps: 20;
-  --start: .3s;
-  --header: calc(var(--start) + var(--typeWriterSpeed) + var(--hiType) + var(--imJC));
+  --start: 0.3s;
+  --header: calc(
+    var(--start) + var(--typeWriterSpeed) + var(--hiType) + var(--imJC)
+  );
 }
 
 ul {
@@ -38,93 +61,126 @@ ul {
 
 .hi::before {
   background: black; /* Changed from white to black */
-  animation: typewriter var(--hiType) steps(4) var(--start) forwards, 
-             to-black .1s ease 1s forwards; /* Changed to-black from to-white */
+  animation: typewriter var(--hiType) steps(4) var(--start) forwards,
+    to-black 0.1s ease 1s forwards; /* Changed to-black from to-white */
 }
 
 .hi::after {
-  width: .125em;
+  width: 0.125em;
   background: white; /* Changed from black to white */
-  animation: typewriter var(--hiType) steps(4) var(--start) forwards,  
-             blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
-             to-black var(--toColor) ease calc(var(--hiType) + .7s) forwards; /* Changed to-black from to-white */
+  animation: typewriter var(--hiType) steps(4) var(--start) forwards,
+    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
+    to-black var(--toColor) ease calc(var(--hiType) + 0.7s) forwards; /* Changed to-black from to-white */
 }
 
 h2 span.hi::before,
 h2 span.hi::after,
-h2 span.im-justin-canavan::before,
-h2 span.im-justin-canavan::after {
-  content: '';
-  position: absolute; 
+h2 span.my-name-is::before,
+h2 span.my-name-is::after,
+.justin-canavan::before,
+.justin-canavan::after {
+  content: "";
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
 }
 
-h2 span.im-justin-canavan {
+h2 span.my-name-is,
+.justin-canavan {
   position: relative;
   width: max-content;
-  text-align: center !important;
 }
 
-h2 span.im-justin-canavan::before {
-  background: black; /* Changed from white to black */
-  animation: typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards;
+h2 span.my-name-is::before {
+  background: black;
+  animation: typewriter var(--myNameIsType) steps(var(--myNameIsChars))
+    var(--imJC) forwards;
 }
 
-.im-justin-canavan::after {
-  width: .125em;
-  background: black; /* Changed from black to white */
-  animation: 
-    typewriter var(--typeWriterSpeed) steps(var(--typeWriterChars)) var(--imJC) forwards, 
-    to-white var(--toColor) ease calc(var(--hiType) + var(--start)) forwards, 
-    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite, 
-    to-black .3s ease calc(4s - .1s) forwards;
+.my-name-is::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter var(--myNameIsType) steps(var(--myNameIsChars))
+      var(--imJC) forwards,
+    to-white var(--toColor) ease calc(var(--hiType) + var(--start)) forwards,
+    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
+    to-black 0.3s ease calc(3.3s) forwards;
 }
 
-.wrapper .dynamic-text { 
+.justin-canavan::before {
+  background: black;
+  animation: typewriter var(--justinCanavanType)
+    steps(var(--justinCanavanChars)) calc(var(--myNameIsLength)) forwards;
+}
+
+.justin-canavan::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter var(--justinCanavanType)
+      steps(var(--justinCanavanChars)) calc(var(--myNameIsLength)) forwards,
+    to-white var(--toColor) ease calc(var(--myNameIsLength) - 0.5s) forwards,
+    to-transparent var(--toColor) ease
+      calc(
+        var(--myNameIsLength) + var(--justinCanavanType) + 0.25s +
+          var(--toColor)
+      )
+      forwards,
+    blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite;
+  /* to-black .3s ease calc(4s - .1s) forwards; */
+}
+
+/* .wrapper .dynamic-text {
   overflow: hidden;
-}
+} */
 
 .i-am-a::before {
-  background: black; /* Changed from white to black */
-  animation: typewriter var(--iAmA) steps(7) calc(var(--anim1Length) + .5s) forwards;
+  background: black;
+  animation: typewriter var(--iAmA) steps(7)
+    calc(var(--justinCanavanLength) + 0.5s) forwards, to-transparent .1s calc(var(--justinCanavanLength) + var(--iAmA) + .5s) forwards;
 }
 
-span.i-am-a::after {
-  width: .125em !important;
-  background: black; /* Changed from black to white */
-  animation: 
-    typewriter var(--iAmA) steps(7) calc(var(--anim1Length) + .5s) forwards, 
-    to-white var(--toColor) ease var(--anim1Length) forwards,
-    to-black var(--toColor) ease calc(var(--anim1Length) + 1s + var(--toColor)) forwards,
+.i-am-a::after {
+  width: 0.125em !important;
+  background: black;
+  animation: typewriter var(--iAmA) steps(7)
+      calc(var(--justinCanavanLength) + 0.5s) forwards,
+    to-white var(--toColor) ease var(--justinCanavanLength) forwards,
+    to-transparent var(--toColor) ease
+      calc(var(--justinCanavanLength) + 1s + var(--toColor)) forwards,
     blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite;
 }
 
 .i-am-a::before,
-.dynamic-text li span::before,
-.dynamic-text li span::after {
-  content: '';
+/* .dynamic-text li span::before,
+.dynamic-text li span::after  */
+{
+  content: "";
   position: absolute;
   left: 0;
-  height: 120%;
+  height: 100%;
+  width: 100%;
+}
+
+.dynamic-text li span::before,
+.dynamic-text li span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
   width: 100%;
 }
 
 .i-am-a::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
-  height: 120%;
-}
-
-.dynamic-text li {
-  /* list-style: none;
-  position: relative;
-  top: 0; */
-  /* white-space: nowrap; */
-  /* overflow: hidden; */
+  height: 100%;
 }
 
 .word-1,
@@ -132,181 +188,187 @@ span.i-am-a::after {
 .word-3,
 .word-4 {
   position: relative;
+  
   width: max-content;
 }
 
 .dynamic-text.word-1::before {
-  background: black; /* Changed from white to black */
-  animation: typing var(--frontEndDevSpeed) steps(var(--frontEndDeveloperLetters)) calc(var(--frontEndDeveloperStart) + 1s) forwards;
+  background: black;
+  animation: typewriter var(--frontEndDevSpeed)
+      steps(var(--frontEndDeveloperLetters))
+      calc(var(--frontEndDeveloperStart) + 1s) forwards,
+    to-transparent 0.1s calc(var(--frontEndDeveloperLength) + 1s) forwards;
   animation-iteration-count: 1;
 }
 
 .dynamic-text.word-1::after {
-  width: .125em;
-  background: black; /* Changed from black to white */
-  animation: typewriter var(--frontEndDevSpeed) steps(var(--frontEndDeveloperLetters)) calc(var(--frontEndDeveloperStart) + 1s) 1 forwards,
-             blinking-dynamic var(--blinkSpeed) steps(var(--typeWriterChars)) infinite,
-             to-white var(--toColor) ease calc(var(--frontEndDeveloperStart)) forwards,
-             to-black var(--toColor) ease calc(var(--frontEndDeveloperStart) + var(--frontEndDevSpeed) + var(--toColor) + 1.4s) forwards; 
+  width: 0.125em;
+  background: black;
+  animation: typewriter var(--frontEndDevSpeed)
+      steps(var(--frontEndDeveloperLetters))
+      calc(var(--frontEndDeveloperStart) + 1s) 1 forwards,
+    blinking-dynamic var(--blinkSpeed) steps(var(--typeWriterChars)) infinite,
+    to-white var(--toColor) ease calc(var(--frontEndDeveloperStart) + 0.25s)
+      forwards,
+    to-transparent var(--toColor) ease
+      calc(
+        var(--frontEndDeveloperStart) + var(--frontEndDevSpeed) + var(--toColor) +
+          1.4s
+      )
+      forwards;
 }
-  
-  .dynamic-text li span.word-2::before {
-    background: black; 
-    animation: typing 2s steps(21) calc(var(--dynamicText) + 8s) forwards;
-    animation-iteration-count: 1;
-  }
-  
-  .dynamic-text.word-2::after {
-    width: .125em;
-    background: black; 
-    animation: typing 2s steps(21) calc(var(--dynamicText) + 8s) 1 forwards,
+
+/* .dynamic-text li span.word-2::before {
+  background: black;
+  animation: typing 2s steps(21) calc(var(--dynamicText) + 8s) forwards;
+  animation-iteration-count: 1;
+}
+
+.dynamic-text.word-2::after {
+  width: 0.125em;
+  background: black;
+  animation: typing 2s steps(21) calc(var(--dynamicText) + 8s) 1 forwards,
     blinking-dynamic var(--blinkSpeed) steps(10) infinite,
-    to-white var(--toColor) ease calc(var(--dynamicText) + 7s) forwards, 
-    to-black var(--toColor) ease calc(var(--dynamicText) + 11s) forwards; 
-  }
-  
-  .dynamic-text li span.word-3::before {
-    background: white; 
-    animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) forwards;
-    animation-iteration-count: 1;
-  }
-  
-  .dynamic-text.word-3::after {
-    width: .125em;
-    background: white; 
-    animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) 1 forwards,
+    to-white var(--toColor) ease calc(var(--dynamicText) + 7s) forwards,
+    to-black var(--toColor) ease calc(var(--dynamicText) + 11s) forwards;
+}
+
+.dynamic-text li span.word-3::before {
+  background: white;
+  animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) forwards;
+  animation-iteration-count: 1;
+}
+
+.dynamic-text.word-3::after {
+  width: 0.125em;
+  background: white;
+  animation: typing 1s steps(8) calc(var(--dynamicText) + 7s) 1 forwards,
     blinking-dynamic var(--blinkSpeed) steps(10) infinite,
-    to-black 1s ease calc(var(--dynamicText) + 6.5s) forwards, 
-    to-white .3s ease calc(var(--dynamicText) + 8.5s) forwards; 
-  }
-  
-  .dynamic-text li span.word-4::before {
-    background: white; 
-    animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) forwards;
-    animation-iteration-count: 1;
-  }
-  
-  .dynamic-text.word-4::after {
-    width: .125em;
-    background: white; 
-    animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) 1 forwards,
-    to-black 1s ease calc(var(--dynamicText) + 8.5s) forwards, 
+    to-black 1s ease calc(var(--dynamicText) + 6.5s) forwards,
+    to-white 0.3s ease calc(var(--dynamicText) + 8.5s) forwards;
+}
+
+.dynamic-text li span.word-4::before {
+  background: white;
+  animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) forwards;
+  animation-iteration-count: 1;
+}
+
+.dynamic-text.word-4::after {
+  width: 0.125em;
+  background: white;
+  animation: typing 2s steps(18) calc(var(--dynamicText) + 9s) 1 forwards,
+    to-black 1s ease calc(var(--dynamicText) + 8.5s) forwards,
     blinking-dynamic var(--blinkSpeed) steps(10) infinite,
-    to-white .5s ease calc(var(--dynamicText) + 11.4s) forwards; 
+    to-white 0.5s ease calc(var(--dynamicText) + 11.4s) forwards;
+} */
+
+@keyframes typewriter {
+  to {
+    left: 100%;
   }
-    
-    @keyframes typewriter { 
-      
-      to {
-        left: 100%;
-      }
-    }
+}
 
-    @keyframes select-bubble-width {
- 
-      to {
-        left: 100%;
-      }
-    }
-    
-    @keyframes blinking {
 
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-  
-
-    @keyframes blinking-dynamic {
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  
-    @keyframes planet-ring-gradient {
-      to {
-        background: linear-gradient(#2adfc3, #1f8e7d, #163e3f);
-        opacity: .8;
-      }
-    }
-
-    @keyframes planet-gradient {
-      to {
-        /* background: linear-gradient(#2bf1d3, #249e8c, #072521); */
-        background: linear-gradient(#7df9e7, #177d6e, #0a332d);
-        box-shadow: 0px 5px 10px rgba(100, 255, 255, 0.45), 0px -5px 5px rgba(100, 255, 255, 0.5);
-        opacity: .8;
-      }
-    }
-
-    @keyframes text-white {
-      to {
-        color: white;
-      }
-    }
-  
-    @keyframes to-black {
-      to {
-        background: black;
-      }
-    }
-  
-    @keyframes to-transparent {
-      to {
-        background: transparent;
-      }
-    }
-
-    @keyframes to-white {
-      to {
-        background: white;
-      }
-    }
-  
-    @keyframes fadeIn {
-      to {
-          opacity: 1;
-          transform: rotateX('360')
-      }
-    }
-    @keyframes slide {
-    100% {
-      /* top: -22.4vh; */
-      top: -94.85px;
-    }
+@keyframes select-bubble-width {
+  to {
+    left: 100%;
   }
+}
 
-  
-  @keyframes typing {
-    100% {
-      left: 100%;
-      margin: 0 -2px 0 2px;
-    }
+@keyframes blinking {
+  0% {
+    opacity: 1;
   }
-  
-  @media screen and (min-width: 768px) {
-    .i-am-margin {
-      margin-top: 5vh;
-    }
+  50% {
+    opacity: 0;
   }
-  
-  @media screen and (min-width: 768px) {
-    .photo-margin {
-      margin-top: 5vh;
-    }
+  100% {
+    opacity: 1;
   }
-  
-  
+}
+
+@keyframes blinking-dynamic {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes planet-ring-gradient {
+  to {
+    background: linear-gradient(#2adfc3, #1f8e7d, #163e3f);
+    opacity: 0.8;
+  }
+}
+
+@keyframes planet-gradient {
+  to {
+    /* background: linear-gradient(#2bf1d3, #249e8c, #072521); */
+    background: linear-gradient(#7df9e7, #177d6e, #0a332d);
+    box-shadow: 0px 5px 10px rgba(100, 255, 255, 0.45),
+      0px -5px 5px rgba(100, 255, 255, 0.5);
+    opacity: 0.8;
+  }
+}
+
+@keyframes text-white {
+  to {
+    color: white;
+  }
+}
+
+@keyframes to-black {
+  to {
+    background: black;
+  }
+}
+
+@keyframes to-transparent {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes to-white {
+  to {
+    background: white;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: rotateX("360");
+  }
+}
+@keyframes slide {
+  100% {
+    /* top: -22.4vh; */
+    top: -94.85px;
+  }
+}
+
+@keyframes typing {
+  100% {
+    left: 100%;
+    margin: 0 -2px 0 2px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .i-am-margin {
+    margin-top: 5vh;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .photo-margin {
+    margin-top: 5vh;
+  }
+}

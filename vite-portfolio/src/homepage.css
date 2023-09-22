@@ -10,7 +10,7 @@
   );
   --pickABubbleTyping: 1.5s;
 
-  --pickABubbleStart: 13s; 
+  --pickABubbleStart: 9s; 
   /* --pickABubbleStart: 0s; */
 
   --pickABubbleToWhite: calc(var(--pickABubbleStart) + 3s);
@@ -81,12 +81,18 @@
   animation: planet-gradient 0.3s ease calc(var(--fadeBubbleIn) + 1s) forwards;
 }
 
-.select-bubble {
+/* .select-bubble {
   animation: bubble-box-shadow var(--clickBubbleTyping) ease
-    calc(var(--pickABubbleStart) + 0.5s) forwards, text-white var(--clickBubbleTyping) ease
+    calc(var(--pickABubbleStart) + var(--clickBubbleTyping)) forwards, text-white var(--clickBubbleTyping) ease
     calc(var(--pickABubbleStart)) forwards;
-}
+} */
 
+.front-end-dev {
+  animation: bubble-box-shadow var(--clickBubbleTyping) ease
+    calc(var(--frontEndDeveloperLength)) forwards, text-white var(--clickBubbleTyping) ease
+    calc(var(--frontEndDeveloperLength)) forwards, front-end-padding var(--clickBubbleTyping) ease
+    calc(var(--frontEndDeveloperLength)) forwards;
+}
 .bubble-text {
   animation: text-white 0.3s ease var(--fadeBubbleIn) forwards;
 }
@@ -179,6 +185,17 @@
 .bubble-div-2xl {
   animation: right-to-left-2xl 1.5s ease var(--fadeBubbleIn) forwards;
 } */
+
+@keyframes front-end-padding {
+  0% {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  100% {
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+}
 
 @keyframes bubble-box-shadow {
   0% {
