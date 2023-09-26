@@ -20,8 +20,8 @@
   --justinCanavanLength: calc(
     var(--myNameIsLength) + var(--justinCanavanType) + 0.8s
   );
-/* 
-  --justinCanavanLength: 0s; */
+  
+  /* --justinCanavanLength: 0s; */
 
   --iAmA: 0.5s;
   --frontEndDeveloperStart: calc(
@@ -60,17 +60,17 @@ ul {
 }
 
 .hi::before {
-  background: black; /* Changed from white to black */
+  background: black;
   animation: typewriter var(--hiType) steps(4) var(--start) forwards,
-    to-black 0.1s ease 1s forwards; /* Changed to-black from to-white */
+    to-black 0.1s ease 1s forwards; 
 }
 
 .hi::after {
   width: 0.125em;
-  background: white; /* Changed from black to white */
+  background: white; 
   animation: typewriter var(--hiType) steps(4) var(--start) forwards,
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite,
-    to-black var(--toColor) ease calc(var(--hiType) + 0.7s) forwards; /* Changed to-black from to-white */
+    to-black var(--toColor) ease calc(var(--hiType) + 0.7s) forwards; 
 }
 
 h2 span.hi::before,
@@ -128,17 +128,19 @@ h2 span.my-name-is::before {
       )
       forwards,
     blinking var(--blinkSpeed) steps(var(--blinkSteps)) infinite;
-  /* to-black .3s ease calc(4s - .1s) forwards; */
 }
 
-/* .wrapper .dynamic-text {
-  overflow: hidden;
+/* .i-am-gap {
+  animation: i-am-gap var(--frontEndDevSpeed) ease
+    calc(var(--frontEndDeveloperStart) + 1s) forwards;
 } */
 
 .i-am-a::before {
   background: black;
   animation: typewriter var(--iAmA) steps(7)
-    calc(var(--justinCanavanLength) + 0.5s) forwards, to-transparent .1s calc(var(--justinCanavanLength) + var(--iAmA) + .5s) forwards;
+      calc(var(--justinCanavanLength) + 0.5s) forwards,
+    to-transparent 0.1s calc(var(--justinCanavanLength) + var(--iAmA) + 0.5s)
+      forwards;
 }
 
 .i-am-a::after {
@@ -152,25 +154,9 @@ h2 span.my-name-is::before {
     blinking var(--blinkSpeed) steps(var(--typeWriterChars)) infinite;
 }
 
-.i-am-a::before,
-/* .dynamic-text li span::before,
-.dynamic-text li span::after  */
-{
+.i-am-a::before {
   content: "";
   position: absolute;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.dynamic-text li span::before,
-.dynamic-text li span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   height: 100%;
   width: 100%;
@@ -181,6 +167,18 @@ h2 span.my-name-is::before {
   position: absolute;
   left: 0;
   height: 100%;
+
+}
+
+.dynamic-text span::before,
+.dynamic-text span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
 }
 
 .word-1,
@@ -188,7 +186,7 @@ h2 span.my-name-is::before {
 .word-3,
 .word-4 {
   position: relative;
-  
+
   width: max-content;
 }
 
@@ -208,7 +206,7 @@ h2 span.my-name-is::before {
       steps(var(--frontEndDeveloperLetters))
       calc(var(--frontEndDeveloperStart) + 1s) 1 forwards,
     blinking-dynamic var(--blinkSpeed) steps(var(--typeWriterChars)) infinite,
-    to-white var(--toColor) ease calc(var(--frontEndDeveloperStart) + 0.25s)
+    to-white var(--toColor) ease calc(var(--frontEndDeveloperStart) + 0.75s)
       forwards,
     to-transparent var(--toColor) ease
       calc(
@@ -268,7 +266,6 @@ h2 span.my-name-is::before {
     left: 100%;
   }
 }
-
 
 @keyframes select-bubble-width {
   to {
@@ -338,6 +335,16 @@ h2 span.my-name-is::before {
 @keyframes to-white {
   to {
     background: white;
+  }
+}
+
+@keyframes i-am-gap {
+  0% {
+    gap: 0;
+  } 
+
+  100% {
+    gap: .5rem;
   }
 }
 

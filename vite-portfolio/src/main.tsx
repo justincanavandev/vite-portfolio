@@ -9,6 +9,7 @@ import { ColorResult, ChromePicker, Color } from "react-color"
 function Root() {
   const [componentHeight, setComponentHeight] = useState<string>("")
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth)
+  const [screenHeight, setScreenHeight] = useState<number>(window.innerHeight)
   const [urlName, setUrlName] = useState<string>("/")
 
   const ColorPicker = () => {
@@ -46,6 +47,7 @@ function Root() {
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth)
+      setScreenHeight(window.innerHeight)
     }
 
     window.addEventListener("resize", handleResize)
@@ -65,6 +67,9 @@ function Root() {
             screenWidth,
             setScreenWidth,
             ColorPicker,
+            screenHeight, 
+            setScreenHeight
+            
       
           }}
         >

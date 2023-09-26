@@ -3,6 +3,7 @@ export type Bubble = {
     leftClass: string
     mtClass: string
     leftSm: string
+    leftMd: string
     leftLg: string
 }
 

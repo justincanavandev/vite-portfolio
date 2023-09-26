@@ -7,6 +7,8 @@ export type GlobalContextType = {
   setComponentHeight: React.Dispatch<React.SetStateAction<string>>
   screenWidth: number
   setScreenWidth: React.Dispatch<React.SetStateAction<number>>
+  screenHeight: number
+  setScreenHeight: number
   ColorPicker: () => JSX.Element
 
 }

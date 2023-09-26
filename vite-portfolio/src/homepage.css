@@ -88,21 +88,25 @@
 } */
 
 .front-end-dev {
+  padding-bottom: 4px;
   animation: bubble-box-shadow var(--clickBubbleTyping) ease
     calc(var(--frontEndDeveloperLength)) forwards, text-white var(--clickBubbleTyping) ease
     calc(var(--frontEndDeveloperLength)) forwards, front-end-padding var(--clickBubbleTyping) ease
     calc(var(--frontEndDeveloperLength)) forwards;
 }
+
+
+
 .bubble-text {
-  animation: text-white 0.3s ease var(--fadeBubbleIn) forwards;
+  animation: text-white 0.3s ease var(--fadeBubbleIn) forwards, bubble-text-shadow .3s ease var(--fadeBubbleIn) forwards;
 }
 
 .bubble-text-2 {
-  animation: text-white 0.3s ease calc(var(--fadeBubbleIn) + .5s) forwards;
+  animation: text-white 0.3s ease calc(var(--fadeBubbleIn) + .5s) forwards, bubble-text-shadow .3s ease calc(var(--fadeBubbleIn) + .5s)  forwards;
 }
 
 .bubble-text-3 {
-  animation: text-white 0.3s ease calc(var(--fadeBubbleIn) + 1s) forwards;
+  animation: text-white 0.3s ease calc(var(--fadeBubbleIn) + 1s) forwards, bubble-text-shadow .3s ease calc(var(--fadeBubbleIn) + 1s)  forwards;
 }
 
 .icon-text-1 {
@@ -195,6 +199,13 @@
     padding-left: .5rem;
     padding-right: .5rem;
   }
+}
+
+@keyframes bubble-text-shadow {
+ to {
+  text-shadow: 1px 0px .5px #000, 1px 0px .8px #000;
+ }
+ 
 }
 
 @keyframes bubble-box-shadow {
