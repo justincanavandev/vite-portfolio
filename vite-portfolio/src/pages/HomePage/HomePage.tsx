@@ -105,8 +105,13 @@ function HomePage() {
       return "h-24"
     }
 
-    if (screenHeight >= 520 && screenHeight<650 && screenWidth >= 320 && screenWidth < 475) {
-      return "h-[20vh]"
+    if (
+      screenHeight >= 520 &&
+      screenHeight < 650 &&
+      screenWidth >= 320 &&
+      screenWidth < 475
+    ) {
+      return "h-[18vh]"
     }
 
     if (screenHeight >= 650 && screenWidth >= 320 && screenWidth < 475) {
@@ -116,10 +121,15 @@ function HomePage() {
     //xs
 
     if (screenHeight <= 550 && screenWidth >= 475 && screenWidth < 640) {
-      return "h-32"
+      return "xs:h-32"
     }
 
-    if (screenHeight < 650 && screenHeight > 550 && screenWidth >= 475 && screenWidth<640) {
+    if (
+      screenHeight < 650 &&
+      screenHeight > 550 &&
+      screenWidth >= 475 &&
+      screenWidth < 640
+    ) {
       return "xs:h-[22vh]"
     }
 
@@ -131,25 +141,29 @@ function HomePage() {
   function frontEndScreenHeight() {
     // reg
     if (screenHeight < 520 && screenWidth >= 320 && screenWidth < 475) {
-      return "h-32"
+      return "h-[7rem]"
     }
 
-    if (screenHeight >= 520 && screenHeight < 650 && screenWidth <= 475) {
-      return "h-[6.7rem]"
+    if (screenHeight >= 520 && screenWidth >= 320 && screenWidth < 475) {
+      return "h-[7.5rem]"
     }
 
     // xs
-
-    if (screenHeight >= 650 && screenWidth < 475 && screenWidth < 640) {
-      return "h-[19vh]"
-    }
 
     if (screenHeight <= 550 && screenWidth >= 475 && screenWidth < 640) {
       return "h-[7.4rem]"
     }
 
-    if (screenHeight > 550 && screenWidth >= 475 && screenWidth <= 650) {
+    if (screenHeight >= 550 && screenWidth >= 475 && screenWidth < 640) {
       return "h-[20vh]"
+    }
+
+    // if (screenHeight > 550 && screenWidth >= 475 && screenWidth < 640) {
+    //   return "h-[20vh]"
+    // }
+
+    if (screenHeight >= 650 && screenWidth < 475 && screenWidth < 640) {
+      return "h-[19vh]"
     }
     // if (screenHeight >= 650 && screenWidth >= 475 && screenWidth < 640) {
     //   return "xs:h-[22vh]"
@@ -159,24 +173,27 @@ function HomePage() {
     // }
   }
 
+  console.log('screenHeight', screenHeight)
+  console.log('screenWidth', screenWidth)
+
   function bubbleScreenHeight() {
     //reg
 
     if (screenHeight <= 520) {
       if (screenWidth >= 320 && screenWidth < 475) {
-        return "h-36 flex-wrap justify-evenly"
+        return "h-[14rem] flex flex-wrap justify-evenly"
       }
     }
 
     if (
       screenHeight >= 520 &&
-      screenHeight <= 650 &&
+      screenHeight < 650 &&
       screenWidth >= 320 &&
       screenWidth < 475
     ) {
-      return "justify-around h-[52vh] flex-row flex-wrap"
+      return "justify-around h-[46vh] flex flex-row flex-wrap"
     }
-    if (screenHeight > 650 && screenWidth >= 320 && screenWidth < 475) {
+    if (screenHeight >= 650 && screenWidth >= 320 && screenWidth < 475) {
       return "flex-col h-[52vh] justify-between"
     }
 
@@ -188,7 +205,7 @@ function HomePage() {
 
     if (
       screenHeight < 650 &&
-      screenHeight > 520 &&
+      screenHeight >= 550 &&
       screenWidth >= 475 &&
       screenWidth < 640
     ) {
@@ -279,11 +296,9 @@ function HomePage() {
               } xs:flex xs:justify-center`}
               to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
             >
-              <div className={`${selectBubbleAnimation(index)} mx-[1.4rem]`}>
+              <div className={`${selectBubbleAnimation(index)} mx-[1.44rem]`}>
                 <div
-                  className={` ${
-                    screenWidth >= 475 ? "" : ""
-                  }  ${bubbleAnimation(
+                  className={` ${bubbleAnimation(
                     index
                   )} w-28 h-24 xs:w-32 xs:h-28 sm:w-36 sm:h-32 md:w-40 md:h-36 lg:w-44 lg:h-40 relative text-white`}
                 ></div>
