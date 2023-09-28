@@ -10,7 +10,7 @@ function Root() {
   const [componentHeight, setComponentHeight] = useState<string>("")
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth)
   const [screenHeight, setScreenHeight] = useState<number>(window.innerHeight)
-  const [urlName, setUrlName] = useState<string>("/")
+
 
   const ColorPicker = () => {
     const [color, setColor] = useState<Color>({ r: 0, g: 0, b: 0 })
@@ -68,7 +68,7 @@ function Root() {
             setScreenWidth,
             ColorPicker,
             screenHeight, 
-            setScreenHeight
+            setScreenHeight,
             
       
           }}

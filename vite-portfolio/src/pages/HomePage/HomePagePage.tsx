@@ -48,7 +48,7 @@ export default function HomePagePage() {
   }
 
   return (
-    <div>
+    <div className="">
       <HomePageContext.Provider
         value={{
           bubbles,

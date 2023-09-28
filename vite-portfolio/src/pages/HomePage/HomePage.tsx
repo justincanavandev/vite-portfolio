@@ -17,8 +17,8 @@ function HomePage() {
 
   const {
     bubbles,
-    boxShadowClass,
-    setBoxShadowClass,
+    // boxShadowClass,
+    // setBoxShadowClass,
     setBubbleAnimationClass,
   } = useContext(HomePageContext)
   const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
@@ -26,17 +26,17 @@ function HomePage() {
 
   //og is 2500, just add that to whatever number pickABubbleStart is
 
-  useEffect(() => {
-    setTimeout(
-      () => {
-        setBoxShadowClass(
-          "0px 10px 20px rgba(100, 255, 255, 0.7), 0px -5px 25px rgba(100, 255, 255, 0.7)"
-        )
-      },
-      // 2500
-      15500
-    )
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(
+  //     () => {
+  //       setBoxShadowClass(
+  //         "0px 10px 20px rgba(100, 255, 255, 0.7), 0px -5px 25px rgba(100, 255, 255, 0.7)"
+  //       )
+  //     },
+  //     // 2500
+  //     15500
+  //   )
+  // }, [])
 
   useEffect(() => {
     const setDivHeight = () => {
@@ -101,7 +101,7 @@ function HomePage() {
 
   function myNameIsScreenHeight() {
     //reg
-    if (screenHeight < 520 && screenWidth >= 320 && screenWidth < 475) {
+    if (screenHeight < 520 && screenWidth < 475) {
       return "h-24"
     }
 
@@ -140,7 +140,7 @@ function HomePage() {
 
   function frontEndScreenHeight() {
     // reg
-    if (screenHeight < 520 && screenWidth >= 320 && screenWidth < 475) {
+    if (screenHeight < 520 && screenWidth < 475) {
       return "h-[7rem]"
     }
 
@@ -173,16 +173,14 @@ function HomePage() {
     // }
   }
 
-  console.log('screenHeight', screenHeight)
-  console.log('screenWidth', screenWidth)
+  console.log("screenHeight", screenHeight)
+  console.log("screenWidth", screenWidth)
 
   function bubbleScreenHeight() {
     //reg
 
-    if (screenHeight <= 520) {
-      if (screenWidth >= 320 && screenWidth < 475) {
-        return "h-[14rem] flex flex-wrap justify-evenly"
-      }
+    if (screenHeight <= 520 && screenWidth < 475) {
+      return "h-[14rem] flex flex-wrap justify-evenly min-w-[320px]"
     }
 
     if (
@@ -243,11 +241,10 @@ function HomePage() {
   return (
     <>
       <div
-        className={`flex flex-col py-3 font-oswald font-light text-[1.2rem] xs:text-[1.8rem] sm:text-[2.1rem] md:text-[2.1rem] text-zinc-200 lg:text-[2.2rem]  bg-black min-h-screen ${
-          screenHeight > 550
-            ? "min-h-screen"
-            : "min-h-[520px] xs:min-h-[550px] overflow-y-scroll"
-        }`}
+        className={`whitespace-nowrap overflow-x-scroll
+        flex flex-col py-3 font-oswald font-light text-[1.2rem] xs:text-[1.8rem] sm:text-[2.1rem] md:text-[2.1rem] min-h-screen text-zinc-200 lg:text-[2.2rem] bg-black
+    
+        `}
       >
         <div className={`flex flex-col  ${myNameIsScreenHeight()} `}>
           <div className="flex flex-col pl-2 justify-center">
@@ -263,9 +260,8 @@ function HomePage() {
 
         {/* i am a front-end */}
 
-        {/* <div className={`flex flex-col ${screenHeight>=640 && screenWidth<475 ? "h-[17vh]" : "h-[20vh]"}  ${screenHeight>=700 && screenWidth>=475 ? "xs:h-[20vh]" :"xs:h-[20vh]" } ${screenHeight>550 &&  "h-24"} overflow-x-hidden overflow-y-hidden px-3 text-[1.4rem] text-zinc-200`}> */}
         <div
-          className={`flex flex-col ${frontEndScreenHeight()} overflow-x-hidden overflow-y-hidden px-3 text-[1.4rem] text-zinc-200`}
+          className={`flex flex-col ${frontEndScreenHeight()}  px-3 text-[1.4rem] text-zinc-200`}
         >
           <span className="">
             <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
@@ -284,14 +280,13 @@ function HomePage() {
 
         {/* planets */}
 
-        {/* <div className={`flex ${screenHeight>=640 && screenWidth<475 ? "flex-col h-[52vh] justify-between" : "justify-evenly flex-row flex-wrap" } xs:flex-row  xs:flex-wrap h-[45vh] xs:h-[35vh] items-center text-[1rem] font-orbitron lowercase xs:text-[1.17rem] sm:text-[1.4rem] lg:text-[1.75rem]`}> */}
         <div
           className={`flex ${bubbleScreenHeight()} xs:flex-row xs:flex-wrap xs:justify-evenly items-center text-[1rem] font-orbitron lowercase xs:text-[1.17rem] sm:text-[1.4rem] lg:text-[1.75rem]`}
         >
           {bubbles?.map((bubble, index) => (
             <Link
               key={index}
-              className={` ${
+              className={`  ${ 
                 screenWidth >= 475 ? "xs:w-[50%]" : "xs:w-[30%]"
               } xs:flex xs:justify-center`}
               to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
