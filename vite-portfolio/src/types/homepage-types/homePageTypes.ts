@@ -14,4 +14,7 @@ export type HomePageContextType = {
     bubbleAnimationClass: string
     setBubbleAnimationClass: React.Dispatch<React.SetStateAction<string>>
     getBubbleAnimationClass(screenWidth: number): "" | "bubble-div" | "bubble-div-xs" | "bubble-div-sm" | "bubble-div-md" | "bubble-div-lg" | "bubble-div-xl" | "bubble-div-2xl"
+    screenHeightLow: number
+    screenHeightMid: number
+    screenHeightHigh: number
 }

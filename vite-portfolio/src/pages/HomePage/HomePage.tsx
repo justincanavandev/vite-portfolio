@@ -20,6 +20,9 @@ function HomePage() {
     // boxShadowClass,
     // setBoxShadowClass,
     setBubbleAnimationClass,
+    // screenHeightLow,
+    // screenHeightMid,
+    // screenHeightHigh
   } = useContext(HomePageContext)
   const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
   const [dynamicTextHeight, setDynamicTextHeight] = useState<string>("")
@@ -37,6 +40,16 @@ function HomePage() {
   //     15500
   //   )
   // }, [])
+
+  const [screenHeightLow, setScreenHeightLow] = useState<number>(0)
+  const [screenHeightMid, setScreenHeightMid] = useState<number>(0)
+  const [screenHeightHigh, setScreenHeightHigh] = useState<number>(0)
+
+
+
+
+  console.log("screenHeight", screenHeight)
+  console.log("screenWidth", screenWidth)
 
   useEffect(() => {
     const setDivHeight = () => {
@@ -99,119 +112,192 @@ function HomePage() {
     }
   }
 
+
   function myNameIsScreenHeight() {
     //reg
-    if (screenHeight < 520 && screenWidth < 475) {
+    if (screenHeight <= screenHeightLow && screenWidth < 475) {
       return "h-24"
     }
 
     if (
-      screenHeight >= 520 &&
-      screenHeight < 650 &&
-      screenWidth >= 320 &&
+      screenHeight >= screenHeightLow &&
+      screenHeight < screenHeightMid &&
       screenWidth < 475
     ) {
       return "h-[18vh]"
     }
 
-    if (screenHeight >= 650 && screenWidth >= 320 && screenWidth < 475) {
+    if (
+      screenHeight >= screenHeightMid &&
+      screenWidth < 475
+    ) {
       return "h-[16vh]"
     }
 
     //xs
 
-    if (screenHeight <= 550 && screenWidth >= 475 && screenWidth < 640) {
-      return "xs:h-32"
+    if (
+      screenHeight < screenHeightLow &&
+      screenWidth >= 475
+    ) {
+      return "xs:h-32 sm:h-40 md:h-32 lg:h-40"
     }
 
     if (
-      screenHeight < 650 &&
-      screenHeight > 550 &&
-      screenWidth >= 475 &&
-      screenWidth < 640
+      screenHeight < screenHeightMid &&
+      screenHeight >= screenHeightLow &&
+      screenWidth >= 475
+
     ) {
-      return "xs:h-[22vh]"
+      return "xs:h-[22vh] sm:h-[28vh] md:h-[24vh] lg:h-[30vh]"
     }
 
-    if (screenHeight >= 650 && screenWidth >= 475 && screenWidth < 640) {
-      return "xs:h-[20vh]"
+    if (
+      screenHeight >= screenHeightMid &&
+      screenWidth >= 475
+    ) {
+      return "xs:h-[22vh] sm:h-[24vh] md:h-[25vh] lg:h-[29vh]"
     }
   }
 
   function frontEndScreenHeight() {
     // reg
-    if (screenHeight < 520 && screenWidth < 475) {
+    if (screenHeight <= screenHeightLow && screenWidth < 475) {
       return "h-[7rem]"
     }
 
-    if (screenHeight >= 520 && screenWidth >= 320 && screenWidth < 475) {
+    if (
+      screenHeight >= screenHeightLow &&
+      screenWidth < 475
+    ) {
       return "h-[7.5rem]"
+    }
+
+    if (
+      screenHeight >= screenHeightMid &&
+      screenWidth < 475
+    ) {
+      return "h-[19vh]"
     }
 
     // xs
 
-    if (screenHeight <= 550 && screenWidth >= 475 && screenWidth < 640) {
-      return "h-[7.4rem]"
+    if (
+      screenHeight < screenHeightLow &&
+      screenWidth >= 475
+
+    ) {
+      return "h-[7.4rem] sm:h-[8.5rem] md:h-[7.7rem] lg:h-[8.5rem]"
     }
 
-    if (screenHeight >= 550 && screenWidth >= 475 && screenWidth < 640) {
-      return "h-[20vh]"
+    if (
+      screenHeight >= screenHeightLow &&
+      screenHeight < screenHeightMid &&
+      screenWidth >= 475
+ 
+    ) {
+      return "h-[20vh] sm:h-[18vh] md:h-[21vh]"
     }
 
-    // if (screenHeight > 550 && screenWidth >= 475 && screenWidth < 640) {
-    //   return "h-[20vh]"
-    // }
-
-    if (screenHeight >= 650 && screenWidth < 475 && screenWidth < 640) {
-      return "h-[19vh]"
+    if (screenHeight >= screenHeightMid && screenWidth >= 475) {
+      return "xs:h-[20vh] md:h-[22vh] lg:h-[20vh]"
     }
-    // if (screenHeight >= 650 && screenWidth >= 475 && screenWidth < 640) {
-    //   return "xs:h-[22vh]"
-    // }
-    // if (screenHeight < 650 && screenHeight > 550 && screenWidth >= 475) {
-    //   return "xs:h-[26vh]"
-    // }
+
   }
-
-  console.log("screenHeight", screenHeight)
-  console.log("screenWidth", screenWidth)
 
   function bubbleScreenHeight() {
     //reg
 
-    if (screenHeight <= 520 && screenWidth < 475) {
-      return "h-[14rem] flex flex-wrap justify-evenly min-w-[320px]"
+    if (screenHeight <= screenHeightLow && screenWidth < 475) {
+      return "h-[14rem] flex flex-wrap justify-evenly overflow-y-scroll"
     }
 
     if (
-      screenHeight >= 520 &&
-      screenHeight < 650 &&
-      screenWidth >= 320 &&
+      screenHeight >= screenHeightLow &&
+      screenHeight < screenHeightMid &&
+
       screenWidth < 475
     ) {
       return "justify-around h-[46vh] flex flex-row flex-wrap"
     }
-    if (screenHeight >= 650 && screenWidth >= 320 && screenWidth < 475) {
+    if (
+      screenHeight >= screenHeightMid &&
+      screenWidth < 475
+    ) {
       return "flex-col h-[52vh] justify-between"
     }
 
     //xs
 
-    if (screenHeight <= 550 && screenWidth >= 475 && screenWidth < 640) {
-      return "flex-wrap justify-evenly"
+    if (
+      screenHeight < screenHeightLow &&
+      screenWidth >= 475
+
+    ) {
+      return "flex-wrap justify-evenly "
     }
 
     if (
-      screenHeight < 650 &&
-      screenHeight >= 550 &&
-      screenWidth >= 475 &&
-      screenWidth < 640
+
+      screenHeight >= screenHeightLow &&
+      screenWidth >= 475
+
     ) {
-      return "xs:h-[47vh]"
+      return "xs:h-[44vh] sm:h-[40vh] md:h-[36vh]"
     }
-    if (screenHeight >= 650 && screenWidth >= 475 && screenWidth < 640) {
-      return "xs:h-[45vh]"
+
+  }
+
+  const [iconHeight, setIconHeight] = useState<number>(0)
+  console.log("iconHeight", iconHeight)
+
+  console.log('screenHeightLow', screenHeightLow)
+
+  useEffect(() => {
+    if (screenWidth < 475) {
+      setIconHeight(520)
+      setScreenHeightLow(520)
+      setScreenHeightMid(650)
+      
     }
+    if (screenWidth >= 475 && screenWidth < 640) {
+      setIconHeight(550)
+      setScreenHeightLow(550)
+      setScreenHeightMid(650)
+    }
+    if (screenWidth < 768 && screenWidth >= 640) {
+      setIconHeight(550)
+      setScreenHeightLow(550)
+      setScreenHeightMid(600)
+    }
+
+    if (screenWidth < 1024 && screenWidth >= 768) {
+      setIconHeight(550)
+      setScreenHeightLow(550)
+      setScreenHeightMid(600)
+    }
+    if (screenWidth >= 1024) {
+      setIconHeight(550)
+      setScreenHeightLow(550)
+      setScreenHeightMid(600)
+    }
+   
+  }, [screenWidth])
+
+  function iconView() {
+    if (screenHeight >= iconHeight && screenWidth >= 320) {
+      return "absolute bottom-2.5 left-0 right-0"
+    }
+    if (screenHeight < iconHeight && screenWidth >= 320) {
+      return "h-[52px] items-end sm:h-[90px] md:h-[52px] lg:h-[70px] lg:mb-2"
+    }
+    if (screenHeight >= iconHeight && screenWidth < 320) {
+      return "h-[8vh] flex items-end mb-[10px]"
+    }
+    if (screenHeight < iconHeight && screenWidth < 320) {
+      return "h-[60px] items-end w-full"
+    }
+ 
   }
 
   useEffect(() => {
@@ -241,18 +327,19 @@ function HomePage() {
   return (
     <>
       <div
-        className={`whitespace-nowrap overflow-x-scroll
-        flex flex-col py-3 font-oswald font-light text-[1.2rem] xs:text-[1.8rem] sm:text-[2.1rem] md:text-[2.1rem] min-h-screen text-zinc-200 lg:text-[2.2rem] bg-black
+        className={`whitespace-nowrap min-h-screen text-zinc-200 relative overflow-x-auto bg-black
+        flex flex-col py-3 font-oswald font-light text-[1.2rem] xs:text-[1.8rem] sm:text-[2.1rem] md:text-[2.1rem] md:py-0 lg:text-[2.2rem] 
     
         `}
       >
+        <div className="md:w-[58%] md:pt-3 md:flex md:flex-col lg:w-[70%]">
         <div className={`flex flex-col  ${myNameIsScreenHeight()} `}>
           <div className="flex flex-col pl-2 justify-center">
             <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
               <span className="hi">Hi!&nbsp;</span>
               <span className="my-name-is pl-[.02rem]">My name is</span>
             </h2>
-            <span className="justin-canavan font-shadows text-white text-[2.6rem] xs:text-[3.5rem] sm:text-[4rem] md:text-[4.4rem]">
+            <span className="justin-canavan font-shadows text-white text-[2.6rem] xs:text-[4rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[4.2rem]">
               Justin Canavan
             </span>
           </div>
@@ -265,13 +352,13 @@ function HomePage() {
         >
           <span className="">
             <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
-              i am a{/* {screenWidth < 475 ? "" : "\u00A0"} */}
+              i am a
             </span>
           </span>
 
           <div className="dynamic-text flex ml-[4vw]" ref={dynamicTextRef}>
             <span className="front-end-dev items-center rounded-md">
-              <span className="dynamic-text text-white font-majorMono font-bold word-1 text-[1.15rem] xs:text-[1.4rem] sm:text-[1.55rem] md:text-[1.75rem]">
+              <span className="dynamic-text text-white font-majorMono font-bold word-1 text-[1.15rem] xs:text-[1.4rem] sm:text-[1.55rem] md:text-[1.5rem] lg:text-[1.8rem]">
                 front-end developer
               </span>
             </span>
@@ -281,24 +368,26 @@ function HomePage() {
         {/* planets */}
 
         <div
-          className={`flex ${bubbleScreenHeight()} xs:flex-row xs:flex-wrap xs:justify-evenly items-center text-[1rem] font-orbitron lowercase xs:text-[1.17rem] sm:text-[1.4rem] lg:text-[1.75rem]`}
+          className={`flex min-w-[320px] ${bubbleScreenHeight()} xs:flex-row xs:flex-wrap xs:justify-evenly items-center text-[1rem] font-orbitron lowercase xs:text-[1.17rem] sm:text-[1.4rem] md:text-[1.3rem] lg:text-[1.5rem]`}
         >
           {bubbles?.map((bubble, index) => (
             <Link
               key={index}
-              className={`  ${ 
-                screenWidth >= 475 ? "xs:w-[50%]" : "xs:w-[30%]"
+              className={` ${
+                screenWidth >= 475
+                  ? ` ${screenHeight < 600 ? "xs:w-[35%] sm:w-[30%] lg:w-[20%]" : "xs:w-[50%]"} md:w-[50%] lg:w-[30%]`
+                  : ""
               } xs:flex xs:justify-center`}
               to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
             >
-              <div className={`${selectBubbleAnimation(index)} mx-[1.44rem]`}>
+              <div className={`${selectBubbleAnimation(index)} mx-[1.44rem] xs:mx-[1.7rem] `}>
                 <div
                   className={` ${bubbleAnimation(
                     index
-                  )} w-28 h-24 xs:w-32 xs:h-28 sm:w-36 sm:h-32 md:w-40 md:h-36 lg:w-44 lg:h-40 relative text-white`}
+                  )} w-28 h-24 xs:w-32 xs:h-28 sm:w-36 sm:h-32  md:w-32 md:h-28 lg:w-40 lg:h-36 relative text-white`}
                 ></div>
                 <p
-                  className={`absolute top-[2.12rem] xs:top-[2.57rem] sm:top-[2.75rem] md:top-[3.23rem] lg:top-[3.5rem] ${bubbleTextAnimation(
+                  className={`absolute top-[2.12rem] xs:top-[2.57rem] sm:top-[2.75rem] md:top-[2.4rem] lg:top-[3.3rem] ${bubbleTextAnimation(
                     index
                   )} text-transparent
                 ${bubble.leftClass} ${bubble.leftSm} ${bubble.leftMd} ${
@@ -312,14 +401,22 @@ function HomePage() {
             </Link>
           ))}
         </div>
+        </div>
 
         {/* icons */}
-
-        <div className="flex text-center absolute bottom-2 left-0 right-0 justify-center">
+        <div className={`${screenHeight>=iconHeight && screenWidth<320 ? "flex flex-col absolute bottom-0 w-full justify-end min-w-[320px]" : "" }`}>
+                  
+        <div
+          className={`flex mt-3 justify-center
+        
+        ${iconView()}
+        
+        `}
+        >
           {icons.map((icon, index) => (
             <div
               key={index}
-              className={`mx-3 text-transparent text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5 ${iconSelectAnimation(
+              className={`mx-3 text-transparent text text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5 ${iconSelectAnimation(
                 index
               )}`}
             >
@@ -329,6 +426,14 @@ function HomePage() {
         </div>
         {/* <ColorPicker /> */}
       </div>
+      
+      {/* <div className="hidden md:flex w-[62%] md:justify-end ">
+        <div className="md:w-[70%] bg-teal-gradient rounded-l-[85%] ">
+         
+        </div>
+      </div> */}
+      </div>
+  
     </>
   )
 }
