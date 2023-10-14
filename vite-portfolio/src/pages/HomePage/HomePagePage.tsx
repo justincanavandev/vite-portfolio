@@ -37,8 +37,7 @@ export default function HomePagePage() {
   const [boxShadowClass, setBoxShadowClass] = useState<string>("")
   const [screenHeightLow, setScreenHeightLow] = useState<number>(0)
   const [screenHeightMid, setScreenHeightMid] = useState<number>(0)
-  const [screenHeightHigh, setScreenHeightHigh] = useState<number>(0)
-  
+
 
   const [bubbleAnimationClass, setBubbleAnimationClass] = useState<string>(
     () => {
@@ -87,7 +86,7 @@ export default function HomePagePage() {
           getBubbleAnimationClass,
           screenHeightLow,
           screenHeightMid,
-          screenHeightHigh
+       
         }}
       >
         <HomePage />

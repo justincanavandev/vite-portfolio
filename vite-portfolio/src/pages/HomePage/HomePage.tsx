@@ -15,38 +15,12 @@ function HomePage() {
 
   const icons = [faLinkedin, faGithub, faEnvelope]
 
-  const {
-    bubbles,
-    // boxShadowClass,
-    // setBoxShadowClass,
-    setBubbleAnimationClass,
-    // screenHeightLow,
-    // screenHeightMid,
-    // screenHeightHigh
-  } = useContext(HomePageContext)
+  const { bubbles, setBubbleAnimationClass } = useContext(HomePageContext)
   const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
   const [dynamicTextHeight, setDynamicTextHeight] = useState<string>("")
 
-  //og is 2500, just add that to whatever number pickABubbleStart is
-
-  // useEffect(() => {
-  //   setTimeout(
-  //     () => {
-  //       setBoxShadowClass(
-  //         "0px 10px 20px rgba(100, 255, 255, 0.7), 0px -5px 25px rgba(100, 255, 255, 0.7)"
-  //       )
-  //     },
-  //     // 2500
-  //     15500
-  //   )
-  // }, [])
-
   const [screenHeightLow, setScreenHeightLow] = useState<number>(0)
   const [screenHeightMid, setScreenHeightMid] = useState<number>(0)
-  const [screenHeightHigh, setScreenHeightHigh] = useState<number>(0)
-
-
-
 
   console.log("screenHeight", screenHeight)
   console.log("screenWidth", screenWidth)
@@ -112,7 +86,6 @@ function HomePage() {
     }
   }
 
-
   function myNameIsScreenHeight() {
     //reg
     if (screenHeight <= screenHeightLow && screenWidth < 475) {
@@ -127,19 +100,13 @@ function HomePage() {
       return "h-[18vh]"
     }
 
-    if (
-      screenHeight >= screenHeightMid &&
-      screenWidth < 475
-    ) {
+    if (screenHeight >= screenHeightMid && screenWidth < 475) {
       return "h-[16vh]"
     }
 
     //xs
 
-    if (
-      screenHeight < screenHeightLow &&
-      screenWidth >= 475
-    ) {
+    if (screenHeight < screenHeightLow && screenWidth >= 475) {
       return "xs:h-32 sm:h-40 md:h-32 lg:h-40"
     }
 
@@ -147,15 +114,11 @@ function HomePage() {
       screenHeight < screenHeightMid &&
       screenHeight >= screenHeightLow &&
       screenWidth >= 475
-
     ) {
       return "xs:h-[22vh] sm:h-[28vh] md:h-[24vh] lg:h-[30vh]"
     }
 
-    if (
-      screenHeight >= screenHeightMid &&
-      screenWidth >= 475
-    ) {
+    if (screenHeight >= screenHeightMid && screenWidth >= 475) {
       return "xs:h-[22vh] sm:h-[24vh] md:h-[25vh] lg:h-[29vh]"
     }
   }
@@ -166,27 +129,17 @@ function HomePage() {
       return "h-[7rem]"
     }
 
-    if (
-      screenHeight >= screenHeightLow &&
-      screenWidth < 475
-    ) {
+    if (screenHeight >= screenHeightLow && screenWidth < 475) {
       return "h-[7.5rem]"
     }
 
-    if (
-      screenHeight >= screenHeightMid &&
-      screenWidth < 475
-    ) {
+    if (screenHeight >= screenHeightMid && screenWidth < 475) {
       return "h-[19vh]"
     }
 
     // xs
 
-    if (
-      screenHeight < screenHeightLow &&
-      screenWidth >= 475
-
-    ) {
+    if (screenHeight < screenHeightLow && screenWidth >= 475) {
       return "h-[7.4rem] sm:h-[8.5rem] md:h-[7.7rem] lg:h-[8.5rem]"
     }
 
@@ -194,7 +147,6 @@ function HomePage() {
       screenHeight >= screenHeightLow &&
       screenHeight < screenHeightMid &&
       screenWidth >= 475
- 
     ) {
       return "h-[20vh] sm:h-[18vh] md:h-[21vh]"
     }
@@ -202,7 +154,6 @@ function HomePage() {
     if (screenHeight >= screenHeightMid && screenWidth >= 475) {
       return "xs:h-[20vh] md:h-[22vh] lg:h-[20vh]"
     }
-
   }
 
   function bubbleScreenHeight() {
@@ -215,50 +166,33 @@ function HomePage() {
     if (
       screenHeight >= screenHeightLow &&
       screenHeight < screenHeightMid &&
-
       screenWidth < 475
     ) {
       return "justify-around h-[46vh] flex flex-row flex-wrap"
     }
-    if (
-      screenHeight >= screenHeightMid &&
-      screenWidth < 475
-    ) {
+    if (screenHeight >= screenHeightMid && screenWidth < 475) {
       return "flex-col h-[52vh] justify-between"
     }
 
     //xs
 
-    if (
-      screenHeight < screenHeightLow &&
-      screenWidth >= 475
-
-    ) {
+    if (screenHeight < screenHeightLow && screenWidth >= 475) {
       return "flex-wrap justify-evenly "
     }
 
-    if (
-
-      screenHeight >= screenHeightLow &&
-      screenWidth >= 475
-
-    ) {
+    if (screenHeight >= screenHeightLow && screenWidth >= 475) {
       return "xs:h-[44vh] sm:h-[40vh] md:h-[36vh]"
     }
-
   }
 
   const [iconHeight, setIconHeight] = useState<number>(0)
-  console.log("iconHeight", iconHeight)
 
-  console.log('screenHeightLow', screenHeightLow)
 
   useEffect(() => {
     if (screenWidth < 475) {
       setIconHeight(520)
       setScreenHeightLow(520)
       setScreenHeightMid(650)
-      
     }
     if (screenWidth >= 475 && screenWidth < 640) {
       setIconHeight(550)
@@ -281,7 +215,6 @@ function HomePage() {
       setScreenHeightLow(550)
       setScreenHeightMid(600)
     }
-   
   }, [screenWidth])
 
   function iconView() {
@@ -297,7 +230,6 @@ function HomePage() {
     if (screenHeight < iconHeight && screenWidth < 320) {
       return "h-[60px] items-end w-full"
     }
- 
   }
 
   useEffect(() => {
@@ -333,107 +265,120 @@ function HomePage() {
         `}
       >
         <div className="md:w-[58%] md:pt-3 md:flex md:flex-col lg:w-[70%]">
-        <div className={`flex flex-col  ${myNameIsScreenHeight()} `}>
-          <div className="flex flex-col pl-2 justify-center">
-            <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
-              <span className="hi">Hi!&nbsp;</span>
-              <span className="my-name-is pl-[.02rem]">My name is</span>
-            </h2>
-            <span className="justin-canavan font-shadows text-white text-[2.6rem] xs:text-[4rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[4.2rem]">
-              Justin Canavan
-            </span>
+          <div className={`flex flex-col  ${myNameIsScreenHeight()} `}>
+            <div className="flex flex-col pl-2 justify-center">
+              <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
+                <span className="hi">Hi!&nbsp;</span>
+                <span className="my-name-is pl-[.02rem]">My name is</span>
+              </h2>
+              <span className="justin-canavan font-shadows text-white text-[2.6rem] xs:text-[4rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[4.2rem]">
+                Justin Canavan
+              </span>
+            </div>
           </div>
-        </div>
 
-        {/* i am a front-end */}
+          {/* i am a front-end */}
 
-        <div
-          className={`flex flex-col ${frontEndScreenHeight()}  px-3 text-[1.4rem] text-zinc-200`}
-        >
-          <span className="">
-            <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
-              i am a
-            </span>
-          </span>
-
-          <div className="dynamic-text flex ml-[4vw]" ref={dynamicTextRef}>
-            <span className="front-end-dev items-center rounded-md">
-              <span className="dynamic-text text-white font-majorMono font-bold word-1 text-[1.15rem] xs:text-[1.4rem] sm:text-[1.55rem] md:text-[1.5rem] lg:text-[1.8rem]">
-                front-end developer
+          <div
+            className={`flex flex-col ${frontEndScreenHeight()}  px-3 text-[1.4rem] text-zinc-200`}
+          >
+            <span className="">
+              <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
+                i am a
               </span>
             </span>
+
+            <div className="dynamic-text flex ml-[4vw]" ref={dynamicTextRef}>
+              <span className="front-end-dev items-center rounded-md">
+                <span className="dynamic-text text-white font-majorMono font-bold word-1 text-[1.15rem] xs:text-[1.4rem] sm:text-[1.55rem] md:text-[1.5rem] lg:text-[1.8rem]">
+                  front-end developer
+                </span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        {/* planets */}
+          {/* planets */}
 
-        <div
-          className={`flex min-w-[320px] ${bubbleScreenHeight()} xs:flex-row xs:flex-wrap xs:justify-evenly items-center text-[1rem] font-orbitron lowercase xs:text-[1.17rem] sm:text-[1.4rem] md:text-[1.3rem] lg:text-[1.5rem]`}
-        >
-          {bubbles?.map((bubble, index) => (
-            <Link
-              key={index}
-              className={` ${
-                screenWidth >= 475
-                  ? ` ${screenHeight < 600 ? "xs:w-[35%] sm:w-[30%] lg:w-[20%]" : "xs:w-[50%]"} md:w-[50%] lg:w-[30%]`
-                  : ""
-              } xs:flex xs:justify-center`}
-              to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
-            >
-              <div className={`${selectBubbleAnimation(index)} mx-[1.44rem] xs:mx-[1.7rem] `}>
+          <div
+            className={`flex min-w-[320px] ${bubbleScreenHeight()} xs:flex-row xs:flex-wrap xs:justify-evenly items-center text-[1rem] font-orbitron lowercase xs:text-[1.17rem] sm:text-[1.4rem] md:text-[1.3rem] lg:text-[1.5rem]`}
+          >
+            {bubbles?.map((bubble, index) => (
+              <Link
+                key={index}
+                className={` ${
+                  screenWidth >= 475
+                    ? ` ${
+                        screenHeight < 600
+                          ? "xs:w-[35%] sm:w-[30%] lg:w-[20%]"
+                          : "xs:w-[50%]"
+                      } md:w-[50%] lg:w-[30%]`
+                    : ""
+                } xs:flex xs:justify-center`}
+                to={`/${bubble.title.toLowerCase().replace(" ", "-")}`}
+              >
                 <div
-                  className={` ${bubbleAnimation(
+                  className={`${selectBubbleAnimation(
                     index
-                  )} w-28 h-24 xs:w-32 xs:h-28 sm:w-36 sm:h-32  md:w-32 md:h-28 lg:w-40 lg:h-36 relative text-white`}
-                ></div>
-                <p
-                  className={`absolute top-[2.12rem] xs:top-[2.57rem] sm:top-[2.75rem] md:top-[2.4rem] lg:top-[3.3rem] ${bubbleTextAnimation(
-                    index
-                  )} text-transparent
-                ${bubble.leftClass} ${bubble.leftSm} ${bubble.leftMd} ${
-                    bubble.leftLg
-                  }
-                  `}
+                  )} mx-[1.44rem] xs:mx-[1.7rem] `}
                 >
-                  {bubble.title}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
+                  <div
+                    className={` ${bubbleAnimation(
+                      index
+                    )} w-28 h-24 xs:w-32 xs:h-28 sm:w-36 sm:h-32  md:w-32 md:h-28 lg:w-40 lg:h-36 relative text-white`}
+                  ></div>
+                  <p
+                    className={`absolute top-[2.12rem] xs:top-[2.57rem] sm:top-[2.75rem] md:top-[2.4rem] lg:top-[3.3rem] ${bubbleTextAnimation(
+                      index
+                    )} text-transparent
+                ${bubble.leftClass} ${bubble.leftSm} ${bubble.leftMd} ${
+                      bubble.leftLg
+                    }
+                  `}
+                  >
+                    {bubble.title}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* icons */}
-        <div className={`${screenHeight>=iconHeight && screenWidth<320 ? "flex flex-col absolute bottom-0 w-full justify-end min-w-[320px]" : "" }`}>
-                  
         <div
-          className={`flex mt-3 justify-center
+          className={`${
+            screenHeight >= iconHeight && screenWidth < 320
+              ? "flex flex-col absolute bottom-0 w-full justify-end min-w-[320px]"
+              : ""
+          }`}
+        >
+          <div
+            className={`flex mt-3 justify-center
         
         ${iconView()}
         
         `}
-        >
-          {icons.map((icon, index) => (
-            <div
-              key={index}
-              className={`mx-3 text-transparent text text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5 ${iconSelectAnimation(
-                index
-              )}`}
-            >
-              <FontAwesomeIcon className="z-10" size="lg" icon={icon} />
-            </div>
-          ))}
+          >
+            
+            {icons.map((icon, index) => (
+              <div
+                key={index}
+                className={`mx-3 text-transparent text text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5 ${iconSelectAnimation(
+                  index
+                )}`}
+              >
+                <FontAwesomeIcon className="z-10" size="lg" icon={icon} />
+              </div>
+            ))}
+          </div>
+          {/* <ColorPicker /> */}
         </div>
-        {/* <ColorPicker /> */}
-      </div>
-      
-      {/* <div className="hidden md:flex w-[62%] md:justify-end ">
+
+        {/* <div className="hidden md:flex w-[62%] md:justify-end ">
         <div className="md:w-[70%] bg-teal-gradient rounded-l-[85%] ">
          
         </div>
       </div> */}
       </div>
-  
     </>
   )
 }

@@ -10,5 +10,7 @@ export type GlobalContextType = {
   screenHeight: number
   setScreenHeight: React.Dispatch<React.SetStateAction<number>>
   ColorPicker: () => JSX.Element
+  isModalOpen: boolean
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 
 }

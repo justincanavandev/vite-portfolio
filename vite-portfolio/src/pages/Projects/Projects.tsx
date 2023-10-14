@@ -9,7 +9,7 @@ import "../../projects.css"
 import { Link } from "react-router-dom"
 
 export default function Projects() {
-  // const { componentHeight, ColorPicker } = useContext(GlobalContext)
+  const { screenWidth, isModalOpen } = useContext(GlobalContext)
 
   const {
     showProjectDetails,
@@ -43,27 +43,23 @@ export default function Projects() {
     }
   }, [])
 
-  useEffect(() => {
-    console.log("beforeBorderRight", beforeBorderRight)
-  }, [beforeBorderRight])
-
-  useEffect(() => {
-    console.log("featuredProject", featuredProject)
-    console.log("showProjectDetails", showProjectDetails)
-    console.log("closeAnimation", closeAnimation)
-    console.log("imgOpacityClass", imgOpacityClass)
-  }, [featuredProject, showProjectDetails, closeAnimation, imgOpacityClass])
+  // useEffect(() => {
+  //   console.log("featuredProject", featuredProject)
+  //   console.log("showProjectDetails", showProjectDetails)
+  //   console.log("closeAnimation", closeAnimation)
+  //   console.log("imgOpacityClass", imgOpacityClass)
+  // }, [featuredProject, showProjectDetails, closeAnimation, imgOpacityClass])
 
   return (
     <>
-      <div className="flex flex-col bg-black min-h-screen">
+      <div className={`flex flex-col overflow-x-scroll bg-black min-h-screen pb-6 ${isModalOpen && "filter brightness-[40%]"}`}>
         <div className="flex font-kanit text-white flex-col sm:flex-row sm:flex-wrap sm:justify-start sm:pl-4">
           {/* Projects */}
 
           {projects.map((project: Project, index: number) => (
             <div
               key={index}
-              className="flex w-[85%] h-[30%] xs:w-[64%] sm:w-[48%] sm:ml-0 sm:mr-0 mx-auto pt-6 pl-3 z-40"
+              className={`flex ${screenWidth>=320 ? "w-[85%]" : "w-[320px] pr-3"}  h-[30%] mx-auto pt-6 pl-3 z-40 xs:w-[64%] sm:w-[48%] sm:ml-0 sm:mr-0`}
             >
               <div
                 className={`before:rounded-l-md before:z-50 h-40 w-32 z-40 relative img-border text-[.8rem] xs:h-44 xs:w-36 md:h-52 md:w-40 lg:h-64 lg:w-48  before:${beforeRounded}  ${

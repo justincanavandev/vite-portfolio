@@ -34,6 +34,7 @@ function App() {
 
   return (
     <>
+    {/* <div> */}
       {location.pathname === "/" ? null : <Nav navBarRef={navBarRef} />}
       <Routes>
         <Route path="/" element={<HomePagePage />} />
@@ -42,6 +43,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/resume" element={<Resume />} />
       </Routes>
+      {/* </div> */}
     </>
   )
 }
