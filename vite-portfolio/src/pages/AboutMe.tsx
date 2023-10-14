@@ -18,11 +18,7 @@ export default function AboutMe() {
     icon: string
   }
 
-  const skills: Skill[] = [
-    {
-      title: "React",
-      icon: "devicon-react-original colored",
-    },
+  const languagesAndTools: Skill[] = [
     {
       title: "TypeScript",
       icon: "devicon-typescript-plain colored",
@@ -31,17 +27,10 @@ export default function AboutMe() {
       title: "JavaScript",
       icon: "devicon-javascript-plain colored",
     },
-    {
-      title: "TailwindCSS",
-      icon: "devicon-tailwindcss-plain colored",
-    },
+
     {
       title: "NodeJS",
       icon: "devicon-nodejs-plain colored",
-    },
-    {
-      title: "Handlebars.js",
-      icon: "devicon-handlebars-plain",
     },
     {
       title: "JQuery",
@@ -58,47 +47,112 @@ export default function AboutMe() {
     },
   ]
 
+  const librariesAndFrameworks: Skill[] = [
+    {
+      title: "React.js",
+      icon: "devicon-react-original colored",
+    },
+    {
+      title: "TailwindCSS",
+      icon: "devicon-tailwindcss-plain colored",
+    },
+    {
+      title: "Handlebars.js",
+      icon: "devicon-handlebars-plain",
+    },
+  ]
+
   const [displayIconTitle, setDisplayIconTitle] = useState(false)
 
-  const [iconIndex, setIconIndex] = useState<number>(0)
+  // const [iconIndex, setIconIndex] = useState<number>(0)
 
-  const iconTitle = (index: number) => {
-    setIconIndex(index)
+  const [displayedIcon, setDisplayedIcon] = useState("")
+
+  const iconTitle = (displayed: string) => {
+    setDisplayedIcon(displayed)
+    // setIconIndex(index)
     setDisplayIconTitle(true)
+  }
+
+  const containsDisplayedIcon = (skills: Skill[]) => {
+    const hoveredSkill = skills.find((skill) => skill.title === displayedIcon)
+
+    if (hoveredSkill) {
+      return true
+    } else {
+      return false
+    }
   }
 
   return (
     <>
       <div
-        className={`w-full pt-4 bg-black min-h-screen flex text-white ${
+        className={`w-full pl-2 pt-4 bg-black font-oswald min-h-screen flex text-white ${
           isModalOpen && "filter brightness-[40%]"
         }`}
         style={{ height: componentHeight }}
       >
-        <div>
-          <h2 className="text-[3rem] ml-4">Skills</h2>
-          <div className="flex px-2 flex-wrap">
-            {skills.map((skill, index) => (
-              <>
-                <div key={index} className="flex flex-col">
-                  <div
-                    onMouseOver={() => iconTitle(index)}
-                    onMouseOut={() => setDisplayIconTitle(false)}
-                    className="px-1"
-                  >
-                    <i
-                      className={`${skill.icon} hover:border text-[1.5rem] p-[1px] relative `}
-                    ></i>
-                  </div>
+        <div className="flex flex-col gap-8">
+          <h2 className="text-[3rem] uppercase">Skills</h2>
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-between items-center">
+              <h3 className="text-[1rem] uppercase">Languages and Tools </h3>
+              {displayIconTitle && containsDisplayedIcon(languagesAndTools) && (
+                <span className="pr-[.8rem] text-[1.2rem]">
+                  {displayedIcon}
+                </span>
+              )}
+            </div>
 
-                  {displayIconTitle && (
-                    <p className="absolute top-[9rem]">
-                      {index === iconIndex ? skill.title : ""}
-                    </p>
+            <div className="flex pr-2 flex-wrap">
+              {languagesAndTools.map((tool, langIndex) => (
+                <>
+                  <div key={langIndex} className="flex flex-col relative">
+                    <div className="px-1">
+                      <i
+                        onMouseOver={() => iconTitle(tool.title)}
+                        onMouseOut={() => setDisplayIconTitle(false)}
+                        className={`${tool.icon} hover:border rounded-sm text-[2.3rem] p-[1px] relative `}
+                      ></i>
+                    </div>
+                  </div>
+                </>
+              ))}
+            </div>
+          </div>
+          <div className="flex-col">
+            <div className="flex flex-col gap-4">
+              <div className="flex justify-between items-center">
+                <h3 className="text-[1rem] uppercase">
+                  Libraries and Frameworks{" "}
+                </h3>
+                {displayIconTitle &&
+                  containsDisplayedIcon(librariesAndFrameworks) && (
+                    <span className="pl-4 text-[1.2rem]">{displayedIcon}</span>
                   )}
-                </div>
-              </>
-            ))}
+              </div>
+              <div className="flex">
+                {librariesAndFrameworks.map((library, libIndex) => (
+                  <>
+                    <div key={libIndex} className="flex flex-col relative">
+                      <div className="px-1 flex ">
+                        <i
+                          onMouseOver={() => iconTitle(library.title)}
+                          onMouseOut={() => setDisplayIconTitle(false)}
+                          className={`${library.icon} hover:border rounded-sm text-[2.3rem] p-[1px] relative`}
+                        ></i>
+                      </div>
+
+                      {/* {displayIconTitle && (
+                        <p className="absolute top-[2.5rem]">
+                          {displayedIcon === library.title && library.title}
+                        </p>
+                      )} */}
+                    </div>
+                  </>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
