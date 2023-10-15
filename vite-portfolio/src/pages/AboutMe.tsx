@@ -45,6 +45,10 @@ export default function AboutMe() {
       title: "HTML5",
       icon: "devicon-html5-plain colored",
     },
+    {
+      title: "Github",
+      icon: "devicon-github-original",
+    },
   ]
 
   const librariesAndFrameworks: Skill[] = [
