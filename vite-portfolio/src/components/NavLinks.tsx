@@ -1,15 +1,23 @@
-import { NavLink } from 'react-router-dom'
+import { useContext } from "react"
+import { GlobalContext } from "../context/GlobalContext"
+import { NavLink } from "react-router-dom"
 
 export default function NavLinks() {
-    return (
-    
-        <div className="gap-2 items-end flex justify-evenly ml-auto mr-2">
-            
-        <NavLink to="/about-me">About Me</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
-        <NavLink to="/projects">Projects</NavLink>
-        <NavLink to="/resume">Resume</NavLink>
-        </div>
-    
-    )
+  const projectLinks = ["/about-me", "/contact", "/projects"]
+  const { isModalOpen, setIsModalOpen } = useContext(GlobalContext)
+
+  return (
+    <>
+      {projectLinks.map((link, index) => (
+        <NavLink
+          key={index}
+          className="capitalize font-oswald z-10"
+          to={link}
+          onClick={() => isModalOpen === true && setIsModalOpen(false)}
+        >
+          {link.slice(1).replace("-", " ")}
+        </NavLink>
+      ))}
+    </>
+  )
 }

@@ -9,7 +9,8 @@ import { ColorResult, ChromePicker, Color } from "react-color"
 function Root() {
   const [componentHeight, setComponentHeight] = useState<string>("")
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth)
-  const [urlName, setUrlName] = useState<string>("/")
+  const [screenHeight, setScreenHeight] = useState<number>(window.innerHeight)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   const ColorPicker = () => {
     const [color, setColor] = useState<Color>({ r: 0, g: 0, b: 0 })
@@ -46,6 +47,7 @@ function Root() {
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth)
+      setScreenHeight(window.innerHeight)
     }
 
     window.addEventListener("resize", handleResize)
@@ -65,7 +67,10 @@ function Root() {
             screenWidth,
             setScreenWidth,
             ColorPicker,
-      
+            screenHeight,
+            setScreenHeight,
+            isModalOpen,
+            setIsModalOpen,
           }}
         >
           <App />
