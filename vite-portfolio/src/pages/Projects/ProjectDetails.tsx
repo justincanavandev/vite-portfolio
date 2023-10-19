@@ -32,12 +32,9 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
 
   const [closingOrOpening, setClosingOrOpening] = useState<boolean>(false)
 
-  console.log("animationClassAct", animationClassActive)
-
   const nextBtn = () => {
-     setClosingOrOpening(true)
+    setClosingOrOpening(true)
     setAnimationClassActive(true)
-   
 
     setTimeout(() => {
       if (firstImage === imagesLength) {
@@ -59,11 +56,11 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
         })
       }, 1)
     }, 500)
-    setTimeout(() => {
-      setAnimationClassActive((prevState) => {
-        return !prevState
-      })
-    }, 1)
+    // setTimeout(() => {
+    setAnimationClassActive((prevState) => {
+      return !prevState
+    })
+    // }, 1)
   }
 
   const prevBtn = () => {
@@ -85,11 +82,11 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
       })
 
       // setClosingOrOpening(true)
-      setTimeout(() => {
-        setAnimationClassActive((prevState) => {
-          return !prevState
-        })
-      }, 1)
+      // setTimeout(() => {
+      setAnimationClassActive((prevState) => {
+        return !prevState
+      })
+      // }, 1)
     }, 500)
 
     setTimeout(() => {
@@ -99,15 +96,14 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
     }, 1)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("animClassActive", animationClassActive)
     console.log("closingOrOpen", closingOrOpening)
-
-  },[animationClassActive, closingOrOpening])
+  }, [animationClassActive, closingOrOpening])
 
   return (
     <div className="flex justify-center text-white items-center">
-      <div className="absolute top-[5rem] bg-black rounded-md z-50 w-[250px] h-[500px] border font-oswald">
+      <div className="absolute top-[5rem] bg-black rounded-md z-50 w-[280px] h-[540px] border font-oswald">
         <div className="bg-teal-gradient rounded-md">
           <h1 className="pl-2 text-[1.4rem] h-[40px]">
             {selectedProject.name}
@@ -119,49 +115,72 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
         >
           x
         </button>
-        <div className="flex flex-wrap justify-start mt-2">
-          {selectedProject.icons.map((icon) => (
-            <div className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center">
-              <Icon
-                icon={icon.icon}
-                onMouseOver={() => showIconTitle(icon)}
-                onMouseOut={() => setDisplayModalIcon(false)}
-                className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
-              ></Icon>
-            </div>
-          ))}
-          {displayModalIcon && (
-            <span className="text-white">{selectedIcon.title}</span>
-          )}
-          <div className="flex w-full overflow-hidden">
-            {selectedProject.images.slice(firstImage).map((image) => (
-              <div className="h-[14.25rem] mx-5 w-[250px] rounded-md ">
-                <img
-                  // style={{ maxWidth: "none" }}
-                  className={`h-56 max-w-none w-[200px] border-2 rounded-md  object-cover ${
-                    closingOrOpening
-                      ? animationClassActive
-                        ? ""
-                        : "animate-image-opacity-close"
-                      : animationClassActive
-                      ? ""
-                      : "animate-image-opacity-open"
-                  }  `}
-                  src={image}
-                ></img>
+
+        {/* icons */}
+
+        <div className="flex flex-wrap mt-4 justify-evenly">
+          <div className="flex flex-wrap justify-center items-end relative ">
+          
+            {selectedProject.icons.map((icon) => (
+              <div className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center">
+                <Icon
+                  icon={icon.icon}
+                  onMouseOver={() => showIconTitle(icon)}
+                  onMouseOut={() => setDisplayModalIcon(false)}
+                  className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
+                ></Icon>
               </div>
             ))}
-          </div>
-          <div className="flex w-full justify-evenly">
-            <button onClick={() => prevBtn()} className="text-white border">
-              prev
-            </button>
-            <button onClick={() => nextBtn()} className="text-white border">
-              next
-            </button>
+              {displayModalIcon && (
+                <>
+              <span className="text-white my-2 text-[1.3rem] w-full text-center absolute bottom-[-3.3rem]">
+                Built with: <span className="bg-teal-gradient px-2 rounded-lg">{selectedIcon.title}</span>
+                <hr className="w-full absolute bottom-[-1rem]"></hr>
+              </span>
+             
+              </>
+            )}
           </div>
         </div>
+
+        {/* images */}
+        <div className="absolute bottom-4">
+          <div className="flex w-full mx-auto justify-center overflow-hidden">
+            {/* {selectedProject.images.slice(firstImage).map((image) => ( */}
+            <div className="h-[14.25rem] my-4  flex justify-center w-[280px] rounded-md ">
+              <img
+                className={`h-56 max-w-none w-[200px] border-2 rounded-md  object-cover ${
+                  closingOrOpening
+                    ? animationClassActive
+                      ? ""
+                      : "animate-image-opacity-close"
+                    : animationClassActive
+                    ? ""
+                    : "animate-image-opacity-open"
+                }  `}
+                src={selectedProject.images[firstImage]}
+              ></img>
+            </div>
+          </div>
+          <div className="flex w-full items-center justify-evenly">
+            <Icon
+              icon="maki:arrow"
+              className="border rounded-md bg-teal-gradient p-1 text-[2.5rem] rotate-180"
+              onClick={() => prevBtn()}
+            ></Icon>
+            <p className="">
+              Image {firstImage + 1} of {selectedProject.images.length}
+            </p>
+            <Icon
+              icon="maki:arrow"
+              className="rounded-md bg-teal-gradient border p-1 text-[2.5rem]"
+              onClick={() => nextBtn()}
+            ></Icon>
+          </div>
+      
+        </div>
       </div>
+
     </div>
   )
 }

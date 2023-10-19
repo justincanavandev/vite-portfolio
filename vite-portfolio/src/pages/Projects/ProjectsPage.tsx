@@ -48,6 +48,10 @@ export default function ProjectsPage() {
           title: "Bootstrap",
           icon: "devicon:bootstrap",
         },
+        {
+          title: "Stripe",
+          icon: "bxl:stripe",
+        },
       ],
     },
     {
@@ -87,6 +91,7 @@ export default function ProjectsPage() {
           title: "Bootstrap",
           icon: "devicon:bootstrap",
         },
+     
       ],
     },
     {
