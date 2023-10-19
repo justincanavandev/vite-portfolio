@@ -267,7 +267,7 @@ function HomePage() {
         <div className="md:w-[58%] md:pt-3 md:flex md:flex-col lg:w-[70%]">
           <div className={`flex flex-col  ${myNameIsScreenHeight()} `}>
             <div className="flex flex-col pl-2 justify-center">
-              <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
+              <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem]">
                 <span className="hi">Hi!&nbsp;</span>
                 <span className="my-name-is pl-[.02rem]">My name is</span>
               </h2>
@@ -283,14 +283,14 @@ function HomePage() {
             className={`flex flex-col ${frontEndScreenHeight()}  px-3 text-[1.4rem] text-zinc-200`}
           >
             <span className="">
-              <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
+              <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem]">
                 i am a
               </span>
             </span>
 
             <div className="dynamic-text flex ml-[4vw]" ref={dynamicTextRef}>
               <span className="front-end-dev items-center rounded-md">
-                <span className="dynamic-text text-white font-majorMono font-bold word-1 text-[1.15rem] xs:text-[1.4rem] sm:text-[1.55rem] md:text-[1.5rem] lg:text-[1.8rem]">
+                <span className="dynamic-text text-white font-oswald uppercase font-bold word-1 text-[1.5rem] xs:text-[1.8rem] sm:text-[1.9rem] md:text-[2rem] lg:text-[2.3rem]">
                   front-end developer
                 </span>
               </span>

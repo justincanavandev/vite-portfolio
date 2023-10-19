@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import Nav from "./components/Nav"
 import AboutMe from "./pages/AboutMe"
 import Contact from "./pages/Contact"
-
 import ProjectsPage from "./pages/Projects/ProjectsPage"
 import Resume from "./pages/Resume"
 import HomePagePage from "./pages/HomePage/HomePagePage"
@@ -34,16 +33,17 @@ function App() {
 
   return (
     <>
-    {/* <div> */}
+
       {location.pathname === "/" ? null : <Nav navBarRef={navBarRef} />}
       <Routes>
         <Route path="/" element={<HomePagePage />} />
         <Route path="/about-me" element={<AboutMe />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/resume" element={<Resume />} />
+        {/* <Route path="/resume" element={<Resume />} /> */}
+      
       </Routes>
-      {/* </div> */}
+
     </>
   )
 }

@@ -23,6 +23,7 @@ function Root() {
     //   console.log("color", color)
     // }, [color])
 
+
     return (
       <div>
         <ChromePicker
@@ -43,6 +44,8 @@ function Root() {
       </div>
     )
   }
+
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,6 +74,7 @@ function Root() {
             setScreenHeight,
             isModalOpen,
             setIsModalOpen,
+        
           }}
         >
           <App />

@@ -7,7 +7,7 @@ import walrus from "../../assets/walrus.jpg"
 import shoes from "../../assets/shoes.png"
 
 export default function ProjectsPage() {
-  // projects
+  const [viewProjectDetails, setViewProjectDetails] = useState<boolean>(false)
 
   const projects: Project[] = [
     {
@@ -16,24 +16,117 @@ export default function ProjectsPage() {
         "https://github.com/justincanavanmusic/electronics-e-commerce",
       liveLink: "https://shielded-basin-55972.herokuapp.com/",
       thumbnail: dog,
-      description: "An immersive MERN-stack e-commerce application with a focus on PC and gaming equipment."
-  
+      description:
+        "An immersive MERN-stack e-commerce application with a focus on PC and gaming equipment.",
+      images: [dog, walrus, shoes],
+      icons: [
+        {
+          title: "React.js",
+          icon: "logos:react",
+        },
+        {
+          title: "JavaScript",
+          icon: "devicon:javascript",
+        },
+        {
+          title: "MongoDB",
+          icon: "devicon:mongodb",
+        },
+        {
+          title: "Express.js",
+          icon: "simple-icons:express",
+        },
+        {
+          title: "NodeJS",
+          icon: "devicon:nodejs",
+        },
+        {
+          title: "GraphQL",
+          icon: "fontisto:graphql",
+        },
+        {
+          title: "Bootstrap",
+          icon: "devicon:bootstrap",
+        },
+      ],
     },
     {
       name: "CodeCove",
       githubRepo: "https://github.com/justincanavanmusic/tech-blog",
       liveLink: "https://floating-fortress-15177.herokuapp.com/",
       thumbnail: walrus,
-      description: "A Full-Stack blog application that enables users to create posts, leave comments, and more."
-
+      description:
+        "A Full-Stack blog application that enables users to create posts, leave comments, and more.",
+      images: [dog, walrus, shoes],
+      icons: [
+        {
+          title: "JavaScript",
+          icon: "devicon:javascript",
+        },
+        {
+          title: "Handlebars.js",
+          icon: "vscode-icons:file-type-handlebars",
+        },
+        {
+          title: "NodeJS",
+          icon: "devicon:nodejs",
+        },
+        {
+          title: "Express.js",
+          icon: "simple-icons:express",
+        },
+        {
+          title: "MySQL2",
+          icon: "devicon:mysql",
+        },
+        {
+          title: "Sequelize",
+          icon: "devicon:sequelize",
+        },
+        {
+          title: "Bootstrap",
+          icon: "devicon:bootstrap",
+        },
+      ],
     },
     {
       name: "Chicago Hotspot",
       githubRepo: "https://github.com/allisonnault/Chicago-Attractions",
       liveLink: "https://ancient-wildwood-93900.herokuapp.com/",
       thumbnail: shoes,
-      description: "A Full-Stack application showcasing Michelin Star restaurants based in Chicago, IL."
-
+      description:
+        "A Full-Stack application showcasing Michelin Star restaurants based in Chicago, IL.",
+      images: [dog, walrus, shoes],
+      icons: [
+        {
+          title: "JavaScript",
+          icon: "devicon:javascript",
+        },
+        {
+          title: "Handlebars.js",
+          icon: "vscode-icons:file-type-handlebars",
+        },
+        {
+          title: "Node.js",
+          icon: "devicon:nodejs",
+        },
+        {
+          title: "Express.js",
+          icon: "simple-icons:express",
+        },
+        {
+          title: "MySQL2",
+          icon: "devicon:mysql",
+        },
+        {
+          title: "Sequelize",
+          icon: "devicon:sequelize",
+        },
+        {
+          title: "Bootstrap",
+          icon: "devicon:bootstrap",
+        },
+      ],
     },
   ]
 
@@ -55,8 +148,6 @@ export default function ProjectsPage() {
   const [beforeRoundedBR, setBeforeRoundedBR] = useState<string>("rounded-br-0")
   const [beforeRounded, setBeforeRounded] = useState<string>("rounded-r-0")
   const [imgBorderExpand, setImgBorderExpand] = useState<string>("")
-
-
 
   function setAnimationState() {
     if (closeAnimation) {
@@ -150,7 +241,9 @@ export default function ProjectsPage() {
         beforeRounded,
         setBeforeRounded,
         imgBorderExpand,
-        setImgBorderExpand
+        setImgBorderExpand,
+        viewProjectDetails,
+        setViewProjectDetails,
       }}
     >
       <Projects />

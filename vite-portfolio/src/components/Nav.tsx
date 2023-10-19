@@ -43,8 +43,8 @@ function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
       {/* nav hamburger modal */}
 
       {isModalOpen && (
-        <div className="fixed inset-0 z-40 h-[200px] gap-2 text-[1.3rem]">
-          <div className="h-[200px] text-white mt-20 border rounded-md mx-auto bg-opacity-95 bg-slate-600 w-[90%] flex flex-col justify-evenly text-[1.6rem] items-center">
+        <div className="fixed inset-0 z-40 w-full h-[200px] gap-2 text-[1.3rem]">
+          <div className="h-[200px] text-white mt-20 border rounded-md mx-auto bg-opacity-95 bg-slate-600 w-[260px] flex flex-col justify-evenly text-[1.6rem] items-center">
             <NavLinks />
           </div>
         </div>

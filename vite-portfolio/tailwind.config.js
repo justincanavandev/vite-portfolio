@@ -53,6 +53,8 @@ export default {
         "project-close": "project-close .3s linear",
         "banner-opacity-expand": "banner-opacity-expand .3s linear",
         "banner-opacity-close": "banner-opacity-close .3s linear",
+        "image-opacity-open" : "image-animation-expand .5s linear",
+        "image-opacity-close" : "image-animation-close .5s linear"
         
       },
       keyframes: {
@@ -88,6 +90,14 @@ export default {
           "100%": { opacity: 1 },
         },
         "banner-opacity-close": {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
+        "image-animation-expand": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        "image-animation-close": {
           "0%": { opacity: 1 },
           "100%": { opacity: 0 },
         },
