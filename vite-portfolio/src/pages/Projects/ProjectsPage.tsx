@@ -1,10 +1,15 @@
 import Projects from "./Projects"
+import Projects2 from "./Projects2"
 import { useState } from "react"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import dog from "../../assets/dog.jpg"
 import walrus from "../../assets/walrus.jpg"
 import shoes from "../../assets/shoes.png"
+import createpost from "../../assets/code-cove/create-post.png"
+import signup from "../../assets/code-cove/sign-up.png"
+import yourposts from "../../assets/code-cove/your-posts.png"
+import landingpage from "../../assets/code-cove/landing-page.png"
 
 export default function ProjectsPage() {
   const [viewProjectDetails, setViewProjectDetails] = useState<boolean>(false)
@@ -58,10 +63,10 @@ export default function ProjectsPage() {
       name: "CodeCove",
       githubRepo: "https://github.com/justincanavanmusic/tech-blog",
       liveLink: "https://floating-fortress-15177.herokuapp.com/",
-      thumbnail: walrus,
+      thumbnail: landingpage,
       description:
         "A Full-Stack blog application that enables users to create posts, leave comments, and more.",
-      images: [dog, walrus, shoes],
+      images: [yourposts, createpost, signup],
       icons: [
         {
           title: "JavaScript",
@@ -148,7 +153,7 @@ export default function ProjectsPage() {
   const [bannerOpacity, setBannerOpacity] = useState<string>("opacity-100")
   const [borderRight, setBorderRight] = useState<string>("border-r-2")
   const [beforeBorderRight, setBeforeBorderRight] =
-    useState<string>("border-r-0")
+    useState<string>("border-b-0")
   const [beforeRoundedTR, setBeforeRoundedTR] = useState<string>("rounded-tr-0")
   const [beforeRoundedBR, setBeforeRoundedBR] = useState<string>("rounded-br-0")
   const [beforeRounded, setBeforeRounded] = useState<string>("rounded-r-0")
@@ -249,9 +254,11 @@ export default function ProjectsPage() {
         setImgBorderExpand,
         viewProjectDetails,
         setViewProjectDetails,
+        
       }}
     >
-      <Projects />
+      {/* <Projects /> */}
+      <Projects2 />
     </ProjectsContext.Provider>
   )
 }

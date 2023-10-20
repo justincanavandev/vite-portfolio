@@ -10,12 +10,9 @@ import HomePagePage from "./pages/HomePage/HomePagePage"
 import { GlobalContext } from "./context/GlobalContext"
 
 function App() {
-
-
   const { setComponentHeight } = useContext(GlobalContext)
 
   const [navBarHeight, setNavBarHeight] = useState<string>("")
-
 
   const navBarRef: RefObject<HTMLDivElement> = useRef(null)
 
@@ -33,17 +30,16 @@ function App() {
 
   return (
     <>
-
-      {location.pathname === "/" ? null : <Nav navBarRef={navBarRef} />}
-      <Routes>
-        <Route path="/" element={<HomePagePage />} />
-        <Route path="/about-me" element={<AboutMe />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/contact" element={<Contact />} />
-        {/* <Route path="/resume" element={<Resume />} /> */}
-      
-      </Routes>
-
+      <div className="flex flex-col bg-black min-h-screen">
+        {location.pathname === "/" ? null : <Nav navBarRef={navBarRef} />}
+        <Routes>
+          <Route path="/" element={<HomePagePage />} />
+          <Route path="/about-me" element={<AboutMe />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/resume" element={<Resume />} /> */}
+        </Routes>
+      </div>
     </>
   )
 }

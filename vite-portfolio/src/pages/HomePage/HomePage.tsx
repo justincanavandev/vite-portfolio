@@ -10,7 +10,7 @@ import { GlobalContext } from "../../context/GlobalContext"
 import { HomePageContext } from "../../context/HomePageContext"
 
 function HomePage() {
-  const { componentHeight, screenWidth, screenHeight, ColorPicker } =
+  const { componentHeight, screenWidth, screenHeight, ColorPicker, footerIcons } =
     useContext(GlobalContext)
 
   const icons = [faLinkedin, faGithub, faEnvelope]
@@ -359,7 +359,7 @@ function HomePage() {
         `}
           >
             
-            {icons.map((icon, index) => (
+            {footerIcons.map((icon, index) => (
               <div
                 key={index}
                 className={`mx-3 text-transparent text text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5 ${iconSelectAnimation(

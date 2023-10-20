@@ -1,5 +1,5 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import React from "react"
-// import type { Skill } from "../about-me-types.ts/aboutMeTypes"
 
 
 
@@ -13,6 +13,6 @@ export type GlobalContextType = {
   ColorPicker: () => JSX.Element
   isModalOpen: boolean
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
-  // icons: Skill[]
+  footerIcons: IconDefinition[]
 
 }

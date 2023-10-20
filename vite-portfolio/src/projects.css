@@ -4,11 +4,11 @@
 }
 
 .image-border-close {
-  animation: image-border-close 0.3s linear;
+  animation: image-border-close 0.3s forwards;
 }
 
 .image-border-expand {
-  animation: image-border-expand 0.3s linear;
+  animation: image-border-expand 0.3s forwards;
 }
 
 .image-opacity-close {
@@ -26,6 +26,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  border-color: white;
 }
 
 @keyframes image-opacity-close {
@@ -41,7 +42,6 @@
 
 @keyframes image-opacity-expand {
   0% {
-
     opacity: .5;
   }
   100% {
@@ -52,31 +52,35 @@
 
 @keyframes image-border-close {
   0% {
-    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-right-width: 0;
+    /* border-right-width: 0; */
+    border-bottom-width: 0;
   }
 
   100% {
-    border-top-right-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem;
-    border-right-width: 3px;
+    /* border-right-width: 3px; */
+        border-bottom-width: 3px;
   }
 }
 
 @keyframes image-border-expand {
   0% {
 
-    border-top-right-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem;
-    border-right-width: 3px;
+    /* border-right-width: 3px; */
+    border-bottom-width: 3px;
   }
 
   100% {
 
-    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-right-width: 0;
+    /* border-right-width: 0; */
+    border-bottom-width: 0;
  
   }
 }

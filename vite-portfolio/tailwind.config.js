@@ -60,20 +60,20 @@ export default {
       keyframes: {
         "project-expand": {
           "0%": {
-            transform: "translateX(-100%)",
+            transform: "translateY(-100%)",
             opacity: 0,
           },
           "50%": {
             opacity: 0.2,
           },
           "100%": {
-            transform: "translateX(0)",
+            transform: "translateY(0)",
             opacity: 1,
           },
         },
         "project-close": {
           "0%": {
-            transform: "translateX(0)",
+            transform: "translateY(0)",
             opacity: 1,
           },
           
@@ -81,7 +81,7 @@ export default {
             opacity: 0.4,
           },
           "100%": {
-            transform: "translateX(-100%)",
+            transform: "translateY(-100%)",
             opacity: 0,
           },
         },
