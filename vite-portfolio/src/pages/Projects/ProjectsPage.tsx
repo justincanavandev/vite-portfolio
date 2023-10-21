@@ -147,7 +147,7 @@ export default function ProjectsPage() {
   const [featuredProject, setFeaturedProject] = useState<Project>(projects[0])
   const [showAnimation, setShowAnimation] = useState<boolean>(false)
   const [closeAnimation, setCloseAnimation] = useState<boolean>(false)
-  const [imgOpacityClass, setImgOpacityClass] = useState<string>("opacity-50")
+  const [imgOpacityClass, setImgOpacityClass] = useState<string>("brightness-50")
   const [detailsOpacityClass, setDetailsOpacityClass] =
     useState<string>("opacity-100")
   const [bannerOpacity, setBannerOpacity] = useState<string>("opacity-100")

@@ -136,7 +136,7 @@ export default function Projects2() {
           ${
             screenHeight >= 650
               ? showProjectDetails
-                ? `h-[68vh] sm:h-[72vh]`
+                ? `h-[70vh] sm:h-[72vh]`
                 : "h-[44vh]"
               : "h-[30rem]"
           }  sm:flex-row sm:flex-wrap sm:justify-start`}
@@ -155,7 +155,7 @@ export default function Projects2() {
                 closeAnimation
                   ? `${
                       featuredProject.name === selectedProject.name
-                        ? `image-border-close before:border-r-[3px] before:border-l-[3px] before:rounded-b-md before:border-b-[3px] before:border-t-[3px] 
+                        ? `image-border-close  before:border-r-[3px] before:border-l-[3px] before:rounded-b before:border-b-[3px] before:border-t-[3px] 
                         
                         `
                         : "before:border-[3px] before:rounded-tr-[.375rem] before:rounded-bl-[.375rem] before:rounded-br-[.375rem]"
@@ -173,7 +173,7 @@ export default function Projects2() {
               <img
                 src={selectedProject.thumbnail}
                 alt="project-image"
-                className={`h-[14rem] w-64 xs:h-[14rem] xs:w-[22rem] sm:w-[27rem] sm:h-[17rem] md:h-52 md:w-40 lg:h-64 lg:w-48 object-cover
+                className={`h-[14rem]  w-64 xs:h-[14rem] xs:w-[22rem] sm:w-[27rem] sm:h-[17rem] md:h-52 md:w-40 lg:h-64 lg:w-48 object-cover
                 ${
                   closeAnimation
                     ? `${
@@ -243,8 +243,10 @@ export default function Projects2() {
                       : "animate-project-details-open"
                   }      border-r-[3px] border-b-[3px] border border-white rounded-br-[.375rem] border-l-[3px] rounded-bl-[.375rem] flex flex-col justify-between`}
                 >
-                  <div className={`absolute bottom-[-3.3rem] w-[240px] mt-4 `}>
+                  <div className="flex justify-center">
+                  <div className={`absolute bottom-[-4rem] w-[230px] mt-4 `}>
                     {nextPrevBtns}
+                  </div>
                   </div>
                   <div
                     className={`absolute top-0 left-0 rounded-r-[.375rem] px-1.5 bg-teal-gradient`}
@@ -262,14 +264,14 @@ export default function Projects2() {
                       <Link to={selectedProject.githubRepo} target="_blank">
                         <FontAwesomeIcon
                           icon={faGithub}
-                          className="absolute left-[.3rem] bottom-[-9.1rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[-8.2rem] sm:static sm:text-[1.9rem] md:text-[2.15rem] md:bottom-[-12.08rem] lg:bottom-[-15.08rem] lg:text-[2.6rem]"
+                          className="absolute left-[.3rem] bottom-[.3rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[-8.2rem] sm:static sm:text-[1.9rem] md:text-[2.15rem] md:bottom-[-12.08rem] lg:bottom-[-15.08rem] lg:text-[2.6rem]"
                           size="2xl"
                         />
                       </Link>
                       <button>
                         <FontAwesomeIcon
                           icon={faBars}
-                          className="absolute left-[6.7rem] bottom-[-9.1rem] text-[1.6rem] xs:left-[9.8rem] xs:text-[1.7rem] xs:bottom-[-8.2rem] sm:static sm:text-[1.9rem] md:text-[2.15rem] md:bottom-[-12.08rem] md:left-[3.62rem] lg:bottom-[-15.08rem] lg:left-[4.4rem] lg:text-[2.6rem]"
+                          className="absolute left-[6.7rem] bottom-[.3rem] text-[1.6rem] xs:left-[9.8rem] xs:text-[1.7rem] xs:bottom-[-8.2rem] sm:static sm:text-[1.9rem] md:text-[2.15rem] md:bottom-[-12.08rem] md:left-[3.62rem] lg:bottom-[-15.08rem] lg:left-[4.4rem] lg:text-[2.6rem]"
                           size="2xl"
                           onClick={() => {
                             setProjectIndex(selectedImageIndex)
@@ -279,7 +281,7 @@ export default function Projects2() {
                       </button>
                       <Link to={selectedProject.liveLink} target="_blank">
                         <FontAwesomeIcon
-                          className="absolute right-[0.3rem] bottom-[-9.1rem] text-[1.4rem] xs:text-[1.5rem] xs:bottom-[-8.2rem] sm:static sm:text-[1.7rem]  md:bottom-[-12.1rem] md:text-[1.85rem] lg:bottom-[-14.95rem] lg:text-[2.3rem]"
+                          className="absolute right-[0.3rem] bottom-[.3rem] text-[1.4rem] xs:text-[1.5rem] xs:bottom-[-8.2rem] sm:static sm:text-[1.7rem]  md:bottom-[-12.1rem] md:text-[1.85rem] lg:bottom-[-14.95rem] lg:text-[2.3rem]"
                           icon={faDesktop}
                           size="xl"
                         />
@@ -304,26 +306,7 @@ export default function Projects2() {
           {/* <ColorPicker /> */}
           {/* </div> */}
         </div>
-        <div className="flex text-white font-oswald justify-center">
-          {/* <div className="flex justify-between bg-black w-full max-w-[240px] items-center">
-            <Icon
-              icon="maki:arrow"
-              className="border rounded-md bg-teal-gradient p-1 text-[2.5rem] rotate-180"
-              onClick={() => prevBtn()}
-            ></Icon>
-            <p className="">
-              Project {selectedImageIndex + 1} of{" "}
-              {selectedProject.images.length}
-            </p>
-            <Icon
-              icon="maki:arrow"
-              className="rounded-md bg-teal-gradient border p-1 text-[2.5rem]"
-              onClick={() => nextBtn()}
-            ></Icon>
-          </div> */}
-          {/* 
-          {nextPrevBtns} */}
-        </div>
+      
         {screenHeight >= 650 && <FooterIcons />}
       </div>
       {viewProjectDetails && <ProjectDetails projectIndex={projectIndex} />}
