@@ -4,8 +4,8 @@ import "../../homepage.css"
 import "../../animation.css"
 import "../../index.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+// import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons"
+// import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { GlobalContext } from "../../context/GlobalContext"
 import { HomePageContext } from "../../context/HomePageContext"
 
@@ -13,7 +13,7 @@ function HomePage() {
   const { componentHeight, screenWidth, screenHeight, ColorPicker, footerIcons } =
     useContext(GlobalContext)
 
-  const icons = [faLinkedin, faGithub, faEnvelope]
+  // const icons = [faLinkedin, faGithub, faEnvelope]
 
   const { bubbles, setBubbleAnimationClass } = useContext(HomePageContext)
   const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
@@ -22,8 +22,8 @@ function HomePage() {
   const [screenHeightLow, setScreenHeightLow] = useState<number>(0)
   const [screenHeightMid, setScreenHeightMid] = useState<number>(0)
 
-  console.log("screenHeight", screenHeight)
-  console.log("screenWidth", screenWidth)
+  // console.log("screenHeight", screenHeight)
+  // console.log("screenWidth", screenWidth)
 
   useEffect(() => {
     const setDivHeight = () => {

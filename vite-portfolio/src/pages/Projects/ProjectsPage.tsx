@@ -151,13 +151,14 @@ export default function ProjectsPage() {
   const [detailsOpacityClass, setDetailsOpacityClass] =
     useState<string>("opacity-100")
   const [bannerOpacity, setBannerOpacity] = useState<string>("opacity-100")
-  const [borderRight, setBorderRight] = useState<string>("border-r-2")
+  const [borderRight, setBorderRight] = useState<string>("border-b-2")
   const [beforeBorderRight, setBeforeBorderRight] =
     useState<string>("border-b-0")
   const [beforeRoundedTR, setBeforeRoundedTR] = useState<string>("rounded-tr-0")
   const [beforeRoundedBR, setBeforeRoundedBR] = useState<string>("rounded-br-0")
   const [beforeRounded, setBeforeRounded] = useState<string>("rounded-r-0")
   const [imgBorderExpand, setImgBorderExpand] = useState<string>("")
+
 
   function setAnimationState() {
     if (closeAnimation) {
@@ -178,7 +179,10 @@ export default function ProjectsPage() {
     if (showProjectDetails && featuredProject.name === projects[index].name) {
       console.log("two")
 
+      
+
       setCloseAnimation(true)
+    
 
       if (showAnimation === false) {
         setShowAnimation(true)
@@ -189,9 +193,10 @@ export default function ProjectsPage() {
       })
 
       setTimeout(() => {
-        setImgOpacityClass("opacity-50")
+        setImgOpacityClass("brightness-50")
         setDetailsOpacityClass("opacity-0")
         setBannerOpacity("opacity-0")
+       
         setShowProjectDetails(!showProjectDetails)
         setFeaturedProject({} as Project)
       }, 300)
@@ -200,6 +205,7 @@ export default function ProjectsPage() {
     if (showProjectDetails === false && !featuredProject.name) {
       console.log("three")
       setFeaturedProject(projects[index])
+  
       setCloseAnimation(false)
       setShowAnimation(false)
 
@@ -210,9 +216,9 @@ export default function ProjectsPage() {
       setShowProjectDetails(true)
 
       setTimeout(() => {
-        setImgOpacityClass("opacity-100")
+        setImgOpacityClass("brightness-100")
         setDetailsOpacityClass("opacity-100")
-        setBeforeRoundedTR("rounded-tr-0")
+        setBeforeRoundedTR("rounded-bl-0")
         setBeforeRoundedBR("rounded-br-0")
       }, 300)
     }
@@ -254,6 +260,11 @@ export default function ProjectsPage() {
         setImgBorderExpand,
         viewProjectDetails,
         setViewProjectDetails,
+        
+        // isCardOpen,
+        // setIsCardOpen,
+        // viewportHeight,
+        // setViewportHeight
         
       }}
     >

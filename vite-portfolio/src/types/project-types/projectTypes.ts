@@ -50,4 +50,5 @@ export type ProjectsContextType = {
   setImgBorderExpand: React.Dispatch<React.SetStateAction<string>>
   viewProjectDetails: boolean
   setViewProjectDetails: React.Dispatch<React.SetStateAction<boolean>>
+ 
 }
