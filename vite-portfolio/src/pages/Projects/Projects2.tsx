@@ -100,7 +100,7 @@ export default function Projects2() {
 
   const nextPrevBtns = (
     <>
-      <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:h-[100px] sm:max-w-none sm:mx-auto sm:flex-col sm:w-full">
+      <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:h-[100px] sm:max-w-none sm:flex-col sm:absolute sm:w-[150px] right-[0rem] top-[-4.5rem]">
       <p className="hidden sm:flex sm:text-[1.45rem]">
           Project {selectedImageIndex + 1} of {selectedProject.images.length}
         </p>
@@ -136,20 +136,20 @@ export default function Projects2() {
         } overflow-x-scroll overflow-y-scroll   
         ${(isModalOpen || viewProjectDetails) && "filter brightness-[40%]"}`}
       >
-        <div>
-          <h1 className="text-[2.5rem] pt-2 pl-2 text-white font-oswald uppercase">
+        <div className="sm:w-[200px]">
+          <h1 className="text-[2.5rem] pt-2 pl-2 text-white font-oswald uppercase sm:text-[3rem] sm:inline-block ">
             Projects
           </h1>
         </div>
         <div
-          className={`flex relative flex-col font-oswald z-30 mt-[2vh] text-white 
+          className={`flex relative flex-col font-oswald z-30 mt-[2vh] text-white sm:mt-0
           ${
             screenHeight >= 650
               ? showProjectDetails
                 ? `h-[70vh] sm:h-[72vh]`
-                : "h-[44vh]"
+                : "h-[44vh] sm:h-[47vh] "
               : "h-[30rem] sm:h-[31.7rem]"
-          }  sm:flex-row sm:flex-wrap sm:justify-start`}
+          }  sm:flex-row sm:flex-wrap sm:justify-center`}
         >
           {/* Projects */}
 
@@ -158,10 +158,10 @@ export default function Projects2() {
             key={selectedImageIndex}
             className={`flex flex-col relative items-center ${
               screenWidth >= 320 ? "" : "w-[320px] pr-3"
-            }   mx-auto  z-30 sm:w-full`}
+            }   mx-auto  z-30 sm:w-[90%] sm:mt-[5vh] sm:static  sm:items-start `}
           >
-            <div className="sm:flex sm:w-[100%] ">
-              <div className="sm:ml-8">
+            <div className=" ">
+              <div className="">
                 <div
                   className={`before:rounded-t-md before:z-50 h-[14rem] w-64 z-40 relative img-border rounded-b-md text-[.8rem] xs:h-[14rem] xs:w-[22rem] sm:w-[27rem] sm:h-[17rem] md:h-52 md:w-40 lg:h-64 lg:w-48 ${
                     closeAnimation
@@ -308,7 +308,7 @@ export default function Projects2() {
                     </div>
                   )}
               </div>
-              <div className="hidden sm:flex sm:w-full">{nextPrevBtns}</div>
+              <div className="hidden sm:flex sm:w-[100px] ">{nextPrevBtns}</div>
             </div>
           </div>
           {screenHeight < 650 && <FooterIcons />}

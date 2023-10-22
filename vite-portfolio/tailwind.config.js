@@ -111,7 +111,7 @@ export default {
           },
 
           "100%": {
-            transform: "translateY(-150%)",
+            transform: "translateY(-110%)",
           },
         },
 
