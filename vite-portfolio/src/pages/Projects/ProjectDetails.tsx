@@ -17,12 +17,12 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
     useState<boolean>(false)
 
   const [selectedIcon, setSelectedIcon] = useState<IconType>({
-    title: "",
-    icon: "",
+    title: selectedProject.icons[0].title,
+    icon: selectedProject.icons[0].icon,
   })
-  const [displayModalIcon, setDisplayModalIcon] = useState<boolean>(false)
+  const [displayModalIcon, setDisplayModalIcon] = useState<boolean>(true)
   const [firstImage, setFirstImage] = useState<number>(0)
-  // const [lastImage, setLastImage] = useState<number>((selectedProject.images.length-1))
+
   const imagesLength: number = selectedProject.images.length - 1
 
   const showIconTitle = (icon: IconType) => {
@@ -50,17 +50,16 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
         return !prevState
       })
 
-      setTimeout(() => {
-        setAnimationClassActive((prevState) => {
-          return !prevState
-        })
-      }, 1)
+      // setTimeout(() => {
+      setAnimationClassActive((prevState) => {
+        return !prevState
+      })
+      // }, 1)
     }, 500)
-    // setTimeout(() => {
+
     setAnimationClassActive((prevState) => {
       return !prevState
     })
-    // }, 1)
   }
 
   const prevBtn = () => {
@@ -81,19 +80,16 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
         return !prevState
       })
 
-      // setClosingOrOpening(true)
-      // setTimeout(() => {
       setAnimationClassActive((prevState) => {
         return !prevState
       })
-      // }, 1)
     }, 500)
 
-    setTimeout(() => {
-      setAnimationClassActive((prevState) => {
-        return !prevState
-      })
-    }, 1)
+    // setTimeout(() => {
+    setAnimationClassActive((prevState) => {
+      return !prevState
+    })
+    // }, 1)
   }
 
   useEffect(() => {
@@ -120,26 +116,29 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
 
         <div className="flex flex-wrap mt-4 justify-evenly">
           <div className="flex flex-wrap justify-center items-end relative ">
-          
-            {selectedProject.icons.map((icon) => (
-              <div className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center">
+            {selectedProject.icons.map((icon, index) => (
+              <div key={index} className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center">
                 <Icon
                   icon={icon.icon}
                   onMouseOver={() => showIconTitle(icon)}
-                  onMouseOut={() => setDisplayModalIcon(false)}
-                  className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
+                  // onMouseOut={() => setDisplayModalIcon(false)}
+                  className={`${
+                    icon.title === selectedIcon.title && "border"
+                  } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
                 ></Icon>
               </div>
             ))}
-              {displayModalIcon && (
-                <>
-              <span className="text-white my-2 text-[1.3rem] w-full text-center absolute bottom-[-3.3rem]">
-                Built with: <span className="bg-teal-gradient px-2 rounded-lg">{selectedIcon.title}</span>
-                <hr className="w-full absolute bottom-[-1rem]"></hr>
+
+            <>
+              <span className="text-white my-2 text-[1.3rem] w-full text-center">
+                Built with:{" "}
+                {displayModalIcon && (
+                  <span className="bg-teal-gradient px-[6px] rounded-lg">
+                    {selectedIcon.title}
+                  </span>
+                )}
               </span>
-             
-              </>
-            )}
+            </>
           </div>
         </div>
 
@@ -177,10 +176,8 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
               onClick={() => nextBtn()}
             ></Icon>
           </div>
-      
         </div>
       </div>
-
     </div>
   )
 }

@@ -261,10 +261,6 @@ export default function ProjectsPage() {
         viewProjectDetails,
         setViewProjectDetails,
         
-        // isCardOpen,
-        // setIsCardOpen,
-        // viewportHeight,
-        // setViewportHeight
         
       }}
     >

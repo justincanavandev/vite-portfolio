@@ -57,7 +57,7 @@ export default {
         "close-proj-card": "close-proj-card .3s linear",
         "project-details-open": "project-details-open .3s forwards",
         "project-details-close": "project-details-close .3s forwards",
-
+        "project-details-close-sm": "project-details-close-sm .3s forwards",
       },
       keyframes: {
         "project-expand": {
@@ -103,6 +103,15 @@ export default {
 
           "100%": {
             transform: "translateY(-140%)",
+          },
+        },
+        "project-details-close-sm": {
+          "0%": {
+            transform: "translateY(0)",
+          },
+
+          "100%": {
+            transform: "translateY(-150%)",
           },
         },
 
