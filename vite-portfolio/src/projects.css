@@ -29,6 +29,16 @@
   border-color: white;
 }
 
+.cove-img-position {
+/* object-position: 50% 25%; */
+object-position: top;
+}
+
+.circuit-img-position {
+/* object-position: 100% 23%; */
+object-position: top;
+}
+
 @keyframes image-opacity-close {
   0% {
 

@@ -10,7 +10,7 @@ export default function FooterIcons() {
   return (
     <div className="flex justify-center sm:mb-3 sm:items-end sm:mx-auto  md:mt-0 z-40">
       <div
-        className={`flex ${screenHeight < 650 ? location.pathname==="/projects" && "mt-[5.3rem] xs:mt-[5.9rem] sm:mt-0 sm:w-full  md:mt-[.5rem] " : "absolute bottom-2.5"}`}
+        className={`flex ${screenHeight < 650 ? location.pathname==="/projects" && "mb-[.4rem] xs:mt-[5.9rem] sm:mt-0 sm:w-full  md:mt-[.5rem] " : "absolute bottom-2.5"}`}
       >
         {footerIcons.map((icon, index) => (
           <div

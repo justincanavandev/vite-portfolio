@@ -10,6 +10,13 @@ import createpost from "../../assets/code-cove/create-post.png"
 import signup from "../../assets/code-cove/sign-up.png"
 import yourposts from "../../assets/code-cove/your-posts.png"
 import landingpage from "../../assets/code-cove/landing-page.png"
+import homepage from "../../assets/gamers-circuit/homepage.png"
+import cart from "../../assets/gamers-circuit/cart.png"
+import orderHistory from "../../assets/gamers-circuit/order-history.png"
+import products from "../../assets/gamers-circuit/products.png"
+import allRestaurants from "../../assets/chi-hotspot/all-restaurants.png"
+import oneRestaurant from "../../assets/chi-hotspot/restaurant-page.png"
+import reviews from "../../assets/chi-hotspot/my-reviews.png"
 
 export default function ProjectsPage() {
   const [viewProjectDetails, setViewProjectDetails] = useState<boolean>(false)
@@ -20,10 +27,10 @@ export default function ProjectsPage() {
       githubRepo:
         "https://github.com/justincanavanmusic/electronics-e-commerce",
       liveLink: "https://shielded-basin-55972.herokuapp.com/",
-      thumbnail: dog,
+      thumbnail: homepage,
       description:
         "An immersive MERN-stack e-commerce application with a focus on PC and gaming equipment.",
-      images: [dog, walrus, shoes],
+      images: [products, orderHistory, cart],
       icons: [
         {
           title: "React.js",
@@ -103,10 +110,10 @@ export default function ProjectsPage() {
       name: "Chicago Hotspot",
       githubRepo: "https://github.com/allisonnault/Chicago-Attractions",
       liveLink: "https://ancient-wildwood-93900.herokuapp.com/",
-      thumbnail: shoes,
+      thumbnail: allRestaurants,
       description:
         "A Full-Stack application showcasing Michelin Star restaurants based in Chicago, IL.",
-      images: [dog, walrus, shoes],
+      images: [oneRestaurant, reviews, shoes],
       icons: [
         {
           title: "JavaScript",

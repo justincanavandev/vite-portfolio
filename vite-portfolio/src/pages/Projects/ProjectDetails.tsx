@@ -50,11 +50,10 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
         return !prevState
       })
 
-      // setTimeout(() => {
       setAnimationClassActive((prevState) => {
         return !prevState
       })
-      // }, 1)
+
     }, 500)
 
     setAnimationClassActive((prevState) => {
@@ -85,11 +84,10 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
       })
     }, 500)
 
-    // setTimeout(() => {
     setAnimationClassActive((prevState) => {
       return !prevState
     })
-    // }, 1)
+
   }
 
   useEffect(() => {
@@ -148,7 +146,7 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
             {/* {selectedProject.images.slice(firstImage).map((image) => ( */}
             <div className="h-[14.25rem] my-4  flex justify-center w-[280px] rounded-md ">
               <img
-                className={`h-56 max-w-none w-[200px] border-2 rounded-md  object-cover ${
+                className={`h-56 max-w-none w-[200px] border-2 rounded-md  object-contain ${
                   closingOrOpening
                     ? animationClassActive
                       ? ""
