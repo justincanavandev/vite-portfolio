@@ -9,14 +9,12 @@ import { GlobalContext } from "../../context/GlobalContext"
 export default function ProjectDetails() {
   const { projects, setViewProjectDetails, projectIndex } =
     useContext(ProjectsContext)
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const { screenWidth } = useContext(GlobalContext)
-  console.log("projects", projects)
-  // console.log("screenWidth", screenWidth)
 
   const { projectId } = useParams()
-  console.log("projectId", projectId)
+
   const [selectedProject, setSelectedProject] = useState<Project>(projects[0])
 
   let projectIdNum: number
@@ -30,7 +28,7 @@ export default function ProjectDetails() {
   useEffect(() => {
     if (projectId) {
       projectIdNum = parseInt(projectId)
-      const projectIdNumIndex = projectIdNum-1
+      const projectIdNumIndex = projectIdNum - 1
       setSelectedProject(projects[projectIdNumIndex])
       setSelectedIcon({
         title: selectedProject.icons[0].title,
@@ -38,7 +36,6 @@ export default function ProjectDetails() {
       })
       setImagesLength(selectedProject.images.length - 1)
     }
-
   }, [])
 
   console.log("selectedProject", selectedProject)
@@ -130,34 +127,34 @@ export default function ProjectDetails() {
           </h1>
         </div>
         <Link to="/projects">
-        <button
-          className="absolute right-3 top-[-2px] text-[1.4rem]"
-          onClick={() => 
-            setViewProjectDetails(false)
-            
-          
-          }
-        >
-          x
-        </button>
+          <button
+            className="absolute right-3 top-[-2px] text-[1.4rem]"
+            onClick={() => setViewProjectDetails(false)}
+          >
+            x
+          </button>
         </Link>
 
         {/* icons */}
 
         <div className="flex flex-wrap mt-4 justify-evenly">
           <div className="flex flex-wrap justify-center items-end relative ">
-            {selectedProject && selectedProject?.icons.map((icon, index) => (
-              <div key={index} className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center">
-                <Icon
-                  icon={icon.icon}
-                  onMouseOver={() => showIconTitle(icon)}
-                  // onMouseOut={() => setDisplayModalIcon(false)}
-                  className={`${
-                    icon.title === selectedIcon.title && "border"
-                  } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
-                ></Icon>
-              </div>
-            ))}
+            {selectedProject &&
+              selectedProject?.icons.map((icon, index) => (
+                <div
+                  key={index}
+                  className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center"
+                >
+                  <Icon
+                    icon={icon.icon}
+                    onMouseOver={() => showIconTitle(icon)}
+                    // onMouseOut={() => setDisplayModalIcon(false)}
+                    className={`${
+                      icon.title === selectedIcon.title && "border"
+                    } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
+                  ></Icon>
+                </div>
+              ))}
 
             <>
               <span className="text-white my-2 text-[1.3rem] w-full text-center">
