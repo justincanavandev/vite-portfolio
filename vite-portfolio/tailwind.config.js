@@ -102,7 +102,7 @@ export default {
           },
 
           "100%": {
-            transform: "translateY(-140%)",
+            transform: "translateY(-165%)",
           },
         },
         "project-details-close-sm": {

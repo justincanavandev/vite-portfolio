@@ -200,7 +200,7 @@ export default function Projects2() {
             screenHeight >= 650
               ? showProjectDetails
                 ? `h-[70vh] sm:h-[72vh]`
-                : "h-[44vh] sm:h-[55vh] lg:h-[70vh] "
+                : " lg:h-[70vh] "
               : showProjectDetails
               ? "h-[30rem] sm:h-[31.7rem]"
               : "h-[50rem]"
@@ -216,9 +216,9 @@ export default function Projects2() {
             }   mx-auto  z-30  sm:mt-[5vh] sm:static  sm:items-start md:items-center md:mt-[4.5vh] lg:mt-2`}
           >
             <div className=" ">
-              <div className="">
+              <div className="flex flex-col items-center">
                 <div
-                  className={`before:rounded-t-md before:z-50 h-[14rem] w-64 z-40 relative img-border rounded-b-md text-[.8rem] xs:h-[14rem] xs:w-[28rem] sm:w-[36rem] sm:h-[19.5rem] md:w-[40rem]  lg:w-[40rem] lg:h-[20rem] ${
+                  className={`before:rounded-t-md before:z-40 h-[18rem] w-[95%] z-30 relative img-border rounded-b-md text-[.8rem] xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem] md:w-[40rem]  lg:w-[44rem] lg:h-[22rem] ${
                     closeAnimation
                       ? `${
                           featuredProject.name === selectedProject.name
@@ -237,10 +237,32 @@ export default function Projects2() {
                   }`}
                   onClick={() => displayCard(selectedImageIndex)}
                 >
+                  {/* proj title 2 */}
+                  {/* <div
+                    className={`absolute z-50 bottom-[5px] left-[5px] bg-transparent rounded-r-[.375rem] px-1.5 bg-teal-gradient ${
+                      closeAnimation
+                        ? `${
+                            featuredProject.name === selectedProject.name
+                              ? `image-opacity-close `
+                              : ""
+                          }`
+                        : `${
+                            featuredProject.name === selectedProject.name
+                              ? `image-opacity-expand `
+                              : ""
+                          }`
+                    }`}
+                  >
+                    <h3 className="text-[1.1rem] mx-auto xs:text-[1.3rem] md:text-[1.3rem] lg:text-[1.4rem]">
+                      {selectedProject.name}
+                    </h3>
+                  </div> */}
+                  {/* proj title 2 */}
+
                   <img
                     src={selectedProject.thumbnail}
                     alt="project-image"
-                    className={`h-[14rem]  w-64 xs:h-[14rem] xs:w-[28rem] sm:w-[36rem] sm:h-[19.5rem]  md:w-[40rem] lg:h-[20rem]  lg:w-[40rem] object-left-top object-cover xs:object-top 
+                    className={`h-[18rem]  w-full xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem]  md:w-[40rem] lg:h-[22rem] lg:w-[44rem] object-left-top object-cover xs:object-top 
                 ${
                   closeAnimation
                     ? `${
@@ -269,32 +291,39 @@ export default function Projects2() {
                   />
 
                   <div
-                    className={`absolute top-[2.7px] left-[2.6px] bg-teal-gradient text-white rounded-l-[4.2px] 
-                ${
-                  showProjectDetails &&
-                  selectedProject.name === featuredProject.name
-                    ? bannerOpacity
-                    : "opacity-100"
-                }
-                ${
-                  closeAnimation
-                    ? `
-                    ${
-                      featuredProject.name === selectedProject.name
-                        ? "animate-banner-opacity-expand"
-                        : ""
-                    }`
-                    : `${
-                        featuredProject.name === selectedProject.name
-                          ? "animate-banner-opacity-close"
-                          : ""
-                      }`
-                }
-                `}
+                    className="absolute top-[2.7px] left-[2.6px] bg-teal-gradient text-white rounded-l-[4.2px] "
+                // ${
+                //   showProjectDetails &&
+                //   selectedProject.name === featuredProject.name
+                //     ? bannerOpacity
+                //     : "opacity-100"
+                // }
+                // ${
+                //   closeAnimation
+                //     ? `
+                //     ${
+                //       featuredProject.name === selectedProject.name
+                //         ? "animate-banner-opacity-expand"
+                //         : ""
+                //     }`
+                //     : `${
+                //         featuredProject.name === selectedProject.name
+                //           ? "animate-banner-opacity-close"
+                //           : ""
+                //       }`
+                // }
+                
                   >
                     <p className="px-1 text-[1.1rem] xs:text-[1.3rem] md:text-[1.1rem] lg:text-[1.4rem]">
                       {selectedProject.name}
                     </p>
+                    {/* <div
+                        className={`absolute top-[-20px] left-0 rounded-r-[.375rem] px-1.5 bg-teal-gradient`}
+                      >
+                        <h3 className="text-[1.1rem] mx-auto xs:text-[1.3rem] md:text-[1.3rem] lg:text-[1.4rem]">
+                          {selectedProject.name}
+                        </h3>
+                      </div> */}
                   </div>
                 </div>
 
@@ -304,7 +333,7 @@ export default function Projects2() {
                   showProjectDetails && (
                     <div
                       onAnimationEnd={setAnimationState}
-                      className={`h-[10rem] w-64 z-10 relative xs:h-36 xs:w-[28rem] sm:w-[36rem] sm:h-[6.3rem]  md:w-[40rem]  lg:w-[40rem]  ${
+                      className={`h-[6.2rem] w-[95%] z-10 relative xs:h-[6.8rem] xs:w-[28rem] sm:w-[36rem] sm:h-[4.9rem]  md:w-[40rem] lg:h-[5.2rem]  lg:w-[44rem]  ${
                         closeAnimation
                           ? "animate-project-details-close sm:animate-project-details-close-sm"
                           : "animate-project-details-open"
@@ -318,30 +347,32 @@ export default function Projects2() {
                           {nextPrevBtns}
                         </div>
                       </div>
-                      <div
-                        className={`absolute top-0 left-0 rounded-r-[.375rem] px-1.5 bg-teal-gradient`}
+                      {/* <div
+                        className={`absolute top-[-20px] left-0 rounded-r-[.375rem] px-1.5 bg-teal-gradient`}
                       >
                         <h3 className="text-[1.1rem] mx-auto xs:text-[1.3rem] md:text-[1.3rem] lg:text-[1.4rem]">
                           {selectedProject.name}
                         </h3>
-                      </div>
+                      </div> */}
                       <div className="sm:flex sm:relative">
-                        <p className="text-[1.1rem] mt-1 px-2.5 absolute top-7 xs:mt-2.5 xs:text-[1.15rem] sm:w-[350px] sm:mt-[2.2rem] sm:static md:mt-8 md:w-[410px] md:text-[1.2rem] lg:mt-10  lg:w-[588px] lg:text-[1.4rem] ">
+                        <p className="text-[1rem] mb-1 line-clamp-2 mt-[.35rem] px-2.5 absolute top-0 xs:mt-1.5 xs:text-[1.15rem] sm:w-[350px] sm:mt-2 sm:static md:w-[410px] md:text-[1.2rem] lg:w-[520px] lg:text-[1.4rem] ">
                           {selectedProject.description}
                         </p>
 
-                        <div className="flex justify-between relative mx-[.3rem] mb-1 sm:my-1 sm:gap-6 sm:absolute sm:items-center sm:h-full right-1 ">
+                        <div className="flex justify-between relative mx-[.3rem] mb-1 sm:my-1 sm:gap-6 sm:absolute sm:items-center sm:h-full sm:right-1 ">
                           <Link to={selectedProject.githubRepo} target="_blank">
                             <FontAwesomeIcon
                               icon={faGithub}
-                              className="absolute left-[.3rem] bottom-[.3rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem] "
+                              className="absolute left-[.5rem] bottom-[.3rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem] "
                               size="2xl"
                             />
                           </Link>
                           <button>
                             <FontAwesomeIcon
                               icon={faBars}
-                              className="absolute left-[6.7rem] bottom-[.3rem] text-[1.6rem] xs:left-[12.7rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem]"
+                              className={`absolute left-0 ${
+                                screenWidth < 475 && "right-0"
+                              } mx-auto bottom-[.3rem] text-[1.6rem] xs:left-[12.7rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem]`}
                               size="2xl"
                               onClick={() => {
                                 setProjectIndex(selectedImageIndex)
@@ -366,13 +397,11 @@ export default function Projects2() {
           </div>
           {/* {screenHeight < 650 && screenWidth < 640 && <FooterIcons />} */}
         </div>
-{/* 
+        {/* 
         {(screenHeight >= 650 ||
           screenHeight < 650 )
            &&  */}
-           <FooterIcons />
-          
-       
+        <FooterIcons />
       </div>
       {viewProjectDetails && <ProjectDetails projectIndex={projectIndex} />}
     </>
