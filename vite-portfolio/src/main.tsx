@@ -15,6 +15,7 @@ function Root() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const footerIcons = [faLinkedin, faGithub, faEnvelope]
 
+
   const ColorPicker = () => {
     const [color, setColor] = useState<Color>({ r: 0, g: 0, b: 0 })
 

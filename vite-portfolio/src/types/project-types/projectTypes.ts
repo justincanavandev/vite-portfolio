@@ -6,6 +6,7 @@ export type Icon = {
 }
 
 export type Project = {
+  id: number
   name: string
   githubRepo: string
   liveLink: string
@@ -14,6 +15,10 @@ export type Project = {
   icons: Icon[]
   images: string[]
 
+}
+
+export type ProjectDetailsProps = {
+  projectIndex: number
 }
 
 export type ProjectsContextType = {
@@ -50,5 +55,7 @@ export type ProjectsContextType = {
   setImgBorderExpand: React.Dispatch<React.SetStateAction<string>>
   viewProjectDetails: boolean
   setViewProjectDetails: React.Dispatch<React.SetStateAction<boolean>>
+  projectIndex: number
+  setProjectIndex: React.Dispatch<React.SetStateAction<number>>
  
 }

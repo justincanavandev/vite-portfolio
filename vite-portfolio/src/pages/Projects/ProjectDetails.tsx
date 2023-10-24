@@ -3,27 +3,53 @@ import { useContext, useState, useEffect } from "react"
 import type { Project } from "../../types/project-types/projectTypes"
 import { Icon } from "@iconify/react"
 import { Icon as IconType } from "../../types/project-types/projectTypes"
+import { useParams, useNavigate, Link } from "react-router-dom"
+import { GlobalContext } from "../../context/GlobalContext"
 
-type ProjectDetailsProps = {
-  projectIndex: number
-}
+export default function ProjectDetails() {
+  const { projects, setViewProjectDetails, projectIndex } =
+    useContext(ProjectsContext)
+    const navigate = useNavigate()
 
-export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
-  const { projects, setViewProjectDetails } = useContext(ProjectsContext)
+  const { screenWidth } = useContext(GlobalContext)
+  console.log("projects", projects)
+  // console.log("screenWidth", screenWidth)
 
-  const selectedProject: Project = projects[projectIndex]
+  const { projectId } = useParams()
+  console.log("projectId", projectId)
+  const [selectedProject, setSelectedProject] = useState<Project>(projects[0])
+
+  let projectIdNum: number
+
+  const [selectedIcon, setSelectedIcon] = useState<IconType>({
+    title: "",
+    icon: "",
+  })
+  const [imagesLength, setImagesLength] = useState<number>(0)
+
+  useEffect(() => {
+    if (projectId) {
+      projectIdNum = parseInt(projectId)
+      const projectIdNumIndex = projectIdNum-1
+      setSelectedProject(projects[projectIdNumIndex])
+      setSelectedIcon({
+        title: selectedProject.icons[0].title,
+        icon: selectedProject.icons[0].icon,
+      })
+      setImagesLength(selectedProject.images.length - 1)
+    }
+
+  }, [])
+
+  console.log("selectedProject", selectedProject)
 
   const [animationClassActive, setAnimationClassActive] =
     useState<boolean>(false)
 
-  const [selectedIcon, setSelectedIcon] = useState<IconType>({
-    title: selectedProject.icons[0].title,
-    icon: selectedProject.icons[0].icon,
-  })
   const [displayModalIcon, setDisplayModalIcon] = useState<boolean>(true)
   const [firstImage, setFirstImage] = useState<number>(0)
 
-  const imagesLength: number = selectedProject.images.length - 1
+  // const imagesLength: number = selectedProject.images.length - 1
 
   const showIconTitle = (icon: IconType) => {
     setSelectedIcon(icon)
@@ -53,7 +79,6 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
       setAnimationClassActive((prevState) => {
         return !prevState
       })
-
     }, 500)
 
     setAnimationClassActive((prevState) => {
@@ -87,7 +112,6 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
     setAnimationClassActive((prevState) => {
       return !prevState
     })
-
   }
 
   useEffect(() => {
@@ -96,25 +120,33 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
   }, [animationClassActive, closingOrOpening])
 
   return (
-    <div className="flex justify-center text-white items-center">
+    // <div className="flex justify-center text-white items-center">
+    //   <div className="absolute top-[5rem] bg-black rounded-md z-50 w-[280px] h-[540px] border font-oswald">
+    <div className="flex flex-col w-screen h-screen text-white items-center">
       <div className="absolute top-[5rem] bg-black rounded-md z-50 w-[280px] h-[540px] border font-oswald">
         <div className="bg-teal-gradient rounded-md">
           <h1 className="pl-2 text-[1.4rem] h-[40px]">
             {selectedProject.name}
           </h1>
         </div>
+        <Link to="/projects">
         <button
           className="absolute right-3 top-[-2px] text-[1.4rem]"
-          onClick={() => setViewProjectDetails(false)}
+          onClick={() => 
+            setViewProjectDetails(false)
+            
+          
+          }
         >
           x
         </button>
+        </Link>
 
         {/* icons */}
 
         <div className="flex flex-wrap mt-4 justify-evenly">
           <div className="flex flex-wrap justify-center items-end relative ">
-            {selectedProject.icons.map((icon, index) => (
+            {selectedProject && selectedProject?.icons.map((icon, index) => (
               <div key={index} className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center">
                 <Icon
                   icon={icon.icon}
@@ -165,9 +197,9 @@ export default function ProjectDetails({ projectIndex }: ProjectDetailsProps) {
               className="border rounded-md bg-teal-gradient p-1 text-[2.5rem] rotate-180"
               onClick={() => prevBtn()}
             ></Icon>
-            <p className="">
+            {/* <p className="">
               Image {firstImage + 1} of {selectedProject.images.length}
-            </p>
+            </p> */}
             <Icon
               icon="maki:arrow"
               className="rounded-md bg-teal-gradient border p-1 text-[2.5rem]"

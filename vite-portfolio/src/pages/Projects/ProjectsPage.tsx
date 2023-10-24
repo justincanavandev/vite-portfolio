@@ -1,10 +1,10 @@
-import Projects from "./Projects"
+// import Projects from "./Projects"
 import Projects2 from "./Projects2"
 import { useState } from "react"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
-import dog from "../../assets/dog.jpg"
-import walrus from "../../assets/walrus.jpg"
+// import dog from "../../assets/dog.jpg"
+// import walrus from "../../assets/walrus.jpg"
 import shoes from "../../assets/shoes.png"
 import createpost from "../../assets/code-cove/create-post.png"
 import signup from "../../assets/code-cove/sign-up.png"
@@ -17,12 +17,19 @@ import products from "../../assets/gamers-circuit/products.png"
 import allRestaurants from "../../assets/chi-hotspot/all-restaurants.png"
 import oneRestaurant from "../../assets/chi-hotspot/restaurant-page.png"
 import reviews from "../../assets/chi-hotspot/my-reviews.png"
+import ProjectDetails from "./ProjectDetails"
+import { Route, Routes, useParams } from "react-router-dom" 
+import Resume from "../Resume"
 
 export default function ProjectsPage() {
   const [viewProjectDetails, setViewProjectDetails] = useState<boolean>(false)
 
+  // const {projectId } =useParams()
+  // console.log('projectId', projectId)
+
   const projects: Project[] = [
     {
+      id: 1,
       name: "Gamer's Circuit",
       githubRepo:
         "https://github.com/justincanavanmusic/electronics-e-commerce",
@@ -67,6 +74,7 @@ export default function ProjectsPage() {
       ],
     },
     {
+      id: 2,
       name: "CodeCove",
       githubRepo: "https://github.com/justincanavanmusic/tech-blog",
       liveLink: "https://floating-fortress-15177.herokuapp.com/",
@@ -103,10 +111,10 @@ export default function ProjectsPage() {
           title: "Bootstrap",
           icon: "devicon:bootstrap",
         },
-     
       ],
     },
     {
+      id: 3,
       name: "Chicago Hotspot",
       githubRepo: "https://github.com/allisonnault/Chicago-Attractions",
       liveLink: "https://ancient-wildwood-93900.herokuapp.com/",
@@ -154,7 +162,8 @@ export default function ProjectsPage() {
   const [featuredProject, setFeaturedProject] = useState<Project>(projects[0])
   const [showAnimation, setShowAnimation] = useState<boolean>(false)
   const [closeAnimation, setCloseAnimation] = useState<boolean>(false)
-  const [imgOpacityClass, setImgOpacityClass] = useState<string>("brightness-50")
+  const [imgOpacityClass, setImgOpacityClass] =
+    useState<string>("brightness-50")
   const [detailsOpacityClass, setDetailsOpacityClass] =
     useState<string>("opacity-100")
   const [bannerOpacity, setBannerOpacity] = useState<string>("opacity-100")
@@ -165,7 +174,7 @@ export default function ProjectsPage() {
   const [beforeRoundedBR, setBeforeRoundedBR] = useState<string>("rounded-br-0")
   const [beforeRounded, setBeforeRounded] = useState<string>("rounded-r-0")
   const [imgBorderExpand, setImgBorderExpand] = useState<string>("")
-
+  const [projectIndex, setProjectIndex] = useState<number>(0)
 
   function setAnimationState() {
     if (closeAnimation) {
@@ -186,10 +195,7 @@ export default function ProjectsPage() {
     if (showProjectDetails && featuredProject.name === projects[index].name) {
       console.log("two")
 
-      
-
       setCloseAnimation(true)
-    
 
       if (showAnimation === false) {
         setShowAnimation(true)
@@ -203,7 +209,7 @@ export default function ProjectsPage() {
         setImgOpacityClass("brightness-50")
         setDetailsOpacityClass("opacity-0")
         setBannerOpacity("opacity-0")
-       
+
         setShowProjectDetails(!showProjectDetails)
         setFeaturedProject({} as Project)
       }, 300)
@@ -212,7 +218,7 @@ export default function ProjectsPage() {
     if (showProjectDetails === false && !featuredProject.name) {
       console.log("three")
       setFeaturedProject(projects[index])
-  
+
       setCloseAnimation(false)
       setShowAnimation(false)
 
@@ -267,12 +273,19 @@ export default function ProjectsPage() {
         setImgBorderExpand,
         viewProjectDetails,
         setViewProjectDetails,
-        
-        
+        projectIndex,
+        setProjectIndex,
       }}
     >
-      {/* <Projects /> */}
       <Projects2 />
+      {viewProjectDetails &&
+      <ProjectDetails/>
+}
+      {/* <Routes>
+        <Route path="/" element={<Resume />} />
+        <Route path="/projects" element={<Projects2 />} />
+        <Route path="/projects/:projectId" element={<ProjectDetails />} />
+      </Routes> */}
     </ProjectsContext.Provider>
   )
 }

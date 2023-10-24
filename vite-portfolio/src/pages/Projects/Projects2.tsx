@@ -6,13 +6,14 @@ import { faDesktop, faBars } from "@fortawesome/free-solid-svg-icons"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
-import { Link } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import ProjectDetails from "./ProjectDetails"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import FooterIcons from "../../components/FooterIcons"
 
 export default function Projects2() {
   const { screenWidth, isModalOpen, screenHeight } = useContext(GlobalContext)
+  const navigate = useNavigate()
 
   const {
     showProjectDetails,
@@ -39,17 +40,19 @@ export default function Projects2() {
     setBeforeRounded,
     viewProjectDetails,
     setViewProjectDetails,
+    projectIndex,
+    setProjectIndex,
   } = useContext(ProjectsContext)
 
+
   const openProjectModal = (index: number) => {
-    console.log("index", index)
+    // console.log("index", index)
 
     setViewProjectDetails(true)
   }
 
   // console.log("showProjectDetails", showProjectDetails)
 
-  const [projectIndex, setProjectIndex] = useState<number>(0)
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
 
   const selectedProject: Project = projects[selectedImageIndex]
@@ -292,27 +295,26 @@ export default function Projects2() {
 
                   <div
                     className="absolute top-[2.7px] left-[2.6px] bg-teal-gradient text-white rounded-l-[4.2px] "
-                // ${
-                //   showProjectDetails &&
-                //   selectedProject.name === featuredProject.name
-                //     ? bannerOpacity
-                //     : "opacity-100"
-                // }
-                // ${
-                //   closeAnimation
-                //     ? `
-                //     ${
-                //       featuredProject.name === selectedProject.name
-                //         ? "animate-banner-opacity-expand"
-                //         : ""
-                //     }`
-                //     : `${
-                //         featuredProject.name === selectedProject.name
-                //           ? "animate-banner-opacity-close"
-                //           : ""
-                //       }`
-                // }
-                
+                    // ${
+                    //   showProjectDetails &&
+                    //   selectedProject.name === featuredProject.name
+                    //     ? bannerOpacity
+                    //     : "opacity-100"
+                    // }
+                    // ${
+                    //   closeAnimation
+                    //     ? `
+                    //     ${
+                    //       featuredProject.name === selectedProject.name
+                    //         ? "animate-banner-opacity-expand"
+                    //         : ""
+                    //     }`
+                    //     : `${
+                    //         featuredProject.name === selectedProject.name
+                    //           ? "animate-banner-opacity-close"
+                    //           : ""
+                    //       }`
+                    // }
                   >
                     <p className="px-1 text-[1.1rem] xs:text-[1.3rem] md:text-[1.1rem] lg:text-[1.4rem]">
                       {selectedProject.name}
@@ -368,17 +370,22 @@ export default function Projects2() {
                             />
                           </Link>
                           <button>
-                            <FontAwesomeIcon
-                              icon={faBars}
-                              className={`absolute left-0 ${
-                                screenWidth < 475 && "right-0"
-                              } mx-auto bottom-[.3rem] text-[1.6rem] xs:left-[12.7rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem]`}
-                              size="2xl"
-                              onClick={() => {
-                                setProjectIndex(selectedImageIndex)
-                                openProjectModal(selectedImageIndex)
-                              }}
-                            />
+                            {/* <Link to={`/projects/${projectIndex+1}`}> */}
+                            {/* <Link to={`/projects/1`}> */}
+                              <FontAwesomeIcon
+                                icon={faBars}
+                                className={`absolute left-0 ${
+                                  screenWidth < 475 && "right-0"
+                                } mx-auto bottom-[.3rem] text-[1.6rem] xs:left-[12.7rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem]`}
+                                size="2xl"
+                                onClick={() => {
+                                  setProjectIndex(selectedImageIndex)
+                                  openProjectModal(selectedImageIndex)
+                                  navigate(`/projects/${selectedProject.id}`)
+                                  // navigate("/projects/1")
+                                }}
+                              />
+                            {/* </Link> */}
                           </button>
                           <Link to={selectedProject.liveLink} target="_blank">
                             <FontAwesomeIcon
@@ -402,8 +409,10 @@ export default function Projects2() {
           screenHeight < 650 )
            &&  */}
         <FooterIcons />
+        {/* {viewProjectDetails && <ProjectDetails />} */}
       </div>
-      {viewProjectDetails && <ProjectDetails projectIndex={projectIndex} />}
+
+
     </>
   )
 }
