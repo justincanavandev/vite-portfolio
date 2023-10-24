@@ -1,0 +1,85 @@
+.opacity-fade-in {
+  animation: opacityFadeIn 0.75s linear 0.3s forwards;
+}
+
+.display-icons {
+  animation: leftToRight 1s linear 0.8s forwards;
+}
+
+.display-icons-xs {
+  animation: leftToRight 1s linear 0.7s forwards;
+}
+
+.display-icons-sm {
+  animation: leftToRight 1s linear 0.7s forwards;
+}
+
+.display-icons-md {
+  animation: leftToRight 1.3s linear 0.8s forwards;
+}
+
+.display-icons-lg {
+  animation: leftToRight 0.75s linear 0.5s forwards;
+}
+
+.display-icons-xl {
+  animation: leftToRight 0.75s linear 0.5s forwards;
+}
+
+.display-icons-2xl {
+  animation: leftToRight 0.75s linear 0.5s forwards;
+}
+
+.display-page {
+animation: leftToRight 1s linear 0.3s forwards;
+}
+
+.display-page-xs {
+  animation: leftToRight 1.4s linear 0.3s forwards;
+}
+
+.display-page-sm {
+  animation: leftToRight 2s linear 0.3s forwards;
+}
+
+.display-page-md {
+  animation: leftToRight 2s linear 0.3s forwards;
+}
+
+.display-page-lg {
+  animation: leftToRight 2s linear 0.3s forwards;
+}
+
+.display-page-xl {
+  animation: leftToRight 2s linear 0.3s forwards;
+}
+
+.display-page-2xl {
+  animation: leftToRight 2s linear 0.3s forwards;
+}
+
+@keyframes opacityFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes leftToRight {
+  0% {
+    left: 0%;
+  }
+
+  99.9% {
+    background-color: black;
+    display: flex;
+  }
+  100% {
+    left: 100%;
+    background-color: transparent;
+    display: none;
+  }
+}

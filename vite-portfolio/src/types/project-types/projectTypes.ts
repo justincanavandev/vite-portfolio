@@ -1,12 +1,24 @@
 import React from "react"
 
+export type Icon = {
+  title: string
+  icon: string
+}
+
 export type Project = {
+  id: number
   name: string
   githubRepo: string
   liveLink: string
   thumbnail: string
-  // absoluteLeft: string
   description: string
+  icons: Icon[]
+  images: string[]
+
+}
+
+export type ProjectDetailsProps = {
+  projectIndex: number
 }
 
 export type ProjectsContextType = {
@@ -41,4 +53,9 @@ export type ProjectsContextType = {
   setBeforeRounded: React.Dispatch<React.SetStateAction<string>>
   imgBorderExpand: string
   setImgBorderExpand: React.Dispatch<React.SetStateAction<string>>
+  viewProjectDetails: boolean
+  setViewProjectDetails: React.Dispatch<React.SetStateAction<boolean>>
+  projectIndex: number
+  setProjectIndex: React.Dispatch<React.SetStateAction<number>>
+ 
 }

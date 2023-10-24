@@ -4,16 +4,16 @@ import "../../homepage.css"
 import "../../animation.css"
 import "../../index.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+// import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons"
+// import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { GlobalContext } from "../../context/GlobalContext"
 import { HomePageContext } from "../../context/HomePageContext"
 
 function HomePage() {
-  const { componentHeight, screenWidth, screenHeight, ColorPicker } =
+  const { componentHeight, screenWidth, screenHeight, ColorPicker, footerIcons } =
     useContext(GlobalContext)
 
-  const icons = [faLinkedin, faGithub, faEnvelope]
+  // const icons = [faLinkedin, faGithub, faEnvelope]
 
   const { bubbles, setBubbleAnimationClass } = useContext(HomePageContext)
   const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
@@ -22,8 +22,8 @@ function HomePage() {
   const [screenHeightLow, setScreenHeightLow] = useState<number>(0)
   const [screenHeightMid, setScreenHeightMid] = useState<number>(0)
 
-  console.log("screenHeight", screenHeight)
-  console.log("screenWidth", screenWidth)
+  // console.log("screenHeight", screenHeight)
+  // console.log("screenWidth", screenWidth)
 
   useEffect(() => {
     const setDivHeight = () => {
@@ -267,7 +267,7 @@ function HomePage() {
         <div className="md:w-[58%] md:pt-3 md:flex md:flex-col lg:w-[70%]">
           <div className={`flex flex-col  ${myNameIsScreenHeight()} `}>
             <div className="flex flex-col pl-2 justify-center">
-              <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
+              <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem]">
                 <span className="hi">Hi!&nbsp;</span>
                 <span className="my-name-is pl-[.02rem]">My name is</span>
               </h2>
@@ -283,14 +283,14 @@ function HomePage() {
             className={`flex flex-col ${frontEndScreenHeight()}  px-3 text-[1.4rem] text-zinc-200`}
           >
             <span className="">
-              <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]">
+              <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem]">
                 i am a
               </span>
             </span>
 
             <div className="dynamic-text flex ml-[4vw]" ref={dynamicTextRef}>
               <span className="front-end-dev items-center rounded-md">
-                <span className="dynamic-text text-white font-majorMono font-bold word-1 text-[1.15rem] xs:text-[1.4rem] sm:text-[1.55rem] md:text-[1.5rem] lg:text-[1.8rem]">
+                <span className="dynamic-text text-white font-oswald uppercase font-bold word-1 text-[1.5rem] xs:text-[1.8rem] sm:text-[1.9rem] md:text-[2rem] lg:text-[2.3rem]">
                   front-end developer
                 </span>
               </span>
@@ -359,7 +359,7 @@ function HomePage() {
         `}
           >
             
-            {icons.map((icon, index) => (
+            {footerIcons.map((icon, index) => (
               <div
                 key={index}
                 className={`mx-3 text-transparent text text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5 ${iconSelectAnimation(

@@ -4,19 +4,19 @@
 }
 
 .image-border-close {
-  animation: image-border-close 0.3s linear;
+  animation: image-border-close 0.3s forwards;
 }
 
 .image-border-expand {
-  animation: image-border-expand 0.3s linear;
+  animation: image-border-expand 0.3s forwards;
 }
 
 .image-opacity-close {
-  animation: image-opacity-close 0.3s linear;
+  animation: image-opacity-close 0.3s forwards;
 }
 
 .image-opacity-expand {
-  animation: image-opacity-expand 0.3s linear;
+  animation: image-opacity-expand 0.3s forwards;
 }
 
 .img-border::before {
@@ -26,57 +26,76 @@
   left: 0;
   right: 0;
   bottom: 0;
+  border-color: white;
+}
+
+.cove-img-position {
+/* object-position: 50% 25%; */
+object-position: top;
+}
+
+.circuit-img-position {
+/* object-position: 100% 23%; */
+object-position: top;
 }
 
 @keyframes image-opacity-close {
   0% {
 
-    opacity: 1;
+    /* opacity: 1; */
+    filter: brightness(1);
+    
   }
   100% {
 
-    opacity: 0.5;
+    /* opacity: 0.5; */
+    filter: brightness(50%);
   }
 }
 
 @keyframes image-opacity-expand {
   0% {
-
-    opacity: .5;
+    /* opacity: .5; */
+    filter: brightness(50%);
   }
   100% {
-    opacity: 1;
+    filter: brightness(1);
+    /* opacity: 1; */
   }
 }
 
 
 @keyframes image-border-close {
   0% {
-    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-right-width: 0;
+    /* border-right-width: 0; */
+    /* border-bottom-width: 0; */
   }
 
-  100% {
-    border-top-right-radius: 0.375rem;
+  70% {
+    border-bottom-left-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem;
-    border-right-width: 3px;
+    /* border-right-width: 3px; */
+        /* border-bottom-width: 3px; */
   }
 }
 
 @keyframes image-border-expand {
   0% {
 
-    border-top-right-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem;
-    border-right-width: 3px;
+    /* border-right-width: 3px; */
+    /* border-bottom-width: 3px; */
   }
 
-  100% {
+  70% {
 
-    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-right-width: 0;
+    /* border-right-width: 0; */
+    /* border-bottom-width: 0; */
  
   }
 }

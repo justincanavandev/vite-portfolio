@@ -1,3 +1,4 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import React from "react"
 
 
@@ -12,5 +13,6 @@ export type GlobalContextType = {
   ColorPicker: () => JSX.Element
   isModalOpen: boolean
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
+  footerIcons: IconDefinition[]
 
 }
