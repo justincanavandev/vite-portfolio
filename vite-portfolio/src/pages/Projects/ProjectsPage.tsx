@@ -277,15 +277,11 @@ export default function ProjectsPage() {
         setProjectIndex,
       }}
     >
-      <Projects2 />
-      {viewProjectDetails &&
-      <ProjectDetails/>
+   
+      {viewProjectDetails ?
+      <ProjectDetails/> : <Projects2 />
 }
-      {/* <Routes>
-        <Route path="/" element={<Resume />} />
-        <Route path="/projects" element={<Projects2 />} />
-        <Route path="/projects/:projectId" element={<ProjectDetails />} />
-      </Routes> */}
+  
     </ProjectsContext.Provider>
   )
 }
