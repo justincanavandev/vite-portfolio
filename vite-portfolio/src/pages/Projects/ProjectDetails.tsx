@@ -131,7 +131,7 @@ export default function ProjectDetails() {
   const [imgXCoord, setImgXCoord] = useState<number>(0)
   const [imgYCoord, setImgYCoord] = useState<number>(0)
   const [objPositionLR, setObjPositionLR] = useState<string>("50%")
-  const [objPositionTB, setObjPositionTB] = useState<string>("50%")
+  const [objPositionTB, setObjPositionTB] = useState<string>("0%")
   const [imgWidth, setImgWidth] = useState<number>(0)
   const [imgWidthClass, setImgWidthClass] = useState<string>("")
   const [imgHeight, setImgHeight] = useState<number>(0)
@@ -174,10 +174,18 @@ export default function ProjectDetails() {
       setImgHeight(300)
       setImgHeightClass("h-[300px]")
     }
-    // if (screenWidth >= 768 && screenWidth < 1024) {
-    // }
-    // if (screenWidth >= 1024 && screenWidth < 1280) {
-    // }
+    if (screenWidth >= 768 && screenWidth < 1024) {
+      setImgWidth(600)
+      setImgWidthClass("w-[600px]")
+      setImgHeight(320)
+      setImgHeightClass("h-[320px]")
+    }
+    if (screenWidth >= 1024 && screenWidth < 1280) {
+      setImgWidth(800)
+      setImgWidthClass("w-[800px]")
+      setImgHeight(340)
+      setImgHeightClass("h-[340px]")
+    }
     // if (screenWidth >= 1280 && screenWidth < 1536) {
     // }
     // if (screenWidth >= 1536) {
@@ -226,33 +234,37 @@ export default function ProjectDetails() {
         {/* icons */}
 
         <div className="flex flex-wrap mt-4 justify-evenly">
-          <div className="flex flex-wrap justify-center items-end relative ">
-            {selectedProject &&
-              selectedProject?.icons.map((icon, index) => (
-                <div
-                  key={index}
-                  className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center"
-                >
-                  <Icon
-                    icon={icon.icon}
-                    onMouseOver={() => showIconTitle(icon)}
-                    // onMouseOut={() => setDisplayModalIcon(false)}
-                    className={`${
-                      icon.title === selectedIcon.title && "border"
-                    } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
-                  ></Icon>
-                </div>
-              ))}
+          <div className="flex flex-wrap justify-center items-end relative">
+            <div className="w-[86%] flex flex-wrap justify-center sm:w-[65%] sm:flex sm:flex-wrap">
+              {selectedProject &&
+                selectedProject?.icons.map((icon, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-wrap w-[18.5%] my-2 mx-2 justify-center"
+                  >
+                    <Icon
+                      icon={icon.icon}
+                      onMouseOver={() => showIconTitle(icon)}
+                      // onMouseOut={() => setDisplayModalIcon(false)}
+                      className={`${
+                        icon.title === selectedIcon.title && "border"
+                      } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
+                    ></Icon>
+                  </div>
+                ))}
+            </div>
 
             <>
-              <span className="text-white my-2 text-[1.3rem] w-full text-center">
-                Built with:{" "}
-                {displayModalIcon && (
-                  <span className="bg-teal-gradient px-[6px] rounded-lg">
-                    {selectedIcon.title}
-                  </span>
-                )}
-              </span>
+              <div className="my-2 sm:my-0 sm:w-[30%] sm:flex sm:h-full sm:items-center sm:justify-end">
+                <span className="text-white my-2 text-[1.3rem] w-full text-center sm:flex sm:flex-col sm:gap-1 sm:w-[120px]">
+                  Built with:{" "}
+                  {displayModalIcon && (
+                    <span className="bg-teal-gradient px-[6px] rounded-lg sm:w-auto">
+                      {selectedIcon.title}
+                    </span>
+                  )}
+                </span>
+              </div>
             </>
           </div>
         </div>
@@ -263,7 +275,7 @@ export default function ProjectDetails() {
             <div
               className={` my-4 ${
                 screenHeight >= 650
-                  ? "h-[47vh] sm:h-[47vh]"
+                  ? "h-[47vh] sm:h-[47vh] lg:h-[52vh]"
                   : "h-[280px] sm:h-[300px]"
               } items-center flex justify-center w-[95%] rounded-md `}
             >
