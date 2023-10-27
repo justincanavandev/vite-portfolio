@@ -6,8 +6,7 @@ import { faDesktop, faBars } from "@fortawesome/free-solid-svg-icons"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
-import { Link, useParams, useNavigate } from "react-router-dom"
-import ProjectDetails from "./ProjectDetails"
+import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import FooterIcons from "../../components/FooterIcons"
 
@@ -57,7 +56,7 @@ export default function Projects2() {
 
   const selectedProject: Project = projects[selectedImageIndex]
 
-  const projectsLength: number = selectedProject.images.length - 1
+  // const projectsLength: number = selectedProject.images.length - 1
 
   useEffect(() => {
     if (hasPageRendered === false) {
@@ -91,9 +90,6 @@ export default function Projects2() {
     if (selectedImageIndex !== projects.length - 1 && showProjectDetails) {
       console.log("two")
       setCloseAnimation(false)
-      // setShowProjectDetails(true)
-      // setSelectedImageIndex(0)
-      // setFeaturedProject(projects[0])
       setSelectedImageIndex(selectedImageIndex + 1)
       setFeaturedProject(projects[selectedImageIndex + 1])
     }
@@ -113,7 +109,7 @@ export default function Projects2() {
   }
 
   const prevBtn = () => {
-    // setTimeout(() => {
+
     if (selectedImageIndex === 0 && !showProjectDetails) {
       console.log("one")
       setCloseAnimation(false)
@@ -132,7 +128,6 @@ export default function Projects2() {
     if (selectedImageIndex !== 0 && showProjectDetails) {
       console.log("three")
       setCloseAnimation(false)
-      // setShowProjectDetails(true)
       setSelectedImageIndex(selectedImageIndex - 1)
       setFeaturedProject(projects[selectedImageIndex - 1])
     }
@@ -148,7 +143,6 @@ export default function Projects2() {
 
   useEffect(() => {
     console.log("closeAnimation", closeAnimation)
-    // console.log("featuredProject", featuredProject)
     console.log("selectedImageIndex", selectedImageIndex)
     console.log("showProjectDetails", showProjectDetails)
     console.log("selectedProject", selectedProject)
@@ -188,7 +182,7 @@ export default function Projects2() {
     <>
       <div
         className={`flex flex-col min-w-full  ${
-          screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)"
+          screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
         } overflow-x-scroll overflow-y-scroll   
         ${(isModalOpen || viewProjectDetails) && "filter brightness-[40%]"}`}
       >
