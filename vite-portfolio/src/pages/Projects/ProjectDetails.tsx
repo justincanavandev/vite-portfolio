@@ -227,10 +227,10 @@ export default function ProjectDetails() {
       setImgHeightClass("h-[320px]")
     }
     if (screenWidth >= 1024 && screenWidth < 1280) {
-      setImgWidth(800)
-      setImgWidthClass("w-[800px]")
-      setImgHeight(340)
-      setImgHeightClass("h-[340px]")
+      setImgWidth(500)
+      setImgWidthClass("w-[500px]")
+      setImgHeight(375)
+      setImgHeightClass("h-[375px]")
     }
     // if (screenWidth >= 1280 && screenWidth < 1536) {
     // }
@@ -241,18 +241,22 @@ export default function ProjectDetails() {
   const handleMouseEnter = () => {
     //  setDisplayIcons(false)
     setIsMouseHovering(true)
-    setParentWidthClass("w-[300px] xs:w-[360px] sm:w-[490px] md:w-[570px] lg:w-[700px]")
-    setParentHeightClass("h-[290px] xs:h-[330px] sm:h-[390px] md:h-[410px] lg:h-[450px]")
+    setParentWidthClass(
+      "w-[300px] xs:w-[360px] sm:w-[490px] md:w-[570px] lg:w-[620px]"
+    )
+    setParentHeightClass(
+      "h-[290px] xs:h-[330px] sm:h-[390px] md:h-[410px] lg:h-[485px]"
+    )
   }
 
-  const [parentWidthClass, setParentWidthClass] = useState<string>("w-[95%]")
-  const [parentHeightClass, setParentHeightClass] = useState<string>("h-full")
+  const [parentWidthClass, setParentWidthClass] = useState<string>("w-[95%] lg:w-[500px]")
+  const [parentHeightClass, setParentHeightClass] = useState<string>("h-full lg:h-[375px]")
 
   const handleMouseLeave = () => {
     //  setDisplayIcons(true)
     setIsMouseHovering(false)
-    setParentWidthClass("w-[300px] sm:w-[490px] md:w-[560px]")
-    setParentHeightClass("h-full xs:h-[300px] sm:h-[330px] md:h-[350px]")
+    setParentWidthClass("w-[300px] sm:w-[490px] md:w-[560px] lg:w-[580px]")
+    setParentHeightClass("h-full xs:h-[300px] sm:h-[330px] md:h-[350px] lg:h-[375px]")
     setObjPositionLR("50%")
     setObjPositionTB("50%")
   }
@@ -285,12 +289,16 @@ export default function ProjectDetails() {
             x
           </button>
         </Link>
+        <div
+          className={`lg:flex lg:flex-row-reverse ${
+            screenHeight >= 650 ? "lg:h-[calc(100vh-108px)]" : "h-[562px]"
+          }`}
+        >
+          {/* icons */}
 
-        {/* icons */}
-  
-          <div className={` flex flex-wrap mt-4 justify-evenly `}>
-            <div className="flex flex-wrap justify-center items-end relative">
-              <div className="w-[86%] flex flex-wrap justify-center sm:w-[65%] sm:flex sm:flex-wrap">
+          <div className={` flex flex-wrap mt-4 justify-evenly lg:${imgHeightClass} lg:w-[38%] lg:self-center lg:items-start`}>
+            <div className="flex flex-wrap justify-center items-end relative lg:flex-col lg:items-center lg:border lg:mr-4 lg:rounded-[100%] lg:h-[300px] lg:w-[300px]">
+              <div className="w-[86%] flex flex-wrap justify-center sm:w-[65%] sm:flex sm:flex-wrap lg:w-[80%]">
                 {selectedProject &&
                   selectedProject?.icons.map((icon, index) => (
                     <div
@@ -310,7 +318,7 @@ export default function ProjectDetails() {
               </div>
 
               <>
-                <div className="my-2 sm:my-0 sm:w-[30%] sm:flex sm:h-full sm:items-center sm:justify-end">
+                <div className="my-2 sm:my-0 sm:w-[30%] sm:flex sm:h-full sm:items-center sm:justify-end lg:h-[80px]">
                   <span className="text-white my-2 text-[1.3rem] w-full text-center sm:flex sm:flex-col sm:gap-1 sm:w-[120px]">
                     Built with:{" "}
                     {displayModalIcon && (
@@ -328,11 +336,11 @@ export default function ProjectDetails() {
               </>
             </div>
           </div>
-     
-        {/* images */}
-        <div className="w-full">
-          <div className="flex justify-center">
-            {/* <div className=" "> */}
+
+          {/* images */}
+          <div className={`w-full lg:w-[58%] lg:items-center lg:flex lg:flex-col lg:justify-center`}>
+            <div className="flex justify-center">
+              {/* <div className=" "> */}
               <div
                 ref={imgParentDiv}
                 className={` my-4 
@@ -362,27 +370,40 @@ export default function ProjectDetails() {
                   src={selectedProject.images[firstImage]}
                 ></img>
               </div>
-            {/* </div> */}
-          </div>
-          <div
-            className={`flex w-full items-center justify-evenly ${
-              screenHeight >= 650 ? "fixed bottom-5" : "mt-6 sm:mt-1"
-            } `}
-          >
-            <div className={`${isMouseHovering && "text-transparent hidden"} flex sm:w-[205px] gap-6 items-center`}>
-              <Icon
-                icon="maki:arrow"
-                className={`border rounded-md ${isMouseHovering ? "bg-transparent border-transparent" : "bg-teal-gradient"} p-1 text-[2.5rem] rotate-180`}
-                onClick={() => prevBtn()}
-              ></Icon>
-              <p className="sm:text-[1.1rem]">
-                Image {firstImage + 1} of {selectedProject.images.length}
-              </p>
-              <Icon
-                icon="maki:arrow"
-                className={`${isMouseHovering ? "bg-transparent border-transparent" : "bg-teal-gradient"} rounded-md  border p-1 text-[2.5rem]`}
-                onClick={() => nextBtn()}
-              ></Icon>
+              {/* </div> */}
+            </div>
+            <div
+              className={`flex w-full items-center lg:h-[40px] justify-evenly lg:w-[65%] ${
+                screenHeight >= 650 ? "fixed bottom-5" : "mt-6 sm:mt-1"
+              } `}
+            >
+              <div
+                className={`${
+                  isMouseHovering && "text-transparent hidden"
+                } flex sm:w-[205px] gap-6 items-center`}
+              >
+                <Icon
+                  icon="maki:arrow"
+                  className={`border rounded-md ${
+                    isMouseHovering
+                      ? "bg-transparent border-transparent"
+                      : "bg-teal-gradient"
+                  } p-1 text-[2.5rem] rotate-180`}
+                  onClick={() => prevBtn()}
+                ></Icon>
+                <p className="sm:text-[1.1rem]">
+                  Image {firstImage + 1} of {selectedProject.images.length}
+                </p>
+                <Icon
+                  icon="maki:arrow"
+                  className={`${
+                    isMouseHovering
+                      ? "bg-transparent border-transparent"
+                      : "bg-teal-gradient"
+                  } rounded-md  border p-1 text-[2.5rem]`}
+                  onClick={() => nextBtn()}
+                ></Icon>
+              </div>
             </div>
           </div>
         </div>
