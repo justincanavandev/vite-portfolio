@@ -21,13 +21,13 @@ export default function Projects2() {
     setHasPageRendered,
     featuredProject,
     setFeaturedProject,
-    borderRight,
+    // borderRight,
     closeAnimation,
     setCloseAnimation,
     imgOpacityClass,
     setImgOpacityClass,
-    detailsOpacityClass,
-    bannerOpacity,
+    // detailsOpacityClass,
+    // bannerOpacity,
     setBannerOpacity,
     projects,
     displayCard,
@@ -39,7 +39,7 @@ export default function Projects2() {
     setBeforeRounded,
     viewProjectDetails,
     setViewProjectDetails,
-    projectIndex,
+    // projectIndex,
     setProjectIndex,
   } = useContext(ProjectsContext)
 
@@ -146,6 +146,7 @@ export default function Projects2() {
     console.log("selectedImageIndex", selectedImageIndex)
     console.log("showProjectDetails", showProjectDetails)
     console.log("selectedProject", selectedProject)
+    console.log('screenWidth', screenWidth)
   }, [selectedImageIndex])
 
   const nextPrevBtns = (
@@ -199,7 +200,7 @@ export default function Projects2() {
                 ? `h-[70vh] sm:h-[72vh]`
                 : " lg:h-[70vh] "
               : showProjectDetails
-              ? "h-[30rem] sm:h-[31.7rem]"
+              ? "h-[29.6rem] sm:h-[31.7rem]"
               : "h-[50rem]"
           }  sm:flex-row sm:flex-wrap sm:justify-center md:w-[100%] md:static`}
         >

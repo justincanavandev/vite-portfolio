@@ -8,10 +8,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { GlobalContext } from "../../context/GlobalContext"
 import { HomePageContext } from "../../context/HomePageContext"
+import FooterIcons from "../../components/FooterIcons"
 
 function HomePage() {
-  const { componentHeight, screenWidth, screenHeight, ColorPicker, footerIcons } =
-    useContext(GlobalContext)
+  const {
+    componentHeight,
+    screenWidth,
+    screenHeight,
+    ColorPicker,
+    footerIcons,
+  } = useContext(GlobalContext)
 
   // const icons = [faLinkedin, faGithub, faEnvelope]
 
@@ -187,7 +193,6 @@ function HomePage() {
 
   const [iconHeight, setIconHeight] = useState<number>(0)
 
-
   useEffect(() => {
     if (screenWidth < 475) {
       setIconHeight(520)
@@ -358,26 +363,10 @@ function HomePage() {
         
         `}
           >
-            
-            {footerIcons.map((icon, index) => (
-              <div
-                key={index}
-                className={`mx-3 text-transparent text text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5 ${iconSelectAnimation(
-                  index
-                )}`}
-              >
-                <FontAwesomeIcon className="z-10" size="lg" icon={icon} />
-              </div>
-            ))}
+            <FooterIcons />
           </div>
           {/* <ColorPicker /> */}
         </div>
-
-        {/* <div className="hidden md:flex w-[62%] md:justify-end ">
-        <div className="md:w-[70%] bg-teal-gradient rounded-l-[85%] ">
-         
-        </div>
-      </div> */}
       </div>
     </>
   )

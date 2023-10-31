@@ -18,14 +18,13 @@ import allRestaurants from "../../assets/chi-hotspot/all-restaurants.png"
 import oneRestaurant from "../../assets/chi-hotspot/restaurant-page.png"
 import reviews from "../../assets/chi-hotspot/my-reviews.png"
 import ProjectDetails from "./ProjectDetails"
-import { Route, Routes, useParams } from "react-router-dom" 
-import Resume from "../Resume"
+import { useLocation } from "react-router-dom"
 
 export default function ProjectsPage() {
   const [viewProjectDetails, setViewProjectDetails] = useState<boolean>(false)
 
-  // const {projectId } =useParams()
-  // console.log('projectId', projectId)
+ const location = useLocation()
+ console.log('location.pathname', location.pathname)
 
   const projects: Project[] = [
     {
@@ -278,7 +277,8 @@ export default function ProjectsPage() {
       }}
     >
    
-      {viewProjectDetails ?
+      {/* {viewProjectDetails ? */}
+      {location.pathname !== "/projects" ?
       <ProjectDetails/> : <Projects2 />
 }
   

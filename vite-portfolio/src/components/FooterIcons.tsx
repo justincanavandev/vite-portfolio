@@ -1,16 +1,38 @@
 import { GlobalContext } from "../context/GlobalContext"
 import { useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useLocation } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 
 export default function FooterIcons() {
   const { footerIcons, screenHeight } = useContext(GlobalContext)
   const location = useLocation()
+  const { projectId } = useParams()
+
+  // console.log('location.pathname', location.pathname)
+
+  const whichComponentIsRendered = () => {
+    if (location.pathname === "/") {
+      // console.log("/")
+      return "mb-[0rem] xs:mt-[5.9rem] sm:mt-0 sm:w-full  md:mt-[.5rem] "
+    }
+    if (location.pathname === "/projects") {
+      // console.log("proj")
+      return "mb-[.4rem] xs:mt-[5.9rem] sm:mt-0 sm:w-full  md:mt-[.5rem] "
+    }
+    if (location.pathname === `/projects/${projectId}`) {
+      // console.log("projId")
+      return "mb-[6px]"
+    }
+  }
 
   return (
     <div className="flex justify-center sm:mb-1 sm:items-end sm:mx-auto  md:mt-0 z-40">
       <div
-        className={`flex ${screenHeight < 650 ? location.pathname==="/projects" && "mb-[.4rem] xs:mt-[5.9rem] sm:mt-0 sm:w-full  md:mt-[.5rem] " : "absolute bottom-2.5"}`}
+        className={`flex ${
+          screenHeight < 650
+            ? whichComponentIsRendered()
+            : "absolute bottom-2.5"
+        }`}
       >
         {footerIcons.map((icon, index) => (
           <div
