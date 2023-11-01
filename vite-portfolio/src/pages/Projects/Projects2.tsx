@@ -58,6 +58,8 @@ export default function Projects2() {
 
   // const projectsLength: number = selectedProject.images.length - 1
 
+  console.log('projects', projects)
+
   useEffect(() => {
     if (hasPageRendered === false) {
       setTimeout(() => {
@@ -69,15 +71,6 @@ export default function Projects2() {
     }
   }, [])
 
-  // const nextBtn = () => {
-  //   if (selectedImageIndex === projectsLength) {
-  //     setSelectedImageIndex(0)
-  //     setFeaturedProject(projects[0])
-  //   } else {
-  //     setSelectedImageIndex(selectedImageIndex + 1)
-  //     setFeaturedProject(projects[selectedImageIndex + 1])
-  //   }
-  // }
   const nextBtn = () => {
     if (selectedImageIndex === projects.length - 1 && !showProjectDetails) {
       console.log("one")

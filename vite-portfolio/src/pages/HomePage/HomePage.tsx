@@ -3,7 +3,7 @@ import { useContext, useState, useEffect, useRef, RefObject } from "react"
 import "../../homepage.css"
 import "../../animation.css"
 import "../../index.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons"
 // import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { GlobalContext } from "../../context/GlobalContext"
@@ -12,11 +12,11 @@ import FooterIcons from "../../components/FooterIcons"
 
 function HomePage() {
   const {
-    componentHeight,
+    // componentHeight,
     screenWidth,
     screenHeight,
-    ColorPicker,
-    footerIcons,
+    // ColorPicker,
+    // footerIcons,
   } = useContext(GlobalContext)
 
   // const icons = [faLinkedin, faGithub, faEnvelope]
@@ -40,18 +40,18 @@ function HomePage() {
     setDivHeight()
   }, [])
 
-  function iconSelectAnimation(index: number) {
-    if (index === 0) {
-      return "icon-text-1"
-    }
+  // function iconSelectAnimation(index: number) {
+  //   if (index === 0) {
+  //     return "icon-text-1"
+  //   }
 
-    if (index === 1) {
-      return "icon-text-2"
-    }
-    if (index === 2) {
-      return "icon-text-3"
-    }
-  }
+  //   if (index === 1) {
+  //     return "icon-text-2"
+  //   }
+  //   if (index === 2) {
+  //     return "icon-text-3"
+  //   }
+  // }
 
   function selectBubbleAnimation(index: number) {
     if (index === 0) {

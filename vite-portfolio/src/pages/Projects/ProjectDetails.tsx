@@ -47,6 +47,7 @@ export default function ProjectDetails() {
 
   const [displayModalIcon, setDisplayModalIcon] = useState<boolean>(true)
   const [firstImage, setFirstImage] = useState<number>(0)
+  const [stopTitleAnim, setStopTitleAnim] = useState<boolean>(false)
 
   useEffect(() => {
     if (projectId) {
@@ -62,21 +63,23 @@ export default function ProjectDetails() {
   }, [selectedProject])
 
   const showIconTitle = (icon: IconType) => {
-    console.log("hello")
+    // if (isTitleAnimActive === false) {
+      // setIsTitleAnimActive(true)
+      if (selectedIcon !== icon) {
+        setSelectedIcon(icon)
+      }
+      if (displayModalIcon === false) {
+        setDisplayModalIcon(true)
+      }
 
-    setIsTitleAnimActive(true)
-    setSelectedIcon(icon)
-    setDisplayModalIcon(true)
-    //   setTimeout(()=>{
-    //   setIsTitleAnimActive((prevState) => {
-    //     return !prevState
-    //   })
-    // }, 300)
+    // }
+  
   }
 
   useEffect(() => {
     console.log("animationClassActive", animationClassActive)
-  }, [animationClassActive])
+    console.log("isTitleAnimActive", isTitleAnimActive)
+  }, [isTitleAnimActive])
 
   const nextBtn = () => {
     setClosingOrOpening(true)
@@ -151,7 +154,6 @@ export default function ProjectDetails() {
   const [imgWidthClass, setImgWidthClass] = useState<string>("")
   const [imgHeight, setImgHeight] = useState<number>(0)
   const [imgHeightClass, setImgHeightClass] = useState<string>("")
-  const [displayIcons, setDisplayIcons] = useState<boolean>(true)
 
   const handleMouseMove = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
@@ -252,14 +254,17 @@ export default function ProjectDetails() {
       >
         <div
           className={`${
-            isMouseHovering && (screenWidth < 768 || screenWidth>=1024) && "text-transparent "
+            isMouseHovering &&
+            (screenWidth < 768 || screenWidth >= 1024) &&
+            "text-transparent "
           } flex sm:w-[205px] gap-6 items-center md:gap-4`}
         >
           <Icon
             icon="maki:arrow"
             className={`border rounded-md 
                   ${
-                    isMouseHovering && (screenWidth < 768 || screenWidth>=1024)
+                    isMouseHovering &&
+                    (screenWidth < 768 || screenWidth >= 1024)
                       ? "bg-transparent border-transparent"
                       : "bg-teal-gradient"
                   } 
@@ -273,7 +278,8 @@ export default function ProjectDetails() {
             icon="maki:arrow"
             className={`
                   ${
-                    isMouseHovering && (screenWidth < 768 || screenWidth>=1024)
+                    isMouseHovering &&
+                    (screenWidth < 768 || screenWidth >= 1024)
                       ? "bg-transparent border-transparent"
                       : "bg-teal-gradient"
                   } 
@@ -349,11 +355,12 @@ export default function ProjectDetails() {
                     <div
                       key={index}
                       className="flex flex-wrap w-[18.5%] my-2 mx-2 xs:my-1.5 justify-center"
+                      onMouseOver={() => showIconTitle(icon)}
+                      // onMouseOut={() => setDisplayModalIcon(false)}
+                      // onMouseLeave={() => setStopTitleAnim(false)}
                     >
                       <Icon
                         icon={icon.icon}
-                        onMouseOver={() => showIconTitle(icon)}
-                        // onMouseOut={() => setDisplayModalIcon(false)}
                         className={`${
                           icon.title === selectedIcon.title && "border"
                         } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
@@ -431,15 +438,14 @@ export default function ProjectDetails() {
                   screenWidth < 768 && <FooterIcons />}
               </div>
             </div>
-            {(screenHeight < 650 ||
+            {((screenHeight >= 650 && screenWidth < 768) ||
               (screenWidth >= 768 &&
                 screenWidth < 1024 &&
+                screenHeight >= 650 &&
                 !isMouseHovering)) && <FooterIcons />}
           </div>
         </div>
-        {(screenHeight < 650 || screenWidth >= 1024 ) && (
-          <FooterIcons />
-        )}
+        {(screenHeight < 650 || screenWidth >= 1024) && <FooterIcons />}
       </div>
     </div>
   )

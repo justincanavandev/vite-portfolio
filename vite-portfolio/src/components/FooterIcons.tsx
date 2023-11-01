@@ -25,6 +25,19 @@ export default function FooterIcons() {
     }
   }
 
+  function iconSelectAnimation(index: number) {
+    if (index === 0) {
+      return "icon-text-1"
+    }
+
+    if (index === 1) {
+      return "icon-text-2"
+    }
+    if (index === 2) {
+      return "icon-text-3"
+    }
+  }
+
   return (
     <div className="flex justify-center sm:mb-1 sm:items-end sm:mx-auto  md:mt-0 z-40">
       <div
@@ -37,7 +50,9 @@ export default function FooterIcons() {
         {footerIcons.map((icon, index) => (
           <div
             key={index}
-            className={`mx-3 text-white text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5`}
+            className={`mx-3 ${(location.pathname === "/"
+              ? `text-transparent ${iconSelectAnimation(index)}`
+              : "text-white")} text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5`}
           >
             <FontAwesomeIcon className="z-10" size="lg" icon={icon} />
           </div>
