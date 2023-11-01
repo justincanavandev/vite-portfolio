@@ -13,8 +13,8 @@ function Root() {
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth)
   const [screenHeight, setScreenHeight] = useState<number>(window.innerHeight)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [openOrClose, setOpenOrClose] = useState<boolean>(false)
   const footerIcons = [faLinkedin, faGithub, faEnvelope]
-
 
   const ColorPicker = () => {
     const [color, setColor] = useState<Color>({ r: 0, g: 0, b: 0 })
@@ -26,7 +26,6 @@ function Root() {
     // useEffect(() => {
     //   console.log("color", color)
     // }, [color])
-
 
     return (
       <div>
@@ -48,8 +47,6 @@ function Root() {
       </div>
     )
   }
-
-  
 
   useEffect(() => {
     const handleResize = () => {
@@ -78,8 +75,9 @@ function Root() {
             setScreenHeight,
             isModalOpen,
             setIsModalOpen,
+            openOrClose,
+            setOpenOrClose,
             footerIcons
-        
           }}
         >
           <App />

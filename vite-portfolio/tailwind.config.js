@@ -60,7 +60,9 @@ export default {
         "project-details-close-sm": "project-details-close-sm .3s forwards",
         "open-nav-modal": "open-nav-modal .3s forwards",
         "close-nav-modal": "close-nav-modal .3s forwards",
-        "fade-in": "banner-opacity-expand .3s forwards"
+        "fade-in": "banner-opacity-expand .3s forwards",
+        "open-filter-brightness": "open-filter-brightness .3s forwards",
+        "close-filter-brightness": "close-filter-brightness .3s forwards"
       },
       keyframes: {
         "project-expand": {
@@ -119,11 +121,22 @@ export default {
         },
         "open-nav-modal": {
           "0%": { width: "0%", opacity: 0 },
-          "100%": {width: "100%", opacity: 1}
+          "100%": { width: "100%", opacity: 1 },
+          // transform: "translateX(-50%)"
         },
         "close-nav-modal": {
-          "0%": { width: "100%" },
-          "100%": {width: "0%"}
+          "0%": { width: "100%", opacity: 1 },
+          "100%": { width: "0%", opacity: 0 },
+          // transform: "translateX(50%)"
+        },
+
+        "open-filter-brightness": {
+          "0%": { filter: "brightness(1)" },
+          "100%": { filter: "brightness(.4)" },
+        },
+        "close-filter-brightness": {
+          "0%": { filter: "brightness(.4)" },
+          "100%": { filter: "brightness(1)" },
         },
 
         "banner-opacity-expand": {

@@ -3,7 +3,7 @@ import { useContext, useState, useEffect, useRef } from "react"
 import type { Project } from "../../types/project-types/projectTypes"
 import { Icon } from "@iconify/react"
 import { Icon as IconType } from "../../types/project-types/projectTypes"
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { GlobalContext } from "../../context/GlobalContext"
 import "../../projects.css"
 import FooterIcons from "../../components/FooterIcons"
@@ -12,9 +12,7 @@ export default function ProjectDetails() {
   const { projects, setViewProjectDetails } = useContext(ProjectsContext)
 
   const { screenWidth, screenHeight, isModalOpen } = useContext(GlobalContext)
-  // const navigate = useNavigate()
   const imgParentDiv = useRef(null)
-
   const { projectId } = useParams()
   const [selectedProject, setSelectedProject] = useState<Project>({
     id: 0,
@@ -47,7 +45,6 @@ export default function ProjectDetails() {
 
   const [displayModalIcon, setDisplayModalIcon] = useState<boolean>(true)
   const [firstImage, setFirstImage] = useState<number>(0)
-  const [stopTitleAnim, setStopTitleAnim] = useState<boolean>(false)
 
   useEffect(() => {
     if (projectId) {
@@ -64,16 +61,15 @@ export default function ProjectDetails() {
 
   const showIconTitle = (icon: IconType) => {
     // if (isTitleAnimActive === false) {
-      // setIsTitleAnimActive(true)
-      if (selectedIcon !== icon) {
-        setSelectedIcon(icon)
-      }
-      if (displayModalIcon === false) {
-        setDisplayModalIcon(true)
-      }
+    // setIsTitleAnimActive(true)
+    if (selectedIcon !== icon) {
+      setSelectedIcon(icon)
+    }
+    if (displayModalIcon === false) {
+      setDisplayModalIcon(true)
+    }
 
     // }
-  
   }
 
   useEffect(() => {
@@ -245,7 +241,7 @@ export default function ProjectDetails() {
   const prevNextBtns = (
     <>
       <div
-        className={`flex w-full items-center justify-evenly md:items-start md:mt-2 lg:h-[40px] lg:absolute lg:top-[-65px] ${
+        className={`flex w-full items-center justify-evenly md:items-start md:mt-2 lg:h-[40px] lg:justify-end lg:absolute lg:top-[96px] right-0 ${
           screenHeight >= 650
             ? "mt-6 xs:mt-4 md:mt-0"
             : // "fixed bottom-5"
@@ -254,17 +250,14 @@ export default function ProjectDetails() {
       >
         <div
           className={`${
-            isMouseHovering &&
-            (screenWidth < 768 || screenWidth >= 1024) &&
-            "text-transparent "
+            isMouseHovering && screenWidth < 768 && "text-transparent "
           } flex sm:w-[205px] gap-6 items-center md:gap-4`}
         >
           <Icon
             icon="maki:arrow"
             className={`border rounded-md 
                   ${
-                    isMouseHovering &&
-                    (screenWidth < 768 || screenWidth >= 1024)
+                    isMouseHovering && screenWidth < 768
                       ? "bg-transparent border-transparent"
                       : "bg-teal-gradient"
                   } 
@@ -278,8 +271,7 @@ export default function ProjectDetails() {
             icon="maki:arrow"
             className={`
                   ${
-                    isMouseHovering &&
-                    (screenWidth < 768 || screenWidth >= 1024)
+                    isMouseHovering && screenWidth < 768
                       ? "bg-transparent border-transparent"
                       : "bg-teal-gradient"
                   } 
@@ -323,7 +315,7 @@ export default function ProjectDetails() {
       }`}
     >
       <div className="bg-black z-40 w-full font-oswald">
-        <div className="relative">
+        <div className="relative lg:static">
           <div className="bg-teal-gradient">
             <h1 className="pl-2 text-[1.4rem] h-[40px]">
               {selectedProject.name}
@@ -340,7 +332,7 @@ export default function ProjectDetails() {
         </div>
         <div
           className={`lg:flex lg:flex-row-reverse ${
-            screenHeight >= 650 ? "lg:h-[calc(100vh-108px)]" : "h-[562px]"
+            screenHeight >= 650 && "lg:h-[calc(100vh-108px)]"
           }`}
         >
           {/* icons */}
@@ -355,15 +347,15 @@ export default function ProjectDetails() {
                     <div
                       key={index}
                       className="flex flex-wrap w-[18.5%] my-2 mx-2 xs:my-1.5 justify-center"
-                      onMouseOver={() => showIconTitle(icon)}
-                      // onMouseOut={() => setDisplayModalIcon(false)}
-                      // onMouseLeave={() => setStopTitleAnim(false)}
                     >
                       <Icon
                         icon={icon.icon}
                         className={`${
                           icon.title === selectedIcon.title && "border"
                         } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
+                        onMouseOver={() => showIconTitle(icon)}
+                        // onMouseOut={() => setDisplayModalIcon(false)}
+                        // onMouseLeave={() => setStopTitleAnim(false)}
                       ></Icon>
                     </div>
                   ))}
@@ -408,7 +400,7 @@ export default function ProjectDetails() {
                 ref={imgParentDiv}
                 className={` my-4 flex flex-col justify-center xs:my-2 items-center xs:gap-1
                    
-                rounded-md sm:my-0 sm:gap-1 md:mb-4 md:mt-1 lg:relative   `}
+                rounded-md sm:my-0 sm:gap-1 md:mb-4 md:mt-1 `}
               >
                 <img
                   onMouseMove={(e) => handleMouseMove(e)}
@@ -431,20 +423,21 @@ export default function ProjectDetails() {
                 }  `}
                   src={selectedProject.images[firstImage]}
                 ></img>
-                {/* prev/next Btns */}
-                {screenWidth < 768 || (screenWidth >= 1024 && prevNextBtns)}
+
                 {screenHeight >= 650 &&
                   !isMouseHovering &&
                   screenWidth < 768 && <FooterIcons />}
               </div>
             </div>
-            {((screenHeight >= 650 && screenWidth < 768) ||
+            {screenWidth < 768 || (screenWidth >= 1024 && prevNextBtns)}
+            {((screenHeight >= 650 && screenWidth < 768 && !isMouseHovering) ||
               (screenWidth >= 768 &&
                 screenWidth < 1024 &&
                 screenHeight >= 650 &&
                 !isMouseHovering)) && <FooterIcons />}
           </div>
         </div>
+
         {(screenHeight < 650 || screenWidth >= 1024) && <FooterIcons />}
       </div>
     </div>

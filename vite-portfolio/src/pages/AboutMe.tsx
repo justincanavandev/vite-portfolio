@@ -2,20 +2,23 @@ import "../animation.css"
 import { useContext, useState } from "react"
 import "../about-me.css"
 import type { Skill } from "../types/about-me-types.ts/aboutMeTypes"
-import { Icon } from '@iconify/react'
-
+import { Icon } from "@iconify/react"
 
 import { GlobalContext } from "../context/GlobalContext"
 
 export default function AboutMe() {
-  const { componentHeight, screenWidth, isModalOpen } =
-    useContext(GlobalContext)
+  const {
+    componentHeight,
+    screenWidth,
+    isModalOpen,
+    openOrClose,
+    setOpenOrClose,
+  } = useContext(GlobalContext)
 
   const languagesAndTools: Skill[] = [
     {
       title: "TypeScript",
       icon: "devicon:typescript",
-    
     },
     {
       title: "JavaScript",
@@ -45,24 +48,22 @@ export default function AboutMe() {
     },
     {
       title: "Babel",
-      icon: "devicon:babel"
-      ,
+      icon: "devicon:babel",
     },
     {
       title: "Github",
-      icon: "bi:github"
-      ,
+      icon: "bi:github",
     },
   ]
 
   const librariesAndFrameworks: Skill[] = [
     {
       title: "React.js",
-      icon: "logos:react"
+      icon: "logos:react",
     },
     {
       title: "TailwindCSS",
-      icon: "devicon:tailwindcss"
+      icon: "devicon:tailwindcss",
     },
     {
       title: "Express.js",
@@ -74,7 +75,7 @@ export default function AboutMe() {
     },
     {
       title: "Handlebars.js",
-      icon: "vscode-icons:file-type-handlebars"
+      icon: "vscode-icons:file-type-handlebars",
     },
   ]
 
@@ -165,8 +166,15 @@ export default function AboutMe() {
   return (
     <>
       <div
-        className={`w-full pl-2 pt-4 bg-black font-oswald flex text-white ${
-          isModalOpen && "filter brightness-[40%]"
+        className={`w-full pl-2 pt-4 bg-black font-oswald flex text-white         ${
+          openOrClose
+            ? "animate-open-filter-brightness"
+            : "animate-close-filter-brightness"
+        }  
+        ${
+          isModalOpen
+            ? "filter brightness-[40%]"
+            : "filter brightness-[100%] animate-close-filter-brightness"
         }`}
         style={{ height: componentHeight }}
       >
@@ -192,13 +200,12 @@ export default function AboutMe() {
                         onMouseOut={() => setDisplayIconTitle(false)}
                         className={`${tool.icon} relative hover:border p-[1.5px] rounded-md text-[2.3rem] md:text-[2.7rem]  md:p-[3px] `}
                       ></i> */}
-                            <Icon
-                            icon={tool.icon}
+                      <Icon
+                        icon={tool.icon}
                         onMouseOver={() => iconTitle(tool.title)}
                         onMouseOut={() => setDisplayIconTitle(false)}
                         className={` relative hover:border p-[1.5px] rounded-md text-[2.3rem] md:text-[2.7rem]  md:p-[3px] `}
                       ></Icon>
-                      
                     </div>
                   </div>
                 </>
@@ -227,7 +234,7 @@ export default function AboutMe() {
                           onMouseOut={() => setDisplayIconTitle(false)}
                           className={`${library.icon}  hover:border rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px]`}
                         ></i> */}
-                            <Icon
+                        <Icon
                           onMouseOver={() => iconTitle(library.title)}
                           onMouseOut={() => setDisplayIconTitle(false)}
                           icon={library.icon}

@@ -11,7 +11,13 @@ import { Icon } from "@iconify/react/dist/iconify.js"
 import FooterIcons from "../../components/FooterIcons"
 
 export default function Projects2() {
-  const { screenWidth, isModalOpen, screenHeight } = useContext(GlobalContext)
+  const {
+    screenWidth,
+    isModalOpen,
+    screenHeight,
+    openOrClose,
+    setOpenOrClose,
+  } = useContext(GlobalContext)
   const navigate = useNavigate()
 
   const {
@@ -43,7 +49,6 @@ export default function Projects2() {
     setProjectIndex,
   } = useContext(ProjectsContext)
 
-
   const openProjectModal = (index: number) => {
     // console.log("index", index)
 
@@ -58,7 +63,7 @@ export default function Projects2() {
 
   // const projectsLength: number = selectedProject.images.length - 1
 
-  console.log('projects', projects)
+  console.log("projects", projects)
 
   useEffect(() => {
     if (hasPageRendered === false) {
@@ -102,7 +107,6 @@ export default function Projects2() {
   }
 
   const prevBtn = () => {
-
     if (selectedImageIndex === 0 && !showProjectDetails) {
       console.log("one")
       setCloseAnimation(false)
@@ -139,7 +143,7 @@ export default function Projects2() {
     console.log("selectedImageIndex", selectedImageIndex)
     console.log("showProjectDetails", showProjectDetails)
     console.log("selectedProject", selectedProject)
-    console.log('screenWidth', screenWidth)
+    console.log("screenWidth", screenWidth)
   }, [selectedImageIndex])
 
   const nextPrevBtns = (
@@ -172,13 +176,42 @@ export default function Projects2() {
     </>
   )
 
+  console.log("isModalOpen", isModalOpen)
+  console.log("viewProjectDetails", viewProjectDetails)
+  console.log("openOrClose", openOrClose)
+
+  const [brightnessOpen, setBrightnessOpen] = useState<boolean>(false)
+ 
+
+  useEffect(() => {
+    setViewProjectDetails(true)
+    setBrightnessOpen(true)
+
+    // setTimeout(()=> {
+    //   setBrightnessOpen(false)
+    // }, 1000)
+    
+  }, [])
+
   return (
     <>
       <div
         className={`flex flex-col min-w-full  ${
           screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
-        } overflow-x-scroll overflow-y-scroll   
-        ${(isModalOpen || viewProjectDetails) && "filter brightness-[40%]"}`}
+        } overflow-x-scroll overflow-y-scroll
+       
+        
+        ${
+          openOrClose
+            ? "animate-open-filter-brightness"
+            : "animate-close-filter-brightness"
+        }  
+        ${
+          isModalOpen
+            ? "filter brightness-[40%]"
+            : "filter brightness-[100%] animate-close-filter-brightness"
+        }
+        `}
       >
         <div className="sm:w-[200px]">
           <h1 className="text-[2.5rem] pt-2 pl-2 text-white font-oswald uppercase sm:text-[3rem] sm:inline-block ">
@@ -360,19 +393,19 @@ export default function Projects2() {
                           <button>
                             {/* <Link to={`/projects/${projectIndex+1}`}> */}
                             {/* <Link to={`/projects/1`}> */}
-                              <FontAwesomeIcon
-                                icon={faBars}
-                                className={`absolute left-0 ${
-                                  screenWidth < 475 && "right-0"
-                                } mx-auto bottom-[.3rem] text-[1.6rem] xs:left-[12.7rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem]`}
-                                size="2xl"
-                                onClick={() => {
-                                  setProjectIndex(selectedImageIndex)
-                                  openProjectModal(selectedImageIndex)
-                                  navigate(`/projects/${selectedProject.id}`)
-                                  // navigate("/projects/1")
-                                }}
-                              />
+                            <FontAwesomeIcon
+                              icon={faBars}
+                              className={`absolute left-0 ${
+                                screenWidth < 475 && "right-0"
+                              } mx-auto bottom-[.3rem] text-[1.6rem] xs:left-[12.7rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem]`}
+                              size="2xl"
+                              onClick={() => {
+                                setProjectIndex(selectedImageIndex)
+                                openProjectModal(selectedImageIndex)
+                                navigate(`/projects/${selectedProject.id}`)
+                                // navigate("/projects/1")
+                              }}
+                            />
                             {/* </Link> */}
                           </button>
                           <Link to={selectedProject.liveLink} target="_blank">
@@ -399,8 +432,6 @@ export default function Projects2() {
         <FooterIcons />
         {/* {viewProjectDetails && <ProjectDetails />} */}
       </div>
-
-
     </>
   )
 }

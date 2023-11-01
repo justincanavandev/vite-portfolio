@@ -13,6 +13,8 @@ export type GlobalContextType = {
   ColorPicker: () => JSX.Element
   isModalOpen: boolean
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
+  openOrClose: boolean
+  setOpenOrClose: React.Dispatch<React.SetStateAction<boolean>>
   footerIcons: IconDefinition[]
 
 }
