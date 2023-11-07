@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { GlobalContext } from "../context/GlobalContext"
+import { GlobalContext } from "../../context/GlobalContext"
+import { ContactForm } from "./ContactForm"
 
 export default function Contact() {
 
@@ -9,7 +10,10 @@ export default function Contact() {
     <>
         <div className={`min-h-screen whitespace-nowrap overflow-x-auto bg-black ${isModalOpen && "filter brightness-[40%]"}`}>
             <h1 className="text-[3rem] pt-2 pl-2 text-white font-oswald uppercase">Contact</h1>
+            <ContactForm />
+         
         </div>
+    
       </>
     )
   }

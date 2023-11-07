@@ -8,7 +8,7 @@ import {
 } from "react-router-dom"
 import Nav from "./components/Nav"
 import AboutMe from "./pages/AboutMe"
-import Contact from "./pages/Contact"
+import Contact from "./pages/Contact/Contact"
 import ProjectsPage from "./pages/Projects/ProjectsPage"
 // import Resume from "./pages/Resume"
 import ProjectDetails from "./pages/Projects/ProjectDetails"
