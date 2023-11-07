@@ -63,7 +63,7 @@ export default function Projects2() {
 
   // const projectsLength: number = selectedProject.images.length - 1
 
-  console.log("projects", projects)
+
 
   useEffect(() => {
     if (hasPageRendered === false) {
@@ -138,17 +138,17 @@ export default function Projects2() {
     }
   }
 
-  useEffect(() => {
-    console.log("closeAnimation", closeAnimation)
-    console.log("selectedImageIndex", selectedImageIndex)
-    console.log("showProjectDetails", showProjectDetails)
-    console.log("selectedProject", selectedProject)
-    console.log("screenWidth", screenWidth)
-  }, [selectedImageIndex])
+  // useEffect(() => {
+  //   console.log("closeAnimation", closeAnimation)
+  //   console.log("selectedImageIndex", selectedImageIndex)
+  //   console.log("showProjectDetails", showProjectDetails)
+  //   console.log("selectedProject", selectedProject)
+  //   console.log("screenWidth", screenWidth)
+  // }, [selectedImageIndex])
 
   const nextPrevBtns = (
     <>
-      <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:h-[100px] sm:max-w-none sm:flex-col sm:absolute right-[.2rem] top-[-5.5rem] sm:w-[150px] sm:justify-evenly md:top-[3rem] md:right-[-.2rem]">
+      <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:h-[100px] sm:max-w-none sm:flex-col sm:absolute right-[.2rem] top-[-5.5rem] sm:w-[150px] sm:justify-evenly md:top-0 md:right-[-.2rem]">
         <p className="hidden sm:flex sm:text-[1.45rem]">
           Project {selectedImageIndex + 1} of {selectedProject.images.length}
         </p>
@@ -175,11 +175,11 @@ export default function Projects2() {
       </div>
     </>
   )
-
+useEffect(()=> {
   console.log("isModalOpen", isModalOpen)
   console.log("viewProjectDetails", viewProjectDetails)
   console.log("openOrClose", openOrClose)
-
+}, [isModalOpen, viewProjectDetails, openOrClose])
   const [brightnessOpen, setBrightnessOpen] = useState<boolean>(false)
  
 
@@ -192,6 +192,7 @@ export default function Projects2() {
     // }, 1000)
     
   }, [])
+
 
   return (
     <>
@@ -209,7 +210,7 @@ export default function Projects2() {
         ${
           isModalOpen
             ? "filter brightness-[40%]"
-            : "filter brightness-[100%] animate-close-filter-brightness"
+            : "filter brightness-[100%]"
         }
         `}
       >

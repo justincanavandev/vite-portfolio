@@ -24,7 +24,6 @@ export default function ProjectsPage() {
   const [viewProjectDetails, setViewProjectDetails] = useState<boolean>(false)
 
  const location = useLocation()
- console.log('location.pathname', location.pathname)
 
   const projects: Project[] = [
     {

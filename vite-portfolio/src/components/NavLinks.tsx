@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 
 export default function NavLinks() {
   const projectLinks = ["/about-me", "/contact", "/projects"]
-  const { isModalOpen, setIsModalOpen } = useContext(GlobalContext)
+  const { isModalOpen, setIsModalOpen, openOrClose, setOpenOrClose } = useContext(GlobalContext)
 
   return (
     <>
@@ -13,7 +13,11 @@ export default function NavLinks() {
           key={index}
           className="capitalize font-oswald z-10"
           to={link}
-          onClick={() => isModalOpen === true && setIsModalOpen(false)}
+          onClick={() => {
+            isModalOpen === true && setIsModalOpen(false)
+            setOpenOrClose(!openOrClose)
+            // setIsModalOpen(!isModalOpen)
+          }}
         >
           {link.slice(1).replace("-", " ")}
         </NavLink>

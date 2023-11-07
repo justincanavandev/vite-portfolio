@@ -241,7 +241,7 @@ export default function ProjectDetails() {
   const prevNextBtns = (
     <>
       <div
-        className={`flex w-full items-center justify-evenly md:items-start md:mt-2 lg:h-[40px] lg:justify-end lg:absolute lg:top-[96px] right-0 ${
+        className={`flex w-full  items-center justify-evenly md:items-start md:mt-2 lg:h-[40px] lg:justify-end lg:absolute lg:top-[96px] right-0 ${
           screenHeight >= 650
             ? "mt-6 xs:mt-4 md:mt-0"
             : // "fixed bottom-5"
@@ -429,7 +429,7 @@ export default function ProjectDetails() {
                   screenWidth < 768 && <FooterIcons />}
               </div>
             </div>
-            {screenWidth < 768 || (screenWidth >= 1024 && prevNextBtns)}
+            {(screenWidth < 768 || screenWidth >= 1024) && prevNextBtns}
             {((screenHeight >= 650 && screenWidth < 768 && !isMouseHovering) ||
               (screenWidth >= 768 &&
                 screenWidth < 1024 &&

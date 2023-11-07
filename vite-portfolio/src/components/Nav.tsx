@@ -30,10 +30,15 @@ function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
     }
   }
 
+  const setBrightness = () => {
+    
+  }
+
   return (
     <>
       <div
         ref={navBarRef}
+        onAnimationEnd={setBrightness}
         className={`
         ${
           openOrClose
