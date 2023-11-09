@@ -19,10 +19,10 @@ function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
     }
   }
 
-  useEffect(() => {
-    console.log("openOrClose", openOrClose)
-    console.log("isModalOpen", isModalOpen)
-  }, [isModalOpen, openOrClose])
+  // useEffect(() => {
+  //   console.log("openOrClose", openOrClose)
+  //   console.log("isModalOpen", isModalOpen)
+  // }, [isModalOpen, openOrClose])
 
   const setAnimDelay = () => {
     if (!openOrClose) {
