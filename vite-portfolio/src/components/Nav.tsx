@@ -41,9 +41,11 @@ function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
         onAnimationEnd={setBrightness}
         className={`
         ${
-          openOrClose
-            ? "animate-open-filter-brightness"
-            : "animate-close-filter-brightness"
+          isModalOpen
+            ? openOrClose
+              ? "animate-open-filter-brightness"
+              : "animate-close-filter-brightness"
+            : ""
         }  
         ${
           isModalOpen
@@ -52,9 +54,11 @@ function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
         } bg-black font-oswald text-white z-50 w-[100%] h-[48px]  sticky top-0 text-[.75rem] border-b nav-bar flex items-center xs:text-[.85rem]`}
       >
         <div>
-          <NavLink className={`ml-1.5 text-[1.3rem] `} to="/">
+          {/* <NavLink className={`ml-1.5 text-[1.3rem] `} to="/"> */}
+          <span className="ml-1.5 text-[1.3rem]">
             Justin Canavan
-          </NavLink>
+            </span>
+          {/* </NavLink> */}
         </div>
         <>
           <div className="flex items-end justify-evenly ml-auto mr-2 ">

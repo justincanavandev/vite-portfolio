@@ -63,8 +63,6 @@ export default function Projects2() {
 
   // const projectsLength: number = selectedProject.images.length - 1
 
-
-
   useEffect(() => {
     if (hasPageRendered === false) {
       setTimeout(() => {
@@ -175,13 +173,12 @@ export default function Projects2() {
       </div>
     </>
   )
-useEffect(()=> {
-  console.log("isModalOpen", isModalOpen)
-  console.log("viewProjectDetails", viewProjectDetails)
-  console.log("openOrClose", openOrClose)
-}, [isModalOpen, viewProjectDetails, openOrClose])
+  useEffect(() => {
+    console.log("isModalOpen", isModalOpen)
+    console.log("viewProjectDetails", viewProjectDetails)
+    console.log("openOrClose", openOrClose)
+  }, [isModalOpen, viewProjectDetails, openOrClose])
   const [brightnessOpen, setBrightnessOpen] = useState<boolean>(false)
- 
 
   useEffect(() => {
     setViewProjectDetails(true)
@@ -190,9 +187,7 @@ useEffect(()=> {
     // setTimeout(()=> {
     //   setBrightnessOpen(false)
     // }, 1000)
-    
   }, [])
-
 
   return (
     <>
@@ -203,14 +198,16 @@ useEffect(()=> {
        
         
         ${
-          openOrClose
-            ? "animate-open-filter-brightness"
-            : "animate-close-filter-brightness"
+          isModalOpen
+            ? openOrClose
+              ? "animate-open-filter-brightness"
+              : "animate-close-filter-brightness"
+            : ""
         }  
         ${
           isModalOpen
             ? "filter brightness-[40%]"
-            : "filter brightness-[100%]"
+            : "filter brightness-[100%] animate-close-filter-brightness"
         }
         `}
       >

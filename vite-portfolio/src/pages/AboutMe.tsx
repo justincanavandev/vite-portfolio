@@ -166,10 +166,12 @@ export default function AboutMe() {
   return (
     <>
       <div
-        className={`w-full pl-2 pt-4 bg-black font-oswald flex text-white         ${
-          openOrClose
-            ? "animate-open-filter-brightness"
-            : "animate-close-filter-brightness"
+        className={`w-full pl-2 pt-4 bg-black font-oswald flex text-white               ${
+          isModalOpen
+            ? openOrClose
+              ? "animate-open-filter-brightness"
+              : "animate-close-filter-brightness"
+            : ""
         }  
         ${
           isModalOpen
