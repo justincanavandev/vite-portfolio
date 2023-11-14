@@ -1,8 +1,6 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import React from "react"
 
-
-
 export type GlobalContextType = {
   componentHeight: string
   setComponentHeight: React.Dispatch<React.SetStateAction<string>>
@@ -16,5 +14,9 @@ export type GlobalContextType = {
   openOrClose: boolean
   setOpenOrClose: React.Dispatch<React.SetStateAction<boolean>>
   footerIcons: IconDefinition[]
+  iconsHeightAbove650: string
+  setIconsHeightAbove650: React.Dispatch<React.SetStateAction<string>>
+  iconsHeightBelow650: string
+  setIconsHeightBelow650: React.Dispatch<React.SetStateAction<string>>
 
 }

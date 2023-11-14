@@ -1,8 +1,10 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useContext, useEffect } from "react"
 import emailjs from "@emailjs/browser"
 import { Icon } from "@iconify/react"
+import { GlobalContext } from "../../context/GlobalContext"
 
-export const ContactForm = () => {
+export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
+  const { screenHeight, iconsHeightAbove650 } = useContext(GlobalContext)
   const form = useRef<HTMLFormElement>(null)
 
   const [isEmailSent, setIsEmailSent] = useState<boolean>(false)
@@ -18,7 +20,6 @@ export const ContactForm = () => {
   //Then, it has one or more alphanumeric characters followed by a dot (.) at least once.
   //Finally, it ends with a top-level domain (TLD) that consists of at least 2 alphabetical characters.
 
-
   const showSuccessMessage = () => {
     setIsEmailSent(true)
 
@@ -26,6 +27,24 @@ export const ContactForm = () => {
       setIsEmailSent(false)
     }, 2000)
   }
+  // let mainDivHeightString:string
+  // const [mainDivHeight, setMainDivHeight] = useState<string>("")
+
+  // useEffect(()=>{
+
+  //   if(iconsHeightAbove650.length>0 && headerHeight.length>0) {
+  //     let iconHeight:string
+  //     let header:string
+  //     iconHeight = iconsHeightAbove650
+  //     header = headerHeight
+
+  //     setMainDivHeight(`h-[calc(100vh-48px-${header}-${iconHeight})]`)
+
+  //   }
+
+  // }, [])
+
+  console.log("headerHeight", headerHeight)
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -57,11 +76,11 @@ export const ContactForm = () => {
     }
   }
   const emailMessageObj = {
-    noInput: "Must enter email!",
-    startDomain: "Must include email name",
-    endDomain: `Must include domain ("gmail.com", "yahoo.com")`,
-    atSymbol: "Must include @",
-    tld: `Must include domain ext (".com", ".net", etc)`,
+    noInput: "-Email required.",
+    startDomain: "-Email must include email name",
+    endDomain: `-Email must include domain ("gmail.com", "yahoo.com").`,
+    atSymbol: "-Email must include @.",
+    tld: `-Email must include domain ext (".com", ".net", etc)`,
   }
 
   const [emailMessagesState, setEmailMessagesState] = useState<string[]>([])
@@ -82,7 +101,7 @@ export const ContactForm = () => {
     }
     if (e.target.value.length > 0) {
       let filteredArr = emailMessagesArr.filter(
-        (message) => message !== "Must enter email!"
+        (message) => message !== "-Email required."
       )
       setEmailMessagesState(filteredArr)
 
@@ -92,7 +111,7 @@ export const ContactForm = () => {
       }
       if (e.target.value.includes("@")) {
         let filteredArr = emailMessagesArr.filter(
-          (message) => message === "Must include @"
+          (message) => message === "-Email must include @."
         )
         setEmailMessagesState(filteredArr)
       }
@@ -112,7 +131,8 @@ export const ContactForm = () => {
       }
       if (endDomainRegex.test(e.target.value)) {
         let filteredArr = emailMessagesArr.filter(
-          (message) => message !== "Must include domain name"
+          (message) =>
+            message !== `-Email must include domain ("gmail.com", "yahoo.com").`
         )
         setEmailMessagesState(filteredArr)
       }
@@ -138,7 +158,9 @@ export const ContactForm = () => {
   }
 
   const handleEmailDisplay = () => {
-    emailMessagesArr.push(emailMessageObj.noInput)
+    if (!isEmailValid) {
+      emailMessagesArr.push(emailMessageObj.noInput)
+    }
     setEmailMessagesState(emailMessagesArr)
     setEmailDisplay(true)
   }
@@ -147,33 +169,27 @@ export const ContactForm = () => {
     setMessageDisplay(true)
   }
 
-  const checkAndXIcons = (
-    <>
-      {" "}
-      (
-      <Icon
-        className="text-green-500 absolute right-[-45px] top-1 text-[1.5rem]
-"
-        icon="ic:baseline-check"
-      ></Icon>
-      ) : (
-      <Icon
-        className="text-red-400 absolute right-[-45px] top-0 text-[1.5rem]"
-        icon="ph:x"
-      ></Icon>{" "}
-      )
-    </>
-  )
+  console.log("headerHeight", headerHeight)
+  console.log("iconsHeightAbove", iconsHeightAbove650)
 
   return (
-    <form ref={form} onSubmit={sendEmail}>
-      <div className="text-white text-[1.2rem] font-oswald">
-        <div className="flex  flex-col border  gap-2 py-4 w-[300px] mx-auto rounded-sm items-center">
+    <form className="" ref={form} onSubmit={sendEmail}>
+      <div
+        // className={`flex flex-col    text-white text-[1.2rem] font-oswald min-w-full justify-center ${screenHeight>=650 && headerHeight !=="" && iconsHeightAbove650 !=="" ? `h-[calc(100vh_-_48px_-_${headerHeight})]` : ""}
+
+        className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full justify-center ${
+          screenHeight >= 650 ? `h-[calc(100vh-220px)] ` : "-mt-[20px]"
+        }
+    
+ `}
+      >
+        {/* <form className="" ref={form} onSubmit={sendEmail}> */}
+        <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center">
           <label>Name</label>
           <div className="relative">
             <input
               onChange={(e) => handleUserName(e)}
-              className={`text-black rounded-sm ${
+              className={`text-black w-[180px] px-[2px] rounded-sm ${
                 usernameDisplay
                   ? isUsernameValid
                     ? "outline-green-500"
@@ -209,7 +225,7 @@ export const ContactForm = () => {
             <input
               onChange={(e) => handleEmail(e)}
               onFocus={handleEmailDisplay}
-              className={`text-black ${
+              className={`text-black w-[180px] px-[2px] rounded-sm ${
                 emailDisplay
                   ? isEmailValid
                     ? "outline-green-500"
@@ -243,7 +259,7 @@ export const ContactForm = () => {
           <div className="relative">
             <textarea
               onChange={(e) => handleMessage(e)}
-              className={`text-black ${
+              className={`text-black w-[180px] px-[2px] rounded-sm ${
                 messageDisplay
                   ? isMessageValid
                     ? "outline-green-500"
@@ -278,7 +294,7 @@ export const ContactForm = () => {
             }
             type="submit"
             value="Send"
-            className="border px-3 py-1 mt-4 disabled:opacity-50"
+            className="border px-3 py-1 mt-2 disabled:opacity-50"
           >
             Send
           </button>
@@ -287,22 +303,42 @@ export const ContactForm = () => {
 
         {/* error messages */}
 
-        <div className="flex flex-col w-[275px] mx-auto text-white gap-2">
-          <div>
-            {!isUsernameValid && usernameDisplay && (
-              <span>Must enter name!</span>
-            )}
-          </div>
-          <div>
-            {emailDisplay &&
-              emailMessagesState.map((message) => <p>{message}</p>)}
-          </div>
-          <div>
-            {!isMessageValid && messageDisplay && (
-              <span>Must enter message!</span>
-            )}
+        <div className="flex flex-col w-full items-center mx-auto text-white gap-2">
+          <div
+            className={`mt-4 flex w-full flex-wrap ${
+              screenHeight < 650 ? "h-[120px]" : ""
+            } ${
+              emailMessagesState.length > 0 ||
+              (usernameDisplay && !isUsernameValid) ||
+              (messageDisplay && !isMessageValid)
+                ? ""
+                : ""
+            } max-w-[300px]`}
+          >
+            <div className="w-full h-fit flex flex-wrap border px-2">
+              {!isUsernameValid && usernameDisplay && (
+                // <div className="min-w-[50%]">
+                  <span className="h-auto min-w-[50%]">-Name required.</span>
+                // </div>
+              )}
+
+              {!isMessageValid && messageDisplay && (
+                // <div className="min-w-[50%]">
+                  <span className="h-auto min-w-[50%]">-Message required.</span>
+                // </div>
+              )}
+
+              {emailDisplay &&
+                emailMessagesState.map((message) => (
+                  // <div className="min-w-[50%] ">
+                    <p className="max-w-[280px] min-w-[50%] h-auto whitespace-normal">{message}</p>
+                  // </div>
+                ))}
+            </div>
           </div>
         </div>
+
+        {/* </form> */}
       </div>
     </form>
   )

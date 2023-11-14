@@ -15,6 +15,9 @@ function Root() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [openOrClose, setOpenOrClose] = useState<boolean>(false)
   const footerIcons = [faLinkedin, faGithub, faEnvelope]
+  const [iconsHeightAbove650, setIconsHeightAbove650] = useState<string>("")
+  const [iconsHeightBelow650, setIconsHeightBelow650] = useState<string>("")
+
 
   const ColorPicker = () => {
     const [color, setColor] = useState<Color>({ r: 0, g: 0, b: 0 })
@@ -26,6 +29,8 @@ function Root() {
     // useEffect(() => {
     //   console.log("color", color)
     // }, [color])
+
+  
 
     return (
       <div>
@@ -77,7 +82,12 @@ function Root() {
             setIsModalOpen,
             openOrClose,
             setOpenOrClose,
-            footerIcons
+            footerIcons,
+            iconsHeightAbove650,
+            setIconsHeightAbove650,
+            iconsHeightBelow650,
+            setIconsHeightBelow650
+
           }}
         >
           <App />

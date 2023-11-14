@@ -12,7 +12,7 @@ export default function ProjectDetails() {
   const { projects, setViewProjectDetails } = useContext(ProjectsContext)
 
   const { screenWidth, screenHeight, isModalOpen } = useContext(GlobalContext)
-  const imgParentDiv = useRef(null)
+  const imgParentDiv = useRef<HTMLDivElement>(null)
   const { projectId } = useParams()
   const [selectedProject, setSelectedProject] = useState<Project>({
     id: 0,
@@ -60,22 +60,18 @@ export default function ProjectDetails() {
   }, [selectedProject])
 
   const showIconTitle = (icon: IconType) => {
-    // if (isTitleAnimActive === false) {
-    // setIsTitleAnimActive(true)
     if (selectedIcon !== icon) {
       setSelectedIcon(icon)
     }
     if (displayModalIcon === false) {
       setDisplayModalIcon(true)
     }
-
-    // }
   }
 
-  useEffect(() => {
-    console.log("animationClassActive", animationClassActive)
-    console.log("isTitleAnimActive", isTitleAnimActive)
-  }, [isTitleAnimActive])
+  // useEffect(() => {
+  //   console.log("animationClassActive", animationClassActive)
+  //   console.log("isTitleAnimActive", isTitleAnimActive)
+  // }, [isTitleAnimActive])
 
   const nextBtn = () => {
     setClosingOrOpening(true)
@@ -194,10 +190,10 @@ export default function ProjectDetails() {
   }, [imgYCoord])
 
   useEffect(() => {
-    console.log("imgXCoord", imgXCoord)
-    console.log("imgYCoord", imgYCoord)
-    console.log("objLR", objPositionLR)
-    console.log("objTB", objPositionTB)
+    // console.log("imgXCoord", imgXCoord)
+    // console.log("imgYCoord", imgYCoord)
+    // console.log("objLR", objPositionLR)
+    // console.log("objTB", objPositionTB)
     console.log("isMouseHovering", isMouseHovering)
   }, [imgXCoord, imgYCoord, objPositionLR, objPositionTB, isMouseHovering])
 
@@ -287,12 +283,12 @@ export default function ProjectDetails() {
     setIsMouseHovering(true)
   }
 
-  const [parentWidthClass, setParentWidthClass] = useState<string>(
-    "w-[300px] xs:w-[360px] sm:w-[490px] md:w-[570px] lg:w-[620px]"
-  )
-  const [parentHeightClass, setParentHeightClass] = useState<string>(
-    "h-[290px] xs:h-[330px] sm:h-[370px] md:h-[410px] lg:h-[485px]"
-  )
+  // const [parentWidthClass, setParentWidthClass] = useState<string>(
+  //   "w-[300px] xs:w-[360px] sm:w-[490px] md:w-[570px] lg:w-[620px]"
+  // )
+  // const [parentHeightClass, setParentHeightClass] = useState<string>(
+  //   "h-[290px] xs:h-[330px] sm:h-[370px] md:h-[410px] lg:h-[485px]"
+  // )
 
   const handleMouseLeave = () => {
     setIsMouseHovering(false)
@@ -438,7 +434,7 @@ export default function ProjectDetails() {
           </div>
         </div>
 
-        {(screenHeight < 650 || screenWidth >= 1024) && <FooterIcons />}
+        {((screenHeight < 650 && !isMouseHovering) || (screenWidth >= 1024 && !isMouseHovering)) && <FooterIcons />}
       </div>
     </div>
   )

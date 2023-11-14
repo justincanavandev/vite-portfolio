@@ -178,15 +178,11 @@ export default function Projects2() {
     console.log("viewProjectDetails", viewProjectDetails)
     console.log("openOrClose", openOrClose)
   }, [isModalOpen, viewProjectDetails, openOrClose])
-  const [brightnessOpen, setBrightnessOpen] = useState<boolean>(false)
+
 
   useEffect(() => {
     setViewProjectDetails(true)
-    setBrightnessOpen(true)
 
-    // setTimeout(()=> {
-    //   setBrightnessOpen(false)
-    // }, 1000)
   }, [])
 
   return (
