@@ -1,10 +1,11 @@
-import { useRef, useState, useContext, useEffect } from "react"
+import { useRef, useState, useContext } from "react"
 import emailjs from "@emailjs/browser"
 import { Icon } from "@iconify/react"
 import { GlobalContext } from "../../context/GlobalContext"
 
 export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
-  const { screenHeight, iconsHeightAbove650 } = useContext(GlobalContext)
+  const { screenHeight, iconsHeightAbove650, screenWidth } =
+    useContext(GlobalContext)
   const form = useRef<HTMLFormElement>(null)
 
   const [isEmailSent, setIsEmailSent] = useState<boolean>(false)
@@ -15,6 +16,7 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   const [usernameDisplay, setUsernameDisplay] = useState<boolean>(false)
   const [messageDisplay, setMessageDisplay] = useState<boolean>(false)
   const [emailDisplay, setEmailDisplay] = useState<boolean>(false)
+
   // It starts with one or more alphanumeric characters, plus some special characters like ".", "_", "%", and "+".
   //It is followed by the "@" symbol.
   //Then, it has one or more alphanumeric characters followed by a dot (.) at least once.
@@ -27,24 +29,6 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
       setIsEmailSent(false)
     }, 2000)
   }
-  // let mainDivHeightString:string
-  // const [mainDivHeight, setMainDivHeight] = useState<string>("")
-
-  // useEffect(()=>{
-
-  //   if(iconsHeightAbove650.length>0 && headerHeight.length>0) {
-  //     let iconHeight:string
-  //     let header:string
-  //     iconHeight = iconsHeightAbove650
-  //     header = headerHeight
-
-  //     setMainDivHeight(`h-[calc(100vh-48px-${header}-${iconHeight})]`)
-
-  //   }
-
-  // }, [])
-
-  console.log("headerHeight", headerHeight)
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -84,7 +68,6 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   }
 
   const [emailMessagesState, setEmailMessagesState] = useState<string[]>([])
-
   const emailMessagesArr: string[] = []
 
   // const tldRegex = /(\.com|\.org|\.net|\.[a-zA-Z.]+)$/;
@@ -145,6 +128,20 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     }
   }
 
+  console.log(
+    "usernameD, messageD, emailD",
+    usernameDisplay,
+    messageDisplay,
+    emailDisplay
+  )
+
+  console.log(
+    "isEmailV, isMessageV, isUserV",
+    isEmailValid,
+    isMessageValid,
+    isUsernameValid
+  )
+
   const handleMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value.length === 0) {
       setIsMessageValid(false)
@@ -172,19 +169,82 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   console.log("headerHeight", headerHeight)
   console.log("iconsHeightAbove", iconsHeightAbove650)
 
+  const errorMessages = (
+    <>
+      <div className="flex flex-col w-full items-center mx-auto text-white gap-2 md:absolute md:top-[-16px] md:right-[-210px] md:w-[180px]">
+        <div
+          className={`mt-4 flex w-full flex-wrap ${
+            screenHeight < 650 ? "h-[120px]" : ""
+          } ${
+            emailMessagesState.length > 0 ||
+            (usernameDisplay && !isUsernameValid) ||
+            (messageDisplay && !isMessageValid)
+              ? ""
+              : ""
+          } max-w-[300px]`}
+        >
+          <div
+            className={`w-full h-fit flex flex-wrap ${
+              emailMessagesState.length > 0 ||
+              (usernameDisplay && !isUsernameValid) ||
+              (messageDisplay && !isMessageValid)
+                ? "border md:rounded-sm py-1"
+                : ""
+            }  px-2`}
+          >
+            {!isUsernameValid && usernameDisplay && (
+              <span
+                className={`h-auto min-w-[50%] ${
+                  emailMessagesState.length === 0 && (!messageDisplay || !isUsernameValid)
+                    ? ""
+                    : "md:mb-3"
+                }`}
+              >
+                -Name required.
+              </span>
+            )}
+
+            {!isMessageValid && messageDisplay && (
+              <span
+                className={`h-auto min-w-[50%] ${
+                  emailMessagesState.length === 0 && (!usernameDisplay || !isMessageValid)
+                    ? ""
+                    : "md:mb-3"
+                }`}
+              >
+                -Message required.
+              </span>
+            )}
+
+            {emailDisplay &&
+              emailMessagesState.map((message, index) => (
+                <p
+                  className={`first:max-w-[280px] min-w-[50%] ${
+                    index < emailMessagesState.length - 1 ? "md:mb-3" : ""
+                  } first-line:h-auto whitespace-normal`}
+                >
+                  {message}
+                </p>
+              ))}
+          </div>
+        </div>
+      </div>
+    </>
+  )
+
   return (
     <form className="" ref={form} onSubmit={sendEmail}>
       <div
-        // className={`flex flex-col    text-white text-[1.2rem] font-oswald min-w-full justify-center ${screenHeight>=650 && headerHeight !=="" && iconsHeightAbove650 !=="" ? `h-[calc(100vh_-_48px_-_${headerHeight})]` : ""}
-
         className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full justify-center ${
-          screenHeight >= 650 ? `h-[calc(100vh-220px)] ` : "-mt-[20px]"
+          screenHeight >= 650
+            ? `h-[calc(100vh-220px)] `
+            : "-mt-[20px] md:mt-0 md:h-[440px]"
         }
     
  `}
       >
-        {/* <form className="" ref={form} onSubmit={sendEmail}> */}
-        <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center">
+        <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center md:relative">
+          {screenWidth >= 768 && errorMessages}
           <label>Name</label>
           <div className="relative">
             <input
@@ -303,42 +363,7 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
 
         {/* error messages */}
 
-        <div className="flex flex-col w-full items-center mx-auto text-white gap-2">
-          <div
-            className={`mt-4 flex w-full flex-wrap ${
-              screenHeight < 650 ? "h-[120px]" : ""
-            } ${
-              emailMessagesState.length > 0 ||
-              (usernameDisplay && !isUsernameValid) ||
-              (messageDisplay && !isMessageValid)
-                ? ""
-                : ""
-            } max-w-[300px]`}
-          >
-            <div className="w-full h-fit flex flex-wrap border px-2">
-              {!isUsernameValid && usernameDisplay && (
-                // <div className="min-w-[50%]">
-                  <span className="h-auto min-w-[50%]">-Name required.</span>
-                // </div>
-              )}
-
-              {!isMessageValid && messageDisplay && (
-                // <div className="min-w-[50%]">
-                  <span className="h-auto min-w-[50%]">-Message required.</span>
-                // </div>
-              )}
-
-              {emailDisplay &&
-                emailMessagesState.map((message) => (
-                  // <div className="min-w-[50%] ">
-                    <p className="max-w-[280px] min-w-[50%] h-auto whitespace-normal">{message}</p>
-                  // </div>
-                ))}
-            </div>
-          </div>
-        </div>
-
-        {/* </form> */}
+        {screenWidth < 768 && errorMessages}
       </div>
     </form>
   )
