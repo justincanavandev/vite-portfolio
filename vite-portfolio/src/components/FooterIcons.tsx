@@ -16,8 +16,8 @@ export default function FooterIcons({ headerHeight }: FooterProps) {
     if(iconsRef.current) {
       setIconsHeightAbove650(`${iconsRef.current.clientHeight}px`)
     }
-    console.log('iconsHe', typeof iconsHeightAbove650)
-    console.log('headerHeight', headerHeight)
+    // console.log('iconsHe', typeof iconsHeightAbove650)
+    // console.log('headerHeight', headerHeight)
 
   },[iconsRef.current])
 

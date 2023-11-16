@@ -1,7 +1,8 @@
-import { useRef, useState, useContext } from "react"
+import { useRef, useState, useContext, useEffect } from "react"
 import emailjs from "@emailjs/browser"
 import { Icon } from "@iconify/react"
 import { GlobalContext } from "../../context/GlobalContext"
+import ProgressBar from "@ramonak/react-progress-bar"
 
 export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   const { screenHeight, iconsHeightAbove650, screenWidth } =
@@ -16,6 +17,8 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   const [usernameDisplay, setUsernameDisplay] = useState<boolean>(false)
   const [messageDisplay, setMessageDisplay] = useState<boolean>(false)
   const [emailDisplay, setEmailDisplay] = useState<boolean>(false)
+  const [isEmailLoading, setIsEmailLoading] = useState<boolean>(false)
+  const [emailDidntSend, setEmailDidntSend] = useState<boolean>(false)
 
   // It starts with one or more alphanumeric characters, plus some special characters like ".", "_", "%", and "+".
   //It is followed by the "@" symbol.
@@ -30,9 +33,18 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     }, 2000)
   }
 
+  // const showErrorMessage = () => {
+  //   setIsEmailSent(true)
+
+  //   setTimeout(() => {
+  //     setIsEmailSent(false)
+  //   }, 2000)
+  // }
+
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (form.current) {
+      setIsEmailLoading(true)
       emailjs
         .sendForm(
           "service_odjii1l",
@@ -43,10 +55,17 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
         .then(
           (result) => {
             console.log("result.text", result.text)
-            result.text === "OK" && showSuccessMessage()
+            setTimeout(() => {
+              setIsEmailLoading(false)
+              result.text === "OK" && showSuccessMessage()
+            }, 1500)
           },
           (error) => {
-            console.log("error.text", error.text)
+            setTimeout(() => {
+              setIsEmailLoading(false)
+              setEmailDidntSend(true)
+              console.log("error.text", error.text)
+            }, 1500)
           }
         )
     }
@@ -128,19 +147,19 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     }
   }
 
-  console.log(
-    "usernameD, messageD, emailD",
-    usernameDisplay,
-    messageDisplay,
-    emailDisplay
-  )
+  // console.log(
+  //   "usernameD, messageD, emailD",
+  //   usernameDisplay,
+  //   messageDisplay,
+  //   emailDisplay
+  // )
 
-  console.log(
-    "isEmailV, isMessageV, isUserV",
-    isEmailValid,
-    isMessageValid,
-    isUsernameValid
-  )
+  // console.log(
+  //   "isEmailV, isMessageV, isUserV",
+  //   isEmailValid,
+  //   isMessageValid,
+  //   isUsernameValid
+  // )
 
   const handleMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value.length === 0) {
@@ -166,8 +185,45 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     setMessageDisplay(true)
   }
 
-  console.log("headerHeight", headerHeight)
-  console.log("iconsHeightAbove", iconsHeightAbove650)
+  const [progressValue, setProgressValue] = useState<number>(0)
+
+  const raiseProgressValue = () => {
+    if (progressValue >= .99) {
+      setProgressValue(0)
+    } else {
+      setTimeout(() => {
+        setProgressValue(progressValue + 0.01)
+      }, 15)
+    }
+  }
+
+  const raiseProgressValueTest = () => {
+    if (!isEmailLoading) {
+      setIsEmailLoading(true)
+    }
+    if (progressValue >= .99) {
+        setProgressValue(0)
+      
+    } else {
+      setTimeout(() => {
+        setProgressValue(progressValue + 0.01)
+      }, 15)
+    }
+    setTimeout(() => {
+      setIsEmailLoading(false)
+      showSuccessMessage()
+      setProgressValue(0)
+    }, 2000)
+  }
+
+  useEffect(() => {
+    if (progressValue < 1 && isEmailLoading) {
+      // raiseProgressValue()
+      raiseProgressValueTest()
+    } 
+
+  }, [progressValue, isEmailLoading])
+
 
   const errorMessages = (
     <>
@@ -195,7 +251,8 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
             {!isUsernameValid && usernameDisplay && (
               <span
                 className={`h-auto min-w-[50%] ${
-                  emailMessagesState.length === 0 && (!messageDisplay || !isUsernameValid)
+                  emailMessagesState.length === 0 &&
+                  (!messageDisplay || !isUsernameValid)
                     ? ""
                     : "md:mb-3"
                 }`}
@@ -207,7 +264,8 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
             {!isMessageValid && messageDisplay && (
               <span
                 className={`h-auto min-w-[50%] ${
-                  emailMessagesState.length === 0 && (!usernameDisplay || !isMessageValid)
+                  emailMessagesState.length === 0 &&
+                  (!usernameDisplay || !isMessageValid)
                     ? ""
                     : "md:mb-3"
                 }`}
@@ -234,6 +292,11 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
 
   return (
     <form className="" ref={form} onSubmit={sendEmail}>
+      {isEmailLoading && (
+        <progress className="absolute bg-red-500 top-10 right-6" value={progressValue} />
+      )}
+     
+
       <div
         className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full justify-center ${
           screenHeight >= 650
@@ -243,6 +306,8 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     
  `}
       >
+         {isEmailSent && <span className="absolute top-8 right-12">Email sent!</span>}
+         {emailDidntSend && <span className="absolute top-8 right-12">There was an error with your email.</span>}
         <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center md:relative">
           {screenWidth >= 768 && errorMessages}
           <label>Name</label>
@@ -352,13 +417,20 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
               isMessageValid === false ||
               isEmailValid === false
             }
+            onClick={raiseProgressValue}
             type="submit"
             value="Send"
             className="border px-3 py-1 mt-2 disabled:opacity-50"
           >
             Send
           </button>
-          {isEmailSent && <span>Success!</span>}
+          <button
+            onClick={raiseProgressValueTest}
+            type="button"
+            className="border px-3 py-1 mt-2 disabled:opacity-50"
+          >
+            Test
+          </button>
         </div>
 
         {/* error messages */}

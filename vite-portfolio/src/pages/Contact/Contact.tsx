@@ -16,7 +16,7 @@ export default function Contact() {
     if (headerRef.current) {
       setHeaderHeight(`${headerRef?.current.clientHeight}px`)
     }
-    console.log('headerHeight', headerHeight)
+    // console.log('headerHeight', headerHeight)
   }, [headerRef.current])
 
   return (
