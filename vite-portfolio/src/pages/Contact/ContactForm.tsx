@@ -2,10 +2,11 @@ import { useRef, useState, useContext, useEffect } from "react"
 import emailjs from "@emailjs/browser"
 import { Icon } from "@iconify/react"
 import { GlobalContext } from "../../context/GlobalContext"
-import ProgressBar from "@ramonak/react-progress-bar"
+import "./progress.css"
+
 
 export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
-  const { screenHeight, iconsHeightAbove650, screenWidth } =
+  const { screenHeight, iconsHeightAbove650, screenWidth, ColorPicker } =
     useContext(GlobalContext)
   const form = useRef<HTMLFormElement>(null)
 
@@ -19,6 +20,7 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   const [emailDisplay, setEmailDisplay] = useState<boolean>(false)
   const [isEmailLoading, setIsEmailLoading] = useState<boolean>(false)
   const [emailDidntSend, setEmailDidntSend] = useState<boolean>(false)
+  const [progressValue, setProgressValue] = useState<number>(0)
 
   // It starts with one or more alphanumeric characters, plus some special characters like ".", "_", "%", and "+".
   //It is followed by the "@" symbol.
@@ -185,10 +187,8 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     setMessageDisplay(true)
   }
 
-  const [progressValue, setProgressValue] = useState<number>(0)
-
   const raiseProgressValue = () => {
-    if (progressValue >= .99) {
+    if (progressValue >= 0.99) {
       setProgressValue(0)
     } else {
       setTimeout(() => {
@@ -203,10 +203,14 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     }
     if (progressValue >= .99) {
         setProgressValue(0)
-      
+
+    // if (progressValue >= 99) {
+    //   setProgressValue(0)
     } else {
       setTimeout(() => {
-        setProgressValue(progressValue + 0.01)
+        // setProgressValue(progressValue + 0.01)
+        // setProgressValue(progressValue + 1)
+        setProgressValue((prevProgress) => prevProgress + .01);
       }, 15)
     }
     setTimeout(() => {
@@ -218,12 +222,12 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
 
   useEffect(() => {
     if (progressValue < 1 && isEmailLoading) {
+    // if (progressValue < 100 && isEmailLoading) {
       // raiseProgressValue()
+      console.log('progressValue', progressValue)
       raiseProgressValueTest()
-    } 
-
+    }
   }, [progressValue, isEmailLoading])
-
 
   const errorMessages = (
     <>
@@ -293,9 +297,11 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   return (
     <form className="" ref={form} onSubmit={sendEmail}>
       {isEmailLoading && (
-        <progress className="absolute bg-red-500 top-10 right-6" value={progressValue} />
+<>
+        <progress className="appearance-none absolute bg-red-500 top-10 right-6" value={progressValue} />
+        {/* <ProgressBar completed={progressValue} /> */}
+        </>
       )}
-     
 
       <div
         className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full justify-center ${
@@ -306,8 +312,14 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     
  `}
       >
-         {isEmailSent && <span className="absolute top-8 right-12">Email sent!</span>}
-         {emailDidntSend && <span className="absolute top-8 right-12">There was an error with your email.</span>}
+        {isEmailSent && (
+          <span className="absolute top-8 right-12">Email sent!</span>
+        )}
+        {emailDidntSend && (
+          <span className="absolute top-8 right-12">
+            There was an error with your email.
+          </span>
+        )}
         <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center md:relative">
           {screenWidth >= 768 && errorMessages}
           <label>Name</label>
@@ -347,6 +359,7 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
 
           <label>Email</label>
           <div className="relative">
+            
             <input
               onChange={(e) => handleEmail(e)}
               onFocus={handleEmailDisplay}
@@ -431,6 +444,7 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
           >
             Test
           </button>
+          {/* <ColorPicker/> */}
         </div>
 
         {/* error messages */}

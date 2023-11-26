@@ -4,14 +4,15 @@ import { NavLink } from "react-router-dom"
 
 export default function NavLinks() {
   const projectLinks = ["/about-me", "/contact", "/projects"]
-  const { isModalOpen, setIsModalOpen, openOrClose, setOpenOrClose } = useContext(GlobalContext)
+  const { isModalOpen, setIsModalOpen, openOrClose, setOpenOrClose } =
+    useContext(GlobalContext)
 
   return (
     <>
       {projectLinks.map((link, index) => (
         <NavLink
           key={index}
-          className="capitalize font-oswald z-10"
+          className="capitalize font-oswald no-underline  text-white z-10"
           to={link}
           onClick={() => {
             isModalOpen === true && setIsModalOpen(false)

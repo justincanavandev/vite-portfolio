@@ -4,6 +4,8 @@ import { ContactForm } from "./ContactForm"
 import FooterIcons from "../../components/FooterIcons"
 
 
+
+
 export default function Contact() {
   const { isModalOpen, openOrClose, screenHeight } = useContext(GlobalContext)
 

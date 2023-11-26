@@ -147,7 +147,7 @@ export default function Projects2() {
   const nextPrevBtns = (
     <>
       <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:h-[100px] sm:max-w-none sm:flex-col sm:absolute right-[.2rem] top-[-5.5rem] sm:w-[150px] sm:justify-evenly md:top-0 md:right-[-.2rem]">
-        <p className="hidden sm:flex sm:text-[1.45rem]">
+        <p className="hidden sm:flex sm:text-[1.45rem] ">
           Project {selectedImageIndex + 1} of {selectedProject.images.length}
         </p>
         <div className="sm:flex sm:gap-4">
@@ -380,7 +380,7 @@ export default function Projects2() {
                           <Link to={selectedProject.githubRepo} target="_blank">
                             <FontAwesomeIcon
                               icon={faGithub}
-                              className="absolute left-[.5rem] bottom-[.3rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem] "
+                              className="absolute text-white left-[.5rem] bottom-[.3rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem] "
                               size="2xl"
                             />
                           </Link>
@@ -404,7 +404,7 @@ export default function Projects2() {
                           </button>
                           <Link to={selectedProject.liveLink} target="_blank">
                             <FontAwesomeIcon
-                              className="absolute right-[0.3rem] bottom-[.3rem] text-[1.4rem] xs:text-[1.5rem] xs:bottom-[.5rem] sm:static sm:text-[1.95rem] md:text-[2.25rem]"
+                              className="absolute text-white right-[0.3rem] bottom-[.3rem] text-[1.4rem] xs:text-[1.5rem] xs:bottom-[.5rem] sm:static sm:text-[1.95rem] md:text-[2.25rem]"
                               icon={faDesktop}
                               size="xl"
                             />

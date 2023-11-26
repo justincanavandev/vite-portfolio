@@ -30,15 +30,15 @@ function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
     }
   }
 
-  const setBrightness = () => {
+  // const setBrightness = () => {
     
-  }
+  // }
 
   return (
     <>
       <div
         ref={navBarRef}
-        onAnimationEnd={setBrightness}
+        // onAnimationEnd={setBrightness}
         className={`
         ${
           isModalOpen

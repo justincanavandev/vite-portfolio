@@ -319,7 +319,7 @@ export default function ProjectDetails() {
           </div>
           <Link to="/projects">
             <button
-              className="absolute right-3 text-[1.5rem] top-[-2.7px] sm:top-[-5px] sm:right-[26px] sm:text-[1.8rem]"
+              className="absolute right-3 text-white text-[1.5rem] top-[-2.7px] sm:top-[-5px] sm:right-[26px] sm:text-[1.8rem]"
               onClick={() => setViewProjectDetails(false)}
             >
               x
