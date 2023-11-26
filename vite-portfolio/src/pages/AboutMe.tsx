@@ -8,11 +8,11 @@ import { GlobalContext } from "../context/GlobalContext"
 
 export default function AboutMe() {
   const {
-    componentHeight,
     screenWidth,
     isModalOpen,
     openOrClose,
-    setOpenOrClose,
+    // setOpenOrClose,
+    screenHeight,
   } = useContext(GlobalContext)
 
   const languagesAndTools: Skill[] = [
@@ -82,6 +82,11 @@ export default function AboutMe() {
   const [displayIconTitle, setDisplayIconTitle] = useState(false)
 
   const [displayedIcon, setDisplayedIcon] = useState("")
+  const [overflowClass, setOverflowClass] = useState("overflow-hidden")
+
+  const handleOverflow = () => {
+    setOverflowClass("")
+  }
 
   const iconTitle = (displayed: string) => {
     setDisplayedIcon(displayed)
@@ -163,10 +168,14 @@ export default function AboutMe() {
     return ""
   }
 
+
+
   return (
     <>
       <div
-        className={`w-full pl-2 pt-4 bg-black font-oswald flex text-white               ${
+        className={`w-full pl-2 pt-4 bg-black font-oswald flex text-white ${overflowClass} ${
+          screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
+        }            ${
           isModalOpen
             ? openOrClose
               ? "animate-open-filter-brightness"
@@ -178,7 +187,6 @@ export default function AboutMe() {
             ? "filter brightness-[40%]"
             : "filter brightness-[100%] animate-close-filter-brightness"
         }`}
-        style={{ height: componentHeight }}
       >
         <div className="flex flex-col gap-8 ">
           <h2 className="text-[3rem] xs:text-[3.1rem] sm:text-[3.5rem] uppercase">
@@ -197,11 +205,6 @@ export default function AboutMe() {
                 <>
                   <div key={langIndex} className="flex flex-col relative">
                     <div className="px-1 mb-2.5">
-                      {/* <i
-                        onMouseOver={() => iconTitle(tool.title)}
-                        onMouseOut={() => setDisplayIconTitle(false)}
-                        className={`${tool.icon} relative hover:border p-[1.5px] rounded-md text-[2.3rem] md:text-[2.7rem]  md:p-[3px] `}
-                      ></i> */}
                       <Icon
                         icon={tool.icon}
                         onMouseOver={() => iconTitle(tool.title)}
@@ -231,18 +234,12 @@ export default function AboutMe() {
                   <>
                     <div key={libIndex} className="flex flex-col relative">
                       <div className="px-1 flex ">
-                        {/* <i
-                          onMouseOver={() => iconTitle(library.title)}
-                          onMouseOut={() => setDisplayIconTitle(false)}
-                          className={`${library.icon}  hover:border rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px]`}
-                        ></i> */}
                         <Icon
                           onMouseOver={() => iconTitle(library.title)}
                           onMouseOut={() => setDisplayIconTitle(false)}
                           icon={library.icon}
                           className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px]`}
                         ></Icon>
-                        {/* <Icon className="text-[2.2rem]" icon="logos:react-query-icon" /> */}
                       </div>
                     </div>
                   </>
@@ -255,6 +252,7 @@ export default function AboutMe() {
           </div>
         </div>
         <div
+          onAnimationEnd={handleOverflow}
           className={`absolute inset-0 w-full bg-black ${displayPage()}`}
         ></div>
       </div>
