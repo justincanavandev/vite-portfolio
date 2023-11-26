@@ -40,19 +40,6 @@ function HomePage() {
     setDivHeight()
   }, [])
 
-  // function iconSelectAnimation(index: number) {
-  //   if (index === 0) {
-  //     return "icon-text-1"
-  //   }
-
-  //   if (index === 1) {
-  //     return "icon-text-2"
-  //   }
-  //   if (index === 2) {
-  //     return "icon-text-3"
-  //   }
-  // }
-
   function selectBubbleAnimation(index: number) {
     if (index === 0) {
       return "bubble-div"

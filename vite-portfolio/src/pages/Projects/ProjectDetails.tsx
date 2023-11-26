@@ -237,23 +237,22 @@ export default function ProjectDetails() {
   const prevNextBtns = (
     <>
       <div
-        className={`flex  w-full items-center justify-evenly md:items-start md:mt-2 lg:h-[40px] lg:justify-end lg:absolute lg:top-[96px] right-0 ${
+        className={`flex w-full items-center justify-evenly sm:items-start sm:mt-2 lg:h-[40px] lg:justify-end lg:absolute lg:top-[96px] lg:right-0 ${
           screenHeight >= 650
-            ? "mt-4 xs:mt-4 md:mt-0"
-            : // "fixed bottom-5"
-              "absolute bottom-[-55px] sm:mt-1 md:static"
+            ? "mt-4 xs:mt-4 sm:mt-0"
+            : "absolute bottom-[-55px] sm:mt-1 md:static"
         } `}
       >
         <div
           className={`${
-            isMouseHovering && screenWidth < 768 && "text-transparent "
-          } flex sm:w-[205px] gap-6 items-center md:gap-4`}
+            isMouseHovering && screenWidth < 640 && "text-transparent "
+          } flex sm:w-[205px] transition-opacity duration-300 ease-in-out gap-6 items-center sm:gap-4`}
         >
           <Icon
             icon="maki:arrow"
             className={`border rounded-md 
                   ${
-                    isMouseHovering && screenWidth < 768
+                    isMouseHovering && screenWidth < 640
                       ? "bg-transparent border-transparent"
                       : "bg-teal-gradient"
                   } 
@@ -267,7 +266,7 @@ export default function ProjectDetails() {
             icon="maki:arrow"
             className={`
                   ${
-                    isMouseHovering && screenWidth < 768
+                    isMouseHovering && screenWidth < 640
                       ? "bg-transparent border-transparent"
                       : "bg-teal-gradient"
                   } 
@@ -282,13 +281,6 @@ export default function ProjectDetails() {
   const handleMouseEnter = () => {
     setIsMouseHovering(true)
   }
-
-  // const [parentWidthClass, setParentWidthClass] = useState<string>(
-  //   "w-[300px] xs:w-[360px] sm:w-[490px] md:w-[570px] lg:w-[620px]"
-  // )
-  // const [parentHeightClass, setParentHeightClass] = useState<string>(
-  //   "h-[290px] xs:h-[330px] sm:h-[370px] md:h-[410px] lg:h-[485px]"
-  // )
 
   const handleMouseLeave = () => {
     setIsMouseHovering(false)
@@ -306,11 +298,11 @@ export default function ProjectDetails() {
     <div
       className={`${
         screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
-      } flex flex-col w-full text-white items-center ${
+      } flex flex-col  w-full text-white items-center ${
         isModalOpen && "filter brightness-[40%]"
       }`}
     >
-      <div className="bg-black z-40 w-full font-oswald">
+      <div className="bg-black z-40 grow w-full font-oswald flex flex-col">
         <div className="relative lg:static">
           <div className="bg-teal-gradient">
             <h1 className="pl-2 text-[1.4rem] h-[40px]">
@@ -326,17 +318,13 @@ export default function ProjectDetails() {
             </button>
           </Link>
         </div>
-        <div
-          className={`lg:flex lg:flex-row-reverse ${
-            screenHeight >= 650 && " lg:h-[calc(100vh-108px)]"
-          }`}
-        >
+        <div className={`lg:flex-row-reverse flex flex-col grow`}>
           {/* icons */}
 
           <div
-            className={` flex flex-wrap mt-4 justify-evenly xs:mt-3 xs:h-[140px] sm:h-[100px] md:justify-between lg:${imgHeightClass} lg:w-[32%] lg:h-full lg:self-center lg:justify-center lg:items-center`}
+            className={` flex flex-wrap mt-4  justify-evenly xs:mt-3 xs:h-[140px] sm:h-[100px] sm:justify-between lg:${imgHeightClass} lg:w-[32%] lg:grow lg:h-full lg:self-center lg:justify-center lg:items-center`}
           >
-            <div className="flex flex-wrap justify-center items-end relative md:w-[60%] lg:flex-col lg:items-center lg:border lg:mr-4 lg:rounded-[100%] lg:h-[300px] lg:w-[300px]">
+            <div className="flex flex-wrap justify-center items-end relative sm:w-[60%] lg:flex-col lg:items-center lg:border lg:mr-4 lg:rounded-[100%] lg:h-[300px] lg:w-[300px]">
               <div className="w-[86%] flex flex-wrap justify-center sm:w-[65%] sm:flex sm:flex-wrap lg:w-[80%]">
                 {selectedProject &&
                   selectedProject?.icons.map((icon, index) => (
@@ -375,27 +363,29 @@ export default function ProjectDetails() {
                 </div>
               </>
             </div>
-            <div className="hidden md:flex lg:hidden">{prevNextBtns}</div>
+            <div className="hidden sm:flex">{prevNextBtns}</div>
           </div>
 
           {/* images */}
           <div
             className={`w-full ${
-              screenHeight >= 650 ? "mt-4 h-full" : ""
-            } lg:w-[68%] lg:flex-1 lg:items-center lg:flex lg:flex-col lg:justify-center`}
+              screenHeight >= 650 ? "mt-4 grow flex flex-col" : ""
+            } lg:w-[68%] lg:items-center lg:flex lg:flex-col lg:justify-center`}
           >
             <div
               className={`flex justify-center md:justify-evenly   ${
                 screenHeight < 650
                   ? // ? "h-[22.6rem] sm:h-[25.5rem]"
                     "h-[22.6rem] items-center sm:h-[25.5rem]"
-                  : "min-h-[330px] sm:min-h-[370px] md:min-h-[400px] md:flex-col md:items-center"
+                  : "min-h-[330px] grow sm:min-h-[370px] md:min-h-[400px] md:flex-col md:items-center"
               }`}
             >
               {/* took off parentHeightClass */}
               <div
                 ref={imgParentDiv}
-                className={` ${screenHeight <650 ? "mb-10 sm:mb-12" : "my-4 xs:my-2"} flex relative flex-col justify-center  items-center xs:gap-1
+                className={` ${
+                  screenHeight < 650 ? "mb-10 sm:mb-12" : "my-4 xs:my-2"
+                } flex relative flex-col justify-center  items-center xs:gap-1
                    
                 rounded-md sm:my-0 sm:gap-1 md:mb-4 md:mt-1 `}
               >
@@ -407,8 +397,8 @@ export default function ProjectDetails() {
                   style={{
                     objectPosition: `${objPositionLR} ${objPositionTB}`,
                   }}
-                  className={`${imgHeightClass}  ${imgWidthClass} z-50 object-cover border  rounded-md  duration-500 hover:scale-[130%] hover:translate-y-[20%]  hover:md:translate-y-[20px] 
-                hover:lg:translate-y-[-15px]
+                  className={`${imgHeightClass}  ${imgWidthClass} z-50 object-cover border  rounded-md  duration-500 hover:scale-[130%] hover:translate-y-[10%] hover:sm:translate-y-[7%] hover:md:translate-y-[20px] hover:lg:translate-y-[10px]
+                
                 ${
                   closingOrOpening
                     ? animationClassActive
@@ -420,24 +410,32 @@ export default function ProjectDetails() {
                 }  `}
                   src={selectedProject.images[firstImage]}
                 ></img>
-                {(screenWidth < 768 || screenWidth >= 1024) && prevNextBtns}
+                {(screenWidth < 640 || screenWidth >= 1024) && prevNextBtns}
 
                 {/* {screenHeight >= 650 &&
                   !isMouseHovering &&
                   screenWidth < 768 && <FooterIcons />} */}
               </div>
             </div>
+            {/* Footer Div */}
+            {screenHeight >= 650 && screenWidth < 1024 && (
+              <div className="h-16 w-full">
+                
+              </div>
+            )}
 
-            {((screenHeight >= 650 && screenWidth < 768 && !isMouseHovering) ||
-              (screenWidth >= 768 &&
+            {((screenHeight >= 650 && screenWidth < 640) ||
+              (screenWidth >= 640 &&
                 screenWidth < 1024 &&
                 screenHeight >= 650 &&
                 !isMouseHovering)) && <FooterIcons />}
           </div>
         </div>
+        {screenHeight >= 650 && screenWidth > 1024 && (
+          <div className="h-16 w-full"></div>
+        )}
 
-        {((screenHeight < 650 && !isMouseHovering) ||
-          (screenWidth >= 1024 && !isMouseHovering)) && <FooterIcons />}
+        {(screenHeight < 650 || screenWidth >= 1024) && <FooterIcons />}
       </div>
     </div>
   )
