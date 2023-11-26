@@ -4,7 +4,6 @@ import { Icon } from "@iconify/react"
 import { GlobalContext } from "../../context/GlobalContext"
 import "./progress.css"
 
-
 export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   const { screenHeight, iconsHeightAbove650, screenWidth, ColorPicker } =
     useContext(GlobalContext)
@@ -34,14 +33,6 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
       setIsEmailSent(false)
     }, 2000)
   }
-
-  // const showErrorMessage = () => {
-  //   setIsEmailSent(true)
-
-  //   setTimeout(() => {
-  //     setIsEmailSent(false)
-  //   }, 2000)
-  // }
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -201,17 +192,12 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     if (!isEmailLoading) {
       setIsEmailLoading(true)
     }
-    if (progressValue >= .99) {
-        setProgressValue(0)
-
-    // if (progressValue >= 99) {
-    //   setProgressValue(0)
+    if (progressValue >= 0.99) {
+      setProgressValue(0)
     } else {
       setTimeout(() => {
-        // setProgressValue(progressValue + 0.01)
-        // setProgressValue(progressValue + 1)
-        setProgressValue((prevProgress) => prevProgress + .01);
-      }, 15)
+        setProgressValue((prevProgress) => prevProgress + 0.01)
+      }, 18)
     }
     setTimeout(() => {
       setIsEmailLoading(false)
@@ -222,9 +208,6 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
 
   useEffect(() => {
     if (progressValue < 1 && isEmailLoading) {
-    // if (progressValue < 100 && isEmailLoading) {
-      // raiseProgressValue()
-      console.log('progressValue', progressValue)
       raiseProgressValueTest()
     }
   }, [progressValue, isEmailLoading])
@@ -297,10 +280,10 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
   return (
     <form className="" ref={form} onSubmit={sendEmail}>
       {isEmailLoading && (
-<>
-        <progress className="appearance-none absolute bg-red-500 top-10 right-6" value={progressValue} />
-        {/* <ProgressBar completed={progressValue} /> */}
-        </>
+        <div className="text-white font-oswald absolute top-10 right-6">
+          <p className="text-[1.2rem]">Sending...</p>
+          <progress className="appearance-none" value={progressValue} />
+        </div>
       )}
 
       <div
@@ -359,7 +342,6 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
 
           <label>Email</label>
           <div className="relative">
-            
             <input
               onChange={(e) => handleEmail(e)}
               onFocus={handleEmailDisplay}

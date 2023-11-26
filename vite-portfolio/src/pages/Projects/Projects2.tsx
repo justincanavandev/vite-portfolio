@@ -226,7 +226,6 @@ export default function Projects2() {
         >
           {/* Projects */}
 
-          {/* {projects.map((project: Project, index: number) => ( */}
           <div
             key={selectedImageIndex}
             className={`flex flex-col relative items-center ${
@@ -236,7 +235,7 @@ export default function Projects2() {
             <div className=" ">
               <div className="flex flex-col items-center">
                 <div
-                  className={`before:rounded-t-md before:z-40 h-[18rem] w-[95%] z-30 relative img-border rounded-b-md text-[.8rem] xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem] md:w-[40rem]  lg:w-[44rem] lg:h-[22rem] ${
+                  className={`before:rounded-t-md before:z-40 cursor-pointer h-[18rem] w-[95%] z-30 relative img-border rounded-b-md text-[.8rem] xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem] md:w-[40rem]  lg:w-[44rem] lg:h-[22rem] ${
                     closeAnimation
                       ? `${
                           featuredProject.name === selectedProject.name

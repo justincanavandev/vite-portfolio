@@ -237,11 +237,11 @@ export default function ProjectDetails() {
   const prevNextBtns = (
     <>
       <div
-        className={`flex w-full  items-center justify-evenly md:items-start md:mt-2 lg:h-[40px] lg:justify-end lg:absolute lg:top-[96px] right-0 ${
+        className={`flex  w-full items-center justify-evenly md:items-start md:mt-2 lg:h-[40px] lg:justify-end lg:absolute lg:top-[96px] right-0 ${
           screenHeight >= 650
-            ? "mt-6 xs:mt-4 md:mt-0"
+            ? "mt-4 xs:mt-4 md:mt-0"
             : // "fixed bottom-5"
-              "mt-6 sm:mt-1"
+              "absolute bottom-[-55px] sm:mt-1 md:static"
         } `}
       >
         <div
@@ -328,7 +328,7 @@ export default function ProjectDetails() {
         </div>
         <div
           className={`lg:flex lg:flex-row-reverse ${
-            screenHeight >= 650 && "lg:h-[calc(100vh-108px)]"
+            screenHeight >= 650 && " lg:h-[calc(100vh-108px)]"
           }`}
         >
           {/* icons */}
@@ -381,20 +381,21 @@ export default function ProjectDetails() {
           {/* images */}
           <div
             className={`w-full ${
-              screenHeight >= 650 ? "mt-4" : ""
+              screenHeight >= 650 ? "mt-4 h-full" : ""
             } lg:w-[68%] lg:flex-1 lg:items-center lg:flex lg:flex-col lg:justify-center`}
           >
             <div
               className={`flex justify-center md:justify-evenly   ${
                 screenHeight < 650
-                  ? "h-[22.6rem] sm:h-[25.5rem]"
-                  : "xs:min-h-[330px] md:min-h-[375px] md:flex-col md:items-center"
+                  ? // ? "h-[22.6rem] sm:h-[25.5rem]"
+                    "h-[22.6rem] items-center sm:h-[25.5rem]"
+                  : "min-h-[330px] sm:min-h-[370px] md:min-h-[400px] md:flex-col md:items-center"
               }`}
             >
               {/* took off parentHeightClass */}
               <div
                 ref={imgParentDiv}
-                className={` my-4 flex flex-col justify-center xs:my-2 items-center xs:gap-1
+                className={` ${screenHeight <650 ? "mb-10 sm:mb-12" : "my-4 xs:my-2"} flex relative flex-col justify-center  items-center xs:gap-1
                    
                 rounded-md sm:my-0 sm:gap-1 md:mb-4 md:mt-1 `}
               >
@@ -406,7 +407,7 @@ export default function ProjectDetails() {
                   style={{
                     objectPosition: `${objPositionLR} ${objPositionTB}`,
                   }}
-                  className={`${imgHeightClass}  ${imgWidthClass} z-50 object-cover border  rounded-md  duration-500 hover:scale-[130%] hover:translate-y-[30px] hover:sm:translate-y-[50px] hover:md:translate-y-[28px]
+                  className={`${imgHeightClass}  ${imgWidthClass} z-50 object-cover border  rounded-md  duration-500 hover:scale-[130%] hover:translate-y-[20%]  hover:md:translate-y-[20px] 
                 hover:lg:translate-y-[-15px]
                 ${
                   closingOrOpening
@@ -419,13 +420,14 @@ export default function ProjectDetails() {
                 }  `}
                   src={selectedProject.images[firstImage]}
                 ></img>
+                {(screenWidth < 768 || screenWidth >= 1024) && prevNextBtns}
 
-                {screenHeight >= 650 &&
+                {/* {screenHeight >= 650 &&
                   !isMouseHovering &&
-                  screenWidth < 768 && <FooterIcons />}
+                  screenWidth < 768 && <FooterIcons />} */}
               </div>
             </div>
-            {(screenWidth < 768 || screenWidth >= 1024) && prevNextBtns}
+
             {((screenHeight >= 650 && screenWidth < 768 && !isMouseHovering) ||
               (screenWidth >= 768 &&
                 screenWidth < 1024 &&
@@ -434,7 +436,8 @@ export default function ProjectDetails() {
           </div>
         </div>
 
-        {((screenHeight < 650 && !isMouseHovering) || (screenWidth >= 1024 && !isMouseHovering)) && <FooterIcons />}
+        {((screenHeight < 650 && !isMouseHovering) ||
+          (screenWidth >= 1024 && !isMouseHovering)) && <FooterIcons />}
       </div>
     </div>
   )
