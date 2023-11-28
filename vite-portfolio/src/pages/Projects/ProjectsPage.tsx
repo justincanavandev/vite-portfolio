@@ -1,5 +1,5 @@
 // import Projects from "./Projects"
-import Projects2 from "./Projects2"
+import Projects from "./Projects"
 import { useState } from "react"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
@@ -276,9 +276,9 @@ export default function ProjectsPage() {
       }}
     >
    
-      {/* {viewProjectDetails ? */}
+
       {location.pathname !== "/projects" ?
-      <ProjectDetails/> : <Projects2 />
+      <ProjectDetails/> : <Projects />
 }
   
     </ProjectsContext.Provider>

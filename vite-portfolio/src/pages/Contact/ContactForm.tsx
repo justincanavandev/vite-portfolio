@@ -2,37 +2,54 @@ import { useRef, useState, useContext, useEffect } from "react"
 import emailjs from "@emailjs/browser"
 import { Icon } from "@iconify/react"
 import { GlobalContext } from "../../context/GlobalContext"
+import type { ContactContextType } from "../../types/contactTypes"
+import { ContactContext } from "../../context/ContactContext"
 import "./progress.css"
+// import { raiseProgressValue, raiseProgressValueTest, showSuccessMessage  } from "./functions/contact-functions"
 
-export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
-  const { screenHeight, iconsHeightAbove650, screenWidth, ColorPicker } =
-    useContext(GlobalContext)
+export const ContactForm = () => {
+  const { screenHeight, screenWidth, ColorPicker } = useContext(GlobalContext)
+
   const form = useRef<HTMLFormElement>(null)
 
-  const [isEmailSent, setIsEmailSent] = useState<boolean>(false)
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-  const [isUsernameValid, setIsUsernameValid] = useState<boolean>(false)
-  const [isEmailValid, setIsEmailValid] = useState<boolean>(false)
-  const [isMessageValid, setIsMessageValid] = useState<boolean>(false)
-  const [usernameDisplay, setUsernameDisplay] = useState<boolean>(false)
-  const [messageDisplay, setMessageDisplay] = useState<boolean>(false)
-  const [emailDisplay, setEmailDisplay] = useState<boolean>(false)
-  const [isEmailLoading, setIsEmailLoading] = useState<boolean>(false)
-  const [emailDidntSend, setEmailDidntSend] = useState<boolean>(false)
-  const [progressValue, setProgressValue] = useState<number>(0)
-
-  // It starts with one or more alphanumeric characters, plus some special characters like ".", "_", "%", and "+".
-  //It is followed by the "@" symbol.
-  //Then, it has one or more alphanumeric characters followed by a dot (.) at least once.
-  //Finally, it ends with a top-level domain (TLD) that consists of at least 2 alphabetical characters.
-
-  const showSuccessMessage = () => {
-    setIsEmailSent(true)
-
-    setTimeout(() => {
-      setIsEmailSent(false)
-    }, 2000)
-  }
+  const {
+    isEmailSent,
+    // setIsEmailSent,
+    // emailRegex,
+    isUsernameValid,
+    // setIsUsernameValid,
+    isEmailValid,
+    // setIsEmailValid,
+    isMessageValid,
+    // setIsMessageValid,
+    usernameDisplay,
+    // setUsernameDisplay,
+    messageDisplay,
+    // setMessageDisplay,
+    emailDisplay,
+    // setEmailDisplay,
+    isEmailLoading,
+    setIsEmailLoading,
+    emailDidntSend,
+    setEmailDidntSend,
+    progressValue,
+    // setProgressValue,
+    emailMessagesState,
+    // setEmailMessagesState,
+    // emailMessagesArr,
+    // startDomainRegex,
+    // endDomainRegex,
+    // emailMessageObj,
+    showSuccessMessage,
+    handleUserName,
+    handleEmail,
+    handleMessage,
+    handleUsernameDisplay,
+    handleEmailDisplay,
+    handleMessageDisplay,
+    raiseProgressValue,
+    raiseProgressValueTest
+  }: ContactContextType = useContext(ContactContext)
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -64,147 +81,6 @@ export const ContactForm = ({ headerHeight }: { headerHeight: string }) => {
     }
   }
 
-  const handleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length === 0) {
-      setIsUsernameValid(false)
-    } else {
-      setIsUsernameValid(true)
-    }
-  }
-  const emailMessageObj = {
-    noInput: "-Email required.",
-    startDomain: "-Email must include email name",
-    endDomain: `-Email must include domain ("gmail.com", "yahoo.com").`,
-    atSymbol: "-Email must include @.",
-    tld: `-Email must include domain ext (".com", ".net", etc)`,
-  }
-
-  const [emailMessagesState, setEmailMessagesState] = useState<string[]>([])
-  const emailMessagesArr: string[] = []
-
-  // const tldRegex = /(\.com|\.org|\.net|\.[a-zA-Z.]+)$/;
-  const startDomainRegex = /^[a-zA-Z0-9!#$%&'*+-/=?^_`]/
-  const endDomainRegex = /@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/i
-  //domain may contain lowercase and uppercase letters (a-z, A-Z), numbers (0-9), hyphens, and periods.
-  //The TLD (top-level domain) must consist of a minimum of two alphabetical characters.
-  //The pattern ensures that the domain is valid and includes a TLD with at least two characters.
-
-  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length === 0) {
-      emailMessagesArr.push(emailMessageObj.noInput)
-      setEmailMessagesState(emailMessagesArr)
-    }
-    if (e.target.value.length > 0) {
-      let filteredArr = emailMessagesArr.filter(
-        (message) => message !== "-Email required."
-      )
-      setEmailMessagesState(filteredArr)
-
-      if (!e.target.value.includes("@")) {
-        emailMessagesArr.push(emailMessageObj.atSymbol)
-        setEmailMessagesState(emailMessagesArr)
-      }
-      if (e.target.value.includes("@")) {
-        let filteredArr = emailMessagesArr.filter(
-          (message) => message === "-Email must include @."
-        )
-        setEmailMessagesState(filteredArr)
-      }
-      if (!startDomainRegex.test(e.target.value)) {
-        emailMessagesArr.push(emailMessageObj.startDomain)
-        setEmailMessagesState(emailMessagesArr)
-      }
-      if (startDomainRegex.test(e.target.value)) {
-        let filteredArr = emailMessagesArr.filter(
-          (message) => message !== "Must include email name"
-        )
-        setEmailMessagesState(filteredArr)
-      }
-      if (!endDomainRegex.test(e.target.value)) {
-        emailMessagesArr.push(emailMessageObj.endDomain)
-        setEmailMessagesState(emailMessagesArr)
-      }
-      if (endDomainRegex.test(e.target.value)) {
-        let filteredArr = emailMessagesArr.filter(
-          (message) =>
-            message !== `-Email must include domain ("gmail.com", "yahoo.com").`
-        )
-        setEmailMessagesState(filteredArr)
-      }
-    }
-
-    if (!e.target.value.match(emailRegex)) {
-      setIsEmailValid(false)
-    } else {
-      setIsEmailValid(true)
-    }
-  }
-
-  // console.log(
-  //   "usernameD, messageD, emailD",
-  //   usernameDisplay,
-  //   messageDisplay,
-  //   emailDisplay
-  // )
-
-  // console.log(
-  //   "isEmailV, isMessageV, isUserV",
-  //   isEmailValid,
-  //   isMessageValid,
-  //   isUsernameValid
-  // )
-
-  const handleMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (e.target.value.length === 0) {
-      setIsMessageValid(false)
-    } else {
-      setIsMessageValid(true)
-    }
-  }
-
-  const handleUsernameDisplay = () => {
-    setUsernameDisplay(true)
-  }
-
-  const handleEmailDisplay = () => {
-    if (!isEmailValid) {
-      emailMessagesArr.push(emailMessageObj.noInput)
-    }
-    setEmailMessagesState(emailMessagesArr)
-    setEmailDisplay(true)
-  }
-
-  const handleMessageDisplay = () => {
-    setMessageDisplay(true)
-  }
-
-  const raiseProgressValue = () => {
-    if (progressValue >= 0.99) {
-      setProgressValue(0)
-    } else {
-      setTimeout(() => {
-        setProgressValue(progressValue + 0.01)
-      }, 15)
-    }
-  }
-
-  const raiseProgressValueTest = () => {
-    if (!isEmailLoading) {
-      setIsEmailLoading(true)
-    }
-    if (progressValue >= 0.99) {
-      setProgressValue(0)
-    } else {
-      setTimeout(() => {
-        setProgressValue((prevProgress) => prevProgress + 0.01)
-      }, 18)
-    }
-    setTimeout(() => {
-      setIsEmailLoading(false)
-      showSuccessMessage()
-      setProgressValue(0)
-    }, 2000)
-  }
 
   useEffect(() => {
     if (progressValue < 1 && isEmailLoading) {

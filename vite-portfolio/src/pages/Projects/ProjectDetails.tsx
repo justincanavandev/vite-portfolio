@@ -136,7 +136,7 @@ export default function ProjectDetails() {
 
   // handle image scrolling
 
-  const imgTag = useRef(null)
+  const imgTag: React.LegacyRef<HTMLImageElement> | undefined = useRef(null)
   const [isMouseHovering, setIsMouseHovering] = useState<boolean>(false)
   const [imgXCoord, setImgXCoord] = useState<number>(0)
   const [imgYCoord, setImgYCoord] = useState<number>(0)
@@ -303,7 +303,7 @@ export default function ProjectDetails() {
       }`}
     >
       <div className="bg-black z-40 grow w-full font-oswald flex flex-col">
-        <div className="relative lg:static">
+        <div className="relative ">
           <div className="bg-teal-gradient">
             <h1 className="pl-2 text-[1.4rem] h-[40px]">
               {selectedProject.name}
@@ -410,7 +410,7 @@ export default function ProjectDetails() {
                 }  `}
                   src={selectedProject.images[firstImage]}
                 ></img>
-                {(screenWidth < 640 || screenWidth >= 1024) && prevNextBtns}
+                {screenWidth < 640 && prevNextBtns}
 
                 {/* {screenHeight >= 650 &&
                   !isMouseHovering &&
@@ -419,9 +419,7 @@ export default function ProjectDetails() {
             </div>
             {/* Footer Div */}
             {screenHeight >= 650 && screenWidth < 1024 && (
-              <div className="h-16 w-full">
-                
-              </div>
+              <div className="h-16 w-full"></div>
             )}
 
             {((screenHeight >= 650 && screenWidth < 640) ||

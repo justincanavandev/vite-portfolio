@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 import NavLinks from "./NavLinks"
 import { Spin as Hamburger } from "hamburger-react"
 
-function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
+function Nav() {
   const { isModalOpen, setIsModalOpen, openOrClose, setOpenOrClose } =
     useContext(GlobalContext)
   // const [openOrClose, setOpenOrClose] = useState<boolean>(false)
@@ -31,13 +31,12 @@ function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
   }
 
   // const setBrightness = () => {
-    
+
   // }
 
   return (
     <>
       <div
-        ref={navBarRef}
         // onAnimationEnd={setBrightness}
         className={`
         ${
@@ -55,9 +54,7 @@ function Nav({ navBarRef }: { navBarRef: React.RefObject<HTMLDivElement> }) {
       >
         <div>
           {/* <NavLink className={`ml-1.5 text-[1.3rem] `} to="/"> */}
-          <span className="ml-1.5 text-[1.3rem]">
-            Justin Canavan
-            </span>
+          <span className="ml-1.5 text-[1.3rem]">Justin Canavan</span>
           {/* </NavLink> */}
         </div>
         <>
