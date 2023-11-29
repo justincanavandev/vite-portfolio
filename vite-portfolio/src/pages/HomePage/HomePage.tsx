@@ -256,7 +256,8 @@ function HomePage() {
     
         `}
       >
-        <div className="md:w-[58%] md:pt-3 md:flex md:flex-col lg:w-[70%]">
+        {/* lg:w-[70%] md:w-[58%] md:pt-3 md:flex md:flex-col for when i want to add an image to the right */}
+        <div className="">
           <div className={`flex flex-col  ${myNameIsScreenHeight()} `}>
             <div className="flex flex-col pl-2 justify-center">
               <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem]">
