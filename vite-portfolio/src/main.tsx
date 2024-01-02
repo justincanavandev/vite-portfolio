@@ -14,10 +14,14 @@ function Root() {
   const [screenHeight, setScreenHeight] = useState<number>(window.innerHeight)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [openOrClose, setOpenOrClose] = useState<boolean>(false)
-  const footerIcons = [faLinkedin, faGithub, faEnvelope]
+  const footerIcons = [
+    { icon: faLinkedin, url: "https://www.linkedin.com/in/justin-canavan510/" },
+    { icon: faGithub, url: "https://github.com/justincanavanmusic" },
+    { icon: faEnvelope, url: "mailto:justincanavanmusic@gmail.com" },
+  
+  ]
   const [iconsHeightAbove650, setIconsHeightAbove650] = useState<string>("")
   const [iconsHeightBelow650, setIconsHeightBelow650] = useState<string>("")
-
 
   const ColorPicker = () => {
     const [color, setColor] = useState<Color>({ r: 0, g: 0, b: 0 })
@@ -29,8 +33,6 @@ function Root() {
     // useEffect(() => {
     //   console.log("color", color)
     // }, [color])
-
-  
 
     return (
       <div>
@@ -86,8 +88,7 @@ function Root() {
             iconsHeightAbove650,
             setIconsHeightAbove650,
             iconsHeightBelow650,
-            setIconsHeightBelow650
-
+            setIconsHeightBelow650,
           }}
         >
           <App />

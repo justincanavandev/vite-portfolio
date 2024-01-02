@@ -22,6 +22,10 @@ export default function ContactPage() {
   //The TLD (top-level domain) must consist of a minimum of two alphabetical characters.
   //The pattern ensures that the domain is valid and includes a TLD with at least two characters.
 
+  const [username, setUsername] = useState<string>("")
+  const [email, setEmail] = useState<string>("")
+  const [message, setMessage] = useState<string>("")
+
   const emailMessageObj = {
     noInput: "-Email required.",
     startDomain: "-Email must include email name",
@@ -41,6 +45,8 @@ export default function ContactPage() {
   }
 
   const handleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value)
+
     if (e.target.value.length === 0) {
       setIsUsernameValid(false)
     } else {
@@ -49,6 +55,8 @@ export default function ContactPage() {
   }
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value)
+
     if (e.target.value.length === 0) {
       emailMessagesArr.push(emailMessageObj.noInput)
       setEmailMessagesState(emailMessagesArr)
@@ -100,6 +108,7 @@ export default function ContactPage() {
   }
 
   const handleMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value)
     if (e.target.value.length === 0) {
       setIsMessageValid(false)
     } else {
@@ -128,8 +137,8 @@ export default function ContactPage() {
       setProgressValue(0)
     } else {
       setTimeout(() => {
-        setProgressValue(progressValue + 0.01)
-      }, 15)
+        setProgressValue((prevProgress) => prevProgress + 0.01)
+      }, 18)
     }
   }
 
@@ -146,11 +155,17 @@ export default function ContactPage() {
     }
     setTimeout(() => {
       setIsEmailLoading(false)
+      setUsername("")
+      setUsernameDisplay(false)
+      setEmail("")
+      setEmailDisplay(false)
+      setMessage("")
+      setMessageDisplay(false)
+      setEmailDisplay(false)
       showSuccessMessage()
       setProgressValue(0)
     }, 2000)
   }
-
 
   return (
     <>
@@ -191,7 +206,13 @@ export default function ContactPage() {
           handleEmailDisplay,
           handleMessageDisplay,
           raiseProgressValue,
-          raiseProgressValueTest
+          raiseProgressValueTest,
+          username,
+          setUsername,
+          email,
+          setEmail,
+          message,
+          setMessage,
         }}
       >
         <Contact />

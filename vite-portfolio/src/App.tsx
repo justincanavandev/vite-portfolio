@@ -8,10 +8,9 @@ import ProjectsPage from "./pages/Projects/ProjectsPage"
 // import Resume from "./pages/Resume"
 import ProjectDetails from "./pages/Projects/ProjectDetails"
 import HomePagePage from "./pages/HomePage/HomePagePage"
-import { GlobalContext } from "./context/GlobalContext"
+
 
 function App() {
-
 
   const location = useLocation()
 

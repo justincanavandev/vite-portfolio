@@ -41,4 +41,10 @@ export type ContactContextType = {
   handleMessageDisplay: () => void
   raiseProgressValue: () => void
   raiseProgressValueTest: () => void
+  username: string
+  setUsername: React.Dispatch<React.SetStateAction<string>>
+  email: string
+  setEmail: React.Dispatch<React.SetStateAction<string>>
+  message: string
+  setMessage: React.Dispatch<React.SetStateAction<string>>
 }

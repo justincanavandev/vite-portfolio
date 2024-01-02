@@ -3,7 +3,7 @@
 }
 
 .display-icons {
-  animation: leftToRight 1s linear 0.8s forwards;
+  animation: leftToRight 1s linear 1s forwards;
 }
 
 .display-icons-xs {
@@ -31,7 +31,7 @@
 }
 
 .display-page {
-animation: leftToRight 1s linear 0.3s forwards;
+animation: leftToRight .8s linear 0.3s forwards;
 }
 
 .display-page-xs {

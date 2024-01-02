@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { GlobalContext } from "../../context/GlobalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faDesktop, faBars } from "@fortawesome/free-solid-svg-icons"
+import { faDesktop, faCircleInfo} from "@fortawesome/free-solid-svg-icons"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
@@ -49,19 +49,12 @@ export default function Projects2() {
     setProjectIndex,
   } = useContext(ProjectsContext)
 
-  const openProjectModal = (index: number) => {
-    // console.log("index", index)
-
-    setViewProjectDetails(true)
-  }
-
-  // console.log("showProjectDetails", showProjectDetails)
-
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
-
   const selectedProject: Project = projects[selectedImageIndex]
 
-  // const projectsLength: number = selectedProject.images.length - 1
+  const openProjectModal = (index: number) => {
+    setViewProjectDetails(true)
+  }
 
   useEffect(() => {
     if (hasPageRendered === false) {
@@ -179,10 +172,8 @@ export default function Projects2() {
     console.log("openOrClose", openOrClose)
   }, [isModalOpen, viewProjectDetails, openOrClose])
 
-
   useEffect(() => {
     setViewProjectDetails(true)
-
   }, [])
 
   return (
@@ -255,26 +246,6 @@ export default function Projects2() {
                   onClick={() => displayCard(selectedImageIndex)}
                 >
                   {/* proj title 2 */}
-                  {/* <div
-                    className={`absolute z-50 bottom-[5px] left-[5px] bg-transparent rounded-r-[.375rem] px-1.5 bg-teal-gradient ${
-                      closeAnimation
-                        ? `${
-                            featuredProject.name === selectedProject.name
-                              ? `image-opacity-close `
-                              : ""
-                          }`
-                        : `${
-                            featuredProject.name === selectedProject.name
-                              ? `image-opacity-expand `
-                              : ""
-                          }`
-                    }`}
-                  >
-                    <h3 className="text-[1.1rem] mx-auto xs:text-[1.3rem] md:text-[1.3rem] lg:text-[1.4rem]">
-                      {selectedProject.name}
-                    </h3>
-                  </div> */}
-                  {/* proj title 2 */}
 
                   <img
                     src={selectedProject.thumbnail}
@@ -307,39 +278,10 @@ export default function Projects2() {
                `}
                   />
 
-                  <div
-                    className="absolute top-[2.7px] left-[2.6px] bg-teal-gradient text-white rounded-l-[4.2px] "
-                    // ${
-                    //   showProjectDetails &&
-                    //   selectedProject.name === featuredProject.name
-                    //     ? bannerOpacity
-                    //     : "opacity-100"
-                    // }
-                    // ${
-                    //   closeAnimation
-                    //     ? `
-                    //     ${
-                    //       featuredProject.name === selectedProject.name
-                    //         ? "animate-banner-opacity-expand"
-                    //         : ""
-                    //     }`
-                    //     : `${
-                    //         featuredProject.name === selectedProject.name
-                    //           ? "animate-banner-opacity-close"
-                    //           : ""
-                    //       }`
-                    // }
-                  >
+                  <div className="absolute top-[2.7px] left-[2.6px] bg-teal-gradient text-white rounded-l-[4.2px] ">
                     <p className="px-1 text-[1.1rem] xs:text-[1.3rem] md:text-[1.1rem] lg:text-[1.4rem]">
                       {selectedProject.name}
                     </p>
-                    {/* <div
-                        className={`absolute top-[-20px] left-0 rounded-r-[.375rem] px-1.5 bg-teal-gradient`}
-                      >
-                        <h3 className="text-[1.1rem] mx-auto xs:text-[1.3rem] md:text-[1.3rem] lg:text-[1.4rem]">
-                          {selectedProject.name}
-                        </h3>
-                      </div> */}
                   </div>
                 </div>
 
@@ -363,13 +305,7 @@ export default function Projects2() {
                           {nextPrevBtns}
                         </div>
                       </div>
-                      {/* <div
-                        className={`absolute top-[-20px] left-0 rounded-r-[.375rem] px-1.5 bg-teal-gradient`}
-                      >
-                        <h3 className="text-[1.1rem] mx-auto xs:text-[1.3rem] md:text-[1.3rem] lg:text-[1.4rem]">
-                          {selectedProject.name}
-                        </h3>
-                      </div> */}
+
                       <div className="sm:flex sm:relative">
                         <p className="text-[1rem] mb-1 line-clamp-2 mt-[.35rem] px-2.5 absolute top-0 xs:mt-1.5 xs:text-[1.15rem] sm:w-[350px] sm:mt-2 sm:static md:w-[410px] md:text-[1.2rem] lg:w-[520px] lg:text-[1.4rem] ">
                           {selectedProject.description}
@@ -384,22 +320,18 @@ export default function Projects2() {
                             />
                           </Link>
                           <button>
-                            {/* <Link to={`/projects/${projectIndex+1}`}> */}
-                            {/* <Link to={`/projects/1`}> */}
                             <FontAwesomeIcon
-                              icon={faBars}
+                              icon={faCircleInfo}
                               className={`absolute left-0 ${
                                 screenWidth < 475 && "right-0"
-                              } mx-auto bottom-[.3rem] text-[1.6rem] xs:left-[12.7rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem]`}
+                              } pulse mx-auto bottom-[.3rem] text-[1.6rem] xs:left-[12.7rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem]`}
                               size="2xl"
                               onClick={() => {
                                 setProjectIndex(selectedImageIndex)
                                 openProjectModal(selectedImageIndex)
                                 navigate(`/projects/${selectedProject.id}`)
-                                // navigate("/projects/1")
                               }}
                             />
-                            {/* </Link> */}
                           </button>
                           <Link to={selectedProject.liveLink} target="_blank">
                             <FontAwesomeIcon
@@ -416,14 +348,9 @@ export default function Projects2() {
               <div className="hidden sm:flex sm:w-[100px] ">{nextPrevBtns}</div>
             </div>
           </div>
-          {/* {screenHeight < 650 && screenWidth < 640 && <FooterIcons />} */}
         </div>
-        {/* 
-        {(screenHeight >= 650 ||
-          screenHeight < 650 )
-           &&  */}
+
         <FooterIcons />
-        {/* {viewProjectDetails && <ProjectDetails />} */}
       </div>
     </>
   )

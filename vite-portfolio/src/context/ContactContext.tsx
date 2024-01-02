@@ -1,5 +1,5 @@
 import { createContext } from "react"
-import type { GlobalContextType } from "../types/global-types/globalTypes"
+import type { ContactContextType } from "../types/contactTypes"
 
 export const ContactContext = createContext<ContactContextType>(
   {} as ContactContextType

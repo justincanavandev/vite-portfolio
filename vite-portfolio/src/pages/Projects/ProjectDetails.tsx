@@ -7,6 +7,8 @@ import { useParams, Link } from "react-router-dom"
 import { GlobalContext } from "../../context/GlobalContext"
 import "../../projects.css"
 import FooterIcons from "../../components/FooterIcons"
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function ProjectDetails() {
   const { projects, setViewProjectDetails } = useContext(ProjectsContext)
@@ -154,7 +156,6 @@ export default function ProjectDetails() {
       if (imgTag.current) {
         setImgXCoord(
           Math.round(
-            // e.clientX - imgTag.current.getBoundingClientRect().left + 1
             e.clientX - imgTag.current.getBoundingClientRect().left + 1
           )
         )
@@ -310,12 +311,11 @@ export default function ProjectDetails() {
             </h1>
           </div>
           <Link to="/projects">
-            <button
-              className="absolute right-3 text-white text-[1.5rem] top-[-2.7px] sm:top-[-5px] sm:right-[26px] sm:text-[1.8rem]"
+            <FontAwesomeIcon
+              className="absolute right-3 text-white text-[1.5rem] top-[6px] sm:top-[6px] sm:right-[19px] sm:text-[1.5rem]"
               onClick={() => setViewProjectDetails(false)}
-            >
-              x
-            </button>
+              icon={faRotateLeft}
+            />
           </Link>
         </div>
         <div className={`lg:flex-row-reverse flex flex-col grow`}>
@@ -375,8 +375,7 @@ export default function ProjectDetails() {
             <div
               className={`flex justify-center md:justify-evenly   ${
                 screenHeight < 650
-                  ? // ? "h-[22.6rem] sm:h-[25.5rem]"
-                    "h-[22.6rem] items-center sm:h-[25.5rem]"
+                  ? "h-[22.6rem] items-center sm:h-[25.5rem]"
                   : "min-h-[330px] grow sm:min-h-[370px] md:min-h-[400px] md:flex-col md:items-center"
               }`}
             >
@@ -411,10 +410,6 @@ export default function ProjectDetails() {
                   src={selectedProject.images[firstImage]}
                 ></img>
                 {screenWidth < 640 && prevNextBtns}
-
-                {/* {screenHeight >= 650 &&
-                  !isMouseHovering &&
-                  screenWidth < 768 && <FooterIcons />} */}
               </div>
             </div>
             {/* Footer Div */}

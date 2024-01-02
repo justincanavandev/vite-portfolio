@@ -13,10 +13,9 @@ export type GlobalContextType = {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
   openOrClose: boolean
   setOpenOrClose: React.Dispatch<React.SetStateAction<boolean>>
-  footerIcons: IconDefinition[]
+  footerIcons: { icon: IconDefinition, url: string }[]
   iconsHeightAbove650: string
   setIconsHeightAbove650: React.Dispatch<React.SetStateAction<string>>
   iconsHeightBelow650: string
   setIconsHeightBelow650: React.Dispatch<React.SetStateAction<string>>
-
 }

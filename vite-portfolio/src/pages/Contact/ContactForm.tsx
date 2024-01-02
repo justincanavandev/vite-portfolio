@@ -1,45 +1,37 @@
-import { useRef, useState, useContext, useEffect } from "react"
+import { useRef, useContext, useEffect, useState } from "react"
 import emailjs from "@emailjs/browser"
 import { Icon } from "@iconify/react"
 import { GlobalContext } from "../../context/GlobalContext"
 import type { ContactContextType } from "../../types/contactTypes"
 import { ContactContext } from "../../context/ContactContext"
 import "./progress.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link } from "react-router-dom"
+import { faPhone } from "@fortawesome/free-solid-svg-icons"
 // import { raiseProgressValue, raiseProgressValueTest, showSuccessMessage  } from "./functions/contact-functions"
 
 export const ContactForm = () => {
-  const { screenHeight, screenWidth, ColorPicker } = useContext(GlobalContext)
+  const { screenHeight, screenWidth } = useContext(GlobalContext)
 
   const form = useRef<HTMLFormElement>(null)
 
   const {
     isEmailSent,
-    // setIsEmailSent,
-    // emailRegex,
     isUsernameValid,
-    // setIsUsernameValid,
     isEmailValid,
-    // setIsEmailValid,
     isMessageValid,
-    // setIsMessageValid,
     usernameDisplay,
-    // setUsernameDisplay,
+    setUsernameDisplay,
     messageDisplay,
-    // setMessageDisplay,
+    setMessageDisplay,
     emailDisplay,
-    // setEmailDisplay,
+    setEmailDisplay,
     isEmailLoading,
     setIsEmailLoading,
     emailDidntSend,
     setEmailDidntSend,
     progressValue,
-    // setProgressValue,
     emailMessagesState,
-    // setEmailMessagesState,
-    // emailMessagesArr,
-    // startDomainRegex,
-    // endDomainRegex,
-    // emailMessageObj,
     showSuccessMessage,
     handleUserName,
     handleEmail,
@@ -48,7 +40,13 @@ export const ContactForm = () => {
     handleEmailDisplay,
     handleMessageDisplay,
     raiseProgressValue,
-    raiseProgressValueTest
+    raiseProgressValueTest,
+    username,
+    setUsername,
+    email,
+    setEmail,
+    message,
+    setMessage,
   }: ContactContextType = useContext(ContactContext)
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
@@ -67,24 +65,32 @@ export const ContactForm = () => {
             console.log("result.text", result.text)
             setTimeout(() => {
               setIsEmailLoading(false)
+              setUsername("")
+              setUsernameDisplay(false)
+              setEmail("")
+              setEmailDisplay(false)
+              setMessage("")
+              setMessageDisplay(false)
+              setEmailDisplay(false)
               result.text === "OK" && showSuccessMessage()
-            }, 1500)
+            }, 2000)
           },
           (error) => {
             setTimeout(() => {
               setIsEmailLoading(false)
               setEmailDidntSend(true)
+
               console.log("error.text", error.text)
-            }, 1500)
+            }, 2000)
           }
         )
     }
   }
 
-
   useEffect(() => {
     if (progressValue < 1 && isEmailLoading) {
-      raiseProgressValueTest()
+      // raiseProgressValueTest()
+      raiseProgressValue()
     }
   }, [progressValue, isEmailLoading])
 
@@ -153,15 +159,19 @@ export const ContactForm = () => {
     </>
   )
 
+  const [phoneIconDisplay, setPhoneIconDisplay] = useState<boolean>(false)
+
+  // const handlePhoneIcon = () => {
+  //   if (phoneIconDisplay === false) {
+  //     setPhoneIconDisplay(true)
+  //   }
+  //   if (phoneIconDisplay === true) {
+  //     setPhoneIconDisplay(false)
+  //   }
+  // }
+
   return (
     <form className="" ref={form} onSubmit={sendEmail}>
-      {isEmailLoading && (
-        <div className="text-white font-oswald absolute top-10 right-6">
-          <p className="text-[1.2rem]">Sending...</p>
-          <progress className="appearance-none" value={progressValue} />
-        </div>
-      )}
-
       <div
         className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full justify-center ${
           screenHeight >= 650
@@ -171,14 +181,17 @@ export const ContactForm = () => {
     
  `}
       >
-        {isEmailSent && (
-          <span className="absolute top-8 right-12">Email sent!</span>
-        )}
-        {emailDidntSend && (
-          <span className="absolute top-8 right-12">
-            There was an error with your email.
-          </span>
-        )}
+        <Link
+          to="tel:2012188720"
+          className="absolute top-3 right-4"
+          target="_blank"
+          onMouseOver={()=>setPhoneIconDisplay(true)}
+          onMouseOut={()=>setPhoneIconDisplay(false)}
+        >
+          <FontAwesomeIcon className="z-10" size="lg" icon={faPhone} />
+        </Link>
+
+        {phoneIconDisplay && <span className="absolute top-12 right-4">201-218-8720</span>}
         <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center md:relative">
           {screenWidth >= 768 && errorMessages}
           <label>Name</label>
@@ -193,6 +206,7 @@ export const ContactForm = () => {
                   : ""
               }`}
               type="text"
+              value={username}
               name="user_name"
               onFocus={handleUsernameDisplay}
             />
@@ -229,6 +243,7 @@ export const ContactForm = () => {
                   : ""
               }`}
               type="email"
+              value={email}
               name="user_email"
             />
             {emailDisplay ? (
@@ -263,6 +278,7 @@ export const ContactForm = () => {
                   : ""
               }`}
               name="message"
+              value={message}
               onFocus={handleMessageDisplay}
             />
             {messageDisplay ? (
@@ -295,20 +311,32 @@ export const ContactForm = () => {
           >
             Send
           </button>
-          <button
-            onClick={raiseProgressValueTest}
-            type="button"
-            className="border px-3 py-1 mt-2 disabled:opacity-50"
-          >
-            Test
-          </button>
-          {/* <ColorPicker/> */}
         </div>
 
         {/* error messages */}
 
         {screenWidth < 768 && errorMessages}
       </div>
+      {isEmailLoading && (
+        <div className="text-white font-oswald flex flex-col items-center absolute left-0 right-0 bottom-[4rem] ">
+          <p className="text-[1.2rem]">Sending...</p>
+          <progress className="appearance-none" value={progressValue} />
+        </div>
+      )}
+      {isEmailSent && (
+        <div className="flex justify-center">
+          <span className="text-white text-[1.2rem] font-oswald ">
+            Email sent!
+          </span>
+        </div>
+      )}
+      {emailDidntSend && (
+        <div className="flex justify-center">
+          <span className="text-white text-[1.2rem] font-oswald">
+            There was an error with your email.
+          </span>
+        </div>
+      )}
     </form>
   )
 }

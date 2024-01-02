@@ -1,10 +1,10 @@
 import { GlobalContext } from "../context/GlobalContext"
 import { useContext, useRef, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useLocation, useParams } from "react-router-dom"
-import type { FooterProps } from "../types/FooterTypes"
+import { useLocation, useParams, Link } from "react-router-dom"
 
-export default function FooterIcons({ headerHeight }: FooterProps) {
+
+export default function FooterIcons() {
   const { footerIcons, screenHeight, iconsHeightAbove650, setIconsHeightAbove650 } = useContext(GlobalContext)
   const location = useLocation()
   const { projectId } = useParams()
@@ -66,7 +66,9 @@ export default function FooterIcons({ headerHeight }: FooterProps) {
               ? `text-transparent ${iconSelectAnimation(index)}`
               : "text-white")} text-[1.5rem] xs:text-[1.8rem] z-10 md:mx-5`}
           >
-            <FontAwesomeIcon className="z-10" size="lg" icon={icon} />
+            <Link to={icon.url} target="_blank">
+            <FontAwesomeIcon className="z-10" size="lg" icon={icon.icon} />
+            </Link>
           </div>
         ))}
       </div>
