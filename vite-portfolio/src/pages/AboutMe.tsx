@@ -111,19 +111,6 @@ export default function AboutMe() {
     }
   }
 
-  // const iconFadeIn = (index: number) => {
-  //   console.log("index", index)
-
-  //   if (index === 0) {
-  //     return "icon-div"
-  //   } else {
-  //     return setTimeout(() => {
-  //       console.log('hello')
-  //      "icon-div";
-  //     }, (index * 100))
-  //   }
-  // }
-
   const displayIcons = () => {
     if (screenWidth < 475) {
       return "display-icons"

@@ -40,7 +40,7 @@ export const ContactForm = () => {
     handleEmailDisplay,
     handleMessageDisplay,
     raiseProgressValue,
-    raiseProgressValueTest,
+    // raiseProgressValueTest,
     username,
     setUsername,
     email,
@@ -48,6 +48,8 @@ export const ContactForm = () => {
     message,
     setMessage,
   }: ContactContextType = useContext(ContactContext)
+
+  const [phoneIconDisplay, setPhoneIconDisplay] = useState<boolean>(false)
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -92,13 +94,13 @@ export const ContactForm = () => {
       // raiseProgressValueTest()
       raiseProgressValue()
     }
-  }, [progressValue, isEmailLoading])
+  }, [progressValue, isEmailLoading, raiseProgressValue])
 
   const errorMessages = (
     <>
-      <div className="flex flex-col w-full items-center mx-auto text-white gap-2 md:absolute md:top-[-16px] md:right-[-210px] md:w-[180px]">
+      <div className="flex flex-col w-full items-center mx-auto text-white gap-2 md:absolute md:top-[-13px] md:right-[-170px] md:w-[150px] lg:right-[-200px] lg:w-[180px]">
         <div
-          className={`mt-4 flex w-full flex-wrap ${
+          className={`mt-3 flex w-full flex-wrap ${
             screenHeight < 650 ? "h-[120px]" : ""
           } ${
             emailMessagesState.length > 0 ||
@@ -109,7 +111,7 @@ export const ContactForm = () => {
           } max-w-[300px]`}
         >
           <div
-            className={`w-full h-fit flex flex-wrap ${
+            className={`w-full h-fit flex flex-wrap text-[1.15rem] md:text-[1.25rem] lg:text-[1.4rem] ${
               emailMessagesState.length > 0 ||
               (usernameDisplay && !isUsernameValid) ||
               (messageDisplay && !isMessageValid)
@@ -159,23 +161,13 @@ export const ContactForm = () => {
     </>
   )
 
-  const [phoneIconDisplay, setPhoneIconDisplay] = useState<boolean>(false)
-
-  // const handlePhoneIcon = () => {
-  //   if (phoneIconDisplay === false) {
-  //     setPhoneIconDisplay(true)
-  //   }
-  //   if (phoneIconDisplay === true) {
-  //     setPhoneIconDisplay(false)
-  //   }
-  // }
-
   return (
     <form className="" ref={form} onSubmit={sendEmail}>
       <div
-        className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full justify-center ${
+        className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full justify-center md:text-[1.5rem] lg:text-[1.7rem]
+        ${
           screenHeight >= 650
-            ? `h-[calc(100vh-220px)] `
+            ? `h-[calc(100vh-200px)] `
             : "-mt-[20px] md:mt-0 md:h-[440px]"
         }
     
@@ -188,17 +180,17 @@ export const ContactForm = () => {
           onMouseOver={()=>setPhoneIconDisplay(true)}
           onMouseOut={()=>setPhoneIconDisplay(false)}
         >
-          <FontAwesomeIcon className="z-10" size="lg" icon={faPhone} />
+          <FontAwesomeIcon className="z-10 text-[1.8rem]" icon={faPhone} />
         </Link>
 
         {phoneIconDisplay && <span className="absolute top-12 right-4">201-218-8720</span>}
-        <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center md:relative">
+        <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center md:relative md:w-[400px] lg:w-[600px]">
           {screenWidth >= 768 && errorMessages}
           <label>Name</label>
           <div className="relative">
             <input
               onChange={(e) => handleUserName(e)}
-              className={`text-black w-[180px] px-[2px] rounded-sm ${
+              className={`text-black w-[180px] md:w-[220px] lg:w-[250px] px-[2px] rounded-sm ${
                 usernameDisplay
                   ? isUsernameValid
                     ? "outline-green-500"
@@ -235,7 +227,7 @@ export const ContactForm = () => {
             <input
               onChange={(e) => handleEmail(e)}
               onFocus={handleEmailDisplay}
-              className={`text-black w-[180px] px-[2px] rounded-sm ${
+              className={`text-black w-[180px] md:w-[220px] lg:w-[250px] px-[2px] rounded-sm ${
                 emailDisplay
                   ? isEmailValid
                     ? "outline-green-500"
@@ -270,7 +262,7 @@ export const ContactForm = () => {
           <div className="relative">
             <textarea
               onChange={(e) => handleMessage(e)}
-              className={`text-black w-[180px] px-[2px] rounded-sm ${
+              className={`text-black w-[180px] md:w-[220px] lg:w-[250px] px-[2px] rounded-sm ${
                 messageDisplay
                   ? isMessageValid
                     ? "outline-green-500"

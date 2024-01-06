@@ -30,7 +30,7 @@ export default function Contact() {
       >
         <h1
           ref={headerRef}
-          className="text-[3rem] pt-2 pl-2 text-white font-oswald uppercase"
+          className="text-[3rem] pl-2 text-white font-oswald uppercase md:text-[3.4rem] lg:text-[3.8rem]"
         >
           Contact
         </h1>

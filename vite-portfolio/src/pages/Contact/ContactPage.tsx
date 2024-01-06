@@ -62,7 +62,7 @@ export default function ContactPage() {
       setEmailMessagesState(emailMessagesArr)
     }
     if (e.target.value.length > 0) {
-      let filteredArr = emailMessagesArr.filter(
+      const filteredArr = emailMessagesArr.filter(
         (message) => message !== "-Email required."
       )
       setEmailMessagesState(filteredArr)
@@ -72,7 +72,7 @@ export default function ContactPage() {
         setEmailMessagesState(emailMessagesArr)
       }
       if (e.target.value.includes("@")) {
-        let filteredArr = emailMessagesArr.filter(
+        const filteredArr = emailMessagesArr.filter(
           (message) => message === "-Email must include @."
         )
         setEmailMessagesState(filteredArr)
@@ -82,7 +82,7 @@ export default function ContactPage() {
         setEmailMessagesState(emailMessagesArr)
       }
       if (startDomainRegex.test(e.target.value)) {
-        let filteredArr = emailMessagesArr.filter(
+        const filteredArr = emailMessagesArr.filter(
           (message) => message !== "Must include email name"
         )
         setEmailMessagesState(filteredArr)
@@ -92,7 +92,7 @@ export default function ContactPage() {
         setEmailMessagesState(emailMessagesArr)
       }
       if (endDomainRegex.test(e.target.value)) {
-        let filteredArr = emailMessagesArr.filter(
+        const filteredArr = emailMessagesArr.filter(
           (message) =>
             message !== `-Email must include domain ("gmail.com", "yahoo.com").`
         )
