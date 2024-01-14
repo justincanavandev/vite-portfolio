@@ -8,7 +8,7 @@ import "./progress.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
-import toast, { Toaster } from "react-hot-toast"
+// import toast, { Toaster } from "react-hot-toast"
 
 export const ContactForm = () => {
   const { screenHeight, screenWidth } = useContext(GlobalContext)
