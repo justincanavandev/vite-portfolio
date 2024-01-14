@@ -1,4 +1,4 @@
-import { useRef, useContext, useEffect, useState } from "react"
+import { useRef, useContext, useEffect, useState, useCallback } from "react"
 import emailjs from "@emailjs/browser"
 import { Icon } from "@iconify/react"
 import { GlobalContext } from "../../context/GlobalContext"
@@ -8,10 +8,11 @@ import "./progress.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
-// import { raiseProgressValue, raiseProgressValueTest, showSuccessMessage  } from "./functions/contact-functions"
+import toast, { Toaster } from "react-hot-toast"
 
 export const ContactForm = () => {
   const { screenHeight, screenWidth } = useContext(GlobalContext)
+  // const { raiseProgressValueTest } = useContext(ContactContext)
 
   const form = useRef<HTMLFormElement>(null)
 
@@ -31,6 +32,7 @@ export const ContactForm = () => {
     emailDidntSend,
     setEmailDidntSend,
     progressValue,
+    setProgressValue,
     emailMessagesState,
     showSuccessMessage,
     handleUserName,
@@ -89,12 +91,53 @@ export const ContactForm = () => {
     }
   }
 
+  const raiseProgressValueTest = useCallback(() => {
+    if (!isEmailLoading) {
+      setIsEmailLoading(true)
+    }
+    if (progressValue >= 0.99) {
+      setProgressValue(0)
+    } else {
+      setTimeout(() => {
+        setProgressValue((prevProgress) => prevProgress + 0.01)
+      }, 18)
+    }
+
+    setTimeout(() => {
+      setIsEmailLoading(false)
+      setUsername("")
+      setUsernameDisplay(false)
+      setEmail("")
+      setEmailDisplay(false)
+      setMessage("")
+      setMessageDisplay(false)
+      setEmailDisplay(false)
+      showSuccessMessage()
+      setProgressValue(0)
+    }, 2000)
+  }, [
+    isEmailLoading,
+    progressValue,
+    setIsEmailLoading,
+    setProgressValue,
+    setUsername,
+    setUsernameDisplay,
+    setEmail,
+    setEmailDisplay,
+    setMessage,
+    setMessageDisplay,
+    showSuccessMessage,
+  ])
+
+  const emailClasses =
+    "absolute flex bottom-16 right-0 left-0 font-oswald text-[1.2rem] md:text-[1.6rem] md:top-4 md:flex md:justify-center md:h-[48px] md:w-[200px] md:mx-auto"
+
   useEffect(() => {
     if (progressValue < 1 && isEmailLoading) {
-      // raiseProgressValueTest()
-      raiseProgressValue()
+      raiseProgressValueTest()
+      // raiseProgressValue()
     }
-  }, [progressValue, isEmailLoading, raiseProgressValue])
+  }, [progressValue, isEmailLoading, raiseProgressValueTest])
 
   const errorMessages = (
     <>
@@ -177,13 +220,15 @@ export const ContactForm = () => {
           to="tel:2012188720"
           className="absolute top-3 right-4"
           target="_blank"
-          onMouseOver={()=>setPhoneIconDisplay(true)}
-          onMouseOut={()=>setPhoneIconDisplay(false)}
+          onMouseOver={() => setPhoneIconDisplay(true)}
+          onMouseOut={() => setPhoneIconDisplay(false)}
         >
           <FontAwesomeIcon className="z-10 text-[1.8rem]" icon={faPhone} />
         </Link>
 
-        {phoneIconDisplay && <span className="absolute top-12 right-4">201-218-8720</span>}
+        {phoneIconDisplay && (
+          <span className="absolute top-12 right-4">201-218-8720</span>
+        )}
         <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center md:relative md:w-[400px] lg:w-[600px]">
           {screenWidth >= 768 && errorMessages}
           <label>Name</label>
@@ -303,6 +348,19 @@ export const ContactForm = () => {
           >
             Send
           </button>
+          {/* <button
+            disabled={
+              isUsernameValid === false ||
+              isMessageValid === false ||
+              isEmailValid === false
+            }
+            onClick={raiseProgressValueTest}
+            type="button"
+            value="Send"
+            className="border absolute left-[-100px] px-3 py-1 mt-2 disabled:opacity-50"
+          >
+            Test
+          </button> */}
         </div>
 
         {/* error messages */}
@@ -310,21 +368,23 @@ export const ContactForm = () => {
         {screenWidth < 768 && errorMessages}
       </div>
       {isEmailLoading && (
-        <div className="text-white font-oswald flex flex-col items-center absolute left-0 right-0 bottom-[4rem] ">
-          <p className="text-[1.2rem]">Sending...</p>
+        <div
+          className={`text-white ${emailClasses} flex-col items-center bottom-[4rem]  `}
+        >
+          <p className="">Sending...</p>
           <progress className="appearance-none" value={progressValue} />
         </div>
       )}
       {isEmailSent && (
-        <div className="flex justify-center">
-          <span className="text-white text-[1.2rem] font-oswald ">
-            Email sent!
-          </span>
+        <div
+          className={` ${emailClasses} justify-center border border-white px-2`}
+        >
+          <span className="text-white  ">Email sent!</span>
         </div>
       )}
       {emailDidntSend && (
-        <div className="flex justify-center">
-          <span className="text-white text-[1.2rem] font-oswald">
+        <div className={`${emailClasses} border border-white justify-center`}>
+          <span className="text-white text-[1.2rem]">
             There was an error with your email.
           </span>
         </div>

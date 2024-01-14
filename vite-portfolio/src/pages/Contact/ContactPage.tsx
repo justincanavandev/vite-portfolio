@@ -165,6 +165,7 @@ export default function ContactPage() {
       showSuccessMessage()
       setProgressValue(0)
     }, 2000)
+
   }
 
   return (
