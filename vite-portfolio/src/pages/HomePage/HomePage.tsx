@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useContext, useState, useEffect, useRef, RefObject } from "react"
+import { useContext, useState, useEffect, useRef } from "react"
 import "../../homepage.css"
 import "../../animation.css"
 import "../../index.css"
@@ -22,8 +22,8 @@ function HomePage() {
   // const icons = [faLinkedin, faGithub, faEnvelope]
 
   const { bubbles, setBubbleAnimationClass } = useContext(HomePageContext)
-  const dynamicTextRef: RefObject<HTMLLIElement> = useRef(null)
-  const [dynamicTextHeight, setDynamicTextHeight] = useState<string>("")
+  const dynamicTextRef: React.RefObject<HTMLDivElement> = useRef(null)
+  const [_, setDynamicTextHeight] = useState<string>("")
 
   const [screenHeightLow, setScreenHeightLow] = useState<number>(0)
   const [screenHeightMid, setScreenHeightMid] = useState<number>(0)

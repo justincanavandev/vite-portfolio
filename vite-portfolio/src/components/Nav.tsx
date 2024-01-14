@@ -1,6 +1,6 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
-import { NavLink } from "react-router-dom"
+// import { NavLink } from "react-router-dom"
 import NavLinks from "./NavLinks"
 import { Spin as Hamburger } from "hamburger-react"
 

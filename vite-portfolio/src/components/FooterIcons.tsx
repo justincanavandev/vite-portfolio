@@ -1,23 +1,23 @@
 import { GlobalContext } from "../context/GlobalContext"
-import { useContext, useRef, useEffect } from "react"
+import { useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useLocation, useParams, Link } from "react-router-dom"
 
 
 export default function FooterIcons() {
-  const { footerIcons, screenHeight, iconsHeightAbove650, setIconsHeightAbove650 } = useContext(GlobalContext)
+  const { footerIcons, screenHeight } = useContext(GlobalContext)
   const location = useLocation()
   const { projectId } = useParams()
 
-  const iconsRef = useRef<HTMLDivElement>(null)
+  // const iconsRef = useRef<HTMLDivElement>(null)
  
 
-  useEffect(()=> {
-    if(iconsRef.current) {
-      setIconsHeightAbove650(`${iconsRef.current.clientHeight}px`)
-    }
+  // useEffect(()=> {
+  //   if(iconsRef.current) {
+  //     setIconsHeightAbove650(`${iconsRef.current.clientHeight}px`)
+  //   }
 
-  },[iconsRef.current])
+  // },[iconsRef.current])
 
 
   const whichComponentIsRendered = () => {
@@ -51,7 +51,7 @@ export default function FooterIcons() {
   return (
     <div className="flex justify-center sm:mb-1 sm:items-end sm:mx-auto md:mt-0 z-40">
       <div
-        ref={iconsRef}
+        // ref={iconsRef}
         className={`flex ${
           screenHeight < 650
             ? whichComponentIsRendered()

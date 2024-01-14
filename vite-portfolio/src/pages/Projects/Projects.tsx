@@ -16,7 +16,7 @@ export default function Projects2() {
     isModalOpen,
     screenHeight,
     openOrClose,
-    setOpenOrClose,
+    // setOpenOrClose,
   } = useContext(GlobalContext)
   const navigate = useNavigate()
 
@@ -44,7 +44,7 @@ export default function Projects2() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
   const selectedProject: Project = projects[selectedImageIndex]
 
-  const openProjectModal = (index: number) => {
+  const openProjectModal = () => {
     setViewProjectDetails(true)
   }
 
@@ -320,7 +320,7 @@ export default function Projects2() {
                               size="2xl"
                               onClick={() => {
                                 setProjectIndex(selectedImageIndex)
-                                openProjectModal(selectedImageIndex)
+                                openProjectModal()
                                 navigate(`/projects/${selectedProject.id}`)
                               }}
                             />
