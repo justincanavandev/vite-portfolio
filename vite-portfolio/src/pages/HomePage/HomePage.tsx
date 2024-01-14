@@ -11,15 +11,7 @@ import { HomePageContext } from "../../context/HomePageContext"
 import FooterIcons from "../../components/FooterIcons"
 
 function HomePage() {
-  const {
-    // componentHeight,
-    screenWidth,
-    screenHeight,
-    // ColorPicker,
-    // footerIcons,
-  } = useContext(GlobalContext)
-
-  // const icons = [faLinkedin, faGithub, faEnvelope]
+  const { screenWidth, screenHeight } = useContext(GlobalContext)
 
   const { bubbles, setBubbleAnimationClass } = useContext(HomePageContext)
   const dynamicTextRef: React.RefObject<HTMLDivElement> = useRef(null)
@@ -27,9 +19,6 @@ function HomePage() {
 
   const [screenHeightLow, setScreenHeightLow] = useState<number>(0)
   const [screenHeightMid, setScreenHeightMid] = useState<number>(0)
-
-  // console.log("screenHeight", screenHeight)
-  // console.log("screenWidth", screenWidth)
 
   useEffect(() => {
     const setDivHeight = () => {
@@ -260,11 +249,12 @@ function HomePage() {
         <div className="">
           <div className={`flex flex-col  ${myNameIsScreenHeight()} `}>
             <div className="flex flex-col pl-2 justify-center">
-              <h2 className="font-thin lowercase text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem]">
+              <h2 className="font-thin text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem]">
                 <span className="hi">Hi!&nbsp;</span>
                 <span className="my-name-is pl-[.02rem]">My name is</span>
               </h2>
-              <span className="justin-canavan font-shadows text-white text-[2.6rem] xs:text-[4rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[4.2rem]">
+              {/* font was font-shadows */}
+              <span className="justin-canavan font-oswald uppercase font-bold text-white text-[2.6rem] xs:text-[4rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[4.2rem]">
                 Justin Canavan
               </span>
             </div>
@@ -277,7 +267,7 @@ function HomePage() {
           >
             <span className="">
               <span className="font-thin pb-[.5rem] inline i-am-a relative text-[1.1rem] xs:text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem]">
-                i am a
+                I am a
               </span>
             </span>
 
@@ -346,14 +336,11 @@ function HomePage() {
         >
           <div
             className={`flex mt-3 justify-center
-        
         ${iconView()}
-        
         `}
           >
             <FooterIcons />
           </div>
-          {/* <ColorPicker /> */}
         </div>
       </div>
     </>

@@ -229,16 +229,24 @@ export default function ProjectDetails() {
       setImgHeight(375)
       setImgHeightClass("h-[375px]")
     }
-    // if (screenWidth >= 1280 && screenWidth < 1536) {
-    // }
-    // if (screenWidth >= 1536) {
-    // }
+    if (screenWidth >= 1280 && screenWidth < 1536) {
+      setImgWidth(500)
+      setImgWidthClass("w-[550px]")
+      setImgHeight(375)
+      setImgHeightClass("h-[410px]")
+    }
+    if (screenWidth >= 1536) {
+      setImgWidth(500)
+      setImgWidthClass("w-[550px]")
+      setImgHeight(375)
+      setImgHeightClass("h-[410px]")
+    }
   }, [screenWidth])
 
   const prevNextBtns = (
     <>
       <div
-        className={`flex w-full items-center justify-evenly sm:items-start sm:mt-2 lg:h-[40px] lg:justify-end lg:absolute lg:top-[96px] lg:right-0 ${
+        className={`flex w-full items-center justify-evenly sm:items-start sm:mt-2 lg:h-auto lg:justify-end lg:absolute lg:top-[96px] lg:right-[15px] ${
           screenHeight >= 650
             ? "mt-4 xs:mt-4 sm:mt-0"
             : "absolute bottom-[-55px] sm:mt-1 md:static"
@@ -247,7 +255,7 @@ export default function ProjectDetails() {
         <div
           className={`${
             isMouseHovering && screenWidth < 640 && "text-transparent "
-          } flex sm:w-[205px] transition-opacity duration-300 ease-in-out gap-6 items-center sm:gap-4`}
+          } flex sm:w-[205px] transition-opacity duration-300 ease-in-out gap-6 items-center sm:gap-4 lg:w-[220px]`}
         >
           <Icon
             icon="maki:arrow"
@@ -257,10 +265,10 @@ export default function ProjectDetails() {
                       ? "bg-transparent border-transparent"
                       : "bg-teal-gradient"
                   } 
-                  p-1 text-[2.5rem] rotate-180`}
+                  p-1 text-[2.5rem] rotate-180 lg:text-[3rem]`}
             onClick={() => prevBtn()}
           ></Icon>
-          <p className="sm:text-[1.1rem]">
+          <p className="sm:text-[1.1rem] lg:text-[1.3rem]">
             Image {firstImage + 1} of {selectedProject.images.length}
           </p>
           <Icon
@@ -271,7 +279,7 @@ export default function ProjectDetails() {
                       ? "bg-transparent border-transparent"
                       : "bg-teal-gradient"
                   } 
-                  rounded-md  border p-1 text-[2.5rem]`}
+                  rounded-md  border p-1 text-[2.5rem] lg:text-[3rem]`}
             onClick={() => nextBtn()}
           ></Icon>
         </div>
@@ -322,9 +330,9 @@ export default function ProjectDetails() {
           {/* icons */}
 
           <div
-            className={` flex flex-wrap mt-4  justify-evenly xs:mt-3 xs:h-[140px] sm:h-[100px] sm:justify-between lg:${imgHeightClass} lg:w-[32%] lg:grow lg:h-full lg:self-center lg:justify-center lg:items-center`}
+            className={` flex flex-wrap mt-4  justify-evenly xs:mt-3 xs:h-[140px] sm:h-[100px] sm:justify-between lg:${imgHeightClass} lg:w-[32%] lg:grow lg:h-full lg:self-center lg:justify-center lg:items-center xl:justify-center xl:mt-[100px]`}
           >
-            <div className="flex flex-wrap justify-center items-end relative sm:w-[60%] lg:flex-col lg:items-center lg:border lg:mr-4 lg:rounded-[100%] lg:h-[300px] lg:w-[300px]">
+            <div className="flex flex-wrap justify-center items-end relative sm:w-[60%] lg:flex-col lg:items-center lg:border lg:mr-4 lg:rounded-[100%] lg:h-[320px] lg:w-[320px] xl:w-[400px] xl:h-[400px]">
               <div className="w-[86%] flex flex-wrap justify-center sm:w-[65%] sm:flex sm:flex-wrap lg:w-[80%]">
                 {selectedProject &&
                   selectedProject?.icons.map((icon, index) => (
@@ -336,7 +344,7 @@ export default function ProjectDetails() {
                         icon={icon.icon}
                         className={`${
                           icon.title === selectedIcon.title && "border"
-                        } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] `}
+                        } hover:border hover:cursor rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px] lg:text-[3.2rem] xl:text-[3.4rem] `}
                         onMouseOver={() => showIconTitle(icon)}
                         // onMouseOut={() => setDisplayModalIcon(false)}
                         // onMouseLeave={() => setStopTitleAnim(false)}
@@ -346,8 +354,8 @@ export default function ProjectDetails() {
               </div>
 
               <>
-                <div className="my-2 sm:my-0 sm:w-[30%] sm:flex sm:h-full sm:items-center sm:justify-end lg:h-[80px]">
-                  <span className="text-white my-2 text-[1.3rem] w-full text-center sm:flex sm:flex-col sm:gap-1 sm:w-[120px]">
+                <div className="my-2 sm:my-0 sm:w-[30%] sm:flex sm:h-full sm:items-center sm:justify-end lg:h-[80px] lg:justify-center lg:w-[45%] xl:mt-8">
+                  <span className="text-white my-2 text-[1.3rem] w-full text-center sm:flex sm:flex-col sm:gap-1 sm:w-[120px] lg:text-[1.6rem] lg:w-auto xl:text-[1.8rem] ">
                     Built with:{" "}
                     {displayModalIcon && (
                       <span
@@ -370,7 +378,7 @@ export default function ProjectDetails() {
           <div
             className={`w-full ${
               screenHeight >= 650 ? "mt-4 grow flex flex-col" : ""
-            } lg:w-[68%] lg:items-center lg:flex lg:flex-col lg:justify-center`}
+            } lg:w-[68%] lg:items-center lg:flex lg:flex-col lg:justify-center xl:w-[55%]`}
           >
             <div
               className={`flex justify-center md:justify-evenly   ${
@@ -396,7 +404,7 @@ export default function ProjectDetails() {
                   style={{
                     objectPosition: `${objPositionLR} ${objPositionTB}`,
                   }}
-                  className={`${imgHeightClass}  ${imgWidthClass} z-50 object-cover border  rounded-md  duration-500 hover:scale-[130%] hover:translate-y-[10%] hover:sm:translate-y-[7%] hover:md:translate-y-[20px] hover:lg:translate-y-[10px]
+                  className={`${imgHeightClass}  ${imgWidthClass} z-50 object-cover border  rounded-md  duration-500 hover:scale-[130%] hover:translate-y-[10%] hover:sm:translate-y-[7%] hover:md:translate-y-[20px] hover:lg:translate-y-[10px] hover:xl:translate-y-[30px]
                 
                 ${
                   closingOrOpening
@@ -428,7 +436,7 @@ export default function ProjectDetails() {
           <div className="h-16 w-full"></div>
         )}
 
-        {(screenHeight < 650 || screenWidth >= 1024) && <FooterIcons />}
+        {(screenHeight < 650 || screenWidth >= 1024 && !isMouseHovering) && <FooterIcons />}
       </div>
     </div>
   )
