@@ -133,7 +133,7 @@ export default function Projects2() {
     <>
       <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:h-[100px] sm:max-w-none sm:flex-col sm:absolute right-[.2rem] top-[-5.5rem] sm:w-[150px] sm:justify-evenly md:top-0 md:right-[-.2rem]">
         <p className="hidden sm:flex sm:text-[1.45rem] ">
-          Project {selectedImageIndex + 1} of {selectedProject.images.length}
+          Project {selectedImageIndex + 1} of {projects.length}
         </p>
         <div className="sm:flex sm:gap-4">
           <Icon
@@ -148,7 +148,7 @@ export default function Projects2() {
           ></Icon>
         </div>
         <p className="xs:text-[1.2rem] sm:hidden">
-          Project {selectedImageIndex + 1} of {selectedProject.images.length}
+          Project {selectedImageIndex + 1} of {projects.length}
         </p>
         <Icon
           icon="maki:arrow"

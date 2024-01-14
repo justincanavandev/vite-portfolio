@@ -1,10 +1,11 @@
-import "../animation.css"
+import "../../animation.css"
 import { useContext, useState } from "react"
-import "../about-me.css"
-import type { Skill } from "../types/about-me-types.ts/aboutMeTypes"
+import "../../about-me.css"
+import type { Skill } from "../../types/about-me-types.ts/aboutMeTypes"
 import { Icon } from "@iconify/react"
-import FooterIcons from "../components/FooterIcons"
-import { GlobalContext } from "../context/GlobalContext"
+import FooterIcons from "../../components/FooterIcons"
+import { GlobalContext } from "../../context/GlobalContext"
+import Employment from "./Employment"
 
 export default function AboutMe() {
   const { screenWidth, isModalOpen, openOrClose, screenHeight } =
@@ -182,109 +183,98 @@ export default function AboutMe() {
         }`}
       >
         <div
-          className={`flex flex-col gap-4 ${mainDivOverflow} z-10 grow mb-4 sm:gap-6`}
+          className={`flex flex-col  ${mainDivOverflow} xs:w-[85%] z-10 grow mb-4 sm:w-full sm:flex-row `}
         >
-          <div className="">
-            <h2 className="text-[2.5rem] pl-2 uppercase">
-              About Me
-            </h2>
+          <div className="flex flex-col gap-4 sm:w-[67%] sm:gap-8">
+            <div>
+              <h2 className="text-[2.5rem] pl-2 uppercase sm:text-[3rem]">
+                About Me
+              </h2>
 
-            <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.2rem] md:px-5 md:pt-6 md:max-w-[565px]">
-              As a freelance musician for over a decade, I have always been
-              deeply committed to the art of crafting immersive experiences.
-              {/* As a freelance musician for over a decade, my commitment to the art of crafting immersive experiences has been my driving motivation. */}
-            </p>
-          </div>
-  
-          <div className="px-2 lg:w-[70%] md:max-w-[550px]">
-            <div className="flex flex-col gap-3 mt-4">
-              <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.4rem]">
-                <h3 className="uppercase text-[1.4rem]">Languages and Tools </h3>
-                {displayIconTitle &&
-                  containsDisplayedIcon(languagesAndTools) && (
-                    <span className=" mr-[.8rem]">{displayedIcon}</span>
-                  )}
-              </div>
-
-              <div
-                className={`flex pr-2 flex-wrap pt-1 opacity-fade-in relative`}
-              >
-                {languagesAndTools.map((tool, langIndex) => (
-                  <>
-                    <div key={langIndex} className="flex flex-col relative">
-                      <div className="px-1 mb-2.5">
-                        <Icon
-                          icon={tool.icon}
-                          onMouseOver={() => iconTitle(tool.title)}
-                          onMouseOut={() => setDisplayIconTitle(false)}
-                          className={` relative hover:border p-[1.5px] rounded-md text-[2.3rem] md:text-[2.7rem]  md:p-[3px]`}
-                        ></Icon>
-                      </div>
-                    </div>
-                  </>
-                ))}
-                <div
-                  className={`absolute inset-0 w-full bg-black ${displayIcons()}`}
-                ></div>
-              </div>
+              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[565px]">
+                As a freelance musician for over a decade, I have always been
+                deeply committed to the art of crafting immersive experiences.
+                {/* As a freelance musician for over a decade, my commitment to the art of crafting immersive experiences has been my driving motivation. */}
+              </p>
             </div>
-            <div className="flex-col">
-              <div className="flex flex-col gap-4">
-                <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.4rem]">
-                  <h3 className="uppercase text-[1.4rem]">Libraries and Frameworks </h3>
+
+            <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-[70%] md:max-w-[550px]">
+              <div className="flex flex-col gap-3 sm:gap-5 sm:max-w-[450px] md:max-w-[600px]">
+                <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.7rem]">
+                  <h3 className="uppercase">Languages and Tools </h3>
                   {displayIconTitle &&
-                    containsDisplayedIcon(librariesAndFrameworks) && (
-                      <span className="pr-[.8rem]">{displayedIcon}</span>
+                    containsDisplayedIcon(languagesAndTools) && (
+                      <span className="mr-[.8rem]">{displayedIcon}</span>
                     )}
                 </div>
-                <div className="flex opacity-fade-in relative">
-                  {librariesAndFrameworks.map((library, libIndex) => (
+
+                <div
+                  className={`flex pr-2 flex-wrap pt-1 opacity-fade-in relative`}
+                >
+                  {languagesAndTools.map((tool, langIndex) => (
                     <>
-                      <div key={libIndex} className="flex flex-col relative">
-                        <div className="px-1 flex ">
+                      <div key={langIndex} className="flex flex-col relative">
+                        <div className="px-1 mb-2.5">
                           <Icon
-                            onMouseOver={() => iconTitle(library.title)}
+                            icon={tool.icon}
+                            onMouseOver={() => iconTitle(tool.title)}
                             onMouseOut={() => setDisplayIconTitle(false)}
-                            icon={library.icon}
-                            className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] md:text-[2.7rem] md:p-[3px]`}
+                            className={` relative hover:border p-[1.5px] rounded-md text-[2.3rem] sm:text-[2.7rem]  md:p-[3px]`}
                           ></Icon>
                         </div>
                       </div>
                     </>
                   ))}
                   <div
-                    onAnimationEnd={handleOverflow}
                     className={`absolute inset-0 w-full bg-black ${displayIcons()}`}
                   ></div>
                 </div>
               </div>
+              <div className="flex-col">
+                <div className="flex flex-col gap-4">
+                  <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.8rem]">
+                    <h3 className="uppercase">Libraries and Frameworks </h3>
+                    {displayIconTitle &&
+                      containsDisplayedIcon(librariesAndFrameworks) && (
+                        <span className="pr-[.8rem] sm:pr-0">{displayedIcon}</span>
+                      )}
+                  </div>
+                  <div className="flex opacity-fade-in relative">
+                    {librariesAndFrameworks.map((library, libIndex) => (
+                      <>
+                        <div key={libIndex} className="flex flex-col relative">
+                          <div className="px-1 flex ">
+                            <Icon
+                              onMouseOver={() => iconTitle(library.title)}
+                              onMouseOut={() => setDisplayIconTitle(false)}
+                              icon={library.icon}
+                              className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] sm:text-[2.7rem] md:p-[3px]`}
+                            ></Icon>
+                          </div>
+                        </div>
+                      </>
+                    ))}
+                    <div
+                      onAnimationEnd={handleOverflow}
+                      className={`absolute inset-0 w-full bg-black ${displayIcons()}`}
+                    ></div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <Employment className="flex flex-col sm:hidden" />
           </div>
-          {/* employment */}
-          <div className="flex flex-col px-2">
-            <h2 className="text-[1.4rem] uppercase">Employment</h2>
-            <div className="flex flex-col mt-1 ml-1 md:text-[1.1rem]">
-              <span>Seminaut Inc.</span>
-              <span>Junior Front-End Developer</span>
-              <span>06/23 - current</span>
-              {/* <button
-              onClick={()=>setOpenJobDetails(true)}
-              className="w-auto">Learn More!</button> */}
-              <a
-                className="decoration-solid"
-                href="https://www.guildgaming.gg"
-                target="_blank"
-              >
-                www.guildgaming.gg
-              </a>
-            </div>
-          </div>
+          <Employment className="hidden sm:flex sm:flex-col sm:mt-4 sm:h-fit sm:w-[33%] sm:items-center" />
+
           <div
             onAnimationEnd={handleOverflow}
             className={`absolute inset-0 w-full h-full bg-black ${displayPage()}`}
           ></div>
         </div>
-        <div className={`z-50 ${footerOpacity} transition-opacity ease-linear duration-500 h-[56px] bg-black sticky bottom-0 w-screen flex flex-col justify-center`}>
+        <div
+          className={`z-50 ${footerOpacity} transition-opacity ease-linear duration-500 h-[56px] bg-black sticky bottom-0 w-screen flex flex-col justify-center`}
+        >
           <FooterIcons />
         </div>
       </div>

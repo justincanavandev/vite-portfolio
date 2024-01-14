@@ -178,7 +178,7 @@ export default function ProjectDetails() {
     objWidthPercentage = Math.min(100, Math.max(0, objWidthPercentage))
 
     setObjPositionLR(`${objWidthPercentage.toString()}%`)
-  }, [imgXCoord])
+  }, [imgXCoord, imgWidth, isMouseHovering])
 
   useEffect(() => {
     let objHeightPercentage
@@ -188,15 +188,15 @@ export default function ProjectDetails() {
       objHeightPercentage = Math.round((imgYCoord / imgHeight) * 100)
     }
     setObjPositionTB(`${objHeightPercentage.toString()}%`)
-  }, [imgYCoord])
+  }, [imgYCoord, imgHeight, isMouseHovering])
 
-  useEffect(() => {
-    // console.log("imgXCoord", imgXCoord)
-    // console.log("imgYCoord", imgYCoord)
-    // console.log("objLR", objPositionLR)
-    // console.log("objTB", objPositionTB)
-    console.log("isMouseHovering", isMouseHovering)
-  }, [imgXCoord, imgYCoord, objPositionLR, objPositionTB, isMouseHovering])
+  // useEffect(() => {
+  //   // console.log("imgXCoord", imgXCoord)
+  //   // console.log("imgYCoord", imgYCoord)
+  //   // console.log("objLR", objPositionLR)
+  //   // console.log("objTB", objPositionTB)
+  //   console.log("isMouseHovering", isMouseHovering)
+  // }, [imgXCoord, imgYCoord, objPositionLR, objPositionTB, isMouseHovering])
 
   useEffect(() => {
     if (screenWidth < 475) {
