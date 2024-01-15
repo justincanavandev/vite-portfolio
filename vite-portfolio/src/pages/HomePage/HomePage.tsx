@@ -254,7 +254,7 @@ function HomePage() {
                 <span className="my-name-is pl-[.02rem]">My name is</span>
               </h2>
               {/* font was font-shadows */}
-              <span className="justin-canavan font-oswald uppercase font-bold text-white text-[2.6rem] xs:text-[4rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[4.2rem]">
+              <span className="justin-canavan font-shadows uppercase font-bold text-white text-[2.6rem] xs:text-[4rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[4.2rem]">
                 Justin Canavan
               </span>
             </div>
