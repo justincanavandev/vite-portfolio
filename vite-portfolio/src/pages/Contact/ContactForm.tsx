@@ -49,6 +49,7 @@ export const ContactForm = () => {
     setEmail,
     message,
     setMessage,
+   
   }: ContactContextType = useContext(ContactContext)
 
   const [phoneIconDisplay, setPhoneIconDisplay] = useState<boolean>(false)
@@ -211,7 +212,7 @@ export const ContactForm = () => {
         ${
           screenHeight >= 650
             ? `h-[calc(100vh-200px)] `
-            : "-mt-[20px] md:mt-0 md:h-[440px]"
+            : "h-[460px] md:mt-0 md:h-[440px]"
         }
     
  `}
@@ -365,7 +366,7 @@ export const ContactForm = () => {
 
         {/* error messages */}
 
-        {screenWidth < 768 && errorMessages}
+        {screenWidth < 768 && emailMessagesState.length>0 && errorMessages}
       </div>
       {isEmailLoading && (
         <div

@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "pwa-chrome",
+        "request": "attach",
+        "name": "Attach to Chrome",
+        "port": 9222,
+        "url": "http://localhost:5173", // Replace with your app's port
+        "webRoot": "/Users/justin/Desktop/coding-projects/vite-portfolio/vite-portfolio"
+      }
+    ]
+  }

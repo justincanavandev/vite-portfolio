@@ -6,7 +6,7 @@ import FooterIcons from "../../components/FooterIcons"
 export default function Contact() {
   const { isModalOpen, openOrClose, screenHeight } = useContext(GlobalContext)
 
-  const headerRef = useRef<HTMLHeadingElement>(null)
+  // const headerRef = useRef<HTMLHeadingElement>(null)
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function Contact() {
           }`}
       >
         <h1
-          ref={headerRef}
+          // ref={headerRef}
           className="text-[3rem] pl-2 text-white font-oswald uppercase md:text-[3.4rem] lg:text-[3.8rem]"
         >
           Contact

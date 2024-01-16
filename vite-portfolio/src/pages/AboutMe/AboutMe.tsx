@@ -82,15 +82,18 @@ export default function AboutMe() {
   const [mainDivOverflow, setMainDivOverflow] = useState<string>(
     "overflow-x-hidden overflow-y-scroll"
   )
+  const [divHidden, setDivHidden] = useState<string>("")
   // const [openJobDetails, setOpenJobDetails] = useState<boolean>(false)
   const [overflowBoolean, setOverflowBoolean] = useState<boolean>(false)
-  const [footerOpacity, setFooterOpacity] = useState<string>("opacity-0")
+  const [footerOpacity, setFooterOpacity] = useState<string>("opacity-100")
 
   const handleOverflow = () => {
     if (overflowBoolean) {
       setOverflowClass("")
+      // setMainDivOverflow("overflow-scroll")
       setMainDivOverflow("overflow-scroll")
       setFooterOpacity("opacity-100")
+      setDivHidden("hidden")
     }
     if (!overflowBoolean) {
       setOverflowBoolean(true)
@@ -269,7 +272,7 @@ export default function AboutMe() {
 
           <div
             onAnimationEnd={handleOverflow}
-            className={`absolute inset-0 w-full h-full bg-black ${displayPage()}`}
+            className={`absolute inset-0 ${divHidden} w-full h-full bg-black ${displayPage()}`}
           ></div>
         </div>
         <div
