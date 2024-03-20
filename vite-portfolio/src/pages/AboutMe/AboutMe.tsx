@@ -167,7 +167,8 @@ export default function AboutMe() {
   return (
     <>
       <div
-        className={`w-full bg-black mb-4 font-oswald flex flex-col lg:max-w-screen  text-white ${overflowClass}   ${
+      id="about-me"
+        className={`w-full bg-black mb-4 mt-4 font-oswald flex flex-col lg:max-w-screen  text-white ${overflowClass}   ${
           isModalOpen
             ? openOrClose
               ? "animate-open-filter-brightness"
@@ -184,7 +185,7 @@ export default function AboutMe() {
           className={`flex flex-col  ${mainDivOverflow} z-10 grow mb-4 sm:w-full sm:flex-row `}
         >
           <div className="flex flex-col gap-4 sm:gap-8">
-            <h2 className="text-[2.5rem] bg-teal-gradient pl-2 uppercase sm:text-[3rem] sm:w-fit sm:pl-3 sm:pr-8 sm:rounded-r-full">
+            <h2 className="text-[2.5rem] bg-teal-gradient pl-2 uppercase sm:text-[3rem] w-fit sm:pl-3 pr-8 rounded-r-full">
               About Me
             </h2>
             <div className="lg:flex lg:justify-between">

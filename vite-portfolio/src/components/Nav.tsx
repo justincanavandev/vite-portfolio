@@ -85,7 +85,7 @@ function Nav() {
             openOrClose ? "animate-open-nav-modal" : "animate-close-nav-modal"
           }`}
         >
-          <div className="h-[200px] text-white mt-20 border rounded-md mx-auto bg-opacity-95 bg-slate-600 w-[260px] flex flex-col justify-evenly text-[1.6rem] items-center">
+          <div className="h-[200px] text-white mt-20 border rounded-md mx-auto bg-slate-600 bg-opacity-90 w-[260px] flex flex-col justify-evenly text-[1.6rem] items-center">
             <NavLinks />
           </div>
         </div>

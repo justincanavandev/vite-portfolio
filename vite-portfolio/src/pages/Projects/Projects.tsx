@@ -171,7 +171,7 @@ export default function Projects2() {
 
   return (
     <>
-      <div
+      <div id="projects"
         className={`flex flex-col min-w-full mb-8
        
         
@@ -189,7 +189,7 @@ export default function Projects2() {
         }
         `}
       >
-        <div className=" bg-teal-gradient sm:pl-3 sm:w-fit sm:pr-8 sm:rounded-r-full">
+        <div className=" bg-teal-gradient sm:pl-3 w-fit pr-8 rounded-r-full">
           <h1 className="text-[2.5rem] pl-2 text-white font-oswald uppercase sm:text-[3rem] sm:inline-block ">
             Projects
           </h1>
@@ -329,9 +329,7 @@ export default function Projects2() {
                     </div>
                   )}
               </div>
-              <div className="flex justify-center mt-4">
-                {nextPrevBtns}
-              </div>
+              <div className="flex justify-center mt-4">{nextPrevBtns}</div>
             </div>
           </div>
         </div>

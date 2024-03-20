@@ -10,7 +10,8 @@ export default function Contact() {
 
   return (
     <>
-      <div
+      <div 
+      id="contact"
         className={` bg-black
            ${
              isModalOpen
@@ -28,7 +29,7 @@ export default function Contact() {
       >
         <h1
           ref={headerRef}
-          className="text-[3rem] bg-teal-gradient pl-2 text-white font-oswald uppercase sm:w-fit sm:pl-3 sm:pr-8 sm:rounded-r-full md:text-[3.4rem] lg:text-[3.8rem]"
+          className="text-[3rem] bg-teal-gradient pl-2 text-white font-oswald uppercase w-fit sm:pl-3 pr-8 rounded-r-full md:text-[3.4rem] lg:text-[3.8rem]"
         >
           Contact
         </h1>
