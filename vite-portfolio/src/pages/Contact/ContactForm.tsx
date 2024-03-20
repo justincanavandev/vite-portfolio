@@ -207,7 +207,7 @@ export const ContactForm = () => {
   return (
     <form className="" ref={form} onSubmit={sendEmail}>
       <div
-        className={`flex flex-col text-white text-[1.2rem] mb-10 font-oswald min-w-full my-8 md:text-[1.5rem] lg:text-[1.7rem]
+        className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full my-8 md:text-[1.5rem] lg:text-[1.7rem]
     
  `}
       >

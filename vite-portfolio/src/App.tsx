@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col bg-black min-h-screen">
+      <div className="flex flex-col bg-black ">
         {/* {location.pathname === "/" ? null : <Nav />} */}
         {/* <Routes>
           <Route path="/" element={<HomePagePage />} />

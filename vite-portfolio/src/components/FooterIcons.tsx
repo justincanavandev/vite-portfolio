@@ -1,7 +1,7 @@
 import { GlobalContext } from "../context/GlobalContext"
 import { useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {  Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function FooterIcons() {
   const { footerIcons } = useContext(GlobalContext)
@@ -46,11 +46,11 @@ export default function FooterIcons() {
   // }
 
   return (
-    <div className="flex justify-center sm:mb-1 sm:items-end sm:mx-auto md:mt-0 z-40">
+    <div className="flex justify-center items-center z-40">
       <div
         // ref={iconsRef}
         className={`flex 
-            absolute bottom-2.5
+
             
         `}
       >

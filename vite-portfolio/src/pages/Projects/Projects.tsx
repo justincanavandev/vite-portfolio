@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { GlobalContext } from "../../context/GlobalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faDesktop, faCircleInfo} from "@fortawesome/free-solid-svg-icons"
+import { faDesktop, faCircleInfo } from "@fortawesome/free-solid-svg-icons"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
@@ -131,28 +131,28 @@ export default function Projects2() {
 
   const nextPrevBtns = (
     <>
-      <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:h-[100px] sm:max-w-none sm:flex-col sm:absolute right-[.2rem] top-[-5.5rem] sm:w-[150px] sm:justify-evenly md:top-0 md:right-[-.2rem]">
-        <p className="hidden sm:flex sm:text-[1.45rem] ">
+      <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:max-w-none sm:w-[280px]">
+        {/* <p className="hidden sm:flex sm:text-[1.45rem] ">
           Project {selectedImageIndex + 1} of {projects.length}
-        </p>
-        <div className="sm:flex sm:gap-4">
+        </p> */}
+        <div className="">
           <Icon
             icon="maki:arrow"
             className="border rotate-180 rounded-md bg-teal-gradient p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem]"
             onClick={() => prevBtn()}
           ></Icon>
-          <Icon
+          {/* <Icon
             icon="maki:arrow"
             className="hidden rounded-md bg-teal-gradient border p-1 text-[2.5rem] sm:text-[3rem] sm:flex"
             onClick={() => nextBtn()}
-          ></Icon>
+          ></Icon> */}
         </div>
-        <p className="xs:text-[1.2rem] sm:hidden">
+        <p className="xs:text-[1.2rem] sm:text-[1.45rem]">
           Project {selectedImageIndex + 1} of {projects.length}
         </p>
         <Icon
           icon="maki:arrow"
-          className="rounded-md bg-teal-gradient border p-1 text-[2.5rem] xs:text-[2.7rem] sm:hidden"
+          className="rounded-md bg-teal-gradient border p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem] sm:flex"
           onClick={() => nextBtn()}
         ></Icon>
       </div>
@@ -166,14 +166,13 @@ export default function Projects2() {
 
   useEffect(() => {
     setViewProjectDetails(true)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
-    
       <div
-        className={`flex flex-col min-w-full mb-2
+        className={`flex flex-col min-w-full mb-8
        
         
         ${
@@ -191,21 +190,14 @@ export default function Projects2() {
         `}
       >
         <div className=" bg-teal-gradient sm:pl-3 sm:w-fit sm:pr-8 sm:rounded-r-full">
-          <h1 className="text-[2.5rem] pt-2 pl-2 text-white font-oswald uppercase sm:text-[3rem] sm:inline-block ">
+          <h1 className="text-[2.5rem] pl-2 text-white font-oswald uppercase sm:text-[3rem] sm:inline-block ">
             Projects
           </h1>
         </div>
         <div
-          className={`flex relative flex-col font-oswald z-30 mt-[2vh] text-white sm:mt-[1vh]
-          ${
-            screenHeight >= 650
-              ? showProjectDetails
-                ? `h-[70vh] sm:h-[72vh]`
-                : " lg:h-[70vh] "
-              : showProjectDetails
-              ? "h-[29.6rem] sm:h-[31.7rem]"
-              : "h-[50rem]"
-          }  sm:flex-row sm:flex-wrap sm:justify-center md:w-[100%] md:static`}
+          className={`flex relative flex-col font-oswald z-30 mt-6 text-white 
+    
+           sm:flex-row sm:flex-wrap sm:justify-center md:w-[100%] md:static`}
         >
           {/* Projects */}
 
@@ -213,7 +205,7 @@ export default function Projects2() {
             key={selectedImageIndex}
             className={`flex flex-col relative items-center ${
               screenWidth >= 320 ? "" : "w-[320px] pr-3"
-            }   mx-auto  z-30  sm:mt-[5vh] sm:static  sm:items-start md:items-center md:mt-[4.5vh] lg:mt-2`}
+            }   mx-auto  z-30   sm:static  sm:items-start md:items-center lg:mt-2`}
           >
             <div className=" ">
               <div className="flex flex-col items-center">
@@ -291,11 +283,11 @@ export default function Projects2() {
                     >
                       {/* nextPrevBtns */}
                       <div className="flex justify-center sm:hidden">
-                        <div
+                        {/* <div
                           className={`absolute bottom-[-4rem] w-[230px] mt-4 `}
                         >
                           {nextPrevBtns}
-                        </div>
+                        </div> */}
                       </div>
 
                       <div className="sm:flex sm:relative">
@@ -337,7 +329,9 @@ export default function Projects2() {
                     </div>
                   )}
               </div>
-              <div className="hidden sm:flex sm:w-[100px] ">{nextPrevBtns}</div>
+              <div className="flex justify-center mt-4">
+                {nextPrevBtns}
+              </div>
             </div>
           </div>
         </div>

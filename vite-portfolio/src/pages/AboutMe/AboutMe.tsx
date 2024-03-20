@@ -138,36 +138,36 @@ export default function AboutMe() {
     return ""
   }
 
-  const displayPage = () => {
-    if (screenWidth < 475) {
-      return "display-page"
-    }
-    if (screenWidth >= 475 && screenWidth < 640) {
-      return "display-page-xs"
-    }
-    if (screenWidth >= 640 && screenWidth < 768) {
-      return "display-page-sm"
-    }
-    if (screenWidth >= 768 && screenWidth < 1024) {
-      return "display-page-md"
-    }
-    if (screenWidth >= 1024 && screenWidth < 1280) {
-      return "display-page-lg"
-    }
-    if (screenWidth >= 1280 && screenWidth < 1536) {
-      return "display-page-xl"
-    }
-    if (screenWidth >= 1536) {
-      return "display-page-2xl"
-    }
+  // const displayPage = () => {
+  //   if (screenWidth < 475) {
+  //     return "display-page"
+  //   }
+  //   if (screenWidth >= 475 && screenWidth < 640) {
+  //     return "display-page-xs"
+  //   }
+  //   if (screenWidth >= 640 && screenWidth < 768) {
+  //     return "display-page-sm"
+  //   }
+  //   if (screenWidth >= 768 && screenWidth < 1024) {
+  //     return "display-page-md"
+  //   }
+  //   if (screenWidth >= 1024 && screenWidth < 1280) {
+  //     return "display-page-lg"
+  //   }
+  //   if (screenWidth >= 1280 && screenWidth < 1536) {
+  //     return "display-page-xl"
+  //   }
+  //   if (screenWidth >= 1536) {
+  //     return "display-page-2xl"
+  //   }
 
-    return ""
-  }
+  //   return ""
+  // }
 
   return (
     <>
       <div
-        className={`w-full bg-black mb-10 font-oswald flex flex-col lg:max-w-screen  text-white ${overflowClass}   ${
+        className={`w-full bg-black mb-4 font-oswald flex flex-col lg:max-w-screen  text-white ${overflowClass}   ${
           isModalOpen
             ? openOrClose
               ? "animate-open-filter-brightness"
@@ -188,12 +188,12 @@ export default function AboutMe() {
               About Me
             </h2>
             <div className="lg:flex">
-              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[565px] lg:max-w-[50%] lg:text-[1.7rem]">
+              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[565px] lg:text-[1.7rem]">
                 A Full-Stack Developer specializing in technologies ranging
                 from TypeScript, React, Next.js, Node.js, T3, Express.js, GraphQL, API construction, Python, and more. 
                 {/* As a freelance musician for over a decade, my commitment to the art of crafting immersive experiences has been my driving motivation. */}
               </p>
-              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[50%] lg:items-center lg:text-[2.2rem]" />
+              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:items-center lg:w-[500px] lg:text-[2.2rem]" />
             </div>
 
             <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-screen md:max-w-[550px] lg:flex-row lg:justify-between lg:max-w-none lg:px-6 lg:mt-6">
@@ -263,14 +263,14 @@ export default function AboutMe() {
               </div>
             </div>
 
-            <Employment className="flex flex-col mt-4 text-[1.4rem] sm:text-[1.7rem] sm:w-auto lg:hidden" />
+            <Employment className="flex flex-col mt-4 text-[1.3rem] sm:text-[1.7rem] sm:w-auto lg:hidden" />
           </div>
           {/* <Employment className="hidden lg:flex lg:flex-col lg:mt-4 lg:h-fit lg:w-[33%] lg:items-center lg:text-[2.2rem]" /> */}
 
-          <div
+          {/* <div
             onAnimationEnd={handleOverflow}
             className={`absolute inset-0 w-full h-full bg-black ${displayPage()}`}
-          ></div>
+          ></div> */}
         </div>
         {/* <div
           className={`z-50 ${footerOpacity} transition-opacity ease-linear duration-500 h-[56px] bg-black sticky bottom-0 w-screen flex flex-col justify-center`}
