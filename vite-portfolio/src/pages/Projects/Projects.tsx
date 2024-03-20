@@ -14,7 +14,7 @@ export default function Projects2() {
   const {
     screenWidth,
     isModalOpen,
-    screenHeight,
+    // screenHeight,
     openOrClose,
     // setOpenOrClose,
   } = useContext(GlobalContext)

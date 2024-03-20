@@ -84,13 +84,13 @@ export default function AboutMe() {
   )
   // const [openJobDetails, setOpenJobDetails] = useState<boolean>(false)
   const [overflowBoolean, setOverflowBoolean] = useState<boolean>(false)
-  const [_, setFooterOpacity] = useState<string>("opacity-0")
+  // const [_, setFooterOpacity] = useState<string>("opacity-0")
 
   const handleOverflow = () => {
     if (overflowBoolean) {
       setOverflowClass("")
       setMainDivOverflow("overflow-scroll")
-      setFooterOpacity("opacity-100")
+      // setFooterOpacity("opacity-100")
     }
     if (!overflowBoolean) {
       setOverflowBoolean(true)
@@ -187,18 +187,18 @@ export default function AboutMe() {
             <h2 className="text-[2.5rem] bg-teal-gradient pl-2 uppercase sm:text-[3rem] sm:w-fit sm:pl-3 sm:pr-8 sm:rounded-r-full">
               About Me
             </h2>
-            <div className="lg:flex">
-              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[565px] lg:text-[1.7rem]">
+            <div className="lg:flex lg:justify-between">
+              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[48%] lg:text-[1.7rem] lg:w-[46%]">
                 A Full-Stack Developer specializing in technologies ranging
                 from TypeScript, React, Next.js, Node.js, T3, Express.js, GraphQL, API construction, Python, and more. 
                 {/* As a freelance musician for over a decade, my commitment to the art of crafting immersive experiences has been my driving motivation. */}
               </p>
-              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:items-center lg:w-[500px] lg:text-[2.2rem]" />
+              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[46%] lg:text-[1.8rem] xl:text-[2.2rem]" />
             </div>
 
             <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-screen md:max-w-[550px] lg:flex-row lg:justify-between lg:max-w-none lg:px-6 lg:mt-6">
               <div className="flex flex-col mt-4 gap-3 sm:gap-5 sm:max-w-[450px] md:max-w-[600px] lg:w-[46%] lg:mt-0">
-                <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.7rem]">
+                <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.8rem] xl:text-[2.2rem]">
                   <h3 className="uppercase">Languages and Tools </h3>
                   {displayIconTitle &&
                     containsDisplayedIcon(languagesAndTools) && (
@@ -217,7 +217,7 @@ export default function AboutMe() {
                             icon={tool.icon}
                             onMouseOver={() => iconTitle(tool.title)}
                             onMouseOut={() => setDisplayIconTitle(false)}
-                            className={` relative hover:border p-[1.5px] rounded-md text-[2.3rem] sm:text-[2.7rem]  md:p-[3px]`}
+                            className={` relative hover:border p-[1.5px] rounded-md text-[2.3rem] sm:text-[2.7rem] lg:text-[3rem]  xl:text-[3.4rem] md:p-[3px]`}
                           ></Icon>
                         </div>
                       </div>
@@ -230,7 +230,7 @@ export default function AboutMe() {
               </div>
               <div className="flex-col lg:w-[46%]">
                 <div className="flex flex-col gap-4">
-                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem]">
+                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem]">
                     <h3 className="uppercase ">Libraries and Frameworks </h3>
                     {displayIconTitle &&
                       containsDisplayedIcon(librariesAndFrameworks) && (
@@ -248,7 +248,7 @@ export default function AboutMe() {
                               onMouseOver={() => iconTitle(library.title)}
                               onMouseOut={() => setDisplayIconTitle(false)}
                               icon={library.icon}
-                              className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] sm:text-[2.7rem] md:p-[3px]`}
+                              className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] sm:text-[2.7rem] lg:text-[3rem] xl:text-[3.4rem] md:p-[3px]`}
                             ></Icon>
                           </div>
                         </div>
