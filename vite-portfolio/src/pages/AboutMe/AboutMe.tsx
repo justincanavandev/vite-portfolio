@@ -241,18 +241,18 @@ export default function AboutMe() {
               About Me
             </h2>
             <div className="lg:flex lg:justify-between">
-              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[48%] lg:text-[1.7rem] lg:w-[46%] 2xl:text-[2.2rem]">
+              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[48%] lg:text-[1.7rem] lg:w-[46%] 2xl:text-[2rem]">
                 A Full-Stack Developer specializing in technologies ranging from
                 TypeScript, React, Next.js, Node.js, T3, Express.js, GraphQL,
                 API construction, Python, and more.
                 {/* As a freelance musician for over a decade, my commitment to the art of crafting immersive experiences has been my driving motivation. */}
               </p>
-              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[46%] lg:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.8rem]" />
+              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[46%] lg:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.7rem]" />
             </div>
 
             <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-screen md:max-w-[550px] lg:flex-row lg:justify-between lg:max-w-none lg:flex-wrap lg:px-6 lg:mt-6">
               <div className="flex flex-col mt-4 gap-3 sm:gap-5 sm:max-w-[450px] md:max-w-[600px] lg:w-[46%] lg:mt-0">
-                <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.8rem]">
+                <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.7rem]">
                   <h3 className="uppercase">Languages and Tools </h3>
                   {displayIconTitle &&
                     containsDisplayedIcon(languagesAndTools) && (
@@ -271,7 +271,7 @@ export default function AboutMe() {
                             icon={tool.icon}
                             onMouseOver={() => iconTitle(tool.title)}
                             onMouseOut={() => setDisplayIconTitle(false)}
-                            className={` relative hover:border p-[1.5px] rounded-md text-[2.3rem] sm:text-[2.7rem] lg:text-[3rem]  xl:text-[3.4rem] 2xl:text-[4.5rem] md:p-[3px]`}
+                            className={` relative hover:border p-[1.5px] rounded-md text-[2.3rem] sm:text-[2.7rem] lg:text-[3rem]  xl:text-[3.4rem] 2xl:text-[4.1rem] md:p-[3px]`}
                           ></Icon>
                         </div>
                       </div>
@@ -284,7 +284,7 @@ export default function AboutMe() {
               </div>
               <div className="flex-col lg:w-[46%]">
                 <div className="flex flex-col gap-4">
-                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem] 2xl:text-[2.8rem]">
+                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem] 2xl:text-[2.7rem]">
                     <h3 className="uppercase ">Libraries and Frameworks </h3>
                     {displayIconTitle &&
                       containsDisplayedIcon(librariesAndFrameworks) && (
@@ -302,7 +302,7 @@ export default function AboutMe() {
                               onMouseOver={() => iconTitle(library.title)}
                               onMouseOut={() => setDisplayIconTitle(false)}
                               icon={library.icon}
-                              className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] sm:text-[2.7rem] lg:text-[3rem] xl:text-[3.4rem] 2xl:text-[4.5rem] md:p-[3px]`}
+                              className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] sm:text-[2.7rem] lg:text-[3rem] xl:text-[3.4rem] 2xl:text-[4.1rem] md:p-[3px]`}
                             ></Icon>
                           </div>
                         </div>
@@ -313,7 +313,7 @@ export default function AboutMe() {
               </div>
               <div className="flex-col lg:w-[46%]">
                 <div className="flex flex-col gap-4">
-                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem] 2xl:text-[2.8rem]">
+                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem] 2xl:text-[2.7rem]">
                     <h3 className="uppercase ">Databases and ORMs</h3>
                     {displayIconTitle && containsDisplayedIcon(databases) && (
                       <span className="pr-[.8rem] sm:pr-0">
@@ -330,7 +330,7 @@ export default function AboutMe() {
                               onMouseOver={() => iconTitle(database.title)}
                               onMouseOut={() => setDisplayIconTitle(false)}
                               icon={database.icon}
-                              className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] sm:text-[2.7rem] md:p-[3px] lg:text-[3rem] xl:text-[3.4rem] 2xl:text-[4.5rem] `}
+                              className={`hover:border rounded-sm text-[2.3rem] p-[1.5px] sm:text-[2.7rem] md:p-[3px] lg:text-[3rem] xl:text-[3.4rem] 2xl:text-[4.1rem] `}
                             ></Icon>
                           </div>
                         </div>

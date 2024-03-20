@@ -210,7 +210,7 @@ export default function Projects2() {
             <div className=" ">
               <div className="flex flex-col items-center">
                 <div
-                  className={`before:rounded-t-md before:z-40 cursor-pointer h-[18rem] w-[95%] z-30 relative img-border rounded-b-md text-[.8rem] xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem] md:w-[40rem]  lg:w-[44rem] lg:h-[22rem] ${
+                  className={`before:rounded-t-md before:z-40 cursor-pointer h-[18rem] w-[95%] z-30 relative img-border rounded-b-md text-[.8rem] xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem] md:w-[40rem]  lg:w-[44rem] lg:h-[22rem] xl:w-[55rem] xl:h-[28rem] 2xl:w-[66rem] 2xl:h-[33rem] ${
                     closeAnimation
                       ? `${
                           featuredProject.name === selectedProject.name
@@ -234,7 +234,7 @@ export default function Projects2() {
                   <img
                     src={selectedProject.thumbnail}
                     alt="project-image"
-                    className={`h-[18rem]  w-full xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem]  md:w-[40rem] lg:h-[22rem] lg:w-[44rem] object-left-top object-cover xs:object-top 
+                    className={`h-[18rem]  w-full xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem]  md:w-[40rem] lg:h-[22rem] lg:w-[44rem] xl:w-[55rem] xl:h-[28rem] 2xl:w-[66rem] 2xl:h-[33rem] object-left-top object-cover xs:object-top 
                 ${
                   closeAnimation
                     ? `${
@@ -275,7 +275,7 @@ export default function Projects2() {
                   showProjectDetails && (
                     <div
                       onAnimationEnd={setAnimationState}
-                      className={`h-[6.2rem] w-[95%] z-10 relative xs:h-[6.8rem] xs:w-[28rem] sm:w-[36rem] sm:h-[4.9rem]  md:w-[40rem] lg:h-[5.2rem]  lg:w-[44rem]  ${
+                      className={`h-[6.2rem] w-[95%] z-10 relative xs:h-[6.8rem] xs:w-[28rem] sm:w-[36rem] sm:h-[4.9rem]  md:w-[40rem] lg:h-[5.2rem]  lg:w-[44rem] xl:w-[55rem] 2xl:w-[66rem]  ${
                         closeAnimation
                           ? "animate-project-details-close sm:animate-project-details-close-sm"
                           : "animate-project-details-open"
@@ -291,7 +291,7 @@ export default function Projects2() {
                       </div>
 
                       <div className="sm:flex sm:relative">
-                        <p className="text-[1rem] mb-1 line-clamp-2 mt-[.35rem] px-2.5 absolute top-0 xs:mt-1.5 xs:text-[1.15rem] sm:w-[350px] sm:mt-2 sm:static md:w-[410px] md:text-[1.2rem] lg:w-[520px] lg:text-[1.4rem] ">
+                        <p className="text-[1rem] mb-1 line-clamp-2 mt-[.35rem] px-2.5 absolute top-0 xs:mt-1.5 xs:text-[1.15rem] sm:w-[350px] sm:mt-2 sm:static md:w-[410px] md:text-[1.2rem] lg:w-[520px] lg:text-[1.4rem] 2xl:w-[800px]">
                           {selectedProject.description}
                         </p>
 
