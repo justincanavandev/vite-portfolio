@@ -130,24 +130,24 @@ export default function AboutMe() {
   const [displayIconTitle, setDisplayIconTitle] = useState<boolean>(false)
 
   const [displayedIcon, setDisplayedIcon] = useState<string>("")
-  const [overflowClass, setOverflowClass] = useState<string>("overflow-hidden")
-  const [mainDivOverflow, setMainDivOverflow] = useState<string>(
-    "overflow-x-hidden overflow-y-scroll"
-  )
+  // const [overflowClass, _] = useState<string>("overflow-hidden")
+  // const [mainDivOverflow, setMainDivOverflow] = useState<string>(
+  //   "overflow-x-hidden overflow-y-scroll"
+  // )
   // const [openJobDetails, setOpenJobDetails] = useState<boolean>(false)
-  const [overflowBoolean, setOverflowBoolean] = useState<boolean>(false)
+  // const [overflowBoolean, setOverflowBoolean] = useState<boolean>(false)
   // const [_, setFooterOpacity] = useState<string>("opacity-0")
 
-  const handleOverflow = () => {
-    if (overflowBoolean) {
-      setOverflowClass("")
-      setMainDivOverflow("overflow-scroll")
-      // setFooterOpacity("opacity-100")
-    }
-    if (!overflowBoolean) {
-      setOverflowBoolean(true)
-    }
-  }
+  // const handleOverflow = () => {
+  //   if (overflowBoolean) {
+  //     setOverflowClass("")
+  //     setMainDivOverflow("overflow-scroll")
+  //     // setFooterOpacity("opacity-100")
+  //   }
+  //   if (!overflowBoolean) {
+  //     setOverflowBoolean(true)
+  //   }
+  // }
 
   const iconTitle = (displayed: string) => {
     setDisplayedIcon(displayed)
@@ -220,7 +220,7 @@ export default function AboutMe() {
     <>
       <div
         id="about-me"
-        className={`w-full bg-black mb-4 mt-4 font-oswald flex flex-col lg:max-w-screen  text-white ${overflowClass}   ${
+        className={`w-full bg-black mb-4 mt-4 font-oswald flex flex-col lg:max-w-screen  text-white overflow-hidden  ${
           isModalOpen
             ? openOrClose
               ? "animate-open-filter-brightness"
@@ -234,7 +234,7 @@ export default function AboutMe() {
         }`}
       >
         <div
-          className={`flex flex-col  ${mainDivOverflow} z-10 grow mb-4 sm:w-full sm:flex-row `}
+          className={`flex flex-col  overflow-x-hidden overflow-y-scroll z-10 grow mb-4 sm:w-full sm:flex-row `}
         >
           <div className="flex flex-col gap-4 sm:gap-8">
             <h2 className="text-[2.5rem] bg-teal-gradient pl-2 uppercase sm:text-[3rem] w-fit sm:pl-3 pr-8 rounded-r-full">
@@ -339,10 +339,10 @@ export default function AboutMe() {
                   </div>
                 </div>
               </div>
-              <div
+              {/* <div
                 onAnimationEnd={handleOverflow}
                 className={`absolute inset-0 w-full bg-black ${displayIcons()}`}
-              ></div>
+              ></div> */}
             </div>
 
             <Employment className="flex flex-col mt-4 text-[1.3rem] sm:text-[1.7rem] sm:w-auto lg:hidden" />
