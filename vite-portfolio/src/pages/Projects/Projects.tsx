@@ -158,11 +158,11 @@ export default function Projects2() {
       </div>
     </>
   )
-  useEffect(() => {
-    console.log("isModalOpen", isModalOpen)
-    console.log("viewProjectDetails", viewProjectDetails)
-    console.log("openOrClose", openOrClose)
-  }, [isModalOpen, viewProjectDetails, openOrClose])
+  // useEffect(() => {
+  //   console.log("isModalOpen", isModalOpen)
+  //   console.log("viewProjectDetails", viewProjectDetails)
+  //   console.log("openOrClose", openOrClose)
+  // }, [isModalOpen, viewProjectDetails, openOrClose])
 
   useEffect(() => {
     setViewProjectDetails(true)
@@ -170,10 +170,9 @@ export default function Projects2() {
 
   return (
     <>
+    
       <div
-        className={`flex flex-col min-w-full  ${
-          screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
-        } overflow-x-scroll overflow-y-scroll
+        className={`flex flex-col min-w-full mb-2
        
         
         ${
@@ -190,7 +189,7 @@ export default function Projects2() {
         }
         `}
       >
-        <div className="sm:w-[200px]">
+        <div className=" bg-teal-gradient sm:pl-3 sm:w-fit sm:pr-8 sm:rounded-r-full">
           <h1 className="text-[2.5rem] pt-2 pl-2 text-white font-oswald uppercase sm:text-[3rem] sm:inline-block ">
             Projects
           </h1>
@@ -342,7 +341,7 @@ export default function Projects2() {
           </div>
         </div>
 
-        <FooterIcons />
+        {/* <FooterIcons /> */}
       </div>
     </>
   )

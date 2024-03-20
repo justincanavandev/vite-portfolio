@@ -305,26 +305,24 @@ export default function ProjectDetails() {
 
   return (
     <div
-      className={`${
-        screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
-      } flex flex-col  w-full text-white items-center ${
+      className={`flex flex-col  w-full text-white items-center ${
         isModalOpen && "filter brightness-[40%]"
       }`}
     >
       <div className="bg-black z-40 grow w-full font-oswald flex flex-col">
         <div className="relative ">
-          <div className="bg-teal-gradient">
+          <div className="">
             <h1 className="pl-2 text-[1.4rem] h-[40px]">
               {selectedProject.name}
             </h1>
           </div>
-          <Link to="/projects">
+          {/* <Link to="/projects">
             <FontAwesomeIcon
               className="absolute right-3 text-white text-[1.5rem] top-[6px] sm:top-[6px] sm:right-[19px] sm:text-[1.5rem]"
               onClick={() => setViewProjectDetails(false)}
               icon={faRotateLeft}
             />
-          </Link>
+          </Link> */}
         </div>
         <div className={`lg:flex-row-reverse flex flex-col grow`}>
           {/* icons */}
@@ -421,22 +419,22 @@ export default function ProjectDetails() {
               </div>
             </div>
             {/* Footer Div */}
-            {screenHeight >= 650 && screenWidth < 1024 && (
+            {/* {screenHeight >= 650 && screenWidth < 1024 && (
               <div className="h-16 w-full"></div>
-            )}
-
+            )} */}
+{/* 
             {((screenHeight >= 650 && screenWidth < 640) ||
               (screenWidth >= 640 &&
                 screenWidth < 1024 &&
                 screenHeight >= 650 &&
-                !isMouseHovering)) && <FooterIcons />}
+                !isMouseHovering)) && <FooterIcons />} */}
           </div>
         </div>
-        {screenHeight >= 650 && screenWidth > 1024 && (
+        {/* {screenHeight >= 650 && screenWidth > 1024 && (
           <div className="h-16 w-full"></div>
-        )}
+        )} */}
 
-        {(screenHeight < 650 || screenWidth >= 1024 && !isMouseHovering) && <FooterIcons />}
+        {/* {(screenHeight < 650 || screenWidth >= 1024 && !isMouseHovering) && <FooterIcons />} */}
       </div>
     </div>
   )

@@ -320,7 +320,8 @@ export default function ProjectsPage() {
         setProjectIndex,
       }}
     >
-      {location.pathname !== "/projects" ? <ProjectDetails /> : <Projects />}
+      {/* {location.pathname !== "/projects" ? <ProjectDetails /> : <Projects />} */}
+      <Projects />
     </ProjectsContext.Provider>
   )
 }

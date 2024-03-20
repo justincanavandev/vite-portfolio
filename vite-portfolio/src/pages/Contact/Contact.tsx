@@ -11,9 +11,7 @@ export default function Contact() {
   return (
     <>
       <div
-        className={`${
-          screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
-        } overflow-x-scroll overflow-y-scroll bg-black
+        className={` bg-black
            ${
              isModalOpen
                ? openOrClose
@@ -30,14 +28,14 @@ export default function Contact() {
       >
         <h1
           ref={headerRef}
-          className="text-[3rem] pl-2 text-white font-oswald uppercase md:text-[3.4rem] lg:text-[3.8rem]"
+          className="text-[3rem] bg-teal-gradient pl-2 text-white font-oswald uppercase sm:w-fit sm:pl-3 sm:pr-8 sm:rounded-r-full md:text-[3.4rem] lg:text-[3.8rem]"
         >
           Contact
         </h1>
         <ContactForm />
-        <div className={`pt-1.5 ${screenHeight < 650 && "mt-[15px]"}`}>
+        {/* <div className={`pt-1.5 ${screenHeight < 650 && "mt-[15px]"}`}>
           <FooterIcons />
-        </div>
+        </div> */}
       </div>
     </>
   )

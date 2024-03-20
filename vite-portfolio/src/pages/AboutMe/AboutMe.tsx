@@ -167,9 +167,7 @@ export default function AboutMe() {
   return (
     <>
       <div
-        className={`w-full bg-black font-oswald  flex flex-col  text-white ${overflowClass}  ${
-          screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
-        }            ${
+        className={`w-full bg-black mb-10 font-oswald flex flex-col lg:max-w-screen  text-white ${overflowClass}   ${
           isModalOpen
             ? openOrClose
               ? "animate-open-filter-brightness"
@@ -183,23 +181,23 @@ export default function AboutMe() {
         }`}
       >
         <div
-          className={`flex flex-col  ${mainDivOverflow} xs:w-[85%] z-10 grow mb-4 sm:w-full sm:flex-row `}
+          className={`flex flex-col  ${mainDivOverflow} z-10 grow mb-4 sm:w-full sm:flex-row `}
         >
-          <div className="flex flex-col gap-4 sm:w-[67%] sm:gap-8">
-            <div>
-              <h2 className="text-[2.5rem] pl-2 uppercase sm:text-[3rem]">
-                About Me
-              </h2>
-
-              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[565px]">
-                As a freelance musician for over a decade, I have always been
-                deeply committed to the art of crafting immersive experiences.
+          <div className="flex flex-col gap-4 sm:gap-8">
+            <h2 className="text-[2.5rem] bg-teal-gradient pl-2 uppercase sm:text-[3rem] sm:w-fit sm:pl-3 sm:pr-8 sm:rounded-r-full">
+              About Me
+            </h2>
+            <div className="lg:flex">
+              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[565px] lg:max-w-[50%] lg:text-[1.7rem]">
+                A Full-Stack Developer specializing in technologies ranging
+                from TypeScript, React, Next.js, Node.js, T3, Express.js, GraphQL, API construction, Python, and more. 
                 {/* As a freelance musician for over a decade, my commitment to the art of crafting immersive experiences has been my driving motivation. */}
               </p>
+              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[50%] lg:items-center lg:text-[2.2rem]" />
             </div>
 
-            <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-[70%] md:max-w-[550px]">
-              <div className="flex flex-col gap-3 sm:gap-5 sm:max-w-[450px] md:max-w-[600px]">
+            <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-screen md:max-w-[550px] lg:flex-row lg:justify-between lg:max-w-none lg:px-6 lg:mt-6">
+              <div className="flex flex-col mt-4 gap-3 sm:gap-5 sm:max-w-[450px] md:max-w-[600px] lg:w-[46%] lg:mt-0">
                 <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.7rem]">
                   <h3 className="uppercase">Languages and Tools </h3>
                   {displayIconTitle &&
@@ -230,13 +228,15 @@ export default function AboutMe() {
                   ></div>
                 </div>
               </div>
-              <div className="flex-col">
+              <div className="flex-col lg:w-[46%]">
                 <div className="flex flex-col gap-4">
-                  <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.8rem]">
-                    <h3 className="uppercase">Libraries and Frameworks </h3>
+                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem]">
+                    <h3 className="uppercase ">Libraries and Frameworks </h3>
                     {displayIconTitle &&
                       containsDisplayedIcon(librariesAndFrameworks) && (
-                        <span className="pr-[.8rem] sm:pr-0">{displayedIcon}</span>
+                        <span className="pr-[.8rem] sm:pr-0">
+                          {displayedIcon}
+                        </span>
                       )}
                   </div>
                   <div className="flex opacity-fade-in relative">
@@ -263,20 +263,20 @@ export default function AboutMe() {
               </div>
             </div>
 
-            <Employment className="flex flex-col sm:hidden" />
+            <Employment className="flex flex-col mt-4 text-[1.4rem] sm:text-[1.7rem] sm:w-auto lg:hidden" />
           </div>
-          <Employment className="hidden sm:flex sm:flex-col sm:mt-4 sm:h-fit sm:w-[33%] sm:items-center" />
+          {/* <Employment className="hidden lg:flex lg:flex-col lg:mt-4 lg:h-fit lg:w-[33%] lg:items-center lg:text-[2.2rem]" /> */}
 
           <div
             onAnimationEnd={handleOverflow}
             className={`absolute inset-0 w-full h-full bg-black ${displayPage()}`}
           ></div>
         </div>
-        <div
+        {/* <div
           className={`z-50 ${footerOpacity} transition-opacity ease-linear duration-500 h-[56px] bg-black sticky bottom-0 w-screen flex flex-col justify-center`}
         >
           <FooterIcons />
-        </div>
+        </div> */}
       </div>
     </>
   )
