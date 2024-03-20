@@ -3,12 +3,12 @@ import { useContext, useState } from "react"
 import "../../about-me.css"
 import type { Skill } from "../../types/about-me-types.ts/aboutMeTypes"
 import { Icon } from "@iconify/react"
-import FooterIcons from "../../components/FooterIcons"
+// import FooterIcons from "../../components/FooterIcons"
 import { GlobalContext } from "../../context/GlobalContext"
 import Employment from "./Employment"
 
 export default function AboutMe() {
-  const { screenWidth, isModalOpen, openOrClose, screenHeight } =
+  const { screenWidth, isModalOpen, openOrClose } =
     useContext(GlobalContext)
 
   const languagesAndTools: Skill[] = [
@@ -84,7 +84,7 @@ export default function AboutMe() {
   )
   // const [openJobDetails, setOpenJobDetails] = useState<boolean>(false)
   const [overflowBoolean, setOverflowBoolean] = useState<boolean>(false)
-  const [footerOpacity, setFooterOpacity] = useState<string>("opacity-0")
+  const [_, setFooterOpacity] = useState<string>("opacity-0")
 
   const handleOverflow = () => {
     if (overflowBoolean) {

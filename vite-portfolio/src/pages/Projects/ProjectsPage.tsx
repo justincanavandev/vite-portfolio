@@ -20,13 +20,13 @@ import products from "../../assets/gamers-circuit/products.png"
 import allRestaurants from "../../assets/chi-hotspot/all-restaurants.png"
 import oneRestaurant from "../../assets/chi-hotspot/restaurant-page.png"
 import reviews from "../../assets/chi-hotspot/my-reviews.png"
-import ProjectDetails from "./ProjectDetails"
-import { useLocation } from "react-router-dom"
+// import ProjectDetails from "./ProjectDetails"
+// import { useLocation } from "react-router-dom"
 
 export default function ProjectsPage() {
   const [viewProjectDetails, setViewProjectDetails] = useState<boolean>(false)
 
-  const location = useLocation()
+  // const location = useLocation()
 
   const projects: Project[] = [
     {

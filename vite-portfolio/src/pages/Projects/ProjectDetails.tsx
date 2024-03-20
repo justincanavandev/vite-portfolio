@@ -3,15 +3,15 @@ import { useContext, useState, useEffect, useRef } from "react"
 import type { Project } from "../../types/project-types/projectTypes"
 import { Icon } from "@iconify/react"
 import { Icon as IconType } from "../../types/project-types/projectTypes"
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { GlobalContext } from "../../context/GlobalContext"
 import "../../projects.css"
-import FooterIcons from "../../components/FooterIcons"
-import { faRotateLeft } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import FooterIcons from "../../components/FooterIcons"
+// import { faRotateLeft } from "@fortawesome/free-solid-svg-icons"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function ProjectDetails() {
-  const { projects, setViewProjectDetails } = useContext(ProjectsContext)
+  const { projects } = useContext(ProjectsContext)
 
   const { screenWidth, screenHeight, isModalOpen } = useContext(GlobalContext)
   const imgParentDiv = useRef<HTMLDivElement>(null)

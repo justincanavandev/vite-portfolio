@@ -1,13 +1,13 @@
 import "./index.css"
 // import { useState, useEffect, useRef, RefObject, useContext } from "react"
-import { Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Nav from "./components/Nav"
 import AboutMe from "./pages/AboutMe/AboutMe"
 import ContactPage from "./pages/Contact/ContactPage"
 import ProjectsPage from "./pages/Projects/ProjectsPage"
 // import Resume from "./pages/Resume"
 import ProjectDetails from "./pages/Projects/ProjectDetails"
-import HomePagePage from "./pages/HomePage/HomePagePage"
+// import HomePagePage from "./pages/HomePage/HomePagePage"
 import FooterIcons from "./components/FooterIcons"
 
 function App() {

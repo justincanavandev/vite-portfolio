@@ -1,10 +1,10 @@
 import { useContext, useRef } from "react"
 import { GlobalContext } from "../../context/GlobalContext"
 import { ContactForm } from "./ContactForm"
-import FooterIcons from "../../components/FooterIcons"
+// import FooterIcons from "../../components/FooterIcons"
 
 export default function Contact() {
-  const { isModalOpen, openOrClose, screenHeight } = useContext(GlobalContext)
+  const { isModalOpen, openOrClose } = useContext(GlobalContext)
 
   const headerRef = useRef<HTMLHeadingElement>(null)
 

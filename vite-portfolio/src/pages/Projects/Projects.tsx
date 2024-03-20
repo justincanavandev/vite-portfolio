@@ -8,7 +8,7 @@ import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
 import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react/dist/iconify.js"
-import FooterIcons from "../../components/FooterIcons"
+// import FooterIcons from "../../components/FooterIcons"
 
 export default function Projects2() {
   const {
@@ -36,7 +36,7 @@ export default function Projects2() {
     displayCard,
     setAnimationState,
     setBeforeRounded,
-    viewProjectDetails,
+    // viewProjectDetails,
     setViewProjectDetails,
     setProjectIndex,
   } = useContext(ProjectsContext)
@@ -166,6 +166,7 @@ export default function Projects2() {
 
   useEffect(() => {
     setViewProjectDetails(true)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

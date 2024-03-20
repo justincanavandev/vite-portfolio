@@ -1,12 +1,12 @@
 import { GlobalContext } from "../context/GlobalContext"
 import { useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useLocation, useParams, Link } from "react-router-dom"
+import {  Link } from "react-router-dom"
 
 export default function FooterIcons() {
-  const { footerIcons, screenHeight } = useContext(GlobalContext)
-  const location = useLocation()
-  const { projectId } = useParams()
+  const { footerIcons } = useContext(GlobalContext)
+  // const location = useLocation()
+  // const { projectId } = useParams()
 
   // const iconsRef = useRef<HTMLDivElement>(null)
 

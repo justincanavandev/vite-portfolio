@@ -5,7 +5,7 @@ const Employment:React.FC<ComponentProps<"div">> = ({className}) => {
   return (
     <div className={`px-2 ${className}`}>
       <div className="">
-      <h2 className=" uppercase ]">Employment</h2>
+      <h2 className=" uppercase">Employment</h2>
       <div className="flex flex-col mt-1 ml-1 sm:text-[1.1rem]">
         <span>Seminaut Inc.</span>
         <span>Junior Front-End Developer</span>
