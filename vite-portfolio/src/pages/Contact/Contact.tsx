@@ -22,7 +22,7 @@ export default function Contact() {
         
           ${
             isModalOpen
-              ? "filter brightness-[40%]"
+              ? "filter brightness-[40%] "
               : "filter brightness-[100%] animate-close-filter-brightness"
           }`}
       >
