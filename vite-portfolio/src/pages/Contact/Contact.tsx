@@ -34,9 +34,6 @@ export default function Contact() {
           Contact
         </h1>
         <ContactForm />
-        {/* <div className={`pt-1.5 ${screenHeight < 650 && "mt-[15px]"}`}>
-          <FooterIcons />
-        </div> */}
       </div>
     </>
   )

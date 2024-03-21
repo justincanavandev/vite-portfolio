@@ -12,7 +12,7 @@ import { Icon } from "@iconify/react/dist/iconify.js"
 
 export default function Projects2() {
   const {
-    screenWidth,
+    // screenWidth,
     isModalOpen,
     // screenHeight,
     openOrClose,
