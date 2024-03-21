@@ -52,7 +52,7 @@ function Nav() {
             : "filter brightness-[100%] animate-close-filter-brightness"
         } bg-black font-oswald text-white z-50 w-[100%] h-[48px]  sticky top-0 text-[.75rem] border-b nav-bar flex items-center xs:text-[.85rem] lg:h-[56px] `}
       >
-        <div className="max-w-[1700px] flex w-full justify-center text-[1.3rem] lg:text-[1.5rem]">
+        <div className="max-w-[1700px] flex w-full items-center justify-center text-[1.3rem] lg:text-[1.5rem]">
         <div>
           {/* <NavLink className={`ml-1.5 text-[1.3rem] `} to="/"> */}
           <span className="ml-1.5 text-[1.3rem] lg:text-[1.7rem]">Justin Canavan</span>

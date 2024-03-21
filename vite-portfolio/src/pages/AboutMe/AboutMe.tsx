@@ -237,14 +237,14 @@ export default function AboutMe() {
           className={`flex flex-col overflow-x-hidden overflow-y-scroll z-10 grow mb-4 sm:w-full sm:flex-row `}
         >
           <div className="flex flex-col gap-4 sm:gap-8">
-            <h2 className="text-[2.5rem] bg-teal-gradient pl-2 uppercase sm:text-[3rem] w-fit sm:pl-3 pr-8 rounded-r-full">
+            <h2 className="text-[2.5rem] bg-darkTeal pl-2 uppercase sm:text-[3rem] w-fit sm:pl-3 pr-8 rounded-r-full">
               About Me
             </h2>
             <div className="lg:flex lg:justify-between max-w-[1700px]">
               <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[48%] lg:text-[1.7rem] lg:w-[46%] 2xl:text-[2rem]">
                 A Full-Stack Developer specializing in technologies ranging from
-                TypeScript, React, Next.js, Node.js, T3, Express.js, GraphQL,
-                API construction, Python, and more.
+                TypeScript, React, Next.js, Node.js, tRPC, Prisma, Express.js, GraphQL,
+                React Query, and more.
                 {/* As a freelance musician for over a decade, my commitment to the art of crafting immersive experiences has been my driving motivation. */}
               </p>
               <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[46%] lg:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.7rem]" />

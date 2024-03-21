@@ -18,6 +18,7 @@ export default {
         cream: "#f0ebd8",
         teal: "#2dd4bf",
         projectTeal: "rgba(45, 212, 191, 1)",
+        darkTeal: "rgb(14, 133, 123)"
       },
       fontFamily: {
         oswald: ["Oswald", "sans"],

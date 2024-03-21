@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from "react"
 import { GlobalContext } from "../../context/GlobalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faDesktop, faCircleInfo } from "@fortawesome/free-solid-svg-icons"
+import { faDesktop } from "@fortawesome/free-solid-svg-icons"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react/dist/iconify.js"
 // import FooterIcons from "../../components/FooterIcons"
 
@@ -18,7 +18,7 @@ export default function Projects2() {
     openOrClose,
     // setOpenOrClose,
   } = useContext(GlobalContext)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const {
     showProjectDetails,
@@ -38,15 +38,15 @@ export default function Projects2() {
     setBeforeRounded,
     // viewProjectDetails,
     setViewProjectDetails,
-    setProjectIndex,
+    // setProjectIndex,
   } = useContext(ProjectsContext)
 
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
   const selectedProject: Project = projects[selectedImageIndex]
 
-  const openProjectModal = () => {
-    setViewProjectDetails(true)
-  }
+  // const openProjectModal = () => {
+  //   setViewProjectDetails(true)
+  // }
 
   useEffect(() => {
     if (hasPageRendered === false) {
@@ -139,12 +139,12 @@ export default function Projects2() {
         <div className="">
           <Icon
             icon="maki:arrow"
-            className="border rotate-180 rounded-md bg-teal-gradient p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem]"
+            className="border rotate-180 rounded-md bg-darkTeal p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem]"
             onClick={() => prevBtn()}
           ></Icon>
           {/* <Icon
             icon="maki:arrow"
-            className="hidden rounded-md bg-teal-gradient border p-1 text-[2.5rem] sm:text-[3rem] sm:flex"
+            className="hidden rounded-md border p-1 text-[2.5rem] sm:text-[3rem] sm:flex"
             onClick={() => nextBtn()}
           ></Icon> */}
         </div>
@@ -153,7 +153,7 @@ export default function Projects2() {
         </p>
         <Icon
           icon="maki:arrow"
-          className="rounded-md bg-teal-gradient border p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem] sm:flex"
+          className="rounded-md bg-darkTeal border p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem] sm:flex"
           onClick={() => nextBtn()}
         ></Icon>
       </div>
@@ -190,7 +190,7 @@ export default function Projects2() {
         }
         `}
       >
-        <div className=" bg-teal-gradient sm:pl-3 w-fit pr-8 rounded-r-full">
+        <div className=" bg-darkTeal sm:pl-3 w-fit pr-8 rounded-r-full">
           <h1 className="text-[2.5rem] pl-2 text-white font-oswald uppercase sm:text-[3rem] sm:inline-block ">
             Projects
           </h1>
@@ -263,7 +263,7 @@ export default function Projects2() {
                `}
                   />
 
-                  <div className="absolute top-[2.7px] left-[2.6px] bg-teal-gradient text-white rounded-l-[4.2px] ">
+                  <div className="absolute top-[2.7px] left-[2.6px] bg-darkTeal text-white rounded-l-[4.2px] ">
                     <p className="px-1 text-[1.1rem] xs:text-[1.3rem] md:text-[1.1rem] lg:text-[1.4rem]">
                       {selectedProject.name}
                     </p>
@@ -304,7 +304,7 @@ export default function Projects2() {
                               size="2xl"
                             />
                           </Link>
-                          <button>
+                          {/* <button>
                             <FontAwesomeIcon
                               icon={faCircleInfo}
                               className={`absolute left-0 ${
@@ -317,7 +317,7 @@ export default function Projects2() {
                                 navigate(`/projects/${selectedProject.id}`)
                               }}
                             />
-                          </button>
+                          </button> */}
                           <Link to={selectedProject.liveLink} target="_blank">
                             <FontAwesomeIcon
                               className="absolute text-white right-[0.3rem] bottom-[.3rem] text-[1.4rem] xs:text-[1.5rem] xs:bottom-[.5rem] sm:static sm:text-[1.95rem] md:text-[2.25rem]"
