@@ -50,11 +50,12 @@ function Nav() {
           isModalOpen
             ? "filter brightness-[40%]"
             : "filter brightness-[100%] animate-close-filter-brightness"
-        } bg-black font-oswald text-white z-50 w-[100%] h-[48px]  sticky top-0 text-[.75rem] border-b nav-bar flex items-center xs:text-[.85rem]`}
+        } bg-black font-oswald text-white z-50 w-[100%] h-[48px]  sticky top-0 text-[.75rem] border-b nav-bar flex items-center xs:text-[.85rem] lg:h-[56px] `}
       >
+        <div className="max-w-[1700px] flex w-full items-center justify-center text-[1.3rem] lg:text-[1.5rem]">
         <div>
           {/* <NavLink className={`ml-1.5 text-[1.3rem] `} to="/"> */}
-          <span className="ml-1.5 text-[1.3rem]">Justin Canavan</span>
+          <span className="ml-1.5 text-[1.3rem] lg:text-[1.7rem]">Justin Canavan</span>
           {/* </NavLink> */}
         </div>
         <>
@@ -69,11 +70,13 @@ function Nav() {
               />
             </div>
 
-            <div className="gap-2 font-oswald hidden md:flex text-[1.3rem] ">
+            <div className="gap-2 font-oswald hidden md:flex text-[1.3rem] lg:text-[1.7rem]">
               <NavLinks />
             </div>
           </div>
+
         </>
+        </div>
       </div>
 
       {/* nav hamburger modal */}
@@ -85,7 +88,7 @@ function Nav() {
             openOrClose ? "animate-open-nav-modal" : "animate-close-nav-modal"
           }`}
         >
-          <div className="h-[200px] text-white mt-20 border rounded-md mx-auto bg-opacity-95 bg-slate-600 w-[260px] flex flex-col justify-evenly text-[1.6rem] items-center">
+          <div className="h-[200px] text-white mt-20 border rounded-md mx-auto bg-slate-600 bg-opacity-90 w-[260px] flex flex-col justify-evenly text-[1.6rem] items-center">
             <NavLinks />
           </div>
         </div>

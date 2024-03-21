@@ -2,23 +2,23 @@ import { useContext, useEffect, useState } from "react"
 import { GlobalContext } from "../../context/GlobalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faDesktop, faCircleInfo} from "@fortawesome/free-solid-svg-icons"
+import { faDesktop } from "@fortawesome/free-solid-svg-icons"
 import type { Project } from "../../types/project-types/projectTypes"
 import { ProjectsContext } from "../../context/ProjectsContext"
 import "../../projects.css"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react/dist/iconify.js"
-import FooterIcons from "../../components/FooterIcons"
+// import FooterIcons from "../../components/FooterIcons"
 
 export default function Projects2() {
   const {
-    screenWidth,
+    // screenWidth,
     isModalOpen,
-    screenHeight,
+    // screenHeight,
     openOrClose,
     // setOpenOrClose,
   } = useContext(GlobalContext)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const {
     showProjectDetails,
@@ -36,17 +36,17 @@ export default function Projects2() {
     displayCard,
     setAnimationState,
     setBeforeRounded,
-    viewProjectDetails,
+    // viewProjectDetails,
     setViewProjectDetails,
-    setProjectIndex,
+    // setProjectIndex,
   } = useContext(ProjectsContext)
 
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
   const selectedProject: Project = projects[selectedImageIndex]
 
-  const openProjectModal = () => {
-    setViewProjectDetails(true)
-  }
+  // const openProjectModal = () => {
+  //   setViewProjectDetails(true)
+  // }
 
   useEffect(() => {
     if (hasPageRendered === false) {
@@ -57,6 +57,7 @@ export default function Projects2() {
       }, 300)
       setHasPageRendered(true)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const nextBtn = () => {
@@ -131,49 +132,49 @@ export default function Projects2() {
 
   const nextPrevBtns = (
     <>
-      <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:h-[100px] sm:max-w-none sm:flex-col sm:absolute right-[.2rem] top-[-5.5rem] sm:w-[150px] sm:justify-evenly md:top-0 md:right-[-.2rem]">
-        <p className="hidden sm:flex sm:text-[1.45rem] ">
+      <div className="flex justify-between bg-black w-full max-w-[240px] items-center z-0 sm:max-w-none sm:w-[280px]">
+        {/* <p className="hidden sm:flex sm:text-[1.45rem] ">
           Project {selectedImageIndex + 1} of {projects.length}
-        </p>
-        <div className="sm:flex sm:gap-4">
+        </p> */}
+        <div className="">
           <Icon
             icon="maki:arrow"
-            className="border rotate-180 rounded-md bg-teal-gradient p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem]"
+            className="border rotate-180 rounded-md bg-darkTeal p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem]"
             onClick={() => prevBtn()}
           ></Icon>
-          <Icon
+          {/* <Icon
             icon="maki:arrow"
-            className="hidden rounded-md bg-teal-gradient border p-1 text-[2.5rem] sm:text-[3rem] sm:flex"
+            className="hidden rounded-md border p-1 text-[2.5rem] sm:text-[3rem] sm:flex"
             onClick={() => nextBtn()}
-          ></Icon>
+          ></Icon> */}
         </div>
-        <p className="xs:text-[1.2rem] sm:hidden">
+        <p className="xs:text-[1.2rem] sm:text-[1.45rem]">
           Project {selectedImageIndex + 1} of {projects.length}
         </p>
         <Icon
           icon="maki:arrow"
-          className="rounded-md bg-teal-gradient border p-1 text-[2.5rem] xs:text-[2.7rem] sm:hidden"
+          className="rounded-md bg-darkTeal border p-1 text-[2.5rem] xs:text-[2.7rem] sm:text-[3rem] sm:flex"
           onClick={() => nextBtn()}
         ></Icon>
       </div>
     </>
   )
-  useEffect(() => {
-    console.log("isModalOpen", isModalOpen)
-    console.log("viewProjectDetails", viewProjectDetails)
-    console.log("openOrClose", openOrClose)
-  }, [isModalOpen, viewProjectDetails, openOrClose])
+  // useEffect(() => {
+  //   console.log("isModalOpen", isModalOpen)
+  //   console.log("viewProjectDetails", viewProjectDetails)
+  //   console.log("openOrClose", openOrClose)
+  // }, [isModalOpen, viewProjectDetails, openOrClose])
 
   useEffect(() => {
     setViewProjectDetails(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
       <div
-        className={`flex flex-col min-w-full  ${
-          screenHeight < 650 ? "h-[602px]" : "min-h-[calc(100vh-48px)]"
-        } overflow-x-scroll overflow-y-scroll
+        id="projects"
+        className={`flex flex-col min-w-full mb-8
        
         
         ${
@@ -190,35 +191,26 @@ export default function Projects2() {
         }
         `}
       >
-        <div className="sm:w-[200px]">
-          <h1 className="text-[2.5rem] pt-2 pl-2 text-white font-oswald uppercase sm:text-[3rem] sm:inline-block ">
+        <div className=" bg-darkTeal sm:pl-3 w-fit pr-8 rounded-r-full">
+          <h1 className=" pl-2 text-white font-oswald uppercase text-[2rem] sm:text-[2.5rem] 2xl:text-[2.75rem] sm:inline-block ">
             Projects
           </h1>
         </div>
         <div
-          className={`flex relative flex-col font-oswald z-30 mt-[2vh] text-white sm:mt-[1vh]
-          ${
-            screenHeight >= 650
-              ? showProjectDetails
-                ? `h-[70vh] sm:h-[72vh]`
-                : " lg:h-[70vh] "
-              : showProjectDetails
-              ? "h-[29.6rem] sm:h-[31.7rem]"
-              : "h-[50rem]"
-          }  sm:flex-row sm:flex-wrap sm:justify-center md:w-[100%] md:static`}
+          className={`flex relative flex-col font-oswald z-30 mt-6 text-white 
+    
+           sm:flex-row sm:flex-wrap sm:justify-center md:w-[100%] md:static`}
         >
           {/* Projects */}
 
           <div
             key={selectedImageIndex}
-            className={`flex flex-col relative items-center ${
-              screenWidth >= 320 ? "" : "w-[320px] pr-3"
-            }   mx-auto  z-30  sm:mt-[5vh] sm:static  sm:items-start md:items-center md:mt-[4.5vh] lg:mt-2`}
+            className={`flex flex-col relative items-center  mx-auto  z-30   sm:static  sm:items-start md:items-center lg:mt-2`}
           >
             <div className=" ">
               <div className="flex flex-col items-center">
                 <div
-                  className={`before:rounded-t-md before:z-40 cursor-pointer h-[18rem] w-[95%] z-30 relative img-border rounded-b-md text-[.8rem] xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem] md:w-[40rem]  lg:w-[44rem] lg:h-[22rem] ${
+                  className={`before:rounded-t-md before:z-40 cursor-pointer h-[18rem] w-[95%] z-30 relative img-border rounded-b-md text-[.8rem] xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem] md:w-[40rem]  lg:w-[44rem] lg:h-[22rem] xl:w-[55rem] xl:h-[28rem] 2xl:w-[66rem] 2xl:h-[33rem] ${
                     closeAnimation
                       ? `${
                           featuredProject.name === selectedProject.name
@@ -242,7 +234,7 @@ export default function Projects2() {
                   <img
                     src={selectedProject.thumbnail}
                     alt="project-image"
-                    className={`h-[18rem]  w-full xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem]  md:w-[40rem] lg:h-[22rem] lg:w-[44rem] object-left-top object-cover xs:object-top 
+                    className={`h-[18rem]  w-full xs:h-[17rem] xs:w-[28rem] sm:w-[36rem] sm:h-[21rem]  md:w-[40rem] lg:h-[22rem] lg:w-[44rem] xl:w-[55rem] xl:h-[28rem] 2xl:w-[66rem] 2xl:h-[33rem]  object-cover ${selectedProject.name === "Guild Gaming" || selectedProject.name === "CodeCove"  ? "object-left-top" : "object-top"} xs:object-top 
                 ${
                   closeAnimation
                     ? `${
@@ -270,7 +262,7 @@ export default function Projects2() {
                `}
                   />
 
-                  <div className="absolute top-[2.7px] left-[2.6px] bg-teal-gradient text-white rounded-l-[4.2px] ">
+                  <div className="absolute top-[2.7px] left-[2.6px] bg-darkTeal text-white rounded-l-[4.2px] ">
                     <p className="px-1 text-[1.1rem] xs:text-[1.3rem] md:text-[1.1rem] lg:text-[1.4rem]">
                       {selectedProject.name}
                     </p>
@@ -283,35 +275,29 @@ export default function Projects2() {
                   showProjectDetails && (
                     <div
                       onAnimationEnd={setAnimationState}
-                      className={`h-[6.2rem] w-[95%] z-10 relative xs:h-[6.8rem] xs:w-[28rem] sm:w-[36rem] sm:h-[4.9rem]  md:w-[40rem] lg:h-[5.2rem]  lg:w-[44rem]  ${
+                      className={` h-auto flex w-[95%] z-10 relative  xs:w-[28rem] sm:w-[36rem] sm:gap-2   md:w-[40rem]  lg:w-[44rem] xl:w-[55rem] 2xl:w-[66rem]  ${
                         closeAnimation
                           ? "animate-project-details-close sm:animate-project-details-close-sm"
                           : "animate-project-details-open"
                       }      border-r-[3px] border-b-[3px] border border-white rounded-br-[.375rem] border-l-[3px] rounded-bl-[.375rem] flex flex-col justify-between`}
                     >
                       {/* nextPrevBtns */}
-                      <div className="flex justify-center sm:hidden">
-                        <div
-                          className={`absolute bottom-[-4rem] w-[230px] mt-4 `}
-                        >
-                          {nextPrevBtns}
-                        </div>
-                      </div>
+                      {/* <div className="flex justify-center sm:hidden"></div> */}
 
-                      <div className="sm:flex sm:relative">
-                        <p className="text-[1rem] mb-1 line-clamp-2 mt-[.35rem] px-2.5 absolute top-0 xs:mt-1.5 xs:text-[1.15rem] sm:w-[350px] sm:mt-2 sm:static md:w-[410px] md:text-[1.2rem] lg:w-[520px] lg:text-[1.4rem] ">
+                      <div className="flex flex-col items-center">
+                        <p className="text-[1rem] mb-1 line-clamp-2 mt-[.35rem] px-2.5 xs:mt-1.5 xs:text-[1.15rem] sm:text-center sm:w-[500px] sm:mt-2 sm:static md:w-[600px] md:text-[1.3rem] lg:w-[650px] lg:text-[1.7rem] 2xl:w-[800px]">
                           {selectedProject.description}
                         </p>
 
-                        <div className="flex justify-between relative mx-[.3rem] mb-1 sm:my-1 sm:gap-6 sm:absolute sm:items-center sm:h-full sm:right-1 ">
-                          <Link to={selectedProject.githubRepo} target="_blank">
+                        <div className="flex justify-between gap-2 relative mx-[.3rem] mb-1 sm:my-1 sm:gap-6 sm:absolute sm:items-center sm:h-full sm:right-1 ">
+                          {/* <Link to={selectedProject.githubRepo} target="_blank">
                             <FontAwesomeIcon
                               icon={faGithub}
-                              className="absolute text-white left-[.5rem] bottom-[.3rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem] "
+                              className=" text-white left-[.5rem] bottom-[.3rem] text-[1.6rem] xs:text-[1.7rem] xs:bottom-[.5rem] sm:static sm:text-[2.3rem] md:text-[2.5rem] "
                               size="2xl"
                             />
-                          </Link>
-                          <button>
+                          </Link> */}
+                          {/* <button>
                             <FontAwesomeIcon
                               icon={faCircleInfo}
                               className={`absolute left-0 ${
@@ -324,10 +310,39 @@ export default function Projects2() {
                                 navigate(`/projects/${selectedProject.id}`)
                               }}
                             />
-                          </button>
+                          </button> */}
+                          {/* <Link to={selectedProject.liveLink} target="_blank">
+                            <FontAwesomeIcon
+                              className=" text-white r text-[1.4rem] xs:text-[1.5rem] xs:bottom-[.5rem] sm:text-[1.95rem] md:text-[2.25rem]"
+                              icon={faDesktop}
+                              size="xl"
+                            />
+                          </Link> */}
+                        </div>
+                      </div>
+                      <div className="flex px-2 justify-center">
+                        <div className="flex justify-between w-full">
+                          <Link to={selectedProject.githubRepo} target="_blank">
+                            <FontAwesomeIcon
+                              icon={faGithub}
+                              className=" text-white pb-2 left-[.5rem] text-[1.6rem] xs:text-[1.7rem]  sm:text-[2.3rem] md:text-[2.5rem] lg:text-[2.75rem] "
+                              size="2xl"
+                            />
+                          </Link>
+                          <div className="flex gap-1.5 xs:gap-2 lg:gap-4">
+                            {selectedProject.icons.map(
+                              (icon, iconIndex) =>
+                         
+                                  <Icon
+                                    className={`text-[1.5rem] ${iconIndex >= 7 && "hidden"} xs:static xs:text-[1.7rem] sm:text-[2rem] md:text-[2.3rem] lg:text-[2.7rem]`}
+                                    icon={icon.icon}
+                                  ></Icon>
+                      
+                            )}
+                          </div>
                           <Link to={selectedProject.liveLink} target="_blank">
                             <FontAwesomeIcon
-                              className="absolute text-white right-[0.3rem] bottom-[.3rem] text-[1.4rem] xs:text-[1.5rem] xs:bottom-[.5rem] sm:static sm:text-[1.95rem] md:text-[2.25rem]"
+                              className=" text-white pb-.5 text-[1.4rem] xs:text-[1.5rem] xs:bottom-[.5rem] sm:text-[1.95rem] md:text-[2.25rem] lg:text-[2.5rem]"
                               icon={faDesktop}
                               size="xl"
                             />
@@ -337,12 +352,12 @@ export default function Projects2() {
                     </div>
                   )}
               </div>
-              <div className="hidden sm:flex sm:w-[100px] ">{nextPrevBtns}</div>
+              <div className="flex justify-center mt-4">{nextPrevBtns}</div>
             </div>
           </div>
         </div>
 
-        <FooterIcons />
+        {/* <FooterIcons /> */}
       </div>
     </>
   )

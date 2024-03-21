@@ -1,13 +1,13 @@
-import { useRef, useContext, useEffect, useState, useCallback } from "react"
+import { useRef, useContext, useEffect, useCallback } from "react"
 import emailjs from "@emailjs/browser"
 import { Icon } from "@iconify/react"
 import { GlobalContext } from "../../context/GlobalContext"
 import type { ContactContextType } from "../../types/contactTypes"
 import { ContactContext } from "../../context/ContactContext"
 import "./progress.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link } from "react-router-dom"
-import { faPhone } from "@fortawesome/free-solid-svg-icons"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { Link } from "react-router-dom"
+// import { faPhone } from "@fortawesome/free-solid-svg-icons"
 // import toast, { Toaster } from "react-hot-toast"
 
 export const ContactForm = () => {
@@ -51,7 +51,7 @@ export const ContactForm = () => {
     setMessage,
   }: ContactContextType = useContext(ContactContext)
 
-  const [phoneIconDisplay, setPhoneIconDisplay] = useState<boolean>(false)
+  // const [phoneIconDisplay, setPhoneIconDisplay] = useState<boolean>(false)
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -207,29 +207,24 @@ export const ContactForm = () => {
   return (
     <form className="" ref={form} onSubmit={sendEmail}>
       <div
-        className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full justify-center md:text-[1.5rem] lg:text-[1.7rem]
-        ${
-          screenHeight >= 650
-            ? `h-[calc(100vh-200px)] `
-            : "-mt-[20px] md:mt-0 md:h-[440px]"
-        }
+        className={`flex flex-col text-white text-[1.2rem] font-oswald min-w-full my-8 md:text-[1.5rem] lg:text-[1.7rem]
     
  `}
       >
-        <Link
+        {/* <Link
           to="tel:2012188720"
-          className="absolute top-3 right-4"
+          className="absolute top-[7.3rem] right-6"
           target="_blank"
           onMouseOver={() => setPhoneIconDisplay(true)}
           onMouseOut={() => setPhoneIconDisplay(false)}
         >
           <FontAwesomeIcon className="z-10 text-[1.8rem]" icon={faPhone} />
-        </Link>
+        </Link> */}
 
-        {phoneIconDisplay && (
-          <span className="absolute top-12 right-4">201-218-8720</span>
-        )}
-        <div className="flex flex-col mt-1 border gap-2 py-3 w-[300px] mx-auto rounded-sm items-center md:relative md:w-[400px] lg:w-[600px]">
+        {/* {phoneIconDisplay && (
+          <span className="absolute top-[4.6rem] right-4">201-218-8720</span>
+        )} */}
+        <div className="flex flex-col border gap-2 py-5 w-[300px] mx-auto rounded-sm items-center md:relative md:w-[400px] lg:w-[600px]">
           {screenWidth >= 768 && errorMessages}
           <label>Name</label>
           <div className="relative">
@@ -377,9 +372,9 @@ export const ContactForm = () => {
       )}
       {isEmailSent && (
         <div
-          className={` ${emailClasses} justify-center border border-white px-2`}
+          className={` ${emailClasses} justify-center px-2`}
         >
-          <span className="text-white  ">Email sent!</span>
+          <span className="text-white">Email sent!</span>
         </div>
       )}
       {emailDidntSend && (
