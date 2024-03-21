@@ -12,7 +12,7 @@ export default function Contact() {
     <>
       <div 
       id="contact"
-        className={` bg-black
+        className={` bg-black min-w-full
            ${
              isModalOpen
                ? openOrClose

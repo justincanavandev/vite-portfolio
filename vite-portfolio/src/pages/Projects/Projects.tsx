@@ -204,9 +204,7 @@ export default function Projects2() {
 
           <div
             key={selectedImageIndex}
-            className={`flex flex-col relative items-center ${
-              screenWidth >= 320 ? "" : "w-[320px] pr-3"
-            }   mx-auto  z-30   sm:static  sm:items-start md:items-center lg:mt-2`}
+            className={`flex flex-col relative items-center  mx-auto  z-30   sm:static  sm:items-start md:items-center lg:mt-2`}
           >
             <div className=" ">
               <div className="flex flex-col items-center">
