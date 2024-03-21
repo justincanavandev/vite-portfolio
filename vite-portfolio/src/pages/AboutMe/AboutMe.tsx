@@ -124,7 +124,6 @@ export default function AboutMe() {
       title: "Mongoose",
       icon: "simple-icons:mongoose",
     },
-
   ]
 
   const [displayIconTitle, setDisplayIconTitle] = useState<boolean>(false)
@@ -237,22 +236,22 @@ export default function AboutMe() {
           className={`flex flex-col overflow-x-hidden overflow-y-scroll z-10 grow mb-4 sm:w-full sm:flex-row `}
         >
           <div className="flex flex-col gap-4 sm:gap-8">
-            <h2 className="text-[2.5rem] bg-darkTeal pl-2 uppercase sm:text-[3rem] w-fit sm:pl-3 pr-8 rounded-r-full">
+            <h2 className=" bg-darkTeal pl-2 uppercase text-[2rem] sm:text-[2.5rem] 2xl:text-[2.75rem] w-fit sm:pl-3 pr-8 rounded-r-full">
               About Me
             </h2>
             <div className="lg:flex lg:justify-between max-w-[1700px]">
-              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[48%] lg:text-[1.7rem] lg:w-[46%] 2xl:text-[2rem]">
+              <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[48%] lg:text-[1.7rem] lg:w-[46%] 2xl:text-[1.8rem] 2xl:max-w-[660px]">
                 A Full-Stack Developer specializing in technologies ranging from
-                TypeScript, React, Next.js, Node.js, tRPC, Prisma, Express.js, GraphQL,
-                React Query, and more.
+                TypeScript, React, Next.js, Node.js, tRPC, Prisma, Express.js,
+                GraphQL, React Query, and more.
                 {/* As a freelance musician for over a decade, my commitment to the art of crafting immersive experiences has been my driving motivation. */}
               </p>
-              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[46%] lg:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.7rem]" />
+              <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[46%] lg:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.5rem]" />
             </div>
 
             <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-screen md:max-w-[550px] lg:flex-row lg:justify-between lg:max-w-none lg:flex-wrap lg:px-6 lg:mt-6 xl:max-w-[1700px]">
               <div className="flex flex-col mt-4 gap-3 sm:gap-5 sm:max-w-[450px] md:max-w-[600px] lg:w-[46%] lg:mt-0">
-                <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.7rem]">
+                <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.5rem]">
                   <h3 className="uppercase">Languages and Tools </h3>
                   {displayIconTitle &&
                     containsDisplayedIcon(languagesAndTools) && (
@@ -284,7 +283,7 @@ export default function AboutMe() {
               </div>
               <div className="flex-col lg:w-[46%]">
                 <div className="flex flex-col gap-4">
-                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem] 2xl:text-[2.7rem]">
+                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem] 2xl:text-[2.5rem]">
                     <h3 className="uppercase ">Libraries and Frameworks </h3>
                     {displayIconTitle &&
                       containsDisplayedIcon(librariesAndFrameworks) && (
@@ -293,7 +292,8 @@ export default function AboutMe() {
                         </span>
                       )}
                   </div>
-                  <div className="flex opacity-fade-in relative">
+
+                  <div className="flex flex-wrap opacity-fade-in relative">
                     {librariesAndFrameworks.map((library, libIndex) => (
                       <>
                         <div key={libIndex} className="flex flex-col relative">
@@ -308,12 +308,15 @@ export default function AboutMe() {
                         </div>
                       </>
                     ))}
+                    <div
+                      className={`absolute inset-0 w-full bg-black ${displayIcons()}`}
+                    ></div>
                   </div>
                 </div>
               </div>
               <div className="flex-col lg:w-[46%]">
                 <div className="flex flex-col gap-4">
-                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem] 2xl:text-[2.7rem]">
+                  <div className="flex justify-between items-center mt-2 text-[1.3rem] sm:text-[1.8rem] lg:mt-0 xl:text-[2.2rem] 2xl:text-[2.5rem]">
                     <h3 className="uppercase ">Databases and ORMs</h3>
                     {displayIconTitle && containsDisplayedIcon(databases) && (
                       <span className="pr-[.8rem] sm:pr-0">
@@ -321,7 +324,7 @@ export default function AboutMe() {
                       </span>
                     )}
                   </div>
-                  <div className="flex opacity-fade-in relative">
+                  <div className="flex flex-wrap opacity-fade-in relative">
                     {databases.map((database, dbIndex) => (
                       <>
                         <div key={dbIndex} className="flex flex-col relative">
@@ -336,6 +339,9 @@ export default function AboutMe() {
                         </div>
                       </>
                     ))}
+                    <div
+                      className={`absolute inset-0 w-full bg-black ${displayIcons()}`}
+                    ></div>
                   </div>
                 </div>
               </div>

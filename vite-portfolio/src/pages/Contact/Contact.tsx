@@ -29,7 +29,7 @@ export default function Contact() {
       >
         <h1
           ref={headerRef}
-          className="text-[3rem] bg-darkTeal pl-2 text-white font-oswald uppercase w-fit sm:pl-3 pr-8 rounded-r-full md:text-[3.4rem] lg:text-[3.8rem]"
+          className=" bg-darkTeal pl-2 text-white font-oswald uppercase w-fit sm:pl-3 pr-8 rounded-r-full text-[2rem] sm:text-[2.5rem] 2xl:text-[2.75rem]"
         >
           Contact
         </h1>
