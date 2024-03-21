@@ -57,6 +57,7 @@ export default function Projects2() {
       }, 300)
       setHasPageRendered(true)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const nextBtn = () => {

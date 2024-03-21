@@ -20,6 +20,9 @@ import products from "../../assets/gamers-circuit/products.png"
 import allRestaurants from "../../assets/chi-hotspot/all-restaurants.png"
 import oneRestaurant from "../../assets/chi-hotspot/restaurant-page.png"
 import reviews from "../../assets/chi-hotspot/my-reviews.png"
+import dogSearch from "../../assets/dog-adoption/search-params.png"
+import dogResults from "../../assets/dog-adoption/dog-results.png"
+import yourFavDogs from "../../assets/dog-adoption/your-favorite-dogs.png"
 // import ProjectDetails from "./ProjectDetails"
 // import { useLocation } from "react-router-dom"
 
@@ -72,6 +75,52 @@ export default function ProjectsPage() {
     },
     {
       id: 2,
+      name: "JC's Dog Adoption",
+      githubRepo:
+        "https://github.com/justincanavandev/dog-adoption",
+      liveLink: "https://jcs-dog-adoption.vercel.app/",
+      thumbnail: dogSearch,
+      description:
+        "A fully type-safe T3 app designed for users to browse, favorite, and adopt new dogs.",
+      images: [dogSearch, dogResults, yourFavDogs],
+      icons: [
+        {
+          title: "TypeScript",
+          icon: "devicon:typescript",
+        },
+        {
+          title: "Next.js",
+          icon: "teenyicons:nextjs-solid",
+        },
+        {
+          title: "React.js",
+          icon: "logos:react",
+        },
+        {
+          title: "React Query",
+          icon: "logos:react-query-icon",
+        },
+        {
+          title: "tRPC",
+          icon: "devicon-plain:trpc",
+        },
+        {
+          title: "PostgreSQL",
+          icon: "logos:postgresql",
+        },
+        {
+          title: "Prisma",
+          icon: "file-icons:prisma",
+        },
+        {
+          title: "TailwindCSS",
+          icon: "devicon:tailwindcss",
+        },
+   
+      ],
+    },
+    {
+      id: 3,
       name: "Gamer's Circuit",
       githubRepo:
         "https://github.com/justincanavanmusic/electronics-e-commerce",
@@ -117,7 +166,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: 3,
+      id: 4,
       name: "CodeCove",
       githubRepo: "https://github.com/justincanavanmusic/tech-blog",
       liveLink: "https://floating-fortress-15177.herokuapp.com/",
@@ -157,7 +206,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: 4,
+      id: 5,
       name: "Chicago Hotspot",
       githubRepo: "https://github.com/allisonnault/Chicago-Attractions",
       liveLink: "https://ancient-wildwood-93900.herokuapp.com/",
