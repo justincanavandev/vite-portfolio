@@ -16,8 +16,8 @@ function Root() {
   const [openOrClose, setOpenOrClose] = useState<boolean>(false)
   const footerIcons = [
     { icon: faLinkedin, url: "https://www.linkedin.com/in/justin-canavan510/" },
-    { icon: faGithub, url: "https://github.com/justincanavanmusic" },
-    { icon: faEnvelope, url: "mailto:justincanavanmusic@gmail.com" },
+    { icon: faGithub, url: "https://github.com/justincanavandev" },
+    { icon: faEnvelope, url: "mailto:justincanavandev@gmail.com" },
   
   ]
   const [iconsHeightAbove650, setIconsHeightAbove650] = useState<string>("")
