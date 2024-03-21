@@ -46,7 +46,7 @@ export default function FooterIcons() {
   // }
 
   return (
-    <div className="flex justify-center items-center z-40">
+    <div className="flex max-w-[1700px] justify-center items-center z-40">
       <div
         // ref={iconsRef}
         className={`flex 

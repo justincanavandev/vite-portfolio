@@ -220,7 +220,7 @@ export default function AboutMe() {
     <>
       <div
         id="about-me"
-        className={`w-full bg-black mb-4 mt-4 font-oswald flex flex-col lg:max-w-screen  text-white overflow-hidden  ${
+        className={`w-full bg-black mb-4 mt-4 font-oswald flex flex-col text-white overflow-hidden  ${
           isModalOpen
             ? openOrClose
               ? "animate-open-filter-brightness"
@@ -234,13 +234,13 @@ export default function AboutMe() {
         }`}
       >
         <div
-          className={`flex flex-col  overflow-x-hidden overflow-y-scroll z-10 grow mb-4 sm:w-full sm:flex-row `}
+          className={`flex flex-col overflow-x-hidden overflow-y-scroll z-10 grow mb-4 sm:w-full sm:flex-row `}
         >
           <div className="flex flex-col gap-4 sm:gap-8">
             <h2 className="text-[2.5rem] bg-teal-gradient pl-2 uppercase sm:text-[3rem] w-fit sm:pl-3 pr-8 rounded-r-full">
               About Me
             </h2>
-            <div className="lg:flex lg:justify-between">
+            <div className="lg:flex lg:justify-between max-w-[1700px]">
               <p className="text-[1.1rem] px-5 xs:pl-5 xs:pr-[30%] sm:text-[1.3rem] sm:pr-8 md:px-5 md:max-w-[48%] lg:text-[1.7rem] lg:w-[46%] 2xl:text-[2rem]">
                 A Full-Stack Developer specializing in technologies ranging from
                 TypeScript, React, Next.js, Node.js, T3, Express.js, GraphQL,
@@ -250,7 +250,7 @@ export default function AboutMe() {
               <Employment className="hidden lg:flex lg:flex-col lg:h-fit lg:w-[46%] lg:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.7rem]" />
             </div>
 
-            <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-screen md:max-w-[550px] lg:flex-row lg:justify-between lg:max-w-none lg:flex-wrap lg:px-6 lg:mt-6">
+            <div className="px-2 sm:flex sm:flex-col sm:gap-4 lg:w-screen md:max-w-[550px] lg:flex-row lg:justify-between lg:max-w-none lg:flex-wrap lg:px-6 lg:mt-6 xl:max-w-[1700px]">
               <div className="flex flex-col mt-4 gap-3 sm:gap-5 sm:max-w-[450px] md:max-w-[600px] lg:w-[46%] lg:mt-0">
                 <div className="flex justify-between items-center text-[1.3rem] sm:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.7rem]">
                   <h3 className="uppercase">Languages and Tools </h3>

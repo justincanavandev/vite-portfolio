@@ -13,7 +13,7 @@ export default function NavLinks() {
       {projectLinks.map((link, index) => (
         <Link
           key={index}
-          className="capitalize font-oswald no-underline  text-white z-10"
+          className="capitalize font-oswald no-underline text-white z-10"
           to={link}
           onClick={() => {
             isModalOpen === true && setIsModalOpen(false)

@@ -16,9 +16,14 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col bg-black ">
-        {/* {location.pathname === "/" ? null : <Nav />} */}
-        {/* <Routes>
+      <div className="flex flex-col bg-black items-center">
+   
+        <div className="max-w-[1700px]">
+        <ScrollToHashElement />
+        <Nav />
+     
+          {/* {location.pathname === "/" ? null : <Nav />} */}
+          {/* <Routes>
           <Route path="/" element={<HomePagePage />} />
           <Route path="/about-me" element={<AboutMe />} />
           <Route path="/projects" element={<ProjectsPage />}>
@@ -27,23 +32,30 @@ function App() {
 
           <Route path="/contact" element={<ContactPage />} />
         </Routes> */}
-        <ScrollToHashElement/>
-        <Nav />
-        <AboutMe />
-        <ProjectsPage />
-        {/* <ProjectDetails /> */}
 
-        <ContactPage />
-        {/* <Routes>
+          <AboutMe />
+          <ProjectsPage />
+          {/* <ProjectDetails /> */}
+
+          <ContactPage />
+          {/* <Routes>
           <Route path="/projects" element={<ProjectsPage />}>
             <Route path=":projectId" element={<ProjectDetails />} />
           </Route>
         </Routes> */}
-        <div
+          {/* <div
           className={`z-50 transition-opacity border-t border-white opacity-100 ease-linear duration-500 h-[56px] bg-black sticky bottom-0 w-screen flex flex-col justify-center`}
         >
           <FooterIcons />
+        </div> */}
+              <div
+          className={`z-50 transition-opacity border-t border-white opacity-100 ease-linear duration-500 h-[56px] bg-black sticky bottom-0 w-screen flex flex-col justify-center max-w-[1700px]`}
+        >
+          <FooterIcons />
         </div>
+
+        </div>
+  
       </div>
     </>
   )
