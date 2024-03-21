@@ -4,7 +4,7 @@ import { GlobalContext } from "../context/GlobalContext"
 import { Link } from "react-router-dom"
 
 export default function NavLinks() {
-  const projectLinks = ["/#about-me", "/#contact", "/#projects"]
+  const projectLinks = ["/#about-me", "/#projects", "/#contact",]
   const { isModalOpen, setIsModalOpen, openOrClose, setOpenOrClose } =
     useContext(GlobalContext)
 
